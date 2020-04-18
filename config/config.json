@@ -16,10 +16,10 @@
     "operatorsAliases": 0
   },
   "production": {
-    "username": "root",
-    "password": "123456",
-    "database": "aplinova_prod",
-    "host": "localhost",
+    "username": "b696fcdf64b8a7",
+    "password": "065dcdf8",
+    "database": "heroku_a3bd692f7d5af73",
+    "host": "us-cdbr-iron-east-01.cleardb.net",
     "dialect": "mysql",
     "operatorsAliases": 0
   }
