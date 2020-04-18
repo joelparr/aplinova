@@ -1,0 +1,26 @@
+{
+  "development": {
+    "username": "root",
+    "password": "123456",
+    "database": "aplinova_dev",
+    "host": "localhost",
+    "dialect": "mysql",
+    "operatorsAliases": 0
+  },
+  "test": {
+    "username": "root",
+    "password": "123456",
+    "database": "aplinova_test",
+    "host": "localhost",
+    "dialect": "mysql",
+    "operatorsAliases": 0
+  },
+  "production": {
+    "username": "root",
+    "password": "123456",
+    "database": "aplinova_prod",
+    "host": "localhost",
+    "dialect": "mysql",
+    "operatorsAliases": 0
+  }
+}

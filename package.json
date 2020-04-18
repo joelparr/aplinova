@@ -1,0 +1,26 @@
+{
+  "name": "projeto-aplinova",
+  "version": "1.0.0",
+  "description": "Projeto para empresa aplinova",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "author": "Daniel & Gabriel",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "ejs": "^3.0.2",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "mysql2": "^2.1.0",
+    "nodemon": "^2.0.3",
+    "path": "^0.12.7",
+    "sequelize": "^5.21.6"
+  },
+  "devDependencies": {
+    "sequelize-cli": "^5.5.1"
+  }
+}
