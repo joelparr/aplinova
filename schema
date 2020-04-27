@@ -41,7 +41,7 @@
     <type label="Inet CIDR Addr" length="0" sql="CIDR" quote="'"/>
     <type label="Geometry" length="0" sql="GEOMETRY" quote="'"/>
   </group>
-</datatypes><table x="998" y="552" name="Usuario">
+</datatypes><table x="835" y="567" name="Usuario">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -61,7 +61,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="493" y="432" name="Fornecedor">
+<table x="603" y="433" name="Fornecedor">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -90,7 +90,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="893" y="78" name="Post">
+<table x="607" y="67" name="Post">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -111,7 +111,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="1135" y="169" name="Categoria post">
+<table x="849" y="158" name="Categoria post">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -119,7 +119,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="1753" y="469" name="Header">
+<table x="1587" y="489" name="Header">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -148,11 +148,15 @@
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="Categoria" row="id" />
 </row>
+<row name="id_Subcategoria" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="Subcategoria" row="id" />
+</row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
-<table x="826" y="303" name="Produto">
+<table x="847" y="340" name="Produto">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -173,7 +177,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="1432" y="349" name="Categoria">
+<table x="1366" y="395" name="Categoria">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -189,6 +193,18 @@
 <row name="id_Header" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="Header" row="id" />
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="1372" y="183" name="Subcategoria">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="id_Categoria" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="Categoria" row="id" />
 </row>
 <key type="PRIMARY" name="">
 <part>id</part>
