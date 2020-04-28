@@ -2,7 +2,7 @@
 <!-- SQL XML created by WWW SQL Designer, https://github.com/ondras/wwwsqldesigner/ -->
 <!-- Active URL: https://kitt.lewagon.com/db/6214 -->
 <sql>
-<datatypes db="postgresql">
+<datatypes db="mysql">
   <group label="Numeric" color="rgb(238,238,170)">
     <type label="Integer" length="0" sql="INTEGER" re="INT" quote=""/>
     <type label="Small Integer" length="0" sql="SMALLINT" quote=""/>
