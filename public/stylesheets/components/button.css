@@ -1,0 +1,17 @@
+.btn-banner{
+    background-color: transparent;
+    color:green;
+    border: 1px solid green;
+    padding: 0px 10px;
+    text-align: center;
+    font-size: 25px;
+    border-radius:50%;
+    transition: .4s;
+    margin-top: 10px;
+}
+.btn-banner:hover{
+    border-radius:25px;
+    padding: 0px 100px;
+    font-size:25px;
+}
+
