@@ -10,3 +10,12 @@ html, body{
 ul li{
     display:inline;
 }
+
+a.menu{
+    text-decoration: none;
+    color: black;
+}
+
+a.menu:hover{
+    color: lightgreen;
+}

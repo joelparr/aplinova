@@ -39,7 +39,7 @@
                             </div>
                             <div class="col-md-2">empresa</div>
                             <div class="col-md-2">parceiros</div>
-                            <div class="col-md-2">contato</div>
+                            <div class="col-md-2"><a href="./contato" class="menu" style="text-decoration: none;">contato</a></div>
                         </div>
                     </div>
                     <div class="col-md-1">
@@ -89,30 +89,40 @@
                       </div>
                     </div>
                 </div>
-                <div id="content" class="pl-5 pr-5">
-                    <div id="contentIntroduction" class="row">
-                        <div class="col-md-6">Texto que irá acompanhar a imagem ao lado</div>
-                        <div class="col-md-6">imagem que irá acompanhar o texto ao lado</div>
+                <div id="content" class="pl-5 pr-5 mt-5">
+                    <div id="contentIntroduction" class="row p-5">
+                        <div class="col-md-6"><span><strong>Qualidade</strong> nos nosso produtos e serviços para ajudar o <strong>nosso cliente</strong></span></div>
+                        <div class="col-md-6">
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                          sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+                          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </div>
                     </div>
-                    <div id="contentContent" class="row">
+                    <div id="contentContent" class="row p-5 mt-2">
+                        <%-include('./card')%>
+                        <%-include('./card')%>
+                        <%-include('./card')%>
+                        <%-include('./card')%>
                         <%-include('./card')%>
                     </div>
-                    <div id="contentCompany" class="row">
+                    <div id="contentCompany" class="row p-5" style="border:1px solid black;">
                         <div class="col-md-6">Descricao</div>
                         <div class="col-md-6">Imagem</div>
                     </div>
-                    <div id="contentPartner" class="row">
+                    <div id="contentPartner" class="row p-5">
                         <div class="col">
                             <div class="row justify-content-center">Descrição para os parceiros</div>
                             <div class="row justify-content-center">Parceiros aqui!!</div>
                         </div>
                     </div>
-                </div>
-                <div id="footer" class="row" style="border:1px solid black; height:200px">
-                    <div class="col-md-3">Col 1</div>
-                    <div class="col-md-3">Col 2</div>
-                    <div class="col-md-3">Col 3</div>
-                    <div class="col-md-3">Col 4</div>
+                    <div id="footer" class="row p-5" style="border:1px solid black; height:200px">
+                      <div class="col-md-3">Col 1</div>
+                      <div class="col-md-3">Col 2</div>
+                      <div class="col-md-3">Col 3</div>
+                      <div class="col-md-3">Col 4</div>
+                    </div>
                 </div>
             </div>
         </div>
