@@ -35,7 +35,7 @@ app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use('/login', usuario);
+app.use('/admin', usuario);
 app.use('/', aplinova);
 
 app.listen(process.env.PORT || 3000);

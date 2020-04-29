@@ -1,3 +1,3 @@
 exports.show = (req, res)=>{
-    res.send("Aplinova");
+    res.render('./portal/index');
 }
