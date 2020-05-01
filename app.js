@@ -4,7 +4,8 @@ const dotEnv = require('dotenv');
 dotEnv.config();
 const morgan = require('morgan');
 const usuario = require('./routes/usuario.js');
-const aplinova = require('./routes/aplinova.js');
+const aplinova = require('./routes/portal/aplinova.js');
+const admin = require('./routes/admin/admin.js');
 const path = require('path');
 const {bdConnection} = require('./db/connection.js');
 const models = require('./models');
@@ -20,8 +21,8 @@ require('./config/passport/passport.js')(passport, models.User);
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-
 app.use('/public', express.static('public'));
+
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 app.use(morgan('dev'));
@@ -35,7 +36,8 @@ app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use('/admin', usuario);
+app.use('/login', usuario);
 app.use('/', aplinova);
+app.use('/admin', admin);
 
 app.listen(process.env.PORT || 3000);
