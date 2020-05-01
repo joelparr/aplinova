@@ -7,7 +7,7 @@ const passport = require('passport');
 
 const routes = express.Router();
 
-routes.get('/', login);
+routes.get('/show', login);
 routes.post('/send', passport.authenticate('local-signin', {
     successRedirect: '/admin',
     failureRedirect: '/login',
