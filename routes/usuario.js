@@ -9,14 +9,14 @@ const routes = express.Router();
 
 routes.get('/', login);
 routes.post('/send', passport.authenticate('local-signin', {
-    successRedirect: '/admin/dashboard',
-    failureRedirect: '/admin',
+    successRedirect: '/admin',
+    failureRedirect: '/login',
     failureFlash: true
 }))
 routes.get('/signin', newUser);
 routes.post('/signup', passport.authenticate('local-signup', {
-    successRedirect: '/admin/dashboard',
-    failureRedirect: 'admin/signin',
+    successRedirect: '/admin',
+    failureRedirect: 'login/signin',
     failureFlash: true
 }));
 routes.get('/dashboard', dashboard);
