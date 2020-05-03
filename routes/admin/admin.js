@@ -1,7 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const {show} = require('../../controllers/admin/admin.js');
+const {isValid} = require('../../middlewares/isValidUser.js');
+const {show, newCategoria} = require('../../controllers/admin/admin.js');
 
-router.get('/', show);
+router.get('/', isValid, show);
+router.post('/categoria', isValid, newCategoria)
 
 module.exports = router;
