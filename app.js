@@ -15,7 +15,7 @@ const expressValidator = require('express-validator');
 const session = require('express-session');
 const flash = require('connect-flash');
 
-bdConnection();
+global.sequelize = bdConnection();
 
 require('./config/passport/passport.js')(passport, models.User);
 
