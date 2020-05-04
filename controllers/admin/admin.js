@@ -39,7 +39,7 @@ exports.new = (req, res)=>{
 }
 
 //Funcao de mostrar tela principal do admin
-exports.show = (req, res)=>{
+exports.index = (req, res)=>{
   //Lista de categorias, headers e produtos
   sendingData(req, res, './admin/index');
 }
