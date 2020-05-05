@@ -4,6 +4,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <script src="https://kit.fontawesome.com/3bb5488a16.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="./public/stylesheets/portal/index.css">
         <title>Aplinova</title>
     </head>
@@ -47,7 +48,7 @@
                     </div>
                 </div>
                 <div id="banner" class="row">
-                    
+
                     <div class="col">
                     <div id="carouselBanner" class="carousel slide" data-ride="carousel">
                         <ol class="carousel-indicators">
@@ -125,24 +126,19 @@
                       <div class="col-md-4"><%-include('./card')%></div>
                     </div>
                 </div>
-                    <div id="contentCompany" class="row" style="border:1px solid black; height: 726px;">
-                        <div class="col-md-6">Descricao</div>
-                        <div class="col-md-6">Imagem</div>
-                    </div>
-                    <div id="contentPartner" class="row p-5">
-                        <div class="col">
-                            <div class="row justify-content-center">Descrição para os parceiros</div>
-                            <div class="row justify-content-center">Parceiros aqui!!</div>
-                        </div>
-                    </div>
-                    <div id="footer" class="row p-5" style="border:1px solid black; height:354px">
-                      <div class="col-md-3">Col 1</div>
-                      <div class="col-md-3">Col 2</div>
-                      <div class="col-md-3">Col 3</div>
-                      <div class="col-md-3">Col 4</div>
+                <div id="contentCompany" class="row" style="border:1px solid black; height: 726px;">
+                    <div class="col-md-6">Descricao</div>
+                    <div class="col-md-6">Imagem</div>
+                </div>
+                <div id="contentPartner" class="row p-5">
+                    <div class="col">
+                        <div class="row justify-content-center">Descrição para os parceiros</div>
+                        <div class="row justify-content-center">Parceiros aqui!!</div>
                     </div>
                 </div>
+                <%- include('./footer') %>
             </div>
+        </div>
 
         <script src="./public/javascript/portal/index.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
