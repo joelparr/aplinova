@@ -1,10 +1,12 @@
 @import '../components/button.css';
+@import '../components/footer.css';
 
 html, body{
     margin:0;
     padding: 0;
     width: 100vw;
     background-color: #FFF;
+    font-family: 'Montserrat', sans-serif;
   }
 
 ul li{
