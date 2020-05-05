@@ -1,29 +1,51 @@
 /**
- * Description: Logica para carregamento de dados
- * Author: Findi
+ * Description: modulo javascript
  */
+ "use strict";
 
- //Caso o cadastro seja de categoria, entao devera desaparacer as opcoes de subcategoria
- var categoria = document.getElementById('categoriaChecked');
- var categoriaPai = document.getElementById('divCategoriaPai');
- categoria.addEventListener('change', function(event){
-   console.log(event.srcElement.checked);
-   if(event.srcElement.checked){
-     categoriaPai.style.display = 'none'
-   }else{
-     categoriaPai.style.display = 'block'
-   }
- });
+ var Dashboard = function () {
+ 	var global = {
+ 		tooltipOptions: {
+ 			placement: "right"
+ 		},
+ 		menuClass: ".c-menu"
+ 	};
 
-//Ao carregar sera carregado as opcoes de aromas para categorias pai
-window.onload = (event)=>{
-  const categoriaPai = document.getElementById("categoriaPai");
+ 	var menuChangeActive = function menuChangeActive(el) {
+ 		var hasSubmenu = $(el).hasClass("has-submenu");
+ 		$(global.menuClass + " .is-active").removeClass("is-active");
+ 		$(el).addClass("is-active");
 
-  if(categoriaPai.options.length === 0){
-    $.get('/admin/categorias', function(data){
-      data.data.forEach((element, index, array)=>{
-        categoriaPai[index] = new Option(element.titulo, element.idCategoria, false, false);
-      })
-    });
-  }
-}
+ 		// if (hasSubmenu) {
+ 		// 	$(el).find("ul").slideDown();
+ 		// }
+ 	};
+
+ 	var sidebarChangeWidth = function sidebarChangeWidth() {
+ 		var $menuItemsTitle = $("li .menu-item__title");
+
+ 		$("body").toggleClass("sidebar-is-reduced sidebar-is-expanded");
+ 		$(".hamburger-toggle").toggleClass("is-opened");
+
+ 		if ($("body").hasClass("sidebar-is-expanded")) {
+ 			$('[data-toggle="tooltip"]').tooltip("destroy");
+ 		} else {
+ 			$('[data-toggle="tooltip"]').tooltip(global.tooltipOptions);
+ 		}
+ 	};
+
+ 	return {
+ 		init: function init() {
+ 			$(".js-hamburger").on("click", sidebarChangeWidth);
+
+ 			$(".js-menu li").on("click", function (e) {
+ 				menuChangeActive(e.currentTarget);
+ 			});
+
+ 			$('[data-toggle="tooltip"]').tooltip(global.tooltipOptions);
+ 		}
+ 	};
+ }();
+
+ Dashboard.init();
+ //# sourceURL=pen.js

@@ -33,9 +33,9 @@ function sendingData(req, res, urlView, argumentos){
     })
 }
 
-exports.new = (req, res)=>{
+exports.newCategoria = (req, res)=>{
   //Formulario de criacao de categoria
-  sendingData(req, res, './admin/index');
+  sendingData(req, res, './admin/newCategoria');
 }
 
 //Funcao de mostrar tela principal do admin
