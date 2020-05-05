@@ -16,7 +16,8 @@
     margin: 0;
     width: 3rem;
     height: 3rem;
-    background: #95B546;
+    background: transparent;
+    border: 2px solid #7B9C48;
     border-radius: 1.625rem;
 }
 .btn--expand .btn--expand__circle .icon {
@@ -36,15 +37,13 @@
 }
 .btn--expand .btn--expand__circle .icon.arrow::before {
     position: absolute;
-    content: '';
-    top: -0.25rem;
-    right: 0.0625rem;
+    content: '✚';
+    color: #7B9C48;
+    font-size: 1.75rem;
+    top: -1.35rem;
+    right: 0.5rem;
     width: 0.625rem;
     height: 0.625rem;
-    border-top: 0.125rem solid #fff;
-    border-right: 0.125rem solid #fff;
-    -webkit-transform: rotate(45deg);
-    transform: rotate(45deg);
 }
 .btn--expand .btn--expand__text {
     transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
@@ -53,21 +52,21 @@
     left: 0;
     right: 0;
     bottom: 0;
-    padding: 0.75rem 0;
+    padding: 0.4rem 0;
     margin: 0 0 0 1.85rem;
     color: transparent;
-    font-weight: 700;
+    font-size: 1.25rem;
+    font-weight: 600;
     line-height: 1.6;
     text-align: center;
     text-transform: uppercase;
 }
 .btn--expand:hover .btn--expand__circle {
     width: 100%;
+    background: #7B9C48;
 }
-.btn--expand:hover .btn--expand__circle .icon.arrow {
-    background: #fff;
-    -webkit-transform: translate(1rem, 0);
-    transform: translate(1rem, 0);
+.btn--expand:hover .icon.arrow::before {
+    color: white;
 }
 .btn--expand:hover .btn--expand__text {
     color: #fff;
