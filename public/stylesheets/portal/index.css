@@ -1,5 +1,6 @@
 @import '../components/button.css';
 @import '../components/footer.css';
+@import '../components/navbar.css';
 
 html, body{
     margin:0;
@@ -11,13 +12,4 @@ html, body{
 
 ul li{
     display:inline;
-}
-
-a.menu{
-    text-decoration: none;
-    color: black;
-}
-
-a.menu:hover{
-    color: lightgreen;
 }

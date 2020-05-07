@@ -11,39 +11,30 @@
     <body>
         <div id="main" class="row">
             <div id="mainCol" class="col">
-                <div id="menu" class="row" style="height: 80px;">
-                    <div class="col-md-2">
-                      <div class="row justify-content-center align-items-center" style="height: 80px;">
-                        <img width="80px" src="https://image.shutterstock.com/image-photo/blackboard-inscribed-scientific-formulas-calculations-600w-1065730331.jpg" alt="">
-                      </div>
-                    </div>
-                    <div class="col-md-9">
-                        <!-- Menu -->
-                        <div class="row justify-content-end align-items-center" style="height: 80px;">
-                            <div class="col-md-2">
-                              <div class="dropdown">
-                                <div class="dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                  produtos
-                                </div>
-                                <div class="dropdown-menu" >
-                                  <a class="dropdown-item" href="#">aromas</a>
-                                  <a class="dropdown-item" href="#">corantes</a>
-                                  <a class="dropdown-item" href="#">proteínas</a>
-                                  <a class="dropdown-item" href="#">substituto de açucar e fibras</a>
-                                  <a class="dropdown-item" href="#">produtos naturais</a>
-                                  <a class="dropdown-item" href="#">produtos veganos e orgânicos</a>
-                                  <a class="dropdown-item" href="#">ingredientes funcionais</a>
-                                  <a class="dropdown-item" href="#">revestimentos para confeitaria</a>
-                                  <a class="dropdown-item" href="#">food service</a>
-                                </div>
-                              </div>
+                <div id="menu" class="row navbar">
+                    <img class="navbar__logo" src="./public/img/logo-dark.svg" alt="Logo" />
+                    <div class="col-md-9 navbar__items">
+                        <div class="navbar__item navbar__item--products">
+                          <div class="navbar__products-dropdown-container">
+                            <div class="navbar__products-dropdown">
+                              <a class="navbar__products-dropdown-item" href="#">aromas</a>
+                              <a class="navbar__products-dropdown-item" href="#">corantes</a>
+                              <a class="navbar__products-dropdown-item" href="#">proteínas</a>
+                              <a class="navbar__products-dropdown-item" href="#">substituto de açucar e fibras</a>
+                              <a class="navbar__products-dropdown-item" href="#">produtos naturais</a>
+                              <a class="navbar__products-dropdown-item" href="#">produtos veganos e orgânicos</a>
+                              <a class="navbar__products-dropdown-item" href="#">ingredientes funcionais</a>
+                              <a class="navbar__products-dropdown-item" href="#">revestimentos para confeitaria</a>
+                              <a class="navbar__products-dropdown-item" href="#">food service</a>
                             </div>
-                            <div class="col-md-2">empresa</div>
-                            <div class="col-md-2">parceiros</div>
-                            <div class="col-md-2"><a href="./contato" class="menu" style="text-decoration: none;">contato</a></div>
+                          </div>
+                          <a class="navbar__link">produtos</a>
                         </div>
+                        <a class="navbar__item navbar__link">empresa</a>
+                        <a class="navbar__item navbar__link">parceiros</a>
+                        <a class="navbar__item navbar__link" href="./contato">contato</a>
                     </div>
                     <div class="col-md-1">
-                      <div class="row align-items-center" style="height: 80px;"><i class="fas fa-times fa-2x"></i></div>
+                      <div class="row align-items-center navbar__close-icon fas fa-times fa-2x" style="height: 80px;"></div>
                     </div>
                 </div>
