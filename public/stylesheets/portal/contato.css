@@ -1,0 +1,17 @@
+.input-form{
+  width:100%;
+  border: none;
+  border-bottom: 2px solid lightgray;
+}
+
+form{
+  font-family: 'Libre Franklin', sans-serif;
+}
+
+.button-form{
+  border-radius: 20px 20px 20px 20px;
+  padding: 5px 25px 5px 25px;
+  background-color: lightgreen;
+  border: lightgreen;
+  color:white;
+}

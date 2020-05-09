@@ -2,6 +2,7 @@
 @import '../components/footer.css';
 @import '../components/navbar.css';
 @import '../components/categoria-item.css';
+@import './contato.css';
 
 html, body{
     margin:0;
