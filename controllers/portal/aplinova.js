@@ -15,7 +15,7 @@ exports.contato = (req, res)=>{
 
 //Tela de aromas
 exports.aromas = (req, res)=>{
-  res.send("Voce esta na tela de aromas");
+  res.render('./portal/aromas');
 }
 
 //Tela de corantes
@@ -36,17 +36,17 @@ exports.prodNaturais = (req, res)=>{
 }
 
 exports.prodVeganos = (req, res)=>{
-
+res.send("Voce esta na tela de produtos veganos");
 }
 
 exports.proteinas = (req, res)=>{
-
+res.send("Voce esta na tela de proteinas");
 }
 
 exports.revConfeitaria = (req, res)=>{
-
+  res.send("Voce esta na tela de confeitaria");
 }
 
 exports.subacucar= (req, res)=>{
-
+  res.send("Voce esta na tela de subistituto do acucar");
 }

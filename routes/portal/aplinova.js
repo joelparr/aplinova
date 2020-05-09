@@ -25,7 +25,7 @@ router.get('/contato', contato);
 router.get('/aromas', aromas);
 router.get('/corantes', corantes);
 router.get('/foodservice', foodservice);
-router.get('/ingredientesfuncionais/', ingredFuncionais);
+router.get('/ingredientesfuncionais', ingredFuncionais);
 router.get('/prodnaturais', prodNaturais);
 router.get('/prodveganos', prodVeganos);
 router.get('/proteinas', proteinas);
