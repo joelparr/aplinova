@@ -1,6 +1,7 @@
 @import '../components/button.css';
 @import '../components/footer.css';
 @import '../components/navbar.css';
+@import './contato.css';
 
 html, body{
     margin:0;

@@ -1,11 +1,11 @@
 <%- include('./header') %>
 <!--background-image:url('https://image.shutterstock.com/image-photo/blackboard-inscribed-scientific-formulas-calculations-600w-1065730331.jpg'); background-repeat: no-repeat; background-size:100%"-->
-<div id="banner" class="container-fluid" style="height:600px; background-color:grey;"">
+<div id="banner" class="container-fluid p-0" style="height:600px; background-color:grey;"">
   <div class="row" style="height:100%;">
     <div class="col-md-3">
       <div class="row align-items-end" style="height:100%;">
         <div class="col d-flex justify-content-start align-items-center" style="margin-bottom: 30%;">
-          <h2 class="pl-3" style="color:white;"><P>Um bom</p> <p>atendimento</p> <p>faz toda a</p><p>diferenca</p></h2>
+          <h2 class="pl-5" style="color:white;"><P>Um bom</p> <p>atendimento</p> <p>faz toda a</p><p><strong>diferenca</strong></p></h2>
         </div>
       </div>
     </div>
@@ -14,20 +14,46 @@
     <div class="col-md-3"></div>
   </div>
 </div>
-<div class="row pl-5 pr-5 mt-5">
-  <div class="col-md-6">
-    <div class="row align-items-center">
-      <i class="fas fa-square fa-sm" style="color:red; width:100%;"><span class="ml-2" style="color:black; font-size:20px;">Fale <strong>conosco</strong></span></i>
+<div class="container-fluid pl-5 pr-5 mt-5">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="row mb-3 align-items-center">
+        <i class="fas fa-square fa-sm" style="color:red;"></i><span class="ml-2" style="color:black; font-size:30px;">Fale <strong>conosco</strong></span>
+      </div>
+      <div class="row">
+        <article class="">
+          <p>Preencha o formulario que nossa</p>
+          <p>equipe tecnica entrara em contato</p>
+          <p>o mais breve possivel</p>
+          <p>Ou se preferir, envie sua solicitacao</p>
+          <p><strong>contato@aplinova.com.br</strong></p>
+        </article>
+      </div>
     </div>
-    <div class="row text-rightr">
-      <p>Ao contrário do que se acredita, Lorem Ipsum não é simplesmente um texto randômico.</p>
-      <p>Com mais de 2000 anos, suas raízes podem ser encontradas em uma obra de literatura latina clássica datada de 45 AC.</p>
+    <div class="col-md-6">
+      <form class="" action="index.html" method="post">
+        <div class="col-md-12">
+          <div class="mb-5">
+            <input class="input-form" type="text" name="" value="" placeholder="NOME" autofocus>
+          </div>
+          <div class="mb-5">
+            <input class="input-form" type="text" name="" value="" placeholder="E-MAIL" autofocus>
+          </div>
+          <div class="mb-5">
+            <input class="input-form" type="text" name="" value="" placeholder="TELEFONE" autofocus>
+          </div>
+          <div class="mb-5">
+            <input class="input-form" type="text" name="" value="" placeholder="EMPRESA" autofocus>
+          </div>
+          <div class="mb-5">
+            <input class="input-form" type="text" name="" value="" placeholder="MENSAGEM" autofocus>
+          </div>
+          <div class="mb-5">
+            <input class="button-form" type="submit" name="" value="ENVIAR">
+          </div>
+        </div>
+      </form>
     </div>
-  </div>
-  <div class="col-md-6">
-    <form class="" action="index.html" method="post">
-      <label for="">Nome</label>
-    </form>
   </div>
 </div>
 <%- include('./footer') %>
