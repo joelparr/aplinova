@@ -14,7 +14,8 @@ const {
   prodVeganos,
   proteinas,
   revConfeitaria,
-  subacucar} = require('../../controllers/portal/aplinova.js');
+  subacucar,
+  nossaempresa} = require('../../controllers/portal/aplinova.js');
 //Não preciso estar logado para acessar a plataforma
 //const {isValid} = require('../middlewares/isValidUser.js');
 
@@ -31,5 +32,6 @@ router.get('/prodveganos', prodVeganos);
 router.get('/proteinas', proteinas);
 router.get('/revconfeitaria', revConfeitaria); //revestimento confeitaria
 router.get('/subacucar', subacucar);
+router.get('/nossaempresa', nossaempresa);
 
 module.exports = router;
