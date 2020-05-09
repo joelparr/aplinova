@@ -37,7 +37,7 @@
   <div class="d-flex flex-wrap pl-5 pr-5 mt-2">
     <% const categorias = ['Aromas Doces e Salgados', 'Aromas Idênticos ao Natural', 'Base Turvadora Pó e Líquido', 'Aromas Naturais', 'Base Cremosa para Licores', 'Concentrados para Bebidas']; %>
     <% categorias.forEach((item) => { %>
-      <%- include('./categoria-item', {item}); %>
+      <%- include('./categoria-item', {itemName: item}); %>
     <% }); %>
   </div>
   <div class="row pl-5 pr-5 mt-5 mb-5">
