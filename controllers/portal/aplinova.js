@@ -50,3 +50,7 @@ exports.revConfeitaria = (req, res)=>{
 exports.subacucar= (req, res)=>{
   res.send("Voce esta na tela de subistituto do acucar");
 }
+
+exports.nossaempresa = (req, res)=>{
+  res.render('./portal/nossaempresa')
+}
