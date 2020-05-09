@@ -1,0 +1,31 @@
+.categoria-item {
+    width: 100%;
+    display: flex;
+    padding-left: 0.75rem;
+    margin-top: 0.75rem;
+    align-items: start;
+}
+
+.categoria-item .categoria-item__icon {
+    width: 1rem;
+    height: 1rem;
+    margin-right: 0.5rem;
+    margin-top: 0.25rem;
+}
+
+.categoria-item .categoria-item__text {
+    font-weight: 700;
+    color: #292828;
+    font-size: large;
+    line-height: 1.375;
+}
+
+@media (min-width: 640px) {
+    .categoria-item {
+        width: 33.333333%;
+    }
+
+    .categoria-item .categoria-item__text {
+        width: 60%;
+    }
+}
