@@ -1,34 +1,16 @@
 <%- include('./header') %>
-  <%- include('./carrousel') %>
-                <div id="content" class="pl-5 pr-5 mt-5">
-                    <div id="contentIntroduction" class="row p-5">
-                        <div class="col-md-6">
-                          <span style="font-size:24px;"><li>Apliquimica agora é aplinova</li></span>
-                          <span style="font-size: 60px;"><p><strong>Qualidade</strong> nos nosso produtos e serviços para ajudar o <strong>nosso cliente</strong></p></span></div>
-                        <div class="col-md-6">
-                          <span style="font-size:20px;">
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                          sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </span>
-                        </div>
-                    </div>
-                    <div id="contentContent" class="row p-5 mt-2">
-                      <div class="col-md-4"><%-include('./card')%></div>
-                      <div class="col-md-4"><%-include('./card')%></div>
-                      <div class="col-md-4"><%-include('./card')%></div>
-                    </div>
-                </div>
-                <div id="contentCompany" class="row" style="border:1px solid black; height: 726px;">
-                    <div class="col-md-6">Descricao</div>
-                    <div class="col-md-6">Imagem</div>
-                </div>
-                <div id="contentPartner" class="row p-5">
-                    <div class="col">
-                        <div class="row justify-content-center">Descrição para os parceiros</div>
-                        <div class="row justify-content-center">Parceiros aqui!!</div>
-                    </div>
-                </div>
+<%- include('./carrousel') %>
+<%- include('./home-introduction') %>
+<div class="container-fluid row px-5">
+    <% produtos.forEach((produto) => { %>
+        <div class="col-sm-12 col-md-4"><%- include('./card', {produto}) %></div>
+    <% }); %>
+</div>
+<%- include('./home-company') %>
+<div id="contentPartner" class="row p-5">
+    <div class="col">
+        <div class="row justify-content-center">Descrição para os parceiros</div>
+        <div class="row justify-content-center">Parceiros aqui!!</div>
+    </div>
+</div>
 <%- include('./footer') %>

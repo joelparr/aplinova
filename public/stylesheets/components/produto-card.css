@@ -1,0 +1,25 @@
+.produto-card {
+    border-radius: 0;
+    width: 100%;
+    border: none;
+}
+
+a.produto-card {
+    text-decoration: none;
+}
+
+.produto-card .card-img-top {
+    border-radius: 0;
+}
+
+.produto-card .card-body {
+    border: none;
+    border-bottom: 5px solid #292828;
+    color: #292828;
+    font-weight: 500;
+    background-color: #F0F6ED;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 0 2rem 0 2rem;
+    height: 120px;
+}

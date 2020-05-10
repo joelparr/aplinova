@@ -1,10 +1,6 @@
-<!-- Cards das categorias -->
-<div class="card" style="width: 400px; border-bottom:4px solid black;">
-    <img src="https://image.shutterstock.com/image-photo/creative-blurry-outdoor-asphalt-background-600w-780934750.jpg" class="card-img-top" alt="...">
-    <div class="card-body">
-      <div class="d-flex flex-column justify-content-center align-items-center">
-        <h3>AROMA</h3>
-      </div>
-      <!-- <p class="card-text"></p> -->
+<a href="<%- produto.href %>" class="card produto-card pt-5">
+    <img src="<%- produto.imageUrl %>" class="card-img-top" alt="<%- produto.title %>">
+    <div class="card-body d-flex flex-column justify-content-center align-items-center">
+        <h3><%= produto.title %></h3>
     </div>
-  </div>
+</a>

@@ -2,6 +2,9 @@
 @import '../components/footer.css';
 @import '../components/navbar.css';
 @import '../components/categoria-item.css';
+@import '../components/home-introduction.css';
+@import '../components/home-company.css';
+@import '../components/produto-card.css';
 @import './contato.css';
 
 html, body{
