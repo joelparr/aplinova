@@ -1,0 +1,31 @@
+.produto-view__categories {
+    border-top: #292828 solid 4px;
+    margin: 0 2rem;
+}
+
+.produto-view__segments {
+    background-color: #F0F6ED;
+}
+
+.produto-view__segments i {
+    color: red;
+    font-size: small;
+}
+
+.produto-view__segments span {
+    color: #292828;
+    margin-left: 0.5rem;
+    font-weight: normal;
+}
+
+.produto-view__title {
+    background: rgba(225, 232, 215, 0.75);
+    height: 80px;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    border-bottom: #292828 solid 4px;
+}
+
+.produto-view__title span {
+    opacity: 100%;
+}
