@@ -1,24 +1,21 @@
 <%- include('./header') %>
 <!--background-image:url('https://image.shutterstock.com/image-photo/blackboard-inscribed-scientific-formulas-calculations-600w-1065730331.jpg'); background-repeat: no-repeat; background-size:100%-->
-<div id="banner" class="container-fluid" style="height:600px; background-color:rgba(219,234,213);opacity:1; filter:brightness(90%);">
-  <div class="row" style="height:100%;">
-    <div class="col-md-4"></div>
-    <div class="col-md-4">
+<div id="banner" class="container-fluid produto-view__banner" style="height:600px; background-color:rgba(219,234,213);opacity:1; filter:brightness(90%);">
+  <div class="row justify-content-center h-100">
+    <div class="col-md-8 col-lg-6">
       <div class="row align-items-end" style="height:100%;">
-        <div class="col d-flex justify-content-center align-items-center" style="border-bottom:4px solid black; background-color:lightgray; height:15%">
-          <h3>Aromas</h3>
+        <div class="col d-flex justify-content-center align-items-center produto-view__title">
+          <span>Aromas</span>
         </div>
       </div>
     </div>
-    <div class="col-md-4"></div>
   </div>
 </div>
-<div class="container-fluid">
-  <div class="row pl-5 pr-5 mt-5">
+<div class="container-fluid produto-view__content">
+  <div class="row mt-5">
     <div class="col">
-      <div class="row">
-        <div class="col-md-4"></div>
-        <div class="col-md-4 text-rigth">
+      <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6 p-0">
           <article class="">
             <p>Ao contrário do que se acredita, Lorem Ipsum não é simplesmente um texto randômico.</p>
             <p>Com mais de 2000 anos, suas raízes podem ser encontradas em uma obra de literatura latina clássica datada de 45 AC.</p>
@@ -30,20 +27,19 @@
             <p>O trecho padrão original de Lorem Ipsum, usado desde o século XVI, está reproduzido abaixo para os interessados. Seções 1.10.32 e 1.10.33 de "de Finibus Bonorum et Malorum" de Cicero também foram reproduzidas abaixo em sua forma exata original, acompanhada das versões para o inglês da tradução feita por H. Rackham em 1914.</p>
           </article>
         </div>
-        <div class="col-md-4"></div>
       </div>
     </div>
   </div>
-  <div class="d-flex flex-wrap pl-5 pr-5 mt-5" style="border-top: 5px solid black;">
+  <div class="d-flex flex-wrap mt-5 produto-view__categories">
     <% const categorias = ['Aromas Doces e Salgados', 'Aromas Idênticos ao Natural', 'Base Turvadora Pó e Líquido', 'Aromas Naturais', 'Base Cremosa para Licores', 'Concentrados para Bebidas']; %>
     <% categorias.forEach((item) => { %>
       <%- include('./categoria-item', {itemName: item}) %>
     <% }); %>
   </div>
-  <div class="row pl-5 pr-5 mt-5 mb-5">
-    <div class="col" style="background-color:lightgray;">
-      <div class="row align-items-center p-3">
-        <i class="fas fa-square fas-sm" style="color:red;"><span class="ml-2" style="color:black;">Segmentos: Alimentos bebidas, Suplementos, Fama, Oral care, nutricao, animal e pet food.</span></i>
+  <div class="row px-5 my-5">
+    <div class="col produto-view__segments">
+      <div class="row flex-nowrap align-items-center p-3">
+        <i class="fas fa-square"></i><span><b>Segmentos:</b> Alimentos bebidas, Suplementos, Fama, Oral care, nutricao, animal e pet food.</span>
       </div>
     </div>
   </div>
