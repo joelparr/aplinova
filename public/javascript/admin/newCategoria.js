@@ -21,9 +21,14 @@ window.onload = (event)=>{
 
   if(categoriaPai.options.length === 0){
     $.get('/admin/categorias', function(data){
-      data.data.forEach((element, index, array)=>{
-        categoriaPai[index] = new Option(element.titulo, element.idCategoria, false, false);
-      })
+      console.log(data);
+      if(data){
+        data.data.forEach((element, index, array)=>{
+          categoriaPai[index] = new Option(element.titulo, element.idCategoria, false, false);
+        })
+      }else{
+        console.log(data.error);
+      }
     });
   }
 }
