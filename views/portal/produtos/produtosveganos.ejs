@@ -1,0 +1,47 @@
+<%- include('../header') %>
+<!--background-image:url('https://image.shutterstock.com/image-photo/blackboard-inscribed-scientific-formulas-calculations-600w-1065730331.jpg'); background-repeat: no-repeat; background-size:100%-->
+<div id="banner" class="container-fluid produto-view__banner" style="height:600px; background-color:rgba(219,234,213);opacity:1; filter:brightness(90%);">
+  <div class="row justify-content-center h-100">
+    <div class="col-md-8 col-lg-6">
+      <div class="row align-items-end" style="height:100%;">
+        <div class="col d-flex justify-content-center align-items-center produto-view__title">
+          <span>Produtos Veganos</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid produto-view__content">
+  <div class="row mt-5">
+    <div class="col">
+      <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6 p-0">
+          <article class="">
+            <p>Ao contrário do que se acredita, Lorem Ipsum não é simplesmente um texto randômico.</p>
+            <p>Com mais de 2000 anos, suas raízes podem ser encontradas em uma obra de literatura latina clássica datada de 45 AC.</p>
+
+            <p>Richard McClintock, um professor de latim do Hampden-Sydney College na Virginia, pesquisou uma das mais obscuras palavras em latim, consectetur, oriunda de uma passagem de Lorem Ipsum, e, procurando por entre citações da palavra na literatura clássica, descobriu a sua indubitável origem.
+            Lorem Ipsum vem das seções 1.10.32 e 1.10.33 do "de Finibus Bonorum et Malorum" (Os Extremos do Bem e do Mal), de Cícero, escrito em 45 AC. Este livro é um tratado de teoria da ética muito popular na época da Renascença.
+            A primeira linha de Lorem Ipsum, "Lorem Ipsum dolor sit amet..." vem de uma linha na seção 1.10.32.</p>
+
+            <p>O trecho padrão original de Lorem Ipsum, usado desde o século XVI, está reproduzido abaixo para os interessados. Seções 1.10.32 e 1.10.33 de "de Finibus Bonorum et Malorum" de Cicero também foram reproduzidas abaixo em sua forma exata original, acompanhada das versões para o inglês da tradução feita por H. Rackham em 1914.</p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="d-flex flex-wrap mt-5 produto-view__categories">
+    <% const categorias = ['Aromas Doces e Salgados', 'Aromas Idênticos ao Natural', 'Base Turvadora Pó e Líquido', 'Aromas Naturais', 'Base Cremosa para Licores', 'Concentrados para Bebidas']; %>
+    <% categorias.forEach((item) => { %>
+      <%- include('../categoria-item', {itemName: item}) %>
+    <% }); %>
+  </div>
+  <div class="row px-5 my-5">
+    <div class="col produto-view__segments">
+      <div class="row flex-nowrap align-items-center p-3">
+        <i class="fas fa-square"></i><span><b>Segmentos:</b> Alimentos bebidas, Suplementos, Fama, Oral care, nutricao, animal e pet food.</span>
+      </div>
+    </div>
+  </div>
+</div>
+<%- include('../footer') %>

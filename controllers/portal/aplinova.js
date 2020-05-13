@@ -3,17 +3,17 @@
  * Author: Findi
  */
 
+ const produtos = [
+     {title: 'Aromas', imageUrl: 'https://images.pexels.com/photos/134577/pexels-photo-134577.jpeg', href: 'aromas'},
+     {title: 'Corantes', imageUrl: 'https://images.pexels.com/photos/461428/pexels-photo-461428.jpeg', href: 'corantes'},
+     {title: 'Produtos Veganos e Orgânicos', imageUrl: 'https://images.pexels.com/photos/1640770/pexels-photo-1640770.jpeg', href: 'produtos-veganos'},
+     {title: 'Proteínas', imageUrl: 'https://images.pexels.com/photos/103566/pexels-photo-103566.jpeg', href: 'proteinas'},
+     {title: 'Substitutos de Açúcar e Fibras', imageUrl: 'https://images.pexels.com/photos/103566/pexels-photo-103566.jpeg', href: 'substitutos'},
+     {title: 'Produtos Naturais', imageUrl: 'https://images.pexels.com/photos/134577/pexels-photo-134577.jpeg', href: 'produtos-naturais'},
+ ]
+
 //Tela principal do portal
 exports.show = (req, res) => {
-    const produtos = [
-        {title: 'Aromas', imageUrl: 'https://images.pexels.com/photos/134577/pexels-photo-134577.jpeg', href: 'aromas'},
-        {title: 'Corantes', imageUrl: 'https://images.pexels.com/photos/461428/pexels-photo-461428.jpeg', href: 'corantes'},
-        {title: 'Produtos Veganos e Orgânicos', imageUrl: 'https://images.pexels.com/photos/1640770/pexels-photo-1640770.jpeg', href: 'produtos-veganos'},
-        {title: 'Proteínas', imageUrl: 'https://images.pexels.com/photos/103566/pexels-photo-103566.jpeg', href: 'proteinas'},
-        {title: 'Substitutos de Açúcar e Fibras', imageUrl: 'https://images.pexels.com/photos/103566/pexels-photo-103566.jpeg', href: 'substitutos'},
-        {title: 'Produtos Naturais', imageUrl: 'https://images.pexels.com/photos/134577/pexels-photo-134577.jpeg', href: 'produtos-naturais'},
-    ]
-
     res.render('./portal/index', {produtos});
 }
 
@@ -24,40 +24,40 @@ exports.contato = (req, res)=>{
 
 //Tela de aromas
 exports.aromas = (req, res)=>{
-  res.render('./portal/aromas');
+  res.render('./portal/produtos/aromas', {produtos});
 }
 
 //Tela de corantes
 exports.corantes = (req, res)=>{
-  res.send("Voce esta na tela de corantes");
+  res.render('./portal/produtos/corantes', {produtos});
 }
 
 exports.foodservice = (req, res)=>{
-  res.send("Voce esta na tela de food service");
+  res.render('./portal/produtos/foodservice', {produtos});
 }
 
 exports.ingredFuncionais = (req, res)=>{
-  res.send("Voce esta na tela de ingredientes funcionais");
+  res.render('./portal/produtos/ingredientesfuncionais', {produtos});
 }
 
 exports.prodNaturais = (req, res)=>{
-  res.send("Voce esta na tela de produtos naturais");
+  res.render('./portal/produtos/produtosnaturais', {produtos});
 }
 
 exports.prodVeganos = (req, res)=>{
-res.send("Voce esta na tela de produtos veganos");
+  res.render('./portal/produtos/produtosveganos', {produtos});
 }
 
 exports.proteinas = (req, res)=>{
-res.send("Voce esta na tela de proteinas");
+  res.render('./portal/produtos/proteinas', {produtos});
 }
 
 exports.revConfeitaria = (req, res)=>{
-  res.send("Voce esta na tela de confeitaria");
+  res.render('./portal/produtos/revconfeitaria', {produtos});
 }
 
 exports.subacucar= (req, res)=>{
-  res.send("Voce esta na tela de subistituto do acucar");
+  res.render('./portal/produtos/subacucarfibras', {produtos});
 }
 
 exports.nossaempresa = (req, res)=>{
