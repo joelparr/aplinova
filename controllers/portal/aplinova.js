@@ -33,19 +33,19 @@ exports.corantes = (req, res)=>{
 }
 
 exports.foodservice = (req, res)=>{
-  res.send("Voce esta na tela de food service");
+  res.render('./portal/produtos/foodservice', {produtos});
 }
 
 exports.ingredFuncionais = (req, res)=>{
-  res.send("Voce esta na tela de ingredientes funcionais");
+  res.render('./portal/produtos/ingredientesfuncionais', {produtos});
 }
 
 exports.prodNaturais = (req, res)=>{
-  res.send("Voce esta na tela de produtos naturais");
+  res.render('./portal/produtos/produtosnaturais', {produtos});
 }
 
 exports.prodVeganos = (req, res)=>{
-res.send("Voce esta na tela de produtos veganos");
+  res.render('./portal/produtos/produtosveganos', {produtos});
 }
 
 exports.proteinas = (req, res)=>{
@@ -53,7 +53,7 @@ exports.proteinas = (req, res)=>{
 }
 
 exports.revConfeitaria = (req, res)=>{
-  res.send("Voce esta na tela de confeitaria");
+  res.render('./portal/produtos/revconfeitaria', {produtos});
 }
 
 exports.subacucar= (req, res)=>{
