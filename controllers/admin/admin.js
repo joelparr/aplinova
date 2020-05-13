@@ -47,13 +47,6 @@ exports.index = (req, res)=>{
 //Funcao de criar uma nova categoria
 //Para criar uma nova categoira e necessario seguir os passos adiante
 exports.createCategoria = async (req, res)=>{
-  var header;
-  //1 -  criar o header e guardar seu ID
-  await Header.create({titulo: req.body.headerTitulo, descricao: req.body.headerDescricao, imagemUrl: req.body.headerImage})
-  .then(async function(newHeader){
-    header = await newHeader;
-  })
-
   var categoria = {};
   //2 - Verificar se e uma categoria ou subcategoria
   if(req.body.categoriaChecked !== 'on'){
@@ -75,31 +68,73 @@ exports.createCategoria = async (req, res)=>{
       categoria.idCategoriaPai = nextCategoria;
     })
   }
-  if(header){
-    //5 - Indexar o id do header na categoria
-    categoria.headerId = parseInt(header.id);
-    //6 - Criar categoria
-    await Categoria.create(categoria)
-    .then(function(newCategoria){
-      res.redirect('/admin')
-    })
-  }
+
+  createheader({titulo: req.body.headerTitulo, descricao: req.body.headerDescricao, imagemUrl: req.body.headerImage})
+  .then(function(newHeader){
+    categoria.headerId = parseInt(newHeader.id);
+    return createCategoriaHeader(categoria)
+  })
+  .then(function(newCategoria){
+    res.redirect('/admin');
+  })
+  .catch(function(error){
+    //criar um flash com o erro
+    res.redirect('/admin');
+  })
 }
+
+//Promisse para criar um header
+function createheader(header){
+  return new Promise((resolve, reject)=>{
+    Header.create(header)
+    .then(async function(newHeader){
+      if(newHeader){
+        resolve(newHeader);
+      }else{
+        reject("Nao criou o header");
+      }
+
+    })
+    .catch(function(error){
+      reject('Problemas em criar o header');
+    })
+  })
+}
+
+//Promisse para criar uma categoria com header
+function createCategoriaHeader(categoria){
+  return new Promise((resolve, reject)=>{
+    Categoria.create(categoria)
+    .then(function(newCategoria){
+      if(newCategoria){
+        resolve(newCategoria);
+      }else{
+        reject("Nao criou a categoria");
+      }
+    })
+    .catch(function(error){
+      reject("Problemas em criar a categoria");
+    })
+  })
+}
+
 
 //Funcao para capturar as categorias do banco
 //Categoria (idCategoria) === 0  -> subcategoria
 //Categoria === (?!==0) -> categoria principal (idCategoriaPai)
-exports.getCategorias = async (req, res)=>{
-  var categorias;
+exports.getCategorias = (req, res)=>{
   var errors;
-  await Categoria.findAll({where:{idCategoria: {[Op.ne]:0}}})
+  Categoria.findAll({where:{idCategoria: {[Op.ne]:0}}})
   .then(result=>{
-    categorias = result;
+    res.json({data: result, error:undefined});
   })
   .catch(error=>{
     errors = "Nao foi possivel recuperar as categorias"
+    res.json({data:undefined, error:error});
   });
+}
 
-  //console.log(categorias[0].dataValues);
-  res.json({data: categorias});
+exports.logout = (req, res)=>{
+  req.logout();
+  res.redirect('/login/show');
 }

@@ -10,7 +10,7 @@ const routes = express.Router();
 routes.get('/show', login);
 routes.post('/send', passport.authenticate('local-signin', {
     successRedirect: '/admin',
-    failureRedirect: '/login',
+    failureRedirect: '/login/show',
     failureFlash: true
 }))
 routes.get('/signin', newUser);
@@ -19,5 +19,4 @@ routes.post('/signup', passport.authenticate('local-signup', {
     failureRedirect: 'login/signin',
     failureFlash: true
 }));
-routes.get('/dashboard', dashboard);
 module.exports = routes;
