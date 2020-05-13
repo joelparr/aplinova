@@ -1,11 +1,11 @@
-<%- include('./header') %>
+<%- include('../header') %>
 <!--background-image:url('https://image.shutterstock.com/image-photo/blackboard-inscribed-scientific-formulas-calculations-600w-1065730331.jpg'); background-repeat: no-repeat; background-size:100%-->
 <div id="banner" class="container-fluid produto-view__banner" style="height:600px; background-color:rgba(219,234,213);opacity:1; filter:brightness(90%);">
   <div class="row justify-content-center h-100">
     <div class="col-md-8 col-lg-6">
       <div class="row align-items-end" style="height:100%;">
         <div class="col d-flex justify-content-center align-items-center produto-view__title">
-          <span>Aromas</span>
+          <span>Proteinas</span>
         </div>
       </div>
     </div>
@@ -33,7 +33,7 @@
   <div class="d-flex flex-wrap mt-5 produto-view__categories">
     <% const categorias = ['Aromas Doces e Salgados', 'Aromas Idênticos ao Natural', 'Base Turvadora Pó e Líquido', 'Aromas Naturais', 'Base Cremosa para Licores', 'Concentrados para Bebidas']; %>
     <% categorias.forEach((item) => { %>
-      <%- include('./categoria-item', {itemName: item}) %>
+      <%- include('../categoria-item', {itemName: item}) %>
     <% }); %>
   </div>
   <div class="row px-5 my-5">
@@ -44,4 +44,4 @@
     </div>
   </div>
 </div>
-<%- include('./footer') %>
+<%- include('../footer') %>
