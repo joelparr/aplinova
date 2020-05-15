@@ -8,7 +8,17 @@ require('dotenv').config();
 const configDb = require('../config/config.json');
 var dbConnection = '';
 const Sequelize = require('sequelize');
-process.env.ENVIROMENT==='DEV' ? dbConnection = configDb.development : dbConnection = configDb.production
+
+switch(process.env.NODE_ENV){
+    case 'development':
+        dbConnection = configDb.development;
+        break;
+    case 'production':
+        dbConnection = configDb.production;
+        break;
+    default:
+        dbConnection = configDb.production;
+}
 
 exports.bdConnection=(req, res, next)=>{
     const sequelize = new Sequelize(dbConnection.database, dbConnection.username, dbConnection.password, {
