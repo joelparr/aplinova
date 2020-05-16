@@ -1,3 +1,9 @@
+/**
+ * Javascript que trata os dados de insercao de subcategorias e produtos
+ * Author: Daniel
+ */
+
+ //Declaracao de variaveis
 const categoriaPai = document.getElementById("categoriaPai");
 const divSubCategoria = document.getElementById("divSubCategoria");
 const subCategoria = document.getElementById("subCategoria");
@@ -16,7 +22,7 @@ const categoriaChecked = document.getElementById('categoriaChecked');
 const modalCategoria = document.getElementById('exampleModalCenter');
 
 
-
+//Variacao do nao ser uma subcategoria
 naoSou.addEventListener('change', function(event){
     console.log(event.srcElement.checked);
     if(event.srcElement.checked){
@@ -26,12 +32,13 @@ naoSou.addEventListener('change', function(event){
     }
   });
 
+
 categoriaPai.addEventListener('change', function(event){
     getSubCategoria(categoriaPai.options[categoriaPai.selectedIndex].value)
     .then(function(sub){
         if(sub !== 0){
             sub.data.forEach((element, index, array)=>{
-                subCategoria[index] = new Option(element.titulo, element.idCategoriaPai, false, false);
+                subCategoria[index] = new Option(element.titulo, element.id, false, false);
             });
             divSubCategoria.style.display = 'block';
         }
@@ -42,14 +49,14 @@ categoriaPai.addEventListener('change', function(event){
     })
 })
 
-
+//Carregamento da pagina
 window.onload = event=>{
     if(categoriaPai.options.length === 0){
         getCategorias()
         .then(function(data){
             if(data !== 0){
                 data.data.forEach((element, index, array)=>{
-                    categoriaPai[index] = new Option(element.titulo, element.idCategoria, false, false);
+                    categoriaPai[index] = new Option(element.titulo, element.id, false, false);
                 });
                 return getSubCategoria(categoriaPai.options[categoriaPai.selectedIndex].value);
             } 
@@ -59,7 +66,7 @@ window.onload = event=>{
             console.log(sub);
             if(sub !== 0){
                 sub.data.forEach((element, index, array)=>{
-                    subCategoria[index] = new Option(element.titulo, element.idCategoriaPai, false, false);
+                    subCategoria[index] = new Option(element.titulo, element.id, false, false);
                 })
             }
             
@@ -98,17 +105,17 @@ function getSubCategoria(categoriaPaiId){
 newSubcategoria.addEventListener('click', function(event){
     event.preventDefault();
 
-    postAdminCategoria(body)
+    postAdminCategoria()
     .then(function(newSubCategoria){
         return getSubCategoria(newSubCategoria.idCategoriaPai);
     })
     .then(function(sub){
         if(sub !== 0){
             sub.data.forEach((element, index, array)=>{
-                subCategoria[index] = new Option(element.titulo, element.idCategoriaPai, false, false);
+                subCategoria[index] = new Option(element.titulo, element.id, false, false);
             });
             divSubCategoria.style.display = 'block';
-            modalCategoria.style.display = "none";
+            modalCategoria.modal('hide');
         }
     })
     .catch(function(error){
@@ -117,6 +124,7 @@ newSubcategoria.addEventListener('click', function(event){
 
 });
 
+//Funcao que realiza o AJAX para criacao de uma subcategoria
 function postAdminCategoria(){
      //Ler do formulario os dados
     const body = {

@@ -7,6 +7,8 @@ const models = require('../../models');
 const Categoria = models.Categoria;
 const Header = models.Header;
 const User = models.User;
+const Produto = models.Produto;
+const ProdutoCategoria = models.ProdutoCategoria;
 const {Op} = require('sequelize');
 
 //Funcao de envio de mensagens e status para todas as telas
@@ -47,7 +49,7 @@ exports.index = (req, res)=>{
 //Funcao de criar uma nova categoria
 //Para criar uma nova categoira e necessario seguir os passos adiante
 exports.createCategoria = async (req, res)=>{
-  throw new Error(req);
+  console.log(req);
   var categoria = {};
   //2 - Verificar se e uma categoria ou subcategoria
   if(req.body.categoriaChecked !== 'on'){
@@ -127,7 +129,65 @@ function createCategoriaHeader(categoria){
 }
 
 exports.newProduto = (req, res)=>{
-  res.render('./admin/newProduto.ejs')
+  res.render('./admin/newProduto.ejs');d
+}
+
+//Criacao de um novo produto
+exports.createProduto = (req, res)=>{
+  //1 - criar o produto com titulo e descricao
+  const dataBody = {
+    titulo: req.body.prodTitulo,
+    descricao: req.body.prodDescricao
+  }
+  produtoNovo(dataBody)
+  .then(function(novoProd){
+    if(novoProd !== 0){
+      let idCat;
+      if(subCategoriaChecked = 'on'){
+        //2 - criar o vinculo entre o produto e a categoria / subcategoria
+        idCat = req.body.categoriaPai;
+      }else{
+        idCat = req.body.subCategoria;
+      }
+      return produtocategoria(novoProd.id, idCat);      
+    }else{
+      //dar uma resposta a tela
+    }
+  })
+  .then(function(data){
+    //dar uma resposta a tela com o resultado
+  })
+  .catch(function(error){
+    //dar uma respota a tela
+  })
+
+  
+}
+
+//Promise que cria um novo produto
+function produtoNovo(data){
+  return new Promise((resolve, reject)=>{
+    Produto.create(data)
+    .then(function(novoProduto){
+      novoProduto ? resolve(novoProduto) : reject(0);
+    })
+    .catch(function(error){
+      reject(0);
+    })
+  })
+}
+
+//Promise que cria um vinculo entre o produto e a categoria
+function produtocategoria(data){
+  return new Promise((resolve, reject)=>{
+    ProdutoCategoria.create(data)
+    .then(function(produtoCat){
+      produtoCat ? resolve(produtoCat) : reject(0);
+    })
+    .catch(function(error){
+      reject(0);
+    })
+  })
 }
 
 
