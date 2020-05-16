@@ -22,11 +22,12 @@ window.onload = (event)=>{
   if(categoriaPai.options.length === 0){
     $.get('/admin/categorias', function(data){
       console.log(data);
-      if(data){
+      if(data.data.length){
         data.data.forEach((element, index, array)=>{
           categoriaPai[index] = new Option(element.titulo, element.idCategoria, false, false);
         })
       }else{
+        categoriaPai.style.display = 'none'
         console.log(data.error);
       }
     });

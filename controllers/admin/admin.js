@@ -47,6 +47,7 @@ exports.index = (req, res)=>{
 //Funcao de criar uma nova categoria
 //Para criar uma nova categoira e necessario seguir os passos adiante
 exports.createCategoria = async (req, res)=>{
+  throw new Error(req);
   var categoria = {};
   //2 - Verificar se e uma categoria ou subcategoria
   if(req.body.categoriaChecked !== 'on'){
@@ -62,24 +63,31 @@ exports.createCategoria = async (req, res)=>{
     //3 - Caso seja categoria: Verificar qual o ultimo registro da categoria e recuperar o idCategoria e somar + 1
     await Categoria.max('idCategoria')
     .then(async function(categoriaIdMax){
-      console.log(categoriaIdMax);
-      let nextCategoria = await parseInt(categoriaIdMax) + 1
+      let nextCategoria;
+      if(!categoriaIdMax){
+        nextCategoria = 1;
+      }else{
+        nextCategoria = await parseInt(categoriaIdMax) + 1;
+      }
       categoria.idCategoria = nextCategoria;
       categoria.idCategoriaPai = nextCategoria;
     })
+    .catch(function(error){
+      console.log(error);
+    })
   }
 
-  createheader({titulo: req.body.headerTitulo, descricao: req.body.headerDescricao, imagemUrl: req.body.headerImage})
+  createheader({titulo: req.body.headerTitulo, descricao: req.body.headerDescricao})
   .then(function(newHeader){
     categoria.headerId = parseInt(newHeader.id);
     return createCategoriaHeader(categoria)
   })
   .then(function(newCategoria){
-    res.redirect('/admin');
+    res.json(newCategoria);
   })
   .catch(function(error){
     //criar um flash com o erro
-    res.redirect('/admin');
+    res.json(error);
   })
 }
 
@@ -118,6 +126,10 @@ function createCategoriaHeader(categoria){
   })
 }
 
+exports.newProduto = (req, res)=>{
+  res.render('./admin/newProduto.ejs')
+}
+
 
 //Funcao para capturar as categorias do banco
 //Categoria (idCategoria) === 0  -> subcategoria
@@ -133,6 +145,18 @@ exports.getCategorias = (req, res)=>{
     res.json({data:undefined, error:error});
   });
 }
+
+exports.getSubCategoria = (req, res)=>{
+  Categoria.findAll({where:{[Op.and]:[{idCategoriaPai: req.params.id},{idCategoria:0}]}})
+  .then(function(subCategoria){
+    res.json({data: subCategoria, error:undefined});
+  })
+  .catch(function(error){
+    errors = "Nao foi possivel recuperar as subcategorias"
+    res.json({data:undefined, error:error});
+  })
+}
+
 
 exports.logout = (req, res)=>{
   req.logout();
