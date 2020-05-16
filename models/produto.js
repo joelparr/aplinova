@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
     imagemUrl: DataTypes.STRING
   }, {});
   Produto.associate = function(models) {
-    Produto.belongsToMany(models.Categoria, {through: 'ProdutoCategoria', foreingKey: 'produtoId', as: 'produto'})
+    Produto.belongsToMany(models.Categoria, {through: 'ProdutoCategorias', foreingKey: 'produtoId', as: 'produto'})
   };
   return Produto;
 };

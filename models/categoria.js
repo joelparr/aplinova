@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Categoria.associate = function(models) {
     Categoria.belongsTo(models.Header, {foreignKey: 'headerId', as:'header'})
-    Categoria.belongsToMany(models.Produto, {through: 'ProdutoCategoria', foreignKey: 'categoriaId', as: 'categoria'})
+    Categoria.belongsToMany(models.Produto, {through: 'ProdutoCategorias', foreignKey: 'categoriaId', as: 'categoria'})
   };
   return Categoria;
 };

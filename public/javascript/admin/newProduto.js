@@ -10,21 +10,40 @@ const subCategoria = document.getElementById("subCategoria");
 const naoSou = document.getElementById('subCategoriaChecked');
 const newSubcategoria = document.getElementById('newSubcategoria');
 
-//Elementos para o form
+//Elementos para o form dentro da modal
 const headerTitulo = document.getElementById('headerTitulo');
 const headerDescricao = document.getElementById('headerDescricao');
 const categoriaTitulo = document.getElementById('categoriaTitulo');
 const categoriaDescricao = document.getElementById('categoriaDescricao');
-const categoriaChecked = document.getElementById('categoriaChecked');
+const testeFechar = document.getElementById('testeFechar');
 
-
-//Modal
-const modalCategoria = document.getElementById('exampleModalCenter');
-
+//Carregamento da pagina
+window.onload = event=>{
+    if(categoriaPai.options.length === 0){
+        getCategorias()
+        .then(function(data){
+            if(data !== 0){
+                data.data.forEach((element, index, array)=>{
+                    categoriaPai[index] = new Option(element.titulo, element.idCategoria, false, false);
+                });
+                return getSubCategoria(categoriaPai.options[categoriaPai.selectedIndex].value);
+            }
+        })
+        .then(function(sub){
+            if(sub !== 0){
+                sub.data.forEach((element, index, array)=>{
+                    subCategoria[index] = new Option(element.titulo, element.id, false, false);
+                })
+            }
+        })
+        .catch(function(error){
+            alert("Nao ha subcategorias");
+        });
+    }
+}
 
 //Variacao do nao ser uma subcategoria
 naoSou.addEventListener('change', function(event){
-    console.log(event.srcElement.checked);
     if(event.srcElement.checked){
         divSubCategoria.style.display = 'none';
     }else{
@@ -44,39 +63,9 @@ categoriaPai.addEventListener('change', function(event){
         }
     })
     .catch(function(erro){
-        divSubCategoria.style.display = 'none';
         alert("Esta categoria nao possui subcategoria");
     })
 })
-
-//Carregamento da pagina
-window.onload = event=>{
-    if(categoriaPai.options.length === 0){
-        getCategorias()
-        .then(function(data){
-            if(data !== 0){
-                data.data.forEach((element, index, array)=>{
-                    categoriaPai[index] = new Option(element.titulo, element.id, false, false);
-                });
-                return getSubCategoria(categoriaPai.options[categoriaPai.selectedIndex].value);
-            } 
-        })
-        .then(function(sub){
-            console.log("achou a sub");
-            console.log(sub);
-            if(sub !== 0){
-                sub.data.forEach((element, index, array)=>{
-                    subCategoria[index] = new Option(element.titulo, element.id, false, false);
-                })
-            }
-            
-        })
-        .catch(function(error){
-            divSubCategoria.style.display = 'none';
-            alert("Erro ao carregar os dados");
-        });
-    }
-}
 
 function getCategorias(){
     return new Promise((resolve, reject)=>{
@@ -102,20 +91,21 @@ function getSubCategoria(categoriaPaiId){
     })
 }
 
+//Ajax da nova subCategoria
 newSubcategoria.addEventListener('click', function(event){
     event.preventDefault();
 
-    postAdminCategoria()
+    postAdminSubCategoria()
     .then(function(newSubCategoria){
         return getSubCategoria(newSubCategoria.idCategoriaPai);
     })
     .then(function(sub){
+        console.log(sub);
         if(sub !== 0){
             sub.data.forEach((element, index, array)=>{
                 subCategoria[index] = new Option(element.titulo, element.id, false, false);
             });
-            divSubCategoria.style.display = 'block';
-            modalCategoria.modal('hide');
+            $('#exampleModalCenter').modal('hide');
         }
     })
     .catch(function(error){
@@ -125,12 +115,12 @@ newSubcategoria.addEventListener('click', function(event){
 });
 
 //Funcao que realiza o AJAX para criacao de uma subcategoria
-function postAdminCategoria(){
+function postAdminSubCategoria(){
      //Ler do formulario os dados
     const body = {
         headerTitulo: headerTitulo.value,
         headerDescricao: headerDescricao.value,
-        categoriaChecked: categoriaChecked.checked, //on
+        categoriaChecked: '0', //Not on para ser sub
         categoriaTitulo: categoriaTitulo.value,
         categoriaDescricao: categoriaDescricao.value,
         categoriaPai: categoriaPai.options[categoriaPai.selectedIndex].value //numero

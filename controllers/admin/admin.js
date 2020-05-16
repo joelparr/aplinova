@@ -48,8 +48,8 @@ exports.index = (req, res)=>{
 
 //Funcao de criar uma nova categoria
 //Para criar uma nova categoira e necessario seguir os passos adiante
+//Todas as funcoes referentes "createCategoria" se inciam com "cc"
 exports.createCategoria = async (req, res)=>{
-  console.log(req);
   var categoria = {};
   //2 - Verificar se e uma categoria ou subcategoria
   if(req.body.categoriaChecked !== 'on'){
@@ -79,22 +79,24 @@ exports.createCategoria = async (req, res)=>{
     })
   }
 
-  createheader({titulo: req.body.headerTitulo, descricao: req.body.headerDescricao})
+  ccCreateheader({titulo: req.body.headerTitulo, descricao: req.body.headerDescricao})
   .then(function(newHeader){
     categoria.headerId = parseInt(newHeader.id);
-    return createCategoriaHeader(categoria)
+    return ccCreateCategoriaHeader(categoria)
   })
   .then(function(newCategoria){
-    res.json(newCategoria);
+    //Criar um connect flash
+    req.body.categoriaChecked === "on" ? res.redirect('./admin') : res.json(newCategoria);
   })
   .catch(function(error){
     //criar um flash com o erro
-    res.json(error);
+    req.body.categoriaChecked === "on" ? res.redirect('./admin') : res.json(error);
+    
   })
 }
 
 //Promisse para criar um header
-function createheader(header){
+function ccCreateheader(header){
   return new Promise((resolve, reject)=>{
     Header.create(header)
     .then(async function(newHeader){
@@ -112,7 +114,7 @@ function createheader(header){
 }
 
 //Promisse para criar uma categoria com header
-function createCategoriaHeader(categoria){
+function ccCreateCategoriaHeader(categoria){
   return new Promise((resolve, reject)=>{
     Categoria.create(categoria)
     .then(function(newCategoria){
@@ -129,63 +131,84 @@ function createCategoriaHeader(categoria){
 }
 
 exports.newProduto = (req, res)=>{
-  res.render('./admin/newProduto.ejs');d
+  res.render('./admin/newProduto.ejs');
 }
 
-//Criacao de um novo produto
+//Criacao de um novo produto - Todas as funcoes referente a criacao de produto possuem "cp" como
+//primeiro caracter
 exports.createProduto = (req, res)=>{
   //1 - criar o produto com titulo e descricao
   const dataBody = {
     titulo: req.body.prodTitulo,
     descricao: req.body.prodDescricao
   }
-  produtoNovo(dataBody)
+
+  var novoProduto;
+
+  cpProdutoNovo(dataBody)
   .then(function(novoProd){
-    if(novoProd !== 0){
-      let idCat;
-      if(subCategoriaChecked = 'on'){
-        //2 - criar o vinculo entre o produto e a categoria / subcategoria
-        idCat = req.body.categoriaPai;
-      }else{
-        idCat = req.body.subCategoria;
-      }
-      return produtocategoria(novoProd.id, idCat);      
+    if(novoProd !== 0){ 
+      novoProduto = novoProd;
+      return cpRecuperarCategoria(parseInt(req.body.categoriaPai));
     }else{
-      //dar uma resposta a tela
+      res.redirect('/admin');
     }
   })
-  .then(function(data){
-    //dar uma resposta a tela com o resultado
+  .then(function(categoria){
+    let idCat;
+    if(req.body.subCategoriaChecked === 'on'){
+      //2 - criar o vinculo entre o produto e a categoria / subcategoria
+      idCat = categoria.dataValues.id;
+    }else{
+      idCat = req.body.subCategoria;
+    }
+    return cpVinculoProdCat({produtoId: parseInt(novoProduto.id), categoriaId: parseInt(idCat)});  
+  })
+  .then(function(vinculoCatProd){
+    // TODO: adicionar um connect flash
+    res.redirect('/admin');
   })
   .catch(function(error){
-    //dar uma respota a tela
+    // TODO:  Verificar a necessidade de enviar um connect flash
+    console.log(error);
   })
-
-  
 }
 
 //Promise que cria um novo produto
-function produtoNovo(data){
+function cpProdutoNovo(data){
   return new Promise((resolve, reject)=>{
     Produto.create(data)
     .then(function(novoProduto){
       novoProduto ? resolve(novoProduto) : reject(0);
     })
     .catch(function(error){
-      reject(0);
+      reject(error);
+    })
+  })
+}
+
+//Promise que recupera o id da categoria pai
+function cpRecuperarCategoria(catPai){
+  return new Promise((resolve, reject)=>{
+    Categoria.findOne({where:{idCategoria: catPai}})
+    .then(function(categoria){
+      categoria ? resolve(categoria) : reject(0);
+    })
+    .catch(function(error){
+      reject(error);
     })
   })
 }
 
 //Promise que cria um vinculo entre o produto e a categoria
-function produtocategoria(data){
+function cpVinculoProdCat(data){
   return new Promise((resolve, reject)=>{
     ProdutoCategoria.create(data)
     .then(function(produtoCat){
       produtoCat ? resolve(produtoCat) : reject(0);
     })
     .catch(function(error){
-      reject(0);
+      reject(error);
     })
   })
 }
