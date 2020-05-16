@@ -27,7 +27,7 @@ body, html {
     width: 350px;
     margin-top: auto;
     margin-bottom: auto;
-    background: lightslategrey;
+    background: #292828;
     position: relative;
     display: flex;
     justify-content: center;
@@ -61,12 +61,12 @@ i{
 
 .login_btn {
     width: 100%;
-    background: #102C58 !important;
+    background: black !important;
     color: white !important;
 }
 
 .login_btn:hover {
-    background: #102C58 !important;
+    background: #88B73A !important;
     color: white !important;
     box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     -webkit-box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -86,7 +86,7 @@ i{
 }
 
 .input-group-text {
-    background: #102C58 !important;
+    background:black !important;
     color: white !important;
     border: 0 !important;
     border-radius: 0.25rem 0 0 0.25rem !important;
@@ -99,7 +99,7 @@ i{
 
 
 .custom-checkbox .custom-control-input:checked~.custom-control-label::before {
-    background-color: #2b71c0 !important;
+    background-color: #88B73A !important;
 }
 
 .groupe-liens {
@@ -107,9 +107,9 @@ i{
 }
 
 .liens {
-    color: #2865aa;
+    color: #88B73A;
 }
 
 .liens:hover {
-    color: #353535;
+    color:white;
 }
