@@ -8,7 +8,6 @@ const Categoria = models.Categoria;
 const Header = models.Header;
 const User = models.User;
 const Produto = models.Produto;
-const ProdutoCategoria = models.ProdutoCategoria;
 const {Op} = require('sequelize');
 
 //Funcao de envio de mensagens e status para todas as telas
@@ -42,8 +41,21 @@ exports.newCategoria = (req, res)=>{
 
 //Funcao de mostrar tela principal do admin
 exports.index = (req, res)=>{
-  //Lista de categorias, headers e produtos
-  sendingData(req, res, './admin/index');
+  //Lista de categorias, subcategorias e produtos
+  //Post.find({ where: { ...}, include: [User]})
+  Categoria.findAll({include:{model:Produto, as: 'produtos'}})
+  .then(function(categorias){
+    console.log(categorias);
+    if(categorias){
+      sendingData(req, res, './admin/index', {categorias: categorias});
+    }else{
+      sendingData(req, res, './admin/index', {message: "Nao foram encontradas nenhuma categoria"});
+    }
+  })
+  .catch(function(error){
+    console.log(error);
+    sendingData(req, res, './admin/index', {error});
+  })
 }
 
 //Funcao de criar uma nova categoria
@@ -79,53 +91,34 @@ exports.createCategoria = async (req, res)=>{
     })
   }
 
-  ccCreateheader({titulo: req.body.headerTitulo, descricao: req.body.headerDescricao})
-  .then(function(newHeader){
-    categoria.headerId = parseInt(newHeader.id);
-    return ccCreateCategoriaHeader(categoria)
-  })
+  ccCreateCategoria(categoria)
   .then(function(newCategoria){
-    //Criar um connect flash
-    req.body.categoriaChecked === "on" ? res.redirect('./admin') : res.json(newCategoria);
+    newCategoria.createHeader({titulo: req.body.headerTitulo, descricao: req.body.headerDescricao})
+    return newCategoria;
+  })
+  .then(function(done){
+    //Connect flash done
+    req.body.categoriaChecked === "on" ? res.redirect('/admin') : res.json(done);
   })
   .catch(function(error){
-    //criar um flash com o erro
-    req.body.categoriaChecked === "on" ? res.redirect('./admin') : res.json(error);
-    
+    //Connect flash error
+    req.body.categoriaChecked === "on" ? res.redirect('/admin') : res.json(error);
   })
 }
 
-//Promisse para criar um header
-function ccCreateheader(header){
-  return new Promise((resolve, reject)=>{
-    Header.create(header)
-    .then(async function(newHeader){
-      if(newHeader){
-        resolve(newHeader);
-      }else{
-        reject("Nao criou o header");
-      }
-
-    })
-    .catch(function(error){
-      reject('Problemas em criar o header');
-    })
-  })
-}
-
-//Promisse para criar uma categoria com header
-function ccCreateCategoriaHeader(categoria){
+// Promise criada para criar uma categoria
+function ccCreateCategoria(categoria){
   return new Promise((resolve, reject)=>{
     Categoria.create(categoria)
     .then(function(newCategoria){
       if(newCategoria){
         resolve(newCategoria);
       }else{
-        reject("Nao criou a categoria");
+        reject(0);
       }
     })
     .catch(function(error){
-      reject("Problemas em criar a categoria");
+      reject(0);
     })
   })
 }
@@ -142,6 +135,8 @@ exports.createProduto = (req, res)=>{
     titulo: req.body.prodTitulo,
     descricao: req.body.prodDescricao
   }
+  console.log(req.body.subCategoriaChecked);
+  console.log(req.body.subCategoria);
 
   var novoProduto;
 
@@ -155,14 +150,14 @@ exports.createProduto = (req, res)=>{
     }
   })
   .then(function(categoria){
-    let idCat;
     if(req.body.subCategoriaChecked === 'on'){
       //2 - criar o vinculo entre o produto e a categoria / subcategoria
-      idCat = categoria.dataValues.id;
+      return novoProduto.setCategorias(categoria);
     }else{
-      idCat = req.body.subCategoria;
+      return novoProduto.setCategorias([req.body.subCategoria]);
     }
-    return cpVinculoProdCat({produtoId: parseInt(novoProduto.id), categoriaId: parseInt(idCat)});  
+    
+    //return cpVinculoProdCat({produtoId: parseInt(novoProduto.id), categoriaId: parseInt(idCat)});  
   })
   .then(function(vinculoCatProd){
     // TODO: adicionar um connect flash
@@ -200,20 +195,6 @@ function cpRecuperarCategoria(catPai){
   })
 }
 
-//Promise que cria um vinculo entre o produto e a categoria
-function cpVinculoProdCat(data){
-  return new Promise((resolve, reject)=>{
-    ProdutoCategoria.create(data)
-    .then(function(produtoCat){
-      produtoCat ? resolve(produtoCat) : reject(0);
-    })
-    .catch(function(error){
-      reject(error);
-    })
-  })
-}
-
-
 //Funcao para capturar as categorias do banco
 //Categoria (idCategoria) === 0  -> subcategoria
 //Categoria === (?!==0) -> categoria principal (idCategoriaPai)
@@ -230,8 +211,10 @@ exports.getCategorias = (req, res)=>{
 }
 
 exports.getSubCategoria = (req, res)=>{
+  console.log(req.params.id);
   Categoria.findAll({where:{[Op.and]:[{idCategoriaPai: req.params.id},{idCategoria:0}]}})
   .then(function(subCategoria){
+    console.log(subCategoria);
     res.json({data: subCategoria, error:undefined});
   })
   .catch(function(error){

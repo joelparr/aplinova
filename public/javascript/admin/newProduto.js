@@ -53,6 +53,7 @@ naoSou.addEventListener('change', function(event){
 
 
 categoriaPai.addEventListener('change', function(event){
+    subCategoria.options.length = 0;
     getSubCategoria(categoriaPai.options[categoriaPai.selectedIndex].value)
     .then(function(sub){
         if(sub !== 0){
@@ -63,6 +64,7 @@ categoriaPai.addEventListener('change', function(event){
         }
     })
     .catch(function(erro){
+        subCategoria.options.length = 0;
         alert("Esta categoria nao possui subcategoria");
     })
 })
@@ -97,6 +99,8 @@ newSubcategoria.addEventListener('click', function(event){
 
     postAdminSubCategoria()
     .then(function(newSubCategoria){
+        console.log(newSubCategoria);
+        console.log(newSubCategoria.idCategoriaPai);
         return getSubCategoria(newSubCategoria.idCategoriaPai);
     })
     .then(function(sub){
@@ -105,10 +109,11 @@ newSubcategoria.addEventListener('click', function(event){
             sub.data.forEach((element, index, array)=>{
                 subCategoria[index] = new Option(element.titulo, element.id, false, false);
             });
-            $('#exampleModalCenter').modal('hide');
+            //$('#exampleModalCenter').modal('toggle');
         }
     })
     .catch(function(error){
+        console.log(error);
         alert("Nao foi possivel inserir a nova subcategoria");
     });    
 
