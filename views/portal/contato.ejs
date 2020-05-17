@@ -1,21 +1,24 @@
 <%- include('./header') %>
 <!--background-image:url('https://image.shutterstock.com/image-photo/blackboard-inscribed-scientific-formulas-calculations-600w-1065730331.jpg'); background-repeat: no-repeat; background-size:100%"-->
-<%- include('./banner', {title:'<p>Um bom</p> <p>atendimento</p> <p>faz toda a</p> <p><strong>diferenca<strong></p>'})%>
+<%- include('./banner', {title:'Um bom <br>atendimento <br>faz toda a <br><b>diferença</b>', imageUrl: 'https://images.pexels.com/photos/1229861/pexels-photo-1229861.jpeg'})%>
 
 <div class="container-fluid pl-5 pr-5 mt-5">
   <div class="row">
     <div class="col-md-6">
-      <div class="row mb-3 align-items-center">
-        <i class="fas fa-square fa-sm" style="color:red;"></i><span class="ml-2" style="color:black; font-size:30px;">Fale <strong>conosco</strong></span>
-      </div>
-      <div class="row">
-        <article class="">
-          <p>Preencha o formulario que nossa</p>
-          <p>equipe tecnica entrara em contato</p>
-          <p>o mais breve possivel</p>
-          <p>Ou se preferir, envie sua solicitacao</p>
-          <p><strong>contato@aplinova.com.br</strong></p>
-        </article>
+      <div class="contato__container">
+        <div class="contato__header pt-3">
+          <i class="fas fa-square fas-sm mr-3"></i>
+          Fale <b class="ml-2">conosco</b>
+        </div>
+        <div class="contato__content">
+          <div class="contato__main-text pt-3">
+            Preencha o formulário e nossa equipe técnica entrará em contato o mais breve possível.
+            <br><br>
+            Ou se preferir, envie sua solicitação para
+            <a href="mailto:contato@aplinova.com"><b>contato@aplinova.com</b></a>
+          </div>
+        </div>
+
       </div>
     </div>
     <div class="col-md-6">

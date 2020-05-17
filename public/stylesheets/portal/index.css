@@ -5,6 +5,8 @@
 @import '../components/home-introduction.css';
 @import '../components/home-company.css';
 @import '../components/produto-card.css';
+@import '../components/carrousel.css';
+@import '../components/banner.css';
 @import './contato.css';
 
 html, body{
@@ -13,7 +15,9 @@ html, body{
     width: 100vw;
     background-color: #FFF;
     font-family: 'Montserrat', sans-serif;
-  }
+    max-width: 100vw;
+    overflow-x: hidden;
+}
 
 ul li{
     display:inline;
