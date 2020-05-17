@@ -195,6 +195,11 @@ function cpRecuperarCategoria(catPai){
   })
 }
 
+//Funcao que realiza o destroy do produto
+exports.destroyProduto = (req, res)=>{
+  res.send('Seu item foi deletado');
+}
+
 //Funcao para capturar as categorias do banco
 //Categoria (idCategoria) === 0  -> subcategoria
 //Categoria === (?!==0) -> categoria principal (idCategoriaPai)

@@ -14,6 +14,7 @@ const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
 const session = require('express-session');
 const flash = require('connect-flash');
+const {verbTreat} = require('./middlewares/httpverb')
 
 global.sequelize = bdConnection();
 
@@ -38,6 +39,6 @@ app.use(passport.session());
 
 app.use('/login', usuario);
 app.use('/', aplinova);
-app.use('/admin', admin);
+app.use('/admin', verbTreat, admin);
 
 app.listen(process.env.PORT || 3000);

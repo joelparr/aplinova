@@ -14,7 +14,15 @@
                         <%if(element.produtos.length){%>
                             <%element.produtos.forEach(prod=>{%>
                                 <ul class="notativo">
-                                    <li class="subcat"><a href="#"><%=prod.titulo%></a></li>
+                                    <li class="subcat">
+                                        <a href="#">
+                                            <i class="fas fa-asterisk" style="color: orange;"></i>
+                                            <%=prod.titulo%>
+                                        </a>
+                                        <a href="/admin/produto/<%=prod.id%>?method=delete" data-method="delete">
+                                            <i class="fas fa-trash-alt" style="color: red;"></i>
+                                        </a>
+                                    </li>
                             <%})%>
                         <%}%>
                                 </ul>
@@ -22,11 +30,21 @@
                 <%categorias.forEach(hit=>{%> 
                     <%if(hit.idCategoria === 0 && hit.idCategoriaPai === element.idCategoria){%>
                         <ul class="notativo">
-                            <li class="subcat"><a href="#"><%=hit.titulo%></a></li>
+                            <li class="subcat">
+                                <a href="#"><%=hit.titulo%></a>
+                                <a href="/admin/produto/<%=hit.id%>?method=delete">
+                                    <i class="fas fa-trash-alt" style="color: red;"></i>
+                                </a>
+                            </li>
                             <%if(hit.produtos.length){%>
                                 <%hit.produtos.forEach(prod=>{%>
                                 <ul class="notativo">
-                                    <li id="prod"><a href="#"><%=prod.titulo%></a></li>
+                                    <li id="prod">
+                                        <a href="#"><%=prod.titulo%></a>
+                                        <a href="/admin/produto/<%=prod.id%>?method=delete" data-method="delete">
+                                            <i class="fas fa-trash-alt" style="color: red;"></i>
+                                        </a>
+                                    </li>
                                 <%})%>
                                 </ul>
                             <%}%>
@@ -36,6 +54,9 @@
                     </ul>
                 </ul>
             <%})%>
+        </div>
+        <div class="col-md-6">
+            <h4>Detalhes dos itens selecionados</h4>
         </div>
     </div>
 </div>
