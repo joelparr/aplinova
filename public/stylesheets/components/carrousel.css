@@ -1,0 +1,50 @@
+#carouselBanner .carousel, #carouselBanner .carousel-inner {
+    height: 200px;
+}
+
+@media (min-width: 640px) {
+    #carouselBanner .carousel, #carouselBanner .carousel-inner {
+        height: 600px;
+    }
+
+    #carouselBanner .carousel-control-prev {
+        width: 5%;
+    }
+
+    #carouselBanner .carousel-control-next {
+        width: 7.5%;
+    }
+
+    #carouselBanner .carousel-caption {
+        width: 350px;
+        position: absolute;
+        left:100px;
+        top:200px;
+        text-align: left;
+    }
+
+    #carouselBanner .carousel-caption .carousel-caption__text {
+        font-size: 2.125rem;
+        font-weight: 400;
+        line-height: 1.375;
+    }
+
+    #carouselBanner .carousel-indicators li {
+        height: 10px;
+        width: 10px;
+        background-color: #fff;
+        opacity: 50%;
+        border-radius: 100%;
+        margin: 0 0.375rem;
+    }
+
+    #carouselBanner .carousel-indicators li.active {
+        background-color: #fff;
+        opacity: 100%;
+    }
+}
+
+#carouselBanner .carousel-item img {
+    width: 100%;
+    height: 100%;
+}

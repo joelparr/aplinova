@@ -32,7 +32,7 @@
     transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
     left: 0.625rem;
     width: 1.125rem;
-    height: 0.125rem;
+    height: 0;
     background: none;
 }
 .btn--expand .btn--expand__circle .icon.arrow::before {
@@ -52,7 +52,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    padding: 0.4rem 0;
+    padding: 0.5rem 0;
     margin: 0 0 0 1.85rem;
     color: transparent;
     font-size: 1.25rem;
@@ -70,5 +70,24 @@
 }
 .btn--expand:hover .btn--expand__text {
     color: #fff;
+}
+
+.btn--contrast {
+    border: 2px solid #7B9C48;
+    border-radius: 1.625rem;
+    width: 8rem;
+    height: 3rem;
+    color: #88B73A;
+    text-transform: uppercase;
+    background-color: transparent;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.btn--contrast:hover {
+    transition-duration: 0.25s;
+    color: #fff;
+    border: 2px solid #88B73A;
+    background-color: #88B73A;
 }
 
