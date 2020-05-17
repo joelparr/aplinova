@@ -8,31 +8,34 @@
             <% categorias.forEach(element=>{%>
                 <%if(element.idCategoria !== 0){%>
                     <ul class="treeview"> 
-                        <li class="cat"><i class="far fa-list-alt fa-lg" style="margin-right:10px;"></i><a href="#">
+                        <li class="cat"><a href="#"><i class="far fa-list-alt fa-lg" style="margin-right:10px;"></i>
                             <%=element.titulo%>
-                        </a></li>
+                        </a>
+                        </li>
                         <%if(element.produtos.length){%>
                             <%element.produtos.forEach(prod=>{%>
                                 <ul class="notativo">
                                     <li class="subcat">
-                                        <a href="#">
-                                            <i class="fas fa-asterisk" style="color: orange;"></i>
+                                        <i class="fas fa-asterisk" style="color: orange;"></i>
+                                        <a href="#" class="details" data-id=<%=prod.id%>>
                                             <%=prod.titulo%>
                                         </a>
-                                        <a href="/admin/produto/<%=prod.id%>?method=delete" data-method="delete">
+                                        <a href="/admin/item/<%=prod.id%>?method=delete&type=prod" data-method="delete">
                                             <i class="fas fa-trash-alt" style="color: red;"></i>
                                         </a>
-                                    </li>
+                                    </li> 
+                                </ul> 
                             <%})%>
-                        <%}%>
-                                </ul>
+                        <%}%>  
+                                    
                 <%}%>
+                            
                 <%categorias.forEach(hit=>{%> 
                     <%if(hit.idCategoria === 0 && hit.idCategoriaPai === element.idCategoria){%>
                         <ul class="notativo">
                             <li class="subcat">
-                                <a href="#"><%=hit.titulo%></a>
-                                <a href="/admin/produto/<%=hit.id%>?method=delete">
+                                <a href="#" class="details" data-id=<%=hit.id%>><%=hit.titulo%></a>
+                                <a href="/admin/item/<%=hit.id%>?method=delete&type=sub">
                                     <i class="fas fa-trash-alt" style="color: red;"></i>
                                 </a>
                             </li>
@@ -40,8 +43,8 @@
                                 <%hit.produtos.forEach(prod=>{%>
                                 <ul class="notativo">
                                     <li id="prod">
-                                        <a href="#"><%=prod.titulo%></a>
-                                        <a href="/admin/produto/<%=prod.id%>?method=delete" data-method="delete">
+                                        <a href="#" class="details" data-id=<%=prod.id%>><%=prod.titulo%></a>
+                                        <a href="/admin/item/<%=prod.id%>?method=delete&type=prod" data-method="delete">
                                             <i class="fas fa-trash-alt" style="color: red;"></i>
                                         </a>
                                     </li>
@@ -52,11 +55,37 @@
                 <%})%> 
                         </ul>   
                     </ul>
-                </ul>
             <%})%>
         </div>
         <div class="col-md-6">
-            <h4>Detalhes dos itens selecionados</h4>
+            <form action="/admin/produto" method="post">
+                <h4>Detalhes</h4>
+                <div class="form-group">
+                    <label for="prodTitulo">Titulo</label>
+                    <input class="form-control" type="text" name="prodTitulo" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="prodDescricao">Descricao</label>
+                    <textarea class="form-control" name="prodDescricao" id="" cols="30" rows="10" readonly></textarea>
+                </div>
+                <div id="divCategoriaPai" class="form-group">
+                    <label for="categoriaPai">Pertence a categoria</label>
+                    <select class="form-control" name="categoriaPai" id="categoriaPai" readonly></select>
+                </div>
+                <div id="divSubCategoria" class="form-group">
+                    <label for="subCategoria">Pertence a subcategoria</label>
+                    <div class="input-group mb-2">
+                      <div class="input-group-prepend" id="modalCategoria" data-toggle="modal" data-target="#exampleModalCenter">
+                        <div class="input-group-text"><i class="fas fa-plus"></i></div>
+                      </div>
+                      <select class="form-control" name="subCategoria" id="subCategoria" readonly></select>
+                    </div>
+                    
+                </div>
+                <div class="pt-2" style="margin-top:40px;">
+                    <button class="btn btn-primary" type="submit">Salvar</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

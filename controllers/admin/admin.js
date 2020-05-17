@@ -2,7 +2,8 @@
  * Description: Modulo de controle de troca de dados com o banco mysql
  * Author: Findi
  */
-//Importando referencias
+
+//Importando referencias aos modulos de banco de dados
 const models = require('../../models');
 const Categoria = models.Categoria;
 const Header = models.Header;
@@ -87,13 +88,15 @@ exports.createCategoria = async (req, res)=>{
       categoria.idCategoriaPai = nextCategoria;
     })
     .catch(function(error){
+      //Tratar erro que ira retornar ao usuario
       console.log(error);
     })
   }
 
+  //Chamando a Promise que ira inserir uma categoria
   ccCreateCategoria(categoria)
   .then(function(newCategoria){
-    newCategoria.createHeader({titulo: req.body.headerTitulo, descricao: req.body.headerDescricao})
+     newCategoria.createHeader({titulo: req.body.headerTitulo, descricao: req.body.headerDescricao})
     return newCategoria;
   })
   .then(function(done){
@@ -123,6 +126,7 @@ function ccCreateCategoria(categoria){
   })
 }
 
+//Funcao que retorna o formulario de novo produto
 exports.newProduto = (req, res)=>{
   res.render('./admin/newProduto.ejs');
 }
@@ -142,12 +146,8 @@ exports.createProduto = (req, res)=>{
 
   cpProdutoNovo(dataBody)
   .then(function(novoProd){
-    if(novoProd !== 0){ 
-      novoProduto = novoProd;
-      return cpRecuperarCategoria(parseInt(req.body.categoriaPai));
-    }else{
-      res.redirect('/admin');
-    }
+    novoProduto = novoProd;
+    return cpRecuperarCategoria(parseInt(req.body.categoriaPai));
   })
   .then(function(categoria){
     if(req.body.subCategoriaChecked === 'on'){
@@ -197,7 +197,33 @@ function cpRecuperarCategoria(catPai){
 
 //Funcao que realiza o destroy do produto
 exports.destroyProduto = (req, res)=>{
-  res.send('Seu item foi deletado');
+  if(req.query.type && req.query.type === 'prod'){
+    //Caso seja um produto
+    Produto.destroy({where:{id:req.params.id}})
+    .then(function(result){
+      res.redirect('/admin');
+    })
+    .catch(function(error){
+      //Tratar com connect flash
+      console.log(error);
+    });
+  }
+  else if(req.query.type && req.query.type === 'sub'){
+    //Caso seja uma subcategoria
+    Categoria.destroy({where:{id: req.params.id}})
+    .then(function(result){
+      res.redirect('/admin');
+    })
+    .catch(function(error){
+      //Tratar com connect flash
+      console.log(error);
+    });
+  }
+  else{
+    //Caso nao tenha o req.query.type
+    //Tratar erro com connect flash
+    res.redirect('/admin');
+  }
 }
 
 //Funcao para capturar as categorias do banco
@@ -228,7 +254,7 @@ exports.getSubCategoria = (req, res)=>{
   })
 }
 
-
+//Logout da aplicacao
 exports.logout = (req, res)=>{
   req.logout();
   res.redirect('/login/show');

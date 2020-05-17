@@ -14,7 +14,8 @@ module.exports = {
         references:{ //n:n
           model:'Produtos',
           key: 'id'
-        }
+        },
+        onDelete: "CASCADE"
       },
       categoriaId: {
         type: Sequelize.INTEGER,
@@ -22,7 +23,8 @@ module.exports = {
         references:{ //n:n
           model:'Categoria',
           key: 'id'
-        }
+        },
+        onDelete: "CASCADE"
       },
       createdAt: {
         allowNull: false,

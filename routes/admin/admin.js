@@ -21,11 +21,15 @@ const {
 //rotas
 //Raiz da chamada acontece no APP.JS
 router.get('/', isValid, index);
+//Get formulario
 router.get('/new/categoria',isValid, newCategoria); //Formulario da categoria - TODO : Ira sair
 router.get('/new/produto', isValid, newProduto); //Formulario do novo produto
+//Create
 router.post('/produto', isValid, createProduto);
 router.post('/categoria', isValid, createCategoria); //Serve para subcategoria tambem
-router.delete('/produto/:id', isValid, destroyProduto);
+//Destroy
+router.delete('/item/:id', isValid, destroyProduto);
+//Ajax
 router.get('/categorias', isValid, getCategorias);
 router.get('/subcategorias/:id', isValid, getSubCategoria);
 router.get('/logout', logout);
