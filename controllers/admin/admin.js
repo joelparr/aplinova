@@ -126,7 +126,7 @@ function ccCreateCategoria(categoria){
   })
 }
 
-//Funcao que retorna o formulario de novo produto
+//Funcao que retorna o formulario de novo produto 
 exports.newProduto = (req, res)=>{
   sendingData(req, res, './admin/newproduto');
 }
