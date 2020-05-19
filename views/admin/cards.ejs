@@ -17,10 +17,10 @@
                                 <ul class="notativo">
                                     <li class="subcat">
                                         <i class="fas fa-asterisk" style="color: orange;"></i>
-                                        <a href="#" class="details" data-id=<%=prod.id%>>
+                                        <a href="#" class="details" data-type="prod" data-id=<%=prod.id%>>
                                             <%=prod.titulo%>
                                         </a>
-                                        <a href="/admin/item/<%=prod.id%>?method=delete&type=prod" data-method="delete">
+                                        <a href="/admin/produto/<%=prod.id%>?method=delete" data-method="delete">
                                             <i class="fas fa-trash-alt" style="color: red;"></i>
                                         </a>
                                     </li> 
@@ -34,8 +34,8 @@
                     <%if(hit.idCategoria === 0 && hit.idCategoriaPai === element.idCategoria){%>
                         <ul class="notativo">
                             <li class="subcat">
-                                <a href="#" class="details" data-id=<%=hit.id%>><%=hit.titulo%></a>
-                                <a href="/admin/item/<%=hit.id%>?method=delete&type=sub">
+                                <a href="#" class="details" data-type="sub" data-id=<%=hit.id%>><%=hit.titulo%></a>
+                                <a href="/admin/subcategoria/<%=hit.id%>?method=delete">
                                     <i class="fas fa-trash-alt" style="color: red;"></i>
                                 </a>
                             </li>
@@ -43,8 +43,9 @@
                                 <%hit.produtos.forEach(prod=>{%>
                                 <ul class="notativo">
                                     <li id="prod">
-                                        <a href="#" class="details" data-id=<%=prod.id%>><%=prod.titulo%></a>
-                                        <a href="/admin/item/<%=prod.id%>?method=delete&type=prod" data-method="delete">
+                                        <i class="fas fa-asterisk" style="color: orange;"></i>
+                                        <a href="#" class="details" data-type="prod" data-id=<%=prod.id%>><%=prod.titulo%></a>
+                                        <a href="/admin/produto/<%=prod.id%>?method=delete" data-method="delete">
                                             <i class="fas fa-trash-alt" style="color: red;"></i>
                                         </a>
                                     </li>
@@ -62,28 +63,23 @@
                 <h4>Detalhes</h4>
                 <div class="form-group">
                     <label for="prodTitulo">Titulo</label>
-                    <input class="form-control" type="text" name="prodTitulo" readonly>
+                    <input class="form-control" type="text" name="prodTitulo" id="indextitulo">
                 </div>
                 <div class="form-group">
                     <label for="prodDescricao">Descricao</label>
-                    <textarea class="form-control" name="prodDescricao" id="" cols="30" rows="10" readonly></textarea>
+                    <textarea class="form-control" name="prodDescricao" id="indexdescricao" cols="30" rows="10"></textarea>
                 </div>
                 <div id="divCategoriaPai" class="form-group">
-                    <label for="categoriaPai">Pertence a categoria</label>
-                    <select class="form-control" name="categoriaPai" id="categoriaPai" readonly></select>
+                    <label for="categoria">Pertence a categoria</label>
+                    <input class="form-control" type="text" name="categoria" id="indexcategoria">
                 </div>
                 <div id="divSubCategoria" class="form-group">
                     <label for="subCategoria">Pertence a subcategoria</label>
                     <div class="input-group mb-2">
-                      <div class="input-group-prepend" id="modalCategoria" data-toggle="modal" data-target="#exampleModalCenter">
-                        <div class="input-group-text"><i class="fas fa-plus"></i></div>
-                      </div>
-                      <select class="form-control" name="subCategoria" id="subCategoria" readonly></select>
-                    </div>
-                    
+                    <input class="form-control" type="text" name="subCategoria" id="indexsubCategoria">
                 </div>
                 <div class="pt-2" style="margin-top:40px;">
-                    <button class="btn btn-primary" type="submit">Salvar</button>
+                    <button class="btn btn-primary" id="atualizar" type="submit">Atualizar</button>
                 </div>
             </form>
         </div>

@@ -197,33 +197,71 @@ function cpRecuperarCategoria(catPai){
 
 //Funcao que realiza o destroy do produto
 exports.destroyProduto = (req, res)=>{
-  if(req.query.type && req.query.type === 'prod'){
-    //Caso seja um produto
-    Produto.destroy({where:{id:req.params.id}})
-    .then(function(result){
-      res.redirect('/admin');
-    })
-    .catch(function(error){
-      //Tratar com connect flash
-      console.log(error);
-    });
-  }
-  else if(req.query.type && req.query.type === 'sub'){
-    //Caso seja uma subcategoria
-    Categoria.destroy({where:{id: req.params.id}})
-    .then(function(result){
-      res.redirect('/admin');
-    })
-    .catch(function(error){
-      //Tratar com connect flash
-      console.log(error);
-    });
-  }
-  else{
-    //Caso nao tenha o req.query.type
-    //Tratar erro com connect flash
+  //Caso seja um produto
+  Produto.destroy({where:{id:req.params.id}})
+  .then(function(result){
     res.redirect('/admin');
-  }
+  })
+  .catch(function(error){
+    //Tratar com connect flash
+    console.log(error);
+  });
+}
+
+//Funcao que realiza o destroy da categoria
+exports.destroySubCategoria = (req, res)=>{
+  //Caso seja uma subcategoria
+  Categoria.destroy({where:{id: req.params.id}})
+  .then(function(result){
+    res.redirect('/admin');
+  })
+  .catch(function(error){
+    //Tratar com connect flash
+    console.log(error);
+  });
+}
+
+//Ajax que retorna o produto para a tela
+exports.showProduto = (req, res)=>{
+  Produto.findOne({where:{id: req.params.id}, include:{model:Categoria, as: 'categorias'}})
+  .then(function(produto){
+    res.json({produto});
+  })
+  .catch(function(error){
+    res.json({error});
+  });
+}
+
+//Ajax que retorna o produto para a tela - ssc
+exports.showSubCategoria = (req, res)=>{
+  Categoria.findOne({where:{id: req.params.id}})
+    .then(function(subCategoria){
+      res.json({subCategoria});
+    })
+    .catch(function(error){
+      res.json({error});
+    });
+}
+
+//Ajax qure retorna a categoria
+exports.showCategoria = (req, res)=>{
+  Categoria.findOne({where: {idCategoria: req.params.id}})
+  .then(function(categoria){
+    res.json({categoria});
+  })
+  .catch(function(error){
+    res.json({error});
+  })
+}
+
+//Ajax para atualizar a subcategoria
+exports.updateSubCategoria = (req, res)=>{
+  res.send("update do index");
+}
+
+//Ajax para atualizar o produto
+exports.updateProduto = (req, res)=>{
+  res.send('update produto do index');
 }
 
 //Funcao para capturar as categorias do banco
