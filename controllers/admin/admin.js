@@ -2,11 +2,13 @@
  * Description: Modulo de controle de troca de dados com o banco mysql
  * Author: Findi
  */
-//Importando referencias
+
+//Importando referencias aos modulos de banco de dados
 const models = require('../../models');
 const Categoria = models.Categoria;
 const Header = models.Header;
 const User = models.User;
+const Produto = models.Produto;
 const {Op} = require('sequelize');
 
 //Funcao de envio de mensagens e status para todas as telas
@@ -40,12 +42,26 @@ exports.newCategoria = (req, res)=>{
 
 //Funcao de mostrar tela principal do admin
 exports.index = (req, res)=>{
-  //Lista de categorias, headers e produtos
-  sendingData(req, res, './admin/index');
+  //Lista de categorias, subcategorias e produtos
+  //Post.find({ where: { ...}, include: [User]})
+  Categoria.findAll({include:{model:Produto, as: 'produtos'}})
+  .then(function(categorias){
+    console.log(categorias);
+    if(categorias){
+      sendingData(req, res, './admin/index', {categorias: categorias});
+    }else{
+      sendingData(req, res, './admin/index', {message: "Nao foram encontradas nenhuma categoria"});
+    }
+  })
+  .catch(function(error){
+    console.log(error);
+    sendingData(req, res, './admin/index', {error});
+  })
 }
 
 //Funcao de criar uma nova categoria
 //Para criar uma nova categoira e necessario seguir os passos adiante
+//Todas as funcoes referentes "createCategoria" se inciam com "cc"
 exports.createCategoria = async (req, res)=>{
   var categoria = {};
   //2 - Verificar se e uma categoria ou subcategoria
@@ -62,59 +78,210 @@ exports.createCategoria = async (req, res)=>{
     //3 - Caso seja categoria: Verificar qual o ultimo registro da categoria e recuperar o idCategoria e somar + 1
     await Categoria.max('idCategoria')
     .then(async function(categoriaIdMax){
-      console.log(categoriaIdMax);
-      let nextCategoria = await parseInt(categoriaIdMax) + 1
+      let nextCategoria;
+      if(!categoriaIdMax){
+        nextCategoria = 1;
+      }else{
+        nextCategoria = await parseInt(categoriaIdMax) + 1;
+      }
       categoria.idCategoria = nextCategoria;
       categoria.idCategoriaPai = nextCategoria;
     })
+    .catch(function(error){
+      //Tratar erro que ira retornar ao usuario
+      console.log(error);
+    })
   }
 
-  createheader({titulo: req.body.headerTitulo, descricao: req.body.headerDescricao, imagemUrl: req.body.headerImage})
-  .then(function(newHeader){
-    categoria.headerId = parseInt(newHeader.id);
-    return createCategoriaHeader(categoria)
-  })
+  //Chamando a Promise que ira inserir uma categoria
+  ccCreateCategoria(categoria)
   .then(function(newCategoria){
-    res.redirect('/admin');
+     newCategoria.createHeader({titulo: req.body.headerTitulo, descricao: req.body.headerDescricao})
+    return newCategoria;
+  })
+  .then(function(done){
+    //Connect flash done
+    req.body.categoriaChecked === "on" ? res.redirect('/admin') : res.json(done);
   })
   .catch(function(error){
-    //criar um flash com o erro
-    res.redirect('/admin');
+    //Connect flash error
+    req.body.categoriaChecked === "on" ? res.redirect('/admin') : res.json(error);
   })
 }
 
-//Promisse para criar um header
-function createheader(header){
-  return new Promise((resolve, reject)=>{
-    Header.create(header)
-    .then(async function(newHeader){
-      if(newHeader){
-        resolve(newHeader);
-      }else{
-        reject("Nao criou o header");
-      }
-
-    })
-    .catch(function(error){
-      reject('Problemas em criar o header');
-    })
-  })
-}
-
-//Promisse para criar uma categoria com header
-function createCategoriaHeader(categoria){
+// Promise criada para criar uma categoria
+function ccCreateCategoria(categoria){
   return new Promise((resolve, reject)=>{
     Categoria.create(categoria)
     .then(function(newCategoria){
       if(newCategoria){
         resolve(newCategoria);
       }else{
-        reject("Nao criou a categoria");
+        reject(0);
       }
     })
     .catch(function(error){
-      reject("Problemas em criar a categoria");
+      reject(0);
     })
+  })
+}
+
+//Funcao que retorna o formulario de novo produto
+exports.newProduto = (req, res)=>{
+  res.render('./admin/newProduto.ejs');
+}
+
+//Criacao de um novo produto - Todas as funcoes referente a criacao de produto possuem "cp" como
+//primeiro caracter
+exports.createProduto = (req, res)=>{
+  //1 - criar o produto com titulo e descricao
+  const dataBody = {
+    titulo: req.body.prodTitulo,
+    descricao: req.body.prodDescricao
+  }
+  console.log(req.body.subCategoriaChecked);
+  console.log(req.body.subCategoria);
+
+  var novoProduto;
+
+  cpProdutoNovo(dataBody)
+  .then(function(novoProd){
+    novoProduto = novoProd;
+    return cpRecuperarCategoria(parseInt(req.body.categoriaPai));
+  })
+  .then(function(categoria){
+    if(req.body.subCategoriaChecked === 'on'){
+      //2 - criar o vinculo entre o produto e a categoria / subcategoria
+      return novoProduto.setCategorias(categoria);
+    }else{
+      return novoProduto.setCategorias([req.body.subCategoria]);
+    }
+    
+    //return cpVinculoProdCat({produtoId: parseInt(novoProduto.id), categoriaId: parseInt(idCat)});  
+  })
+  .then(function(vinculoCatProd){
+    // TODO: adicionar um connect flash
+    res.redirect('/admin');
+  })
+  .catch(function(error){
+    // TODO:  Verificar a necessidade de enviar um connect flash
+    console.log(error);
+  })
+}
+
+//Promise que cria um novo produto
+function cpProdutoNovo(data){
+  return new Promise((resolve, reject)=>{
+    Produto.create(data)
+    .then(function(novoProduto){
+      novoProduto ? resolve(novoProduto) : reject(0);
+    })
+    .catch(function(error){
+      reject(error);
+    })
+  })
+}
+
+//Promise que recupera o id da categoria pai
+function cpRecuperarCategoria(catPai){
+  return new Promise((resolve, reject)=>{
+    Categoria.findOne({where:{idCategoria: catPai}})
+    .then(function(categoria){
+      categoria ? resolve(categoria) : reject(0);
+    })
+    .catch(function(error){
+      reject(error);
+    })
+  })
+}
+
+//Funcao que realiza o destroy do produto
+exports.destroyProduto = (req, res)=>{
+  //Caso seja um produto
+  Produto.destroy({where:{id:req.params.id}})
+  .then(function(result){
+    res.redirect('/admin');
+  })
+  .catch(function(error){
+    //Tratar com connect flash
+    console.log(error);
+  });
+}
+
+//Funcao que realiza o destroy da categoria
+exports.destroySubCategoria = (req, res)=>{
+  //Caso seja uma subcategoria
+  Categoria.destroy({where:{id: req.params.id}})
+  .then(function(result){
+    res.redirect('/admin');
+  })
+  .catch(function(error){
+    //Tratar com connect flash
+    console.log(error);
+  });
+}
+
+//Ajax que retorna o produto para a tela
+exports.showProduto = (req, res)=>{
+  Produto.findOne({where:{id: req.params.id}, include:{model:Categoria, as: 'categorias'}})
+  .then(function(produto){
+    res.json({produto});
+  })
+  .catch(function(error){
+    res.json({error});
+  });
+}
+
+//Ajax que retorna o produto para a tela - ssc
+exports.showSubCategoria = (req, res)=>{
+  Categoria.findOne({where:{id: req.params.id}})
+    .then(function(subCategoria){
+      res.json({subCategoria});
+    })
+    .catch(function(error){
+      res.json({error});
+    });
+}
+
+//Ajax qure retorna a categoria
+exports.showCategoria = (req, res)=>{
+  Categoria.findOne({where: {idCategoria: req.params.id}})
+  .then(function(categoria){
+    res.json({categoria});
+  })
+  .catch(function(error){
+    res.json({error});
+  })
+}
+
+//Ajax para atualizar a subcategoria
+exports.updateSubCategoria = (req, res)=>{
+  const data = {
+    titulo: req.body.titulo,
+    descricao: req.body.descricao
+  }
+
+  Categoria.update(data, {where: {id: req.params.id}})
+  .then(function(categoria){
+    res.json({update:"ok"});
+  })
+  .catch(function(error){
+    res.json({error});
+  })
+}
+
+//Ajax para atualizar o produto
+exports.updateProduto = (req, res)=>{
+  const data = {
+    titulo: req.body.titulo,
+    descricao: req.body.descricao
+  }
+  Produto.update(data, {where: {id: req.params.id}})
+  .then(function(produto){
+    res.json({update:"ok"});
+  })
+  .catch(function(error){
+    res.json({error});
   })
 }
 
@@ -134,6 +301,20 @@ exports.getCategorias = (req, res)=>{
   });
 }
 
+exports.getSubCategoria = (req, res)=>{
+  console.log(req.params.id);
+  Categoria.findAll({where:{[Op.and]:[{idCategoriaPai: req.params.id},{idCategoria:0}]}})
+  .then(function(subCategoria){
+    console.log(subCategoria);
+    res.json({data: subCategoria, error:undefined});
+  })
+  .catch(function(error){
+    errors = "Nao foi possivel recuperar as subcategorias"
+    res.json({data:undefined, error:error});
+  })
+}
+
+//Logout da aplicacao
 exports.logout = (req, res)=>{
   req.logout();
   res.redirect('/login/show');

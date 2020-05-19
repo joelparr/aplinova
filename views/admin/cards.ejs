@@ -2,88 +2,105 @@
 <!--*****************************Foi retirado do principal*********************-->
 <!--****************************************************************************************************-->
 <div class="list-group">
-<a href="#" class="list-group-item">
-    <div class="media col-md-3">
-        <figure class="pull-left">
-            <img class="media-object img-rounded img-responsive" src="http://placehold.it/140x100" alt="placehold.it/140x100" >
-        </figure>
-    </div>
-    <div class="col-md-5">
-        <h4 class="list-group-item-heading pb-3"> Olympic </h4>
-        <p class="list-group-item-text"> Proposal to implement best in class enterprise permissioning system to manage signature accumulation and hierarchy management</p>
-    </div>
-    <div class="col-md-3 pull-left">
-        <div class = "container col-md-12">
-            <div class = "row">
-                <div class="col-md-12 pull-left"><i class="fa fa-check-square"></i> General Manager</div>
-            </div>
-            <div class = "row">
-                <div class="col-md-12 pull-left"><i class="fa fa-check-square"></i> Project Manager</div>
-            </div>
-            <div class = "row">
-                <div class="col-md-12 pull-left"><i class="fa fa-square"></i> Tech Lead</div>
-            </div>
+<div class="alert alert-success alert-dismissible fade show d-none" id="success"  role="alert">
+    <strong>O item foi alterado com sucesso!
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="alert alert-danger alert-dismissible fade show d-none" id="danger"  role="alert">
+    <strong>Houve um problema na atualizacao do item!
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="alert alert-danger alert-dismissible fade show d-none" id="getError"  role="alert">
+    <strong>Houve um problema para buscar o item!!
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="container-fluid" style="border: 1px solid black;">
+    <div class="row">
+        <div class="col-md-6">
+            <% categorias.forEach(element=>{%>
+                <%if(element.idCategoria !== 0){%>
+                    <ul class="treeview"> 
+                        <li class="cat"><a href="#"><i class="far fa-list-alt fa-lg" style="margin-right:10px;"></i>
+                            <%=element.titulo%>
+                        </a>
+                        </li>
+                        <%if(element.produtos.length){%>
+                            <%element.produtos.forEach(prod=>{%>
+                                <ul class="notativo">
+                                    <li class="subcat">
+                                        <i class="fas fa-asterisk" style="color: orange;"></i>
+                                        <a href="#" class="details" data-type="prod" data-id=<%=prod.id%>>
+                                            <%=prod.titulo%>
+                                        </a>
+                                        <a href="/admin/produto/<%=prod.id%>?method=delete" data-method="delete">
+                                            <i class="fas fa-trash-alt" style="color: red;"></i>
+                                        </a>
+                                    </li> 
+                                </ul> 
+                            <%})%>
+                        <%}%>  
+                                    
+                <%}%>
+                            
+                <%categorias.forEach(hit=>{%> 
+                    <%if(hit.idCategoria === 0 && hit.idCategoriaPai === element.idCategoria){%>
+                        <ul class="notativo">
+                            <li class="subcat">
+                                <a href="#" class="details" data-type="sub" data-id=<%=hit.id%>><%=hit.titulo%></a>
+                                <a href="/admin/subcategoria/<%=hit.id%>?method=delete">
+                                    <i class="fas fa-trash-alt" style="color: red;"></i>
+                                </a>
+                            </li>
+                            <%if(hit.produtos.length){%>
+                                <%hit.produtos.forEach(prod=>{%>
+                                <ul class="notativo">
+                                    <li id="prod">
+                                        <i class="fas fa-asterisk" style="color: orange;"></i>
+                                        <a href="#" class="details" data-type="prod" data-id=<%=prod.id%>><%=prod.titulo%></a>
+                                        <a href="/admin/produto/<%=prod.id%>?method=delete" data-method="delete">
+                                            <i class="fas fa-trash-alt" style="color: red;"></i>
+                                        </a>
+                                    </li>
+                                <%})%>
+                                </ul>
+                            <%}%>
+                    <%}%>
+                <%})%> 
+                        </ul>   
+                    </ul>
+            <%})%>
+        </div>
+        <div class="col-md-6">
+            <form action="/admin/produto" method="post">
+                <h4>Detalhes</h4>
+                <div class="form-group">
+                    <label for="prodTitulo">Titulo</label>
+                    <input class="form-control" type="text" name="prodTitulo" id="indextitulo" required>
+                </div>
+                <div class="form-group">
+                    <label for="prodDescricao">Descricao</label>
+                    <textarea class="form-control" name="prodDescricao" id="indexdescricao" cols="30" rows="10" required></textarea>
+                </div>
+                <div id="divCategoriaPai" class="form-group">
+                    <label for="categoria">Pertence a categoria</label>
+                    <input class="form-control" type="text" name="categoria" id="indexcategoria" readonly>
+                </div>
+                <div id="divSubCategoria" class="form-group">
+                    <label for="subCategoria">Pertence a subcategoria</label>
+                    <div class="input-group mb-2">
+                    <input class="form-control" type="text" name="subCategoria" id="indexsubCategoria" readonly>
+                </div>
+                <div class="pt-2" style="margin-top:40px;">
+                    <button class="btn btn-primary" id="atualizar" type="submit">Atualizar</button>
+                </div>
+            </form>
         </div>
     </div>
-    <div class="col-md-1 text-center">
-        <p> 2 <small> approvals </small></p>
-        <button type="button" class="btn btn-primary btn-sm btn-block">Open</button>
-    </div>
-</a>
-<a href="#" class="list-group-item">
-    <div class="media col-md-3">
-        <figure class="pull-left">
-            <img class="media-object img-rounded img-responsive" src="http://placehold.it/140x100" alt="placehold.it/140x100" >
-        </figure>
-    </div>
-    <div class="col-md-5">
-        <h4 class="list-group-item-heading pb-3"> Olympic </h4>
-        <p class="list-group-item-text"> Proposal to implement best in class enterprise permissioning system to manage signature accumulation and hierarchy management</p>
-    </div>
-    <div class="col-md-3 pull-left">
-        <div class = "container col-md-12">
-            <div class = "row">
-                <div class="col-md-12 pull-left"><i class="fa fa-check-square"></i> General Manager</div>
-            </div>
-            <div class = "row">
-                <div class="col-md-12 pull-left"><i class="fa fa-check-square"></i> Project Manager</div>
-            </div>
-            <div class = "row">
-                <div class="col-md-12 pull-left"><i class="fa fa-square"></i> Tech Lead</div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-1 text-center">
-        <p> 2 <small> approvals </small></p>
-        <button type="button" class="btn btn-primary btn-sm btn-block">Open</button>
-    </div>
-</a>
-<a href="#" class="list-group-item">
-    <div class="media col-md-3">
-        <figure class="pull-left">
-            <img class="media-object img-rounded img-responsive" src="http://placehold.it/140x100" alt="placehold.it/140x100" >
-        </figure>
-    </div>
-    <div class="col-md-5">
-        <h4 class="list-group-item-heading pb-3"> Olympic </h4>
-        <p class="list-group-item-text"> Proposal to implement best in class enterprise permissioning system to manage signature accumulation and hierarchy management</p>
-    </div>
-    <div class="col-md-3 pull-left">
-        <div class = "container col-md-12">
-            <div class = "row">
-                <div class="col-md-12 pull-left"><i class="fa fa-check-square"></i> General Manager</div>
-            </div>
-            <div class = "row">
-                <div class="col-md-12 pull-left"><i class="fa fa-check-square"></i> Project Manager</div>
-            </div>
-            <div class = "row">
-                <div class="col-md-12 pull-left"><i class="fa fa-square"></i> Tech Lead</div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-1 text-center">
-        <p> 2 <small> approvals </small></p>
-        <button type="button" class="btn btn-primary btn-sm btn-block">Open</button>
-    </div>
-</a>
+</div>
 </div>

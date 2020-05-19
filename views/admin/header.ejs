@@ -1,16 +1,17 @@
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-
+<!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
 <!DOCTYPE html>
 <html lang="en" >
 
 <head>
     <meta charset="UTF-8">
     <title>An Anonymous Pen on CodePen</title>
-    <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css'><link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'><link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css'>
+    <script src="https://kit.fontawesome.com/3bb5488a16.js" crossorigin="anonymous"></script>
+    <!-- <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css'><link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'><link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css'> -->
     <style class="cp-pen-styles">@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700&subset=latin-ext");</style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="/public/stylesheets/admin/index.css">
 </head>
 
@@ -30,41 +31,11 @@
         <input class="c-search__input u-input" placeholder="Search..." type="text"/>
       </div>
       <div class="header-icons-group">
-        <div class="c-header-icon logout"><a href="/admin/logout"><i class="fa fa-power-off"></i></a></div>
+        <div class="c-header-icon logout"><a href="/admin/logout"><i class="fa fa-power-off" style="color:#607D8B"></i></a></div>
       </div>
     </div>
   </header>
-  <div class="l-sidebar">
-    <div class="logo">
-      <div class="logo__txt">Apl</div>
-    </div>
-    <div class="l-sidebar__content">
-      <nav class="c-menu js-menu">
-        <ul class="u-list">
-          <li class="c-menu__item is-active" data-toggle="tooltip" title="Proposals">
-            <div class="c-menu__item__inner"><i class="fa fa-file-text-o"></i>
-              <div class="c-menu-item__title"><span>Arvore de categorias</span></div>
-            </div>
-          </li>
-          <li class="c-menu__item has-submenu" data-toggle="tooltip" title="History">
-            <div class="c-menu__item__inner"><i class="fa fa-history"></i>
-              <div class="c-menu-item__title"><span>Categorias</span></div>
-            </div>
-          </li>
-          <li class="c-menu__item has-submenu" data-toggle="tooltip" title="Accounts">
-            <div class="c-menu__item__inner"><i class="fa fa-address-book-o"></i>
-              <div class="c-menu-item__title"><span>Subcategorias</span></div>
-            </div>
-          </li>
-          <li class="c-menu__item has-submenu" data-toggle="tooltip" title="Settings">
-            <div class="c-menu__item__inner"><i class="fa fa-cogs"></i>
-              <div class="c-menu-item__title"><span>Settings</span></div>
-            </div>
-          </li>
-        </ul>
-      </nav>
-    </div>
-  </div>
+  <%-include('./menulateral')%>
 </body>
 <main class="l-main">
   <div class="content-wrapper content-wrapper--with-bg">

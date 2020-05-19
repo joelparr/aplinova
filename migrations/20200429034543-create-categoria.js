@@ -17,9 +17,6 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
-      imagemUrl: {
-        type: Sequelize.STRING
-      },
       idCategoria: {
         type: Sequelize.INTEGER,
         allowNull: false,
@@ -29,24 +26,6 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
         required: true
-      },
-      headerId: {
-        type: Sequelize.INTEGER,
-        allowNull:false,
-        references:{
-          model: 'Headers',
-          key: 'id'
-        }
-      },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE,
-        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE,
-        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP')
       }
     });
   },

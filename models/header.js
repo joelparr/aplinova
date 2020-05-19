@@ -3,10 +3,9 @@ module.exports = (sequelize, DataTypes) => {
   const Header = sequelize.define('Header', {
     titulo: DataTypes.STRING,
     descricao: DataTypes.STRING,
-    imagemUrl: DataTypes.STRING
-  }, {});
+  }, {timestamps: false});
   Header.associate = function(models) {
-    //associations
+    Header.belongsTo(models.Categoria)
   };
   return Header;
 };
