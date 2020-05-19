@@ -2,6 +2,24 @@
 <!--*****************************Foi retirado do principal*********************-->
 <!--****************************************************************************************************-->
 <div class="list-group">
+<div class="alert alert-success alert-dismissible fade show d-none" id="success"  role="alert">
+    <strong>O item foi alterado com sucesso!
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="alert alert-danger alert-dismissible fade show d-none" id="danger"  role="alert">
+    <strong>Houve um problema na atualizacao do item!
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="alert alert-danger alert-dismissible fade show d-none" id="getError"  role="alert">
+    <strong>Houve um problema para buscar o item!!
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
 <div class="container-fluid" style="border: 1px solid black;">
     <div class="row">
         <div class="col-md-6">
@@ -63,20 +81,20 @@
                 <h4>Detalhes</h4>
                 <div class="form-group">
                     <label for="prodTitulo">Titulo</label>
-                    <input class="form-control" type="text" name="prodTitulo" id="indextitulo">
+                    <input class="form-control" type="text" name="prodTitulo" id="indextitulo" required>
                 </div>
                 <div class="form-group">
                     <label for="prodDescricao">Descricao</label>
-                    <textarea class="form-control" name="prodDescricao" id="indexdescricao" cols="30" rows="10"></textarea>
+                    <textarea class="form-control" name="prodDescricao" id="indexdescricao" cols="30" rows="10" required></textarea>
                 </div>
                 <div id="divCategoriaPai" class="form-group">
                     <label for="categoria">Pertence a categoria</label>
-                    <input class="form-control" type="text" name="categoria" id="indexcategoria">
+                    <input class="form-control" type="text" name="categoria" id="indexcategoria" readonly>
                 </div>
                 <div id="divSubCategoria" class="form-group">
                     <label for="subCategoria">Pertence a subcategoria</label>
                     <div class="input-group mb-2">
-                    <input class="form-control" type="text" name="subCategoria" id="indexsubCategoria">
+                    <input class="form-control" type="text" name="subCategoria" id="indexsubCategoria" readonly>
                 </div>
                 <div class="pt-2" style="margin-top:40px;">
                     <button class="btn btn-primary" id="atualizar" type="submit">Atualizar</button>

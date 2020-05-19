@@ -256,13 +256,35 @@ exports.showCategoria = (req, res)=>{
 
 //Ajax para atualizar a subcategoria
 exports.updateSubCategoria = (req, res)=>{
-  res.send("update do index");
+  const data = {
+    titulo: req.body.titulo,
+    descricao: req.body.descricao
+  }
+
+  Categoria.update(data, {where: {id: req.params.id}})
+  .then(function(categoria){
+    res.json({update:"ok"});
+  })
+  .catch(function(error){
+    res.json({error});
+  })
 }
 
 //Ajax para atualizar o produto
 exports.updateProduto = (req, res)=>{
-  res.send('update produto do index');
+  const data = {
+    titulo: req.body.titulo,
+    descricao: req.body.descricao
+  }
+  Produto.update(data, {where: {id: req.params.id}})
+  .then(function(produto){
+    res.json({update:"ok"});
+  })
+  .catch(function(error){
+    res.json({error});
+  })
 }
+
 
 //Funcao para capturar as categorias do banco
 //Categoria (idCategoria) === 0  -> subcategoria

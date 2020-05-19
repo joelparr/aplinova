@@ -1,4 +1,5 @@
 const anchor = document.getElementsByClassName('details');
+const cat = document.getElementsByClassName('cat');
 //Components do form
 const formTitulo = document.getElementById('indextitulo');
 const formDescricao = document.getElementById('indexdescricao');
@@ -6,16 +7,26 @@ const formCategoria = document.getElementById('indexcategoria');
 const formSubcategoria = document.getElementById('indexsubCategoria');
 //Botao do formulario
 const atualizar = document.getElementById('atualizar');
+//User return
+const success = document.getElementById('success');
+const danger = document.getElementById('danger');
+const getError = document.getElementById('getError');
+
+var elementId;
+var elementType;
 
 Array.from(anchor).forEach(el=>{
     el.addEventListener('click', function(event){
+        elementId = event.target.dataset.id;
         let url;
         switch(event.target.dataset.type){
             case 'prod':
                 url = `/admin/produto/${event.target.dataset.id}`;
+                elementType = "prod"
                 break;
             case 'sub':
                 url = `/admin/subcategoria/${event.target.dataset.id}`;
+                elementType = "sub"
                 break;
             default:
                 alert('Nao foi possivel identificar o item selecionado')
@@ -39,10 +50,9 @@ Array.from(anchor).forEach(el=>{
         })
         .then(function(data){
             event.target.dataset.type === 'sub' ? formCategoria.value = data.categoria.titulo : formCategoria.value = data.categoria.titulo;
-            console.log(data);
         })
         .catch(function(error){
-            console.log(error);
+            getError.classList.remove("d-none");
         })
     })
 });
@@ -53,7 +63,7 @@ function getSubCategoria(url){
             if(data){
                 resolve(data);
             }else{
-                reject("Erro ao trazer a sub categoria");
+                reject(0);
             }
             
         });
@@ -66,7 +76,7 @@ function getCategoria(url){
             if(data){
                 resolve(data);
             }else{
-                reject("Erro ao trazer a sub categoria");
+                reject(0);
             }
             
         });
@@ -75,5 +85,40 @@ function getCategoria(url){
 
 atualizar.addEventListener('click', function(event){
     event.preventDefault();
-    console.log('Nao realizou o submit');
+    let url;
+    switch(elementType){
+        case "prod":
+            url = `/admin/produto/${elementId}`;
+            break;
+        case "sub":
+            url = `/admin/subcategoria/${elementId}`;
+            break;
+        default:
+            url = "";
+            alert("Nao foi escolhi um tipo de item")
+    }
+    
+    const dataBody = {
+        id: elementId,
+        titulo: formTitulo.value,
+        descricao: formDescricao.value,
+        method: "patch"
+    }
+    $.post(url, dataBody, function(data){
+        if(data){
+            success.classList.remove("d-none");
+        }else{
+            danger.classList.remove("d-none");
+        }
+    }, "json");
+})
+
+//Caso o usuario clique em alguma CATEGORIA
+Array.from(cat).forEach(el=>{
+    el.addEventListener('click', function(event){
+        formTitulo.value = "";
+        formDescricao.value = "";
+        formCategoria.value = "";
+        formSubcategoria.value = "";
+    })
 })
