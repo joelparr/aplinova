@@ -128,7 +128,7 @@ function ccCreateCategoria(categoria){
 
 //Funcao que retorna o formulario de novo produto
 exports.newProduto = (req, res)=>{
-  res.render('./admin/newProduto.ejs');
+  sendingData(req, res, './admin/newproduto');
 }
 
 //Criacao de um novo produto - Todas as funcoes referente a criacao de produto possuem "cp" como
