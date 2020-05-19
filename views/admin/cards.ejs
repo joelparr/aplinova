@@ -31,8 +31,8 @@
                         </a>
                         </li>
                         <%if(element.produtos.length){%>
+                            <ul class="notativo">
                             <%element.produtos.forEach(prod=>{%>
-                                <ul class="notativo">
                                     <li class="subcat">
                                         <i class="fas fa-asterisk" style="color: orange;"></i>
                                         <a href="#" class="details" data-type="prod" data-id=<%=prod.id%>>
@@ -42,39 +42,38 @@
                                             <i class="fas fa-trash-alt" style="color: red;"></i>
                                         </a>
                                     </li> 
-                                </ul> 
                             <%})%>
-                        <%}%>  
-                                    
+                            </ul>
+                        <%}%>                  
                 <%}%>
-                            
-                <%categorias.forEach(hit=>{%> 
-                    <%if(hit.idCategoria === 0 && hit.idCategoriaPai === element.idCategoria){%>
-                        <ul class="notativo">
-                            <li class="subcat">
-                                <a href="#" class="details" data-type="sub" data-id=<%=hit.id%>><%=hit.titulo%></a>
-                                <a href="/admin/subcategoria/<%=hit.id%>?method=delete">
-                                    <i class="fas fa-trash-alt" style="color: red;"></i>
-                                </a>
-                            </li>
-                            <%if(hit.produtos.length){%>
-                                <%hit.produtos.forEach(prod=>{%>
-                                <ul class="notativo">
-                                    <li id="prod">
-                                        <i class="fas fa-asterisk" style="color: orange;"></i>
-                                        <a href="#" class="details" data-type="prod" data-id=<%=prod.id%>><%=prod.titulo%></a>
-                                        <a href="/admin/produto/<%=prod.id%>?method=delete" data-method="delete">
-                                            <i class="fas fa-trash-alt" style="color: red;"></i>
-                                        </a>
-                                    </li>
-                                <%})%>
-                                </ul>
-                            <%}%>
-                    <%}%>
-                <%})%> 
-                        </ul>   
+                    <%categorias.forEach(hit=>{%>
+                        <%if(hit.idCategoria === 0 && hit.idCategoriaPai === element.idCategoria){%>
+                            <ul class="notativo">
+                                <li class="subcat">
+                                    <a href="#" class="details" data-type="sub" data-id=<%=hit.id%>><%=hit.titulo%></a>
+                                    <a href="/admin/subcategoria/<%=hit.id%>?method=delete">
+                                        <i class="fas fa-trash-alt" style="color: red;"></i>
+                                    </a>
+                                </li>
+                                <%if(hit.produtos.length){%>
+                                    <ul class="notativo">
+                                    <%hit.produtos.forEach(prod=>{%>
+                                        <li id="prod">
+                                            <i class="fas fa-asterisk" style="color: orange;"></i>
+                                            <a href="#" class="details" data-type="prod" data-id=<%=prod.id%>><%=prod.titulo%></a>
+                                            <a href="/admin/produto/<%=prod.id%>?method=delete" data-method="delete">
+                                                <i class="fas fa-trash-alt" style="color: red;"></i>
+                                            </a>
+                                        </li>
+                                    <%})%>
+                                    </ul>
+                                <%}%>
+                            </ul> 
+                        <%}%>
+                    <%})%>         
                     </ul>
             <%})%>
+            
         </div>
         <div class="col-md-6">
             <form action="/admin/produto" method="post">
