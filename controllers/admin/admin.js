@@ -48,6 +48,7 @@ exports.index = (req, res)=>{
   .then(function(categorias){
     console.log(categorias);
     if(categorias){
+      console.log(categorias);
       sendingData(req, res, './admin/index', {categorias: categorias});
     }else{
       sendingData(req, res, './admin/index', {message: "Nao foram encontradas nenhuma categoria"});
