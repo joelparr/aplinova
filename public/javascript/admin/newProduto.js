@@ -97,6 +97,11 @@ function getSubCategoria(categoriaPaiId){
 newSubcategoria.addEventListener('click', function(event){
     event.preventDefault();
 
+    if(headerTitulo.value === "" || categoriaTitulo.value === ""){
+        document.getElementById("demo").innerHTML = "Todas os campos precisam ser preenchidos";
+        return 0;
+    }
+
     postAdminSubCategoria()
     .then(function(newSubCategoria){
         console.log(newSubCategoria);
