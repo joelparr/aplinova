@@ -29,7 +29,7 @@ const {
 router.get('/', isValid, index);
 //Get formulario
 router.get('/new/produto', isValid, newProduto); //Formulario do novo produto
-router.get('/new/cat',isValid, newCategoria); //Formulario da categoria - TODO : Ira sair
+router.get('/new/categoria',isValid, newCategoria); //Formulario da categoria - TODO : Ira sair
 router.get('/produto/:id', isValid, showProduto);
 router.get('/subcategoria/:id', isValid, showSubCategoria);
 router.get('/categoria/:id', isValid, showCategoria);
