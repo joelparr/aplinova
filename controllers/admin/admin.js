@@ -37,7 +37,8 @@ function sendingData(req, res, urlView, argumentos){
 
 exports.newCategoria = (req, res)=>{
   //Formulario de criacao de categoria
-  sendingData(req, res, './admin/newCategoria');
+  res.render('./admin/newCategoria.ejs');
+  //sendingData(req, res, './admin/newCategoria');
 }
 
 //Funcao de mostrar tela principal do admin
