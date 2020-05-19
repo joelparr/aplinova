@@ -15,9 +15,18 @@ const getError = document.getElementById('getError');
 var elementId;
 var elementType;
 
+window.onload = (event)=>{
+    formTitulo.setAttribute('readonly', true);
+    formDescricao.setAttribute('readonly', true);
+    atualizar.disabled = true;
+}
+
 Array.from(anchor).forEach(el=>{
     el.addEventListener('click', function(event){
         elementId = event.target.dataset.id;
+        formTitulo.removeAttribute('readonly');
+        formDescricao.removeAttribute('readonly');
+        atualizar.disabled = false;
         let url;
         switch(event.target.dataset.type){
             case 'prod':
@@ -85,6 +94,11 @@ function getCategoria(url){
 
 atualizar.addEventListener('click', function(event){
     event.preventDefault();
+    if(formTitulo.value === "" || formDescricao.value === ""){
+        document.getElementById("demo").innerHTML = "Todas os campos precisam ser preenchidos";
+        return 0;
+    }
+
     let url;
     switch(elementType){
         case "prod":
@@ -120,5 +134,8 @@ Array.from(cat).forEach(el=>{
         formDescricao.value = "";
         formCategoria.value = "";
         formSubcategoria.value = "";
+        formTitulo.setAttribute('readonly', true);
+        formDescricao.setAttribute('readonly', true);
+        atualizar.disabled = true;
     })
 })
