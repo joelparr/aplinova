@@ -10,8 +10,18 @@ const telefone = document.getElementById('telefone');
 const empresa = document.getElementById('empresa');
 const mensagem = document.getElementById('mensagem');
 
+//Configuracao do email
+const url = "https://api.emailjs.com/api/v1.0/email/send";
+const headers = {"Content-type":"application/json"};
+
+//Botao que ira enviar o email para administrador e para o usuario como resposta
 enviar.addEventListener('click', function(event){
     event.preventDefault();
+    //Validacao do formulario
+    if(nome.value === "" || email.value === "" || telefone.value === "" || empresa.value === "" || mensagem.value === ""){
+        document.getElementById("demo").innerHTML = "Todas os campos precisam ser preenchidos";
+        return 0;
+    }
     sendContatoEmail()
     .then(function(result){
         if(result){
@@ -31,6 +41,7 @@ enviar.addEventListener('click', function(event){
 
 })
 
+//Envio do email de contato com administrador
 function sendContatoEmail(){
     return new Promise((resolve, reject)=>{
 
@@ -46,9 +57,6 @@ function sendContatoEmail(){
                 'corpo': `Houve um contato do ${nome.value}. Email: ${email.value}`
             }
         }
-        const url = "https://api.emailjs.com/api/v1.0/email/send";
-        
-        const headers = {"Content-type":"application/json"};
         
         const options = {
             method: 'POST',
@@ -71,10 +79,10 @@ function sendContatoEmail(){
     })
 }
 
+//Envio de email de confirmacao de contato para o usuario
 function sendEmailResposta(){
     return new Promise((resolve, reject)=>{
         const assunto = `Seu contato foi realizado`;
-
         const template = {
             user_id: "user_RtuuE0LQRe9QltUKAuJmS",
             service_id: "danielGmail",
@@ -85,9 +93,6 @@ function sendEmailResposta(){
                 'corpo': `Seu contato com a aplinova foi realizado com sucesso. Porfavor aguarde retorno.`
             }
         }
-        const url = "https://api.emailjs.com/api/v1.0/email/send";
-        
-        const headers = {"Content-type":"application/json"};
         
         const options = {
             method: 'POST',
