@@ -4,8 +4,8 @@
 }
 
 .navbar__logo {
-    width: 14rem;
-    margin: auto 0 auto 2rem;
+    width: 16rem;
+    margin: auto 0 auto 3rem;
 }
 
 .navbar .navbar__items {
@@ -32,7 +32,7 @@
 
 .navbar .navbar__products-dropdown {
     position: absolute;
-    top: 50px;
+    top: 60px;
     display: none;
     padding: 0.75rem 1.75rem;
     width: 24rem;
