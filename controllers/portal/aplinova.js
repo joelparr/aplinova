@@ -11,6 +11,9 @@
      {title: 'Substitutos de Açúcar e Fibras', imageUrl: 'https://images.pexels.com/photos/103566/pexels-photo-103566.jpeg', href: 'substitutos'},
      {title: 'Produtos Naturais', imageUrl: 'https://images.pexels.com/photos/134577/pexels-photo-134577.jpeg', href: 'produtos-naturais'},
  ]
+const models = require('../../models');
+const Categoria = models.Categoria;
+const Produto = models.Produto;
 
 //Tela principal do portal
 exports.show = (req, res) => {
@@ -24,12 +27,36 @@ exports.contato = (req, res)=>{
 
 //Tela de aromas
 exports.aromas = (req, res)=>{
-  res.render('./portal/produtos/aromas', {produtos});
+  Categoria.findAll({where:{titulo: "Aromas"}, include:{model:Produto, as:"produtos"}})
+  .then(function(aromas){
+    if(aromas.length){
+      res.render('./portal/produtos/aromas', {aromas: aromas[0].dataValues.produtos});
+    }else{
+      res.render('./portal/produtos/corantes', {aromas: undefined});
+    }
+    
+  })
+  .catch(function(error){
+    res.render('./portal/produtos/aromas', {error});
+  })
+  
 }
 
 //Tela de corantes
 exports.corantes = (req, res)=>{
-  res.render('./portal/produtos/corantes', {produtos});
+  Categoria.findAll({where:{titulo: "Corantes"}, include:{model:Produto, as: "produtos"}})
+  .then(function(corantes){
+    if(corantes.length){
+      res.render('./portal/produtos/corantes', {corantes: corantes[0].dataValues.produtos});
+    }else{
+      res.render('./portal/produtos/corantes', {corantes: undefined});
+    }
+    
+  })
+  .catch(function(error){
+    res.render('./portal/produtos/corantes', {error});
+  })
+  
 }
 
 exports.foodservice = (req, res)=>{
