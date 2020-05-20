@@ -8,6 +8,7 @@
 @import '../components/carrousel.css';
 @import '../components/banner.css';
 @import './contato.css';
+@import './empresa.css';
 
 html, body{
     margin:0;

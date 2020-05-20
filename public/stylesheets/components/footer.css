@@ -44,3 +44,7 @@
     background-color: #88B73A;
     cursor: pointer;
 }
+
+.footer .footer__logo {
+    width: 16rem;
+}
