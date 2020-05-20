@@ -68,7 +68,18 @@ exports.ingredFuncionais = (req, res)=>{
 }
 
 exports.prodNaturais = (req, res)=>{
-  res.render('./portal/produtos/produtosnaturais', {produtos});
+  Categoria.findAll({where:{titulo: "Produtos naturais"}, include:{model:Produto, as:"produtos"}})
+  .then(function(prodNatu){
+    if(prodNatu.length){
+      res.render('./portal/produtos/produtosnaturais', {produtos: prodNatu[0].dataValues.produtos});
+    }else{
+      res.render('./portal/produtos/produtosnaturais', {produtos: undefined});
+    }
+  })
+  .catch(function(error){
+    res.render('./portal/produtos/produtosnaturais', {error});
+  })
+  
 }
 
 exports.prodVeganos = (req, res)=>{
@@ -80,7 +91,18 @@ exports.proteinas = (req, res)=>{
 }
 
 exports.revConfeitaria = (req, res)=>{
-  res.render('./portal/produtos/revconfeitaria', {produtos});
+  Categoria.findAll({where:{titulo: "Revestimento para confeitaria"}, include:{model:Produto, as:"produtos"}})
+  .then(function(revestimento){
+    if(revestimento.length){
+      res.render('./portal/produtos/revconfeitaria', {revestimento: revestimento[0].dataValues.produtos});
+    }else{
+      res.render('./portal/produtos/revconfeitaria', {revestimento: undefined});
+    }
+  })
+  .catch(function(error){
+    res.render('./portal/produtos/revconfeitaria', {error});
+  })
+  
 }
 
 exports.subacucar= (req, res)=>{
