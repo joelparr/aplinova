@@ -37,7 +37,7 @@ window.onload = event=>{
             }
         })
         .catch(function(error){
-            alert("Nao ha subcategorias");
+            console.log("Nao ha subcategorias");
         });
     }
 }
