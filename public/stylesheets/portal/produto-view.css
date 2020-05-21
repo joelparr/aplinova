@@ -3,6 +3,10 @@
     margin: 0 2rem;
 }
 
+.produto-view__categories.produto-view__categories--subcategories {
+    column-count: 2;
+}
+
 .produto-view__segments {
     background-color: #F0F6ED;
 }

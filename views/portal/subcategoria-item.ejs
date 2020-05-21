@@ -1,0 +1,17 @@
+<div class="card-body subcategoria-item">
+  <div class="row w-100">
+      <img class="subcategoria-item__icon" src="./public/img/icon-produtos.svg" alt="Item" />
+      <div class="subcategoria-item__text">
+          <%= subcategoria.titulo %>
+      </div>
+  </div>
+  <div class="row">
+      <% if (subcategoria.produtos && subcategoria.produtos.length) {%>
+          <ul class="subcategoria-item__list">
+              <% subcategoria.produtos.forEach(produto => {%>
+                  <li><p><%= produto %></p></li>
+              <% }) %>
+          </ul>
+      <% } %>
+  </div>
+</div>
