@@ -21,6 +21,7 @@ search.addEventListener('click', function(event){
         treeviewDiv.classList.add("d-none");
         searchResult.classList.remove("d-none");
         console.log(data);
+        //Carregando os dados na tabela produto
         data.result.resultCat.forEach(element=>{
             let row = tableCategoria.insertRow(0);
             row.classList.add("categoria");
@@ -36,6 +37,7 @@ search.addEventListener('click', function(event){
                 })
             }
         })
+        //Carregando os dados na tabela produto
         data.result.resultProd.forEach(element=>{
             let row = tableProduto.insertRow(0);
             row.classList.add("produto");
@@ -44,7 +46,9 @@ search.addEventListener('click', function(event){
             row.insertCell(2).innerHTML = element.descricao;
             row.insertCell(3).innerHTML = element.categorias[0].titulo;
         })
+        //Recuperando a row categoria
         const categoriaRow = document.getElementsByClassName('categoria');
+        //Adicionando um event listener a linha da categoria
         Array.from(categoriaRow).forEach(function(cat){
             cat.addEventListener('click', function(event){
                 elementType = "sub";
@@ -67,8 +71,9 @@ search.addEventListener('click', function(event){
                 
             })
         })
-
+        //Recuperando a row produto
         const produtoRow = document.getElementsByClassName('produto');
+        //Adicionando um event listener para cada row
         Array.from(produtoRow).forEach(function(prod){
             prod.addEventListener('click', function(event){
                 elementType = "prod";

@@ -1,3 +1,8 @@
+/**
+ * Description: Modulo que monta os cards
+ * Author: Daniel
+ */
+//Declaracoes
 const anchor = document.getElementsByClassName('details');
 const cat = document.getElementsByClassName('cat');
 //Components do form
@@ -15,12 +20,14 @@ const getError = document.getElementById('getError');
 var elementId;
 var elementType;
 
+//Carregamento da tela
 window.onload = (event)=>{
     formTitulo.setAttribute('readonly', true);
     formDescricao.setAttribute('readonly', true);
     atualizar.disabled = true;
 }
 
+//Para cada linha da treeview adiciono um event listener
 Array.from(anchor).forEach(el=>{
     el.addEventListener('click', function(event){
         elementId = event.target.dataset.id;
@@ -28,6 +35,7 @@ Array.from(anchor).forEach(el=>{
         formDescricao.removeAttribute('readonly');
         atualizar.disabled = false;
         let url;
+        //Verificando se a linha e de produto ou subcategoria
         switch(event.target.dataset.type){
             case 'prod':
                 url = `/admin/produto/${event.target.dataset.id}`;
@@ -40,6 +48,7 @@ Array.from(anchor).forEach(el=>{
             default:
                 alert('Nao foi possivel identificar o item selecionado')
         }
+        //Recuperando a subcategoria
         getSubCategoria(url)
         .then(function(data){
             if(event.target.dataset.type === 'sub'){
@@ -48,12 +57,14 @@ Array.from(anchor).forEach(el=>{
                 formDescricao.value = data.subCategoria.descricao;
                 formSubcategoria.value = "-";
                 url = `/admin/categoria/${data.subCategoria.idCategoriaPai}`;
+                //Recuperando a categoria
                 return getCategoria(url);
             }else{
                 formTitulo.value = data.produto.titulo;
                 formDescricao.value = data.produto.descricao;
                 formSubcategoria.value = data.produto.categorias[0].titulo;
                 url = `/admin/categoria/${data.produto.categorias[0].idCategoriaPai}`;
+                //Recuperando a categoria
                 return getCategoria(url);
             }
         })
@@ -66,6 +77,7 @@ Array.from(anchor).forEach(el=>{
     })
 });
 
+//Promise que recupera a subcategoria
 function getSubCategoria(url){
     return new Promise((resolve, reject)=>{
         $.get(url, function(data){
@@ -79,6 +91,7 @@ function getSubCategoria(url){
     })
 }
 
+//Promise que recupera a categoria
 function getCategoria(url){
     return new Promise((resolve, reject)=>{
         $.get(url, function(data){
@@ -92,8 +105,10 @@ function getCategoria(url){
     });
 }
 
+//Acao do botao atualizar do formulario
 atualizar.addEventListener('click', function(event){
     event.preventDefault();
+    //Validacao do formulario
     if(formTitulo.value === "" || formDescricao.value === ""){
         document.getElementById("demo").innerHTML = "Todas os campos precisam ser preenchidos";
         return 0;
