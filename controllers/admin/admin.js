@@ -46,16 +46,13 @@ exports.index = (req, res)=>{
   //Post.find({ where: { ...}, include: [User]})
   Categoria.findAll({include:{model:Produto, as: 'produtos'}})
   .then(function(categorias){
-    console.log(categorias);
     if(categorias){
-      console.log(categorias);
       sendingData(req, res, './admin/index', {categorias: categorias});
     }else{
       sendingData(req, res, './admin/index', {message: "Nao foram encontradas nenhuma categoria"});
     }
   })
   .catch(function(error){
-    console.log(error);
     sendingData(req, res, './admin/index', {categorias: undefined, error: error});
   })
 }
@@ -140,8 +137,6 @@ exports.createProduto = (req, res)=>{
     titulo: req.body.prodTitulo,
     descricao: req.body.prodDescricao
   }
-  console.log(req.body.subCategoriaChecked);
-  console.log(req.body.subCategoria);
 
   var novoProduto;
 
@@ -201,7 +196,6 @@ exports.destroyProduto = (req, res)=>{
   //Caso seja um produto
   Produto.destroy({where:{id:req.params.id}})
   .then(function(result){
-    console.log(result);
     res.redirect('/admin');
   })
   .catch(function(error){
@@ -215,7 +209,6 @@ exports.destroySubCategoria = (req, res)=>{
   //Caso seja uma subcategoria
   Categoria.destroy({where:{id: req.params.id}})
   .then(function(result){
-    console.log(result);
     res.redirect('/admin');
   })
   .catch(function(error){
@@ -351,10 +344,8 @@ exports.getCategorias = (req, res)=>{
 }
 
 exports.getSubCategoria = (req, res)=>{
-  console.log(req.params.id);
   Categoria.findAll({where:{[Op.and]:[{idCategoriaPai: req.params.id},{idCategoria:0}]}})
   .then(function(subCategoria){
-    console.log(subCategoria);
     res.json({data: subCategoria, error:undefined});
   })
   .catch(function(error){

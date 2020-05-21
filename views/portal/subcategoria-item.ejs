@@ -2,14 +2,14 @@
   <div class="row w-100">
       <img class="subcategoria-item__icon" src="./public/img/icon-produtos.svg" alt="Item" />
       <div class="subcategoria-item__text">
-          <%= subcategoria.titulo %>
+          <%= hit.dataValues.titulo %>
       </div>
   </div>
   <div class="row">
-      <% if (subcategoria.produtos && subcategoria.produtos.length) {%>
+      <% if (hit.dataValues.produtos && hit.dataValues.produtos.length) {%>
           <ul class="subcategoria-item__list">
-              <% subcategoria.produtos.forEach(produto => {%>
-                  <li><p><%= produto %></p></li>
+              <% hit.dataValues.produtos.forEach(produto => {%>
+                  <li><p><%= produto.dataValues.titulo %></p></li>
               <% }) %>
           </ul>
       <% } %>

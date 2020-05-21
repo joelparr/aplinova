@@ -20,7 +20,6 @@ search.addEventListener('click', function(event){
     $.get(url, function(data){
         treeviewDiv.classList.add("d-none");
         searchResult.classList.remove("d-none");
-        console.log(data);
         //Carregando os dados na tabela produto
         data.result.resultCat.forEach(element=>{
             let row = tableCategoria.insertRow(0);

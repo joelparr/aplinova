@@ -31,9 +31,9 @@
     </div>
   </div>
   <div class="produto-view__categories produto-view__categories--subcategories">
-    <% if (subcategorias) { %>
-      <% subcategorias.forEach(subcategoria => { %>
-        <%- include('../subcategoria-item', {subcategoria}) %>
+    <% if(foodservice){ %>
+      <% foodservice.forEach(hit => { %>
+        <%- include('../subcategoria-item', {hit}) %>
       <%})%>
     <% } %>
   </div>
