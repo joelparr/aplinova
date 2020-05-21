@@ -2,6 +2,42 @@
  * Description: Modulo de controllers de dentro do portal da aplinova
  * Author: Findi
  */
+
+const subcategorias = [
+{
+    titulo: 'Para Panificação',
+    produtos: [
+        'Fermento Biológico Seco (Instant Dry Yeast)',
+        'Melhoradores de Farinhas',
+        'Gordura Vegetal em Pó Encapsulada',
+        'Aromas',
+        'Corantes',
+        'Substitutos de Cacau',
+        'Redutores de Sódio',
+        'Conservantes Naturais',
+        'Mel em Pó, Iogurte em Pó, Doce de Leite em Pó',
+        'Queijos em Pó',
+        'Extrato de Malte',
+        'Emulsificantes'
+    ]
+},
+  {
+    titulo: 'Para Produtos Lácteos',
+    produtos: [
+        'Gordura Vegetal em Pó Encapsulada',
+        'Aromas',
+        'Corantes Naturais',
+        'Conservantes Naturais',
+        'Crispies de Malte'
+    ]
+  },
+  {
+    titulo: 'Para Frutas e Hortaliças',
+    produtos: [
+        'Antioxidante Natural para Extensão de Shelf-Life'
+    ]
+  }
+]
 //Declaracoes de variaveis
 const models = require('../../models');
 const Categoria = models.Categoria;
@@ -34,7 +70,7 @@ exports.aromas = (req, res)=>{
   .catch(function(error){
     res.render('./portal/produtos/aromas', {aromas:undefined, error:error});
   })
-  
+
 }
 
 //Tela de corantes
@@ -46,12 +82,12 @@ exports.corantes = (req, res)=>{
   .catch(function(error){
     res.render('./portal/produtos/corantes', {corantes: undefined, error:error});
   })
-  
+
 }
 
 //Tela de foodservice
 exports.foodservice = (req, res)=>{
-  res.render('./portal/produtos/foodservice');
+  res.render('./portal/produtos/foodservice', {subcategorias});
 }
 
 //Tela de ingredientes funcionais
@@ -68,7 +104,7 @@ exports.prodNaturais = (req, res)=>{
   .catch(function(error){
     res.render('./portal/produtos/produtosnaturais', {produtos: undefined, error:error});
   })
-  
+
 }
 
 //Tela de produtos veganos
@@ -90,7 +126,7 @@ exports.revConfeitaria = (req, res)=>{
   .catch(function(error){
     res.render('./portal/produtos/revconfeitaria', {revestimento:undefined, error: error});
   })
-  
+
 }
 
 //Telas de substituto do acucar
