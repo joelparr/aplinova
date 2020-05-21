@@ -22,7 +22,7 @@
 </div>
 <div class="container-fluid" style="border: 1px solid black;">
     <div class="row">
-        <div class="col-md-6">
+        <div id="treeviewDiv" class="col-md-6">
             <% categorias.forEach(element=>{%>
                 <%if(element.idCategoria !== 0){%>
                     <ul class="treeview"> 
@@ -74,6 +74,38 @@
                     </ul>
             <%})%>
             
+        </div>
+        <div class="d-none col-md-6" id="searchResult">
+            <h3>Subcategorias</h3>
+            <table class="table table-sm table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">Titulo</th>
+                    <th scope="col">Descricao</th>
+                    <th scope="col">Categoria</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody id="tableCategoria">
+                  
+                </tbody>
+              </table>
+              <h3>Produtos</h3>
+            <table  class="table table-sm table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">Titulo</th>
+                    <th scope="col">Descricao</th>
+                    <th scope="col">Categoria</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody id="tableProduto">
+                  
+                </tbody>
+              </table>
         </div>
         <div class="col-md-6">
             <form action="/admin/produto" method="post">

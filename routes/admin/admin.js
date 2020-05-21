@@ -22,7 +22,8 @@ const {
     showCategoria,
     destroySubCategoria,
     updateSubCategoria,
-    updateProduto} = require('../../controllers/admin/admin.js');
+    updateProduto,
+    search} = require('../../controllers/admin/admin.js');
 
 //rotas
 //Raiz da chamada acontece no APP.JS
@@ -33,6 +34,7 @@ router.get('/new/categoria',isValid, newCategoria); //Formulario da categoria - 
 router.get('/produto/:id', isValid, showProduto);
 router.get('/subcategoria/:id', isValid, showSubCategoria);
 router.get('/categoria/:id', isValid, showCategoria);
+router.get('/search', search);
 //Create
 router.post('/produto', isValid, createProduto);
 router.post('/categoria', isValid, createCategoria); //Serve para subcategoria tambem
