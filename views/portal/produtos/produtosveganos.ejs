@@ -31,10 +31,11 @@
     </div>
   </div>
   <div class="d-flex flex-wrap mt-5 produto-view__categories">
-    <% const categorias = ['Aromas Doces e Salgados', 'Aromas Idênticos ao Natural', 'Base Turvadora Pó e Líquido', 'Aromas Naturais', 'Base Cremosa para Licores', 'Concentrados para Bebidas']; %>
-    <% categorias.forEach((item) => { %>
-      <%- include('../categoria-item', {itemName: item}) %>
-    <% }); %>
+    <% if(veganos){ %>
+      <% veganos.forEach(hit => { %>
+        <%- include('../subcategoria-item', {hit}) %>
+      <%})%>
+    <% } %>
   </div>
   <div class="row px-5 my-5">
     <div class="col produto-view__segments">
