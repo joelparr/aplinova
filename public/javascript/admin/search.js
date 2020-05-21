@@ -34,6 +34,7 @@ search.addEventListener('click', function(event){
                 getCategoria(urlP)
                 .then(function(el){
                     row.insertCell(3).innerHTML = el.categoria.titulo;
+                    row.insertCell(4).innerHTML = `<a href="/admin/subcategoria/${element.id}?method=delete" data-method="delete"><i class="fas fa-trash-alt" style="color: red;"></i></a>`
                 })
             }
         })
@@ -45,6 +46,7 @@ search.addEventListener('click', function(event){
             row.insertCell(1).innerHTML = element.titulo;
             row.insertCell(2).innerHTML = element.descricao;
             row.insertCell(3).innerHTML = element.categorias[0].titulo;
+            row.insertCell(4).innerHTML = `<a href="/admin/produto/${element.id}?method=delete" data-method="delete"><i class="fas fa-trash-alt" style="color: red;"></i></a>`
         })
         //Recuperando a row categoria
         const categoriaRow = document.getElementsByClassName('categoria');

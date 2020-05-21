@@ -201,6 +201,7 @@ exports.destroyProduto = (req, res)=>{
   //Caso seja um produto
   Produto.destroy({where:{id:req.params.id}})
   .then(function(result){
+    console.log(result);
     res.redirect('/admin');
   })
   .catch(function(error){
@@ -214,6 +215,7 @@ exports.destroySubCategoria = (req, res)=>{
   //Caso seja uma subcategoria
   Categoria.destroy({where:{id: req.params.id}})
   .then(function(result){
+    console.log(result);
     res.redirect('/admin');
   })
   .catch(function(error){
