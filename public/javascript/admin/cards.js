@@ -43,7 +43,7 @@ Array.from(anchor).forEach(el=>{
         getSubCategoria(url)
         .then(function(data){
             if(event.target.dataset.type === 'sub'){
-                console.log(data);
+                //console.log(data);
                 formTitulo.value = data.subCategoria.titulo;
                 formDescricao.value = data.subCategoria.descricao;
                 formSubcategoria.value = "-";

@@ -56,7 +56,7 @@ exports.index = (req, res)=>{
   })
   .catch(function(error){
     console.log(error);
-    sendingData(req, res, './admin/index', {error});
+    sendingData(req, res, './admin/index', {categorias: undefined, error: error});
   })
 }
 
@@ -283,6 +283,52 @@ exports.updateProduto = (req, res)=>{
   })
   .catch(function(error){
     res.json({error});
+  })
+}
+
+//AJAX Search da pagina principal
+exports.search = (req, res)=>{
+  var result = {
+  }
+  searchProdutos(req)
+  .then(function(resultProd){
+    if(resultProd.length){
+      result.resultProd = resultProd;
+    }
+    return searchCategoria(req);
+  })
+  .then(function(resultCat){
+    result.resultCat = resultCat;
+    res.json({result});
+  })
+  .catch(function(error){
+    res.json({error});
+  })
+}
+
+//Promise para achar o produto
+function searchProdutos(req){
+  return new Promise((resolve, reject)=>{
+    Produto.findAll({where:{titulo:{[Op.like]:`%${req.query.prod}%`}}, include:{model:Categoria, as:'categorias'}})
+    .then(function(produtos){
+      resolve(produtos);
+    })
+    .catch(function(error){
+      reject(0);
+    })
+  });
+}
+
+//Promise para achar a categoria
+function searchCategoria(req){
+  return new Promise((resolve, reject)=>{
+    Categoria.findAll({where:{titulo:{[Op.like]:`%${req.query.prod}%`}}, include:{model:Produto, as:'produtos'}})
+    .then(function(categorias){
+      resolve(categorias);
+    })
+    .catch(function(error){
+      resolve(0);
+    })
   })
 }
 
