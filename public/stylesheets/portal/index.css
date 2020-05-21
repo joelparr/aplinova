@@ -2,6 +2,7 @@
 @import '../components/footer.css';
 @import '../components/navbar.css';
 @import '../components/categoria-item.css';
+@import '../components/subcategoria-item.css';
 @import '../components/home-introduction.css';
 @import '../components/home-company.css';
 @import '../components/produto-card.css';
@@ -21,5 +22,5 @@ html, body{
 }
 
 ul li{
-    display:inline;
+    list-style: none;
 }
