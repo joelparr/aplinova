@@ -24,7 +24,6 @@ Array.from(categoria).forEach(function(cat){
 Array.from(subcategoria).forEach(function(sub){
 		sub.addEventListener('click', function(subli){
 			//catli.srcElement.offsetParent.children[0].children[0].children
-			console.log(subli);
 			if(subli.path !== undefined){
 				Array.from(subli.path[2].children).forEach(el=>{
 					if(el.localName === "ul" && el.classList[0] !== "treeview"){
