@@ -354,6 +354,10 @@ exports.getSubCategoria = (req, res)=>{
   })
 }
 
+exports.userconfig = (req, res)=>{
+  sendingData(req, res, './admin/userconfig');
+}
+
 //Logout da aplicacao
 exports.logout = (req, res)=>{
   req.logout();
