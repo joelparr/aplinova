@@ -1,3 +1,92 @@
 <%- include('./header') %>
-Aqui sera a consiguracao do usuario
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card text-center" style="background-color: transparent;">
+                <h5 class="card-header">Usuario Logado</h5>
+                <div class="card-body">
+                    <div class="row justify-content-center">
+                        <div class="card shadow-sm" style="width: 18rem;">
+                            <div class="d-flex flex-row justify-content-center align-items-center mt-3"><i class="far fa-user-circle fa-8x"></i></div>
+                            <%if(usuario){%>
+                            <div class="card-body">
+                              <h5 class="card-title"><%=usuario.firstName%> <%=usuario.lastName%></h5>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"><%=usuario.email%></li>
+                                <li class="list-group-item">admin: <%=usuario.admin%></li>
+                                <li class="list-group-item">role: <%=usuario.role%></li>
+                                <li class="list-group-item">username: <%=usuario.username%></li>
+                                <li class="list-group-item"><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-id=<%=usuario.id%> id="btn-mudarsenha">Mudar senha</a></li>
+                              </ul>
+                              <%}%>
+                        </div>
+                    </div>
+                </div>
+              </div>
+        </div>
+        <div class="col-md-8"></div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <div class="card text-center" style="background-color: transparent;">
+                <div class="card-header">Lista de requisicao de usuario</div>
+                <div class="card-body">
+                    <div class="row shadow-sm border rounded list-group">
+                        <%if(ativos && ativos.length){%>
+                        <%ativos.forEach(hit=>{%>
+                        <button class="list-group-item list-group-item-action"><%=hit.firstName%></button>
+                        <%})%>
+                        <%}else{%>
+                        <p>Nao ha usuarios inativos</p>
+                        <%}%>
+                    </div>
+                </div>
+                <%if(ativos  && ativos.length){%>
+                <div class="card-footer text-muted">
+                  Menos de 2 dias atras
+                </div>
+                <%}else{%>
+                <div class="card-footer text-muted">
+                    Nenhuma data
+                </div>
+                <%}%>
+              </div>
+        </div>
+        <div class="col-md-8"></div>
+    </div>
+</div>
+ 
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Mude sua senha</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">New Password</label>
+                    <input type="password" class="form-control" id="inputPassword1" placeholder="Enter password">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Repeat Password</label>
+                    <input type="password" class="form-control" id="inputPassword2" placeholder="Repeat password">
+                </div>
+                <p id="msg" style="color:red; font-family: sans-serif;"></p>
+                <button type="submit" class="btn btn-primary" id="btn-salvar">Salvar</button>
+            </form>
+        </div>
+        <input class="d-none" type="text" id="method" name="method" value="patch">
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="../../public/javascript/admin/userconfig.js"></script>
 <%- include('./footer') %>

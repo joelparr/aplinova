@@ -10,6 +10,7 @@ const Header = models.Header;
 const User = models.User;
 const Produto = models.Produto;
 const {Op} = require('sequelize');
+const bcrypt = require('bcrypt-nodejs');
 
 //Funcao de envio de mensagens e status para todas as telas
 function sendingData(req, res, urlView, argumentos){
@@ -327,7 +328,6 @@ function searchCategoria(req){
   })
 }
 
-
 //Funcao para capturar as categorias do banco
 //Categoria (idCategoria) === 0  -> subcategoria
 //Categoria === (?!==0) -> categoria principal (idCategoriaPai)
@@ -355,11 +355,57 @@ exports.getSubCategoria = (req, res)=>{
 }
 
 exports.userconfig = (req, res)=>{
-  sendingData(req, res, './admin/userconfig');
+  User.findAll({where:{active:0}})
+  .then(function(users){
+    sendingData(req, res, './admin/userconfig', {ativos: users});
+  })
+  .catch(function(error){
+    sendingData(req, res, './admin/userconfig', {error: 'Houve um problema ao buscar os usuarios nao ativos', ativos: undefined});
+  })
+  
 }
 
 //Logout da aplicacao
 exports.logout = (req, res)=>{
   req.logout();
   res.redirect('/login/show');
+}
+
+//Ajax para comparar passwords entre o novo password e o atual do usuario
+exports.comparePassword = (req, res)=>{
+  var isValidPassword = function(userpass, password){
+    return bcrypt.compareSync(password, userpass);
+  }
+
+  User.findByPk(req._passport.session.user)
+  .then(function(user){
+    if(!user){
+      res.json({igual:false});
+    }
+    res.json({igual: isValidPassword(user.password, req.body.newpassword)});
+  })
+  .catch(function(error){
+    //pensar o que vou fazer com esse retorno
+    res.json({error});
+  })
+}
+
+exports.updateUserPassword = (req, res)=>{
+
+  const generateHashPassword = function(password){
+    return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+  }
+
+  var data = {}
+  if(req.body.password){
+    data.password = generateHashPassword(req.body.password);
+  }
+  
+  User.update(data, {where:{id:req.params.id}})
+  .then(function(rowsUpdated){
+    res.json({rowsUpdated});
+  })
+  .catch(function(error){
+    res.json({error});
+  })
 }
