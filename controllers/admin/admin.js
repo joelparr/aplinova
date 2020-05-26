@@ -23,15 +23,19 @@ function sendingData(req, res, urlView, argumentos){
       if(!argumentos.message) argumentos.message=undefined;
       if(!argumentos.eror) argumentos.error=undefined;
     }
-    //Procurando o usuario do Id salvo na session
+
     User.findByPk(userId)
     .then(function(user){
       argumentos.usuario = user.dataValues;
+      return User.count({where:{active:0}})
+    })
+    .then(function(qtd){
+      argumentos.inativos = qtd
       res.render(urlView, argumentos);
     })
-    .catch(function(err){
+    .catch(function(error){
       argumentos.usuario = undefined;
-      //Poderiamos levar o erro a tela setando argumentos.error = err
+      argumentos.inativos = undefined;
       res.render(urlView, argumentos);
     })
 }
@@ -92,10 +96,9 @@ exports.createCategoria = async (req, res)=>{
     })
   }
 
-  //Chamando a Promise que ira inserir uma categoria
-  ccCreateCategoria(categoria)
+  Categoria.create(categoria)
   .then(function(newCategoria){
-     newCategoria.createHeader({titulo: req.body.headerTitulo, descricao: req.body.headerDescricao})
+    newCategoria.createHeader({titulo: req.body.headerTitulo, descricao: req.body.headerDescricao})
     return newCategoria;
   })
   .then(function(done){
@@ -103,25 +106,7 @@ exports.createCategoria = async (req, res)=>{
     req.body.categoriaChecked === "on" ? res.redirect('/admin') : res.json(done);
   })
   .catch(function(error){
-    //Connect flash error
     req.body.categoriaChecked === "on" ? res.redirect('/admin') : res.json(error);
-  })
-}
-
-// Promise criada para criar uma categoria
-function ccCreateCategoria(categoria){
-  return new Promise((resolve, reject)=>{
-    Categoria.create(categoria)
-    .then(function(newCategoria){
-      if(newCategoria){
-        resolve(newCategoria);
-      }else{
-        reject(0);
-      }
-    })
-    .catch(function(error){
-      reject(0);
-    })
   })
 }
 
@@ -141,10 +126,10 @@ exports.createProduto = (req, res)=>{
 
   var novoProduto;
 
-  cpProdutoNovo(dataBody)
+  Produto.create(dataBody)
   .then(function(novoProd){
     novoProduto = novoProd;
-    return cpRecuperarCategoria(parseInt(req.body.categoriaPai));
+    return Categoria.findOne({where:{idCategoria: parseInt(req.body.categoriaPai)}})
   })
   .then(function(categoria){
     if(req.body.subCategoriaChecked === 'on'){
@@ -153,8 +138,6 @@ exports.createProduto = (req, res)=>{
     }else{
       return novoProduto.setCategorias([req.body.subCategoria]);
     }
-    
-    //return cpVinculoProdCat({produtoId: parseInt(novoProduto.id), categoriaId: parseInt(idCat)});  
   })
   .then(function(vinculoCatProd){
     // TODO: adicionar um connect flash
@@ -163,32 +146,6 @@ exports.createProduto = (req, res)=>{
   .catch(function(error){
     // TODO:  Verificar a necessidade de enviar um connect flash
     console.log(error);
-  })
-}
-
-//Promise que cria um novo produto
-function cpProdutoNovo(data){
-  return new Promise((resolve, reject)=>{
-    Produto.create(data)
-    .then(function(novoProduto){
-      novoProduto ? resolve(novoProduto) : reject(0);
-    })
-    .catch(function(error){
-      reject(error);
-    })
-  })
-}
-
-//Promise que recupera o id da categoria pai
-function cpRecuperarCategoria(catPai){
-  return new Promise((resolve, reject)=>{
-    Categoria.findOne({where:{idCategoria: catPai}})
-    .then(function(categoria){
-      categoria ? resolve(categoria) : reject(0);
-    })
-    .catch(function(error){
-      reject(error);
-    })
   })
 }
 
@@ -286,12 +243,13 @@ exports.updateProduto = (req, res)=>{
 exports.search = (req, res)=>{
   var result = {
   }
-  searchProdutos(req)
+
+  Produto.findAll({where:{titulo:{[Op.like]:`%${req.query.prod}%`}}, include:{model:Categoria, as:'categorias'}})
   .then(function(resultProd){
     if(resultProd.length){
       result.resultProd = resultProd;
     }
-    return searchCategoria(req);
+    return Categoria.findAll({where:{titulo:{[Op.like]:`%${req.query.prod}%`}}, include:{model:Produto, as:'produtos'}})
   })
   .then(function(resultCat){
     result.resultCat = resultCat;
@@ -299,32 +257,6 @@ exports.search = (req, res)=>{
   })
   .catch(function(error){
     res.json({error});
-  })
-}
-
-//Promise para achar o produto
-function searchProdutos(req){
-  return new Promise((resolve, reject)=>{
-    Produto.findAll({where:{titulo:{[Op.like]:`%${req.query.prod}%`}}, include:{model:Categoria, as:'categorias'}})
-    .then(function(produtos){
-      resolve(produtos);
-    })
-    .catch(function(error){
-      reject(0);
-    })
-  });
-}
-
-//Promise para achar a categoria
-function searchCategoria(req){
-  return new Promise((resolve, reject)=>{
-    Categoria.findAll({where:{titulo:{[Op.like]:`%${req.query.prod}%`}}, include:{model:Produto, as:'produtos'}})
-    .then(function(categorias){
-      resolve(categorias);
-    })
-    .catch(function(error){
-      resolve(0);
-    })
   })
 }
 

@@ -2,7 +2,7 @@
  * middleware das rotas
  */
 const express = require('express');
-const {login, newUser, dashboard} = require('../controllers/usuario.js');
+const {login, newUser, sendemail} = require('../controllers/usuario.js');
 const passport = require('passport');
 
 const routes = express.Router();
@@ -13,10 +13,11 @@ routes.post('/send', passport.authenticate('local-signin', {
     failureRedirect: '/login/show',
     failureFlash: true
 }))
+routes.get('/sendemail', sendemail);
 routes.get('/signin', newUser);
 routes.post('/signup', passport.authenticate('local-signup', {
-    successRedirect: '/admin',
-    failureRedirect: 'login/signin',
+    successRedirect: '/login/sendemail',
+    failureRedirect: '/login/signin',
     failureFlash: true
 }));
 module.exports = routes;

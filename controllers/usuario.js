@@ -12,3 +12,7 @@ exports.login = (req, res)=>{
 exports.newUser = (req, res)=>{
     res.render('./usuarios/signin', {error: req.flash('error')});
 }
+
+exports.sendemail = (req, res)=>{
+
+}
