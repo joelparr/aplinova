@@ -2,7 +2,7 @@
  * middleware das rotas
  */
 const express = require('express');
-const {login, newUser, sendemail} = require('../controllers/usuario.js');
+const {login, newUser, sendemail, forgot, createForgot} = require('../controllers/usuario.js');
 const passport = require('passport');
 
 const routes = express.Router();
@@ -20,4 +20,7 @@ routes.post('/signup', passport.authenticate('local-signup', {
     failureRedirect: '/login/signin',
     failureFlash: true
 }));
+routes.get('/forgot', forgot);
+routes.post('/forgot', createForgot)
+
 module.exports = routes;

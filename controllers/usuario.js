@@ -6,6 +6,7 @@
 const fetch = require('node-fetch');
 const models = require('../models');
 const User = models.User;
+const Forgotcode = models.Forgotcode;
 
  //Tela de login
 exports.login = (req, res)=>{
@@ -57,6 +58,41 @@ exports.sendemail = (req, res)=>{
         req.flash('error', 'Nao ha uma sessao valida');
         res.redirect('/login/show');
     }
+}
+
+exports.createForgot = (req, res)=>{
+    const forgotCode = Math.floor(Math.random() * (9000)) + 1000;
+    var userInstance;
+    User.findOne({where:{email:req.body.email}})
+    .then(function(user){
+        //create da tabela de forgotcodes
+        if(user){
+            userInstance = user;
+            return Forgotcode.update({active:1}, {where:{id:user.dataValues.id}})
+        }else{
+            req.flash('error', 'Esse email nao existe na base.');
+            res.redirect('/login/forgot');
+        }
+    })
+    .then(function(updated){
+        return userInstance.createForgotcode({codigo: String(forgotCode)})
+    })
+    .then(function(){
+        //Enviar um email informando o codigo enviado
+    })
+    .then(function(result){
+        req.logout();
+        req.flash('envio', 'Email foi enviado com codigo.');
+        res.redirect('/login/show');
+    })
+    .catch(function(error){
+        //repassar o erro ao achar o usuario ou erro de criacao do codigo na tabela
+        res.render('./usuarios/login', {error});
+    })
+}
+
+exports.forgot = (req, res)=>{
+    res.render('./usuarios/forgot', {error: req.flash('error'), envio: req.flash('envio')});
 }
 
 
