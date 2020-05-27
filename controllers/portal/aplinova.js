@@ -88,45 +88,49 @@ exports.corantes = (req, res)=>{
 
 //Tela de foodservice
 exports.foodservice = (req, res)=>{
-  getCat('foodservice')
-  .then(function(fs){
-    if(fs !== 0){
-      return getSub(fs.dataValues.idCategoria)
+  const url = './portal/produtos/foodservice';
+  
+  Categoria.findOne({where:{titulo: 'foodservice'}})
+  .then(function(cat){
+    if(cat !== 0){
+      return Categoria.findAll({where:{[Op.and]:[{idCategoria:0},{idCategoriaPai: cat.dataValues.idCategoria}]}, include:{model:Produto, as:'produtos'}})
     }else{
-      res.render('./portal/produtos/foodservice', {error: "Nao foi encontrada a categoria", foodservice: undefined});
+      res.render(url, {error: "Nao foi encontrada a categoria", foodservice: undefined});
     }
   })
-  .then(function(subFs){
-    if(subFs !== 0){
-      res.render('./portal/produtos/foodservice', {foodservice: subFs, error:undefined});
+  .then(function(subCat){
+    if(subCat !== 0){
+      res.render(url, {foodservice: subCat, error:undefined});
     }else{
-      res.render('./portal/produtos/foodservice', {error: "Nao foi encontrada a subcategoria", foodservice: undefined});
+      res.render(url, {error: "Nao foi encontrada a subcategoria", foodservice: undefined});
     }
   })
   .catch(function(error){
-    res.render('./portal/produtos/foodservice', {error: error, foodservice: undefined});
+    res.render(url, {error: error, foodservice: undefined});
   })
 }
 
 //Tela de ingredientes funcionais
 exports.ingredFuncionais = (req, res)=>{
-  getCat('ingredientes funcionais')
-  .then(function(inf){
-    if(inf !== 0){
-      return getSub(inf.dataValues.idCategoria)
+  const url = './portal/produtos/ingredientesfuncionais';
+  
+  Categoria.findOne({where:{titulo: 'ingredientes funcionais'}})
+  .then(function(cat){
+    if(cat !== 0){
+      return Categoria.findAll({where:{[Op.and]:[{idCategoria:0},{idCategoriaPai: cat.dataValues.idCategoria}]}, include:{model:Produto, as:'produtos'}})
     }else{
-      res.render('./portal/produtos/ingredientesfuncionais', {error: "Nao foi encontrada a categoria", ingredientes: undefined});
+      res.render(url, {error: "Nao foi encontrada a categoria", ingredientes: undefined});
     }
   })
-  .then(function(subIf){
-    if(subIf !== 0){
-      res.render('./portal/produtos/ingredientesfuncionais', {ingredientes: subIf, error:undefined});
+  .then(function(subCat){
+    if(subCat !== 0){
+      res.render(url, {ingredientes: subCat, error:undefined});
     }else{
-      res.render('./portal/produtos/ingredientesfuncionais', {error: "Nao foi encontrada a subcategoria", ingredientes: undefined});
+      res.render(url, {error: "Nao foi encontrada a subcategoria", ingredientes: undefined});
     }
   })
   .catch(function(error){
-    res.render('./portal/produtos/ingredientesfuncionais', {error: error, ingredientes: undefined});
+    res.render(url, {error: error, ingredientes: undefined});
   })
 }
 
@@ -144,45 +148,48 @@ exports.prodNaturais = (req, res)=>{
 
 //Tela de produtos veganos
 exports.prodVeganos = (req, res)=>{
-  getCat('produtos veganos e orgânicos')
-  .then(function(veg){
-    if(veg !== 0){
-      return getSub(veg.dataValues.idCategoria)
+  const url = './portal/produtos/produtosveganos';
+  Categoria.findOne({where:{titulo: 'produtos veganos e orgânicos'}})
+  .then(function(cat){
+    if(cat !== 0){
+      return Categoria.findAll({where:{[Op.and]:[{idCategoria:0},{idCategoriaPai: cat.dataValues.idCategoria}]}, include:{model:Produto, as:'produtos'}})
     }else{
-      res.render('./portal/produtos/produtosveganos', {error: "Nao foi encontrada a categoria", veganos: undefined});
+      res.render(url, {error: "Nao foi encontrada a categoria", veganos: undefined});
     }
   })
-  .then(function(subVeg){
-    if(subVeg !== 0){
-      res.render('./portal/produtos/produtosveganos', {veganos: subVeg, error:undefined});
+  .then(function(subCat){
+    if(subCat !== 0){
+      res.render(url, {veganos: subCat, error:undefined});
     }else{
-      res.render('./portal/produtos/produtosveganos', {error: "Nao foi encontrada a subcategoria", veganos: undefined});
+      res.render(url, {error: "Nao foi encontrada a subcategoria", veganos: undefined});
     }
   })
   .catch(function(error){
-    res.render('./portal/produtos/produtosveganos', {error: error, veganos: undefined});
+    res.render(url, {error: error, veganos: undefined});
   })
 }
 
 //Tela de proteinas
 exports.proteinas = (req, res)=>{
-  getCat('proteínas')
-  .then(function(pro){
-    if(pro !== 0){
-      return getSub(pro.dataValues.idCategoria)
+  const url = './portal/produtos/proteinas';
+
+  Categoria.findOne({where:{titulo: 'proteínas'}})
+  .then(function(cat){
+    if(cat !== 0){
+      return Categoria.findAll({where:{[Op.and]:[{idCategoria:0},{idCategoriaPai: cat.dataValues.idCategoria}]}, include:{model:Produto, as:'produtos'}})
     }else{
-      res.render('./portal/produtos/proteinas', {error: "Nao foi encontrada a categoria", proteinas: undefined});
+      res.render(url, {error: "Nao foi encontrada a categoria", proteinas: undefined});
     }
   })
-  .then(function(subPro){
-    if(subPro !== 0){
-      res.render('./portal/produtos/proteinas', {proteinas: subPro, error:undefined});
+  .then(function(subCat){
+    if(subCat !== 0){
+      res.render(url, {proteinas: subCat, error:undefined});
     }else{
-      res.render('./portal/produtos/proteinas', {error: "Nao foi encontrada a subcategoria", proteinas: undefined});
+      res.render(url, {error: "Nao foi encontrada a subcategoria", proteinas: undefined});
     }
   })
   .catch(function(error){
-    res.render('./portal/produtos/proteinas', {error: error, proteinas: undefined});
+    res.render(url, {error: error, proteinas: undefined});
   })
 }
 
@@ -200,52 +207,30 @@ exports.revConfeitaria = (req, res)=>{
 
 //Telas de substituto do acucar
 exports.subacucar= (req, res)=>{
-  getCat('substituto de açúcar e fibras')
-  .then(function(saf){
-    if(saf !== 0){
-      return getSub(saf.dataValues.idCategoria)
+
+  const url = './portal/produtos/subacucarfibras';
+  
+  Categoria.findOne({where:{titulo: 'substituto de açúcar e fibras'}})
+  .then(function(cat){
+    if(cat !== 0){
+      return Categoria.findAll({where:{[Op.and]:[{idCategoria:0},{idCategoriaPai: cat.dataValues.idCategoria}]}, include:{model:Produto, as:'produtos'}})
     }else{
-      res.render('./portal/produtos/subacucarfibras', {error: "Nao foi encontrada a categoria", subsAc: undefined});
+      res.render(url, {error: "Nao foi encontrada a categoria", subsAc: undefined});
     }
   })
-  .then(function(subSaf){
-    if(subSaf !== 0){
-      res.render('./portal/produtos/subacucarfibras', {subsAc: subSaf, error:undefined});
+  .then(function(subCat){
+    if(subCat !== 0){
+      res.render(url, {subsAc: subCat, error:undefined});
     }else{
-      res.render('./portal/produtos/subacucarfibras', {error: "Nao foi encontrada a subcategoria", subsAc: undefined});
+      res.render(url, {error: "Nao foi encontrada a subcategoria", subsAc: undefined});
     }
   })
   .catch(function(error){
-    res.render('./portal/produtos/subacucarfibras', {error: error, subsAc: undefined});
+    res.render(url, {error: error, subsAc: undefined});
   })
 }
 
 //Tela do nossa empresa
 exports.nossaempresa = (req, res)=>{
   res.render('./portal/nossaempresa')
-}
-
-//Promises get cat e sub
-function getCat(categoria){
-  return new Promise((resolve, reject)=>{
-    Categoria.findOne({where:{titulo: categoria}})
-    .then(function(foodservice){
-      resolve(foodservice);
-    })
-    .catch(function(error){
-      reject(0)
-    })
-  })
-}
-
-function getSub(idCategoriaPai){
-  return new Promise((resolve, reject)=>{
-    Categoria.findAll({where:{[Op.and]:[{idCategoria:0},{idCategoriaPai: idCategoriaPai}]}, include:{model:Produto, as:'produtos'}})
-    .then(function(subFs){
-      resolve(subFs);
-    })
-    .catch(function(error){
-      reject(0);
-    })
-  })
 }

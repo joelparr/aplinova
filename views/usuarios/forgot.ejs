@@ -1,0 +1,32 @@
+<%- include('./header') %>
+<div class="user_card">
+    <div class="d-flex justify-content-start">
+        <h6 style="color:white;">Entre com seu email de cadastro</h6>
+    </div>
+    <div class="d-flex justify-content-center form_container">
+        <form action="/login/forgot" method='post'>
+            <div class="input-group mb-3">
+            <div class="input-group-append">
+                <span class="input-group-text logo"><i class="fas fa-user"></i></span>
+            </div>
+            <input type="email" name="email" id="email" class="form-control input_user" value="" placeholder="email" spellcheck="false" required>
+            </div>
+            <%if(error){%>
+            <div><span style="color: red;"><%=error%></span></div>
+            <%}%>
+            <%if(envio){%>
+            <div><span style="color: red;"><%=envio%></span></div>
+            <%}%>
+            <div class="d-flex justify-content-center mt-3 login_container">
+            <button type="submit" id="enviar" name="button" class="btn login_btn">Enviar</button>
+            </div>
+        </form>
+    </div>
+    <div class="mt-4 groupe-liens">
+        <div class="d-flex justify-content-center links">
+            <span style="color:white;">Retornar a tela anterior?</span> <a href="/login/show" class="ml-2 liens">Login</a>
+        </div>
+    </div>
+</div>
+<script src="../../public/javascript/usuario/forgot.js"></script>
+<%- include('./footer') %>

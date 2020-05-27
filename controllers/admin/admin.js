@@ -10,6 +10,7 @@ const Header = models.Header;
 const User = models.User;
 const Produto = models.Produto;
 const {Op} = require('sequelize');
+const bcrypt = require('bcrypt-nodejs');
 
 //Funcao de envio de mensagens e status para todas as telas
 function sendingData(req, res, urlView, argumentos){
@@ -22,15 +23,19 @@ function sendingData(req, res, urlView, argumentos){
       if(!argumentos.message) argumentos.message=undefined;
       if(!argumentos.eror) argumentos.error=undefined;
     }
-    //Procurando o usuario do Id salvo na session
+
     User.findByPk(userId)
     .then(function(user){
       argumentos.usuario = user.dataValues;
+      return User.count({where:{active:0}})
+    })
+    .then(function(qtd){
+      argumentos.inativos = qtd
       res.render(urlView, argumentos);
     })
-    .catch(function(err){
+    .catch(function(error){
       argumentos.usuario = undefined;
-      //Poderiamos levar o erro a tela setando argumentos.error = err
+      argumentos.inativos = undefined;
       res.render(urlView, argumentos);
     })
 }
@@ -91,10 +96,9 @@ exports.createCategoria = async (req, res)=>{
     })
   }
 
-  //Chamando a Promise que ira inserir uma categoria
-  ccCreateCategoria(categoria)
+  Categoria.create(categoria)
   .then(function(newCategoria){
-     newCategoria.createHeader({titulo: req.body.headerTitulo, descricao: req.body.headerDescricao})
+    newCategoria.createHeader({titulo: req.body.headerTitulo, descricao: req.body.headerDescricao})
     return newCategoria;
   })
   .then(function(done){
@@ -102,25 +106,7 @@ exports.createCategoria = async (req, res)=>{
     req.body.categoriaChecked === "on" ? res.redirect('/admin') : res.json(done);
   })
   .catch(function(error){
-    //Connect flash error
     req.body.categoriaChecked === "on" ? res.redirect('/admin') : res.json(error);
-  })
-}
-
-// Promise criada para criar uma categoria
-function ccCreateCategoria(categoria){
-  return new Promise((resolve, reject)=>{
-    Categoria.create(categoria)
-    .then(function(newCategoria){
-      if(newCategoria){
-        resolve(newCategoria);
-      }else{
-        reject(0);
-      }
-    })
-    .catch(function(error){
-      reject(0);
-    })
   })
 }
 
@@ -140,10 +126,10 @@ exports.createProduto = (req, res)=>{
 
   var novoProduto;
 
-  cpProdutoNovo(dataBody)
+  Produto.create(dataBody)
   .then(function(novoProd){
     novoProduto = novoProd;
-    return cpRecuperarCategoria(parseInt(req.body.categoriaPai));
+    return Categoria.findOne({where:{idCategoria: parseInt(req.body.categoriaPai)}})
   })
   .then(function(categoria){
     if(req.body.subCategoriaChecked === 'on'){
@@ -152,8 +138,6 @@ exports.createProduto = (req, res)=>{
     }else{
       return novoProduto.setCategorias([req.body.subCategoria]);
     }
-    
-    //return cpVinculoProdCat({produtoId: parseInt(novoProduto.id), categoriaId: parseInt(idCat)});  
   })
   .then(function(vinculoCatProd){
     // TODO: adicionar um connect flash
@@ -162,32 +146,6 @@ exports.createProduto = (req, res)=>{
   .catch(function(error){
     // TODO:  Verificar a necessidade de enviar um connect flash
     console.log(error);
-  })
-}
-
-//Promise que cria um novo produto
-function cpProdutoNovo(data){
-  return new Promise((resolve, reject)=>{
-    Produto.create(data)
-    .then(function(novoProduto){
-      novoProduto ? resolve(novoProduto) : reject(0);
-    })
-    .catch(function(error){
-      reject(error);
-    })
-  })
-}
-
-//Promise que recupera o id da categoria pai
-function cpRecuperarCategoria(catPai){
-  return new Promise((resolve, reject)=>{
-    Categoria.findOne({where:{idCategoria: catPai}})
-    .then(function(categoria){
-      categoria ? resolve(categoria) : reject(0);
-    })
-    .catch(function(error){
-      reject(error);
-    })
   })
 }
 
@@ -285,12 +243,13 @@ exports.updateProduto = (req, res)=>{
 exports.search = (req, res)=>{
   var result = {
   }
-  searchProdutos(req)
+
+  Produto.findAll({where:{titulo:{[Op.like]:`%${req.query.prod}%`}}, include:{model:Categoria, as:'categorias'}})
   .then(function(resultProd){
     if(resultProd.length){
       result.resultProd = resultProd;
     }
-    return searchCategoria(req);
+    return Categoria.findAll({where:{titulo:{[Op.like]:`%${req.query.prod}%`}}, include:{model:Produto, as:'produtos'}})
   })
   .then(function(resultCat){
     result.resultCat = resultCat;
@@ -300,33 +259,6 @@ exports.search = (req, res)=>{
     res.json({error});
   })
 }
-
-//Promise para achar o produto
-function searchProdutos(req){
-  return new Promise((resolve, reject)=>{
-    Produto.findAll({where:{titulo:{[Op.like]:`%${req.query.prod}%`}}, include:{model:Categoria, as:'categorias'}})
-    .then(function(produtos){
-      resolve(produtos);
-    })
-    .catch(function(error){
-      reject(0);
-    })
-  });
-}
-
-//Promise para achar a categoria
-function searchCategoria(req){
-  return new Promise((resolve, reject)=>{
-    Categoria.findAll({where:{titulo:{[Op.like]:`%${req.query.prod}%`}}, include:{model:Produto, as:'produtos'}})
-    .then(function(categorias){
-      resolve(categorias);
-    })
-    .catch(function(error){
-      resolve(0);
-    })
-  })
-}
-
 
 //Funcao para capturar as categorias do banco
 //Categoria (idCategoria) === 0  -> subcategoria
@@ -354,8 +286,77 @@ exports.getSubCategoria = (req, res)=>{
   })
 }
 
+exports.userconfig = (req, res)=>{
+  User.findAll({where:{active:0}})
+  .then(function(users){
+    sendingData(req, res, './admin/userconfig', {ativos: users});
+  })
+  .catch(function(error){
+    sendingData(req, res, './admin/userconfig', {error: 'Houve um problema ao buscar os usuarios nao ativos', ativos: undefined});
+  })
+  
+}
+
 //Logout da aplicacao
 exports.logout = (req, res)=>{
   req.logout();
   res.redirect('/login/show');
+}
+
+//Ajax para comparar passwords entre o novo password e o atual do usuario
+exports.comparePassword = (req, res)=>{
+  var isValidPassword = function(userpass, password){
+    return bcrypt.compareSync(password, userpass);
+  }
+
+  User.findByPk(req._passport.session.user)
+  .then(function(user){
+    if(!user){
+      res.json({igual:false});
+    }
+    res.json({igual: isValidPassword(user.password, req.body.newpassword)});
+  })
+  .catch(function(error){
+    //pensar o que vou fazer com esse retorno
+    res.json({error});
+  })
+}
+
+exports.updateUser = (req, res)=>{
+
+  const generateHashPassword = function(password){
+    return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+  }
+
+  var data = {}
+
+  if(req.body.admin && req.body.active){
+    data = {
+      admin: req.body.admin,
+      active: req.body.active
+    }
+  }
+  
+  if(req.body.password){
+    data = {};
+    data.password = generateHashPassword(req.body.password);
+  }
+  
+  User.update(data, {where:{id:req.params.id}})
+  .then(function(rowsUpdated){
+    res.json({rowsUpdated});
+  })
+  .catch(function(error){
+    res.json({error});
+  })
+}
+
+exports.getUser = (req, res)=>{
+  User.findByPk(req.params.id)
+  .then(function(user){
+    res.json({user});
+  })
+  .catch(function(error){
+    res.json({error});
+  })
 }
