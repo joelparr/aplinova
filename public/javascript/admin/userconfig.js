@@ -4,6 +4,17 @@ const password2 = document.getElementById('inputPassword2');
 const method = document.getElementById('method');
 const msg = document.getElementById('msg');
 const btnMudarSenha = document.getElementById('btn-mudarsenha');
+const btnInativo = document.getElementsByClassName('inativo');
+const btnSalvarInativo = document.getElementById('btn-salvar-inativo');
+
+//Modal
+const title = document.getElementById('title');
+const email = document.getElementById('email');
+const role = document.getElementById('role');
+const username = document.getElementById('username');
+const admin = document.getElementById('admin');
+const active = document.getElementById('active');
+const inativoMethod = document.getElementById('inativoMethod');
 var id;
 
 btnSalvar.addEventListener('click', function(event){
@@ -38,19 +49,14 @@ function verificarSenha(newPassword){
         let data = {
             newpassword: newPassword
         }
+
         //POST
-        fetch(url, {method:'POST', headers:{'Content-type': 'application/json'}, body:JSON.stringify(data)})
-        .then(function(result){
-            return result.json();
-        })
-        .then(function(data){
+        $.post(url, data, function(data){
             if(!data.igual){
                 resolve(data.igual);
+            }else{
+                reject('Insira senhas diferentes das que possui!');
             }
-            reject('Insira senhas diferentes das que possui!');
-        })
-        .catch(function(error){
-            reject(error);
         })
     });
 }
@@ -62,20 +68,45 @@ function alterarSenha(newPassword, method){
             password:newPassword,
             method:method
         }
-        console.log(data);
-        fetch(url, {method:'POST', headers:{'Content-type': 'application/json'}, body:JSON.stringify(data)})
-        .then(function(result){
-            return result.json();
-        })
-        .then(function(data){
+        
+        $.post(url, data, function(data){
             if(data){
                 resolve(data);
             }else{
-                reject('Nao foi possivel alterar a senha do usuario')
+                reject('Nao foi possivel alterar a senha do usuario');
             }
         })
-        .catch(function(error){
-            reject(error);
-        });
     })
 }
+
+Array.from(btnInativo).forEach(element=>{
+    element.addEventListener('click', function(event){
+        id = event.target.dataset.id
+        console.log(id);
+        let url = `config/user/${id}`;
+        //Recuperando os dados do usuario
+        $.get(url, function(data){
+            console.log(data);
+            title.innerHTML = data.user.firstName
+            email.innerHTML = data.user.email
+            role.innerHTML = data.user.role
+            username.innerHTML = data.user.username
+            data.user.admin ? admin.setAttribute('checked', true) : admin.removeAttribute('checked');
+            data.user.active ? active.setAttribute('checked', true) : active.removeAttribute('checked');
+        })
+    })
+});
+
+btnSalvarInativo.addEventListener('click', function(event){
+    event.preventDefault();
+    let url = `config/user/${id}`;
+    data = {
+        active: active.checked,
+        admin: admin.checked,
+        method: inativoMethod.value //patch
+    }
+
+    $.post(url, data, function(data){
+        console.log(data);
+    })
+})

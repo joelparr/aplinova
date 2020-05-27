@@ -13,6 +13,7 @@ const {
     getSubCategoria,
     getCategorias,
     newCategoria,
+    getUser,
     logout,
     newProduto,
     createProduto,
@@ -26,7 +27,7 @@ const {
     search,
     userconfig,
     comparePassword,
-    updateUserPassword} = require('../../controllers/admin/admin.js');
+    updateUser} = require('../../controllers/admin/admin.js');
 
 //rotas
 //Raiz da chamada acontece no APP.JS
@@ -48,12 +49,13 @@ router.delete('/subcategoria/:id', isValid, destroySubCategoria);
 //Ajax
 router.get('/categorias', isValid, getCategorias);
 router.get('/subcategorias/:id', isValid, getSubCategoria);
+router.get('/config/user/:id', isValid, getUser);
 router.get('/logout', logout);
 router.post('/compare/passwords', isValid, comparePassword);
 //Update
 router.patch('/subcategoria/:id', isValid, updateSubCategoria);
 router.patch('/produto/:id', isValid, updateProduto);
-router.patch('/config/user/:id', isValid, updateUserPassword);
+router.patch('/config/user/:id', isValid, updateUser);
 
 //Exportando router
 module.exports = router;

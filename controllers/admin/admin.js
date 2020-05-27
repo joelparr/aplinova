@@ -322,20 +322,39 @@ exports.comparePassword = (req, res)=>{
   })
 }
 
-exports.updateUserPassword = (req, res)=>{
+exports.updateUser = (req, res)=>{
 
   const generateHashPassword = function(password){
     return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
   }
 
   var data = {}
+
+  if(req.body.admin && req.body.active){
+    data = {
+      admin: req.body.admin,
+      active: req.body.active
+    }
+  }
+  
   if(req.body.password){
+    data = {};
     data.password = generateHashPassword(req.body.password);
   }
   
   User.update(data, {where:{id:req.params.id}})
   .then(function(rowsUpdated){
     res.json({rowsUpdated});
+  })
+  .catch(function(error){
+    res.json({error});
+  })
+}
+
+exports.getUser = (req, res)=>{
+  User.findByPk(req.params.id)
+  .then(function(user){
+    res.json({user});
   })
   .catch(function(error){
     res.json({error});
