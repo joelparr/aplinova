@@ -10,39 +10,45 @@
                 <div class="input-group-append">
                     <span class="input-group-text logo"><i class="fas fa-user"></i></span>
                 </div>
-                <input type="text" name="firstname" class="form-control input_user" value="" placeholder="First name" spellcheck="false">
+                <input type="text" name="firstname" id="firstname" class="form-control input_user" value="" placeholder="First name" spellcheck="false" required>
             </div>
             <label for="lastname">Last Name</label>
             <div class="input-group mb-3">
                 <div class="input-group-append">
                     <span class="input-group-text logo"><i class="fas fa-user"></i></span>
                 </div>
-                <input type="text" name="lastname" class="form-control input_user" value="" placeholder="Last name" spellcheck="false">
+                <input type="text" name="lastname" id="lastname" class="form-control input_user" value="" placeholder="Last name" spellcheck="false" required>
             </div>
             <label for="username">User Name</label>
             <div class="input-group mb-3">
                 <div class="input-group-append">
                     <span class="input-group-text logo"><i class="fas fa-user"></i></span>
                 </div>
-                <input type="text" name="username" class="form-control input_user" value="" placeholder="User name" spellcheck="false">
+                <input type="text" name="username" id="username" class="form-control input_user" value="" placeholder="User name" spellcheck="false" required>
             </div>
             <label for="email">Email</label>
             <div class="input-group mb-3">
                 <div class="input-group-append">
                     <span class="input-group-text logo"><i class="fas fa-user"></i></span>
                 </div>
-                <input type="text" name="email" class="form-control input_user" value="" placeholder="email" spellcheck="false">
+                <input type="email" name="email" id="email" class="form-control input_user" value="" placeholder="email" spellcheck="false" required>
             </div>
             <label for="email">Password</label>
             <div class="input-group mb-2">
                 <div class="input-group-append">
                     <span class="input-group-text logo"><i class="fas fa-key"></i></span>
                 </div>
-                <input type="password" name="password" class="form-control input_pass" value=""
+                <input type="password" id="password" name="password" class="form-control input_pass" value=""
                     placeholder="password" spellcheck="false">
             </div>
+            <%if(error){%>
+            <div><span style="color: red;"><%=error%></span></div>
+            <%}%>
+            <%if(envio){%>
+            <div><span style="color: red;"><%=envio%></span></div>
+            <%}%>
             <div class="d-flex justify-content-center mt-3 login_container">
-                <button type="submit" name="button" class="btn login_btn">Login</button>
+                <button type="submit" name="button" id="cadastrar" class="btn login_btn">Cadastrar</button>
             </div>
         </form>
     </div>
@@ -52,4 +58,5 @@
         </div>
     </div>
 </div>
+<script src="../../public/javascript/usuario/singup.js"></script>
 <%- include('./footer') %>

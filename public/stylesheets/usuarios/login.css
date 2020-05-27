@@ -113,3 +113,13 @@ i{
 .liens:hover {
     color:white;
 }
+
+.btn-cadastrar:disabled{
+    background-color: lightgray;
+    border: 1px solid lightgray;
+}
+
+.btn-cadastrar:disabled:hover{
+    background-color: lightgray;
+    border: 1px solid lightgray;
+}

@@ -1,0 +1,46 @@
+<%- include('./header') %>
+<div class="user_card">
+    <div class="d-flex justify-content-start">
+        <h6 style="color:white;">Entre com seu email de cadastro</h6>
+    </div>
+    <div class="d-flex justify-content-center form_container">
+        <form action="/login/forgot/reset" method='post'>
+            <div class="input-group mb-3">
+            <div class="input-group-append">
+                <span class="input-group-text logo"><i class="fas fa-user"></i></span>
+            </div>
+            <input type="text" name="email" id="email" class="form-control input_user" value="" placeholder="Email" spellcheck="false">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-append">
+                    <span class="input-group-text logo"><i class="fas fa-user"></i></span>
+                </div>
+                <input type="text" name="codigo" id="codigo" class="form-control input_user" value="" placeholder="Codigo" spellcheck="false">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-append">
+                    <span class="input-group-text logo"><i class="fas fa-user"></i></span>
+                </div>
+                <input type="password" name="password" id="password" class="form-control input_user" value="" placeholder="Novo password" spellcheck="false">
+            </div>
+            <!-- Incluindo input invisivel para virar patch -->
+            <input class="d-none" name="method" id="method" type="text" value="patch">
+            <%if(error){%>
+            <div><span style="color: red;"><%=error%></span></div>
+            <%}%>
+            <%if(envio){%>
+            <div><span style="color: red;"><%=envio%></span></div>
+            <%}%>
+            <div class="d-flex justify-content-center mt-3 login_container">
+            <button type="submit" id="reset" name="button" class="btn login_btn">Reset</button>
+            </div>
+        </form>
+    </div>
+    <div class="mt-4 groupe-liens">
+        <div class="d-flex justify-content-center links">
+            <span style="color:white;">Retornar a tela anterior?</span> <a href="/login/show" class="ml-2 liens">Login</a>
+        </div>
+    </div>
+</div>
+<!-- <script src="../../public/javascript/usuario/reset.js"></script> -->
+<%- include('./footer') %>

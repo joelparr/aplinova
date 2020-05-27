@@ -50,7 +50,7 @@ app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use('/login', usuario);
+app.use('/login', verbTreat, usuario);
 app.use('/', aplinova);
 app.use('/admin', verbTreat, admin); //verbtreat muda o req.method
 

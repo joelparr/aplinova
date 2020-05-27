@@ -9,13 +9,13 @@
         <div class="input-group-append">
           <span class="input-group-text logo"><i class="fas fa-user"></i></span>
         </div>
-        <input type="text" name="email" class="form-control input_user" value="" placeholder="email" spellcheck="false">
+        <input type="email" name="email" class="form-control input_user" value="" placeholder="email" spellcheck="false" required>
       </div>
       <div class="input-group mb-2">
         <div class="input-group-append">
           <span class="input-group-text logo"><i class="fas fa-key"></i></span>
         </div>
-        <input type="password" name="password" class="form-control input_pass" value="" placeholder="password" spellcheck="false">
+        <input type="password" name="password" class="form-control input_pass" value="" placeholder="password" spellcheck="false" required>
       </div>
       <%if(error){%>
         <div><span style="color: red;"><%=error%></span></div>
