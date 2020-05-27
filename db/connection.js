@@ -25,7 +25,6 @@ exports.bdConnection=(req, res, next)=>{
         host: dbConnection.host,
         dialect: dbConnection.dialect
     });
-
     sequelize.authenticate()
     .then(function(auth){
         console.log("Esta conectado");
