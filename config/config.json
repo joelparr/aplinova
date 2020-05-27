@@ -5,7 +5,8 @@
     "database": "aplinova_dev",
     "host": "localhost",
     "dialect": "mysql",
-    "operatorsAliases": 0
+    "operatorsAliases": 0,
+    "timezone": "-03:00"
   },
   "test": {
     "username": "root",
@@ -13,7 +14,8 @@
     "database": "aplinova_test",
     "host": "localhost",
     "dialect": "mysql",
-    "operatorsAliases": 0
+    "operatorsAliases": 0,
+    "timezone": "-03:00"
   },
   "production": {
     "username": "b67ef1e7b50491",
@@ -21,6 +23,7 @@
     "database": "heroku_9f24e65592f2d8e",
     "host": "us-cdbr-east-06.cleardb.net",
     "dialect": "mysql",
-    "operatorsAliases": 0
+    "operatorsAliases": 0,
+    "timezone": "-03:00"
   }
 }

@@ -107,6 +107,6 @@ btnSalvarInativo.addEventListener('click', function(event){
     }
 
     $.post(url, data, function(data){
-        console.log(data);
+        location.reload();
     })
 })

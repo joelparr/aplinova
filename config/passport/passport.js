@@ -39,7 +39,9 @@ module.exports = function(passport, user){
                     firstName: req.body.firstname,
                     lastName: req.body.lastname,
                     username: req.body.username,
-                    admin: 0
+                    admin: 0,
+                    active: 0,
+                    role: "visitante"
                 };
             
                 User.create(data)
@@ -88,8 +90,14 @@ module.exports = function(passport, user){
         .then(function(user){
             if(!user){
                 return done(null, false, {
-                    message: 'Email does not exist'
+                    message: 'Email does not exist!'
                 });
+            }
+
+            if(!user.active){
+                return done(null, false, {
+                    message: 'This user is not ready!'
+                })
             }
 
             if(!isValidPassword(user.password, password)){
