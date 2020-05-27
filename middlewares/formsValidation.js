@@ -90,7 +90,7 @@ exports.singupFormValidation = (req, res, next)=>{
     next();
 }
 
-exports.resetFormValidation = (req, res)=>{
+exports.resetFormValidation = (req, res, next)=>{
     req.check('email', 'Necessario ser um email.').isEmail();
     req.check('codigo', 'Minimo de 4 char').isLength({min:4});
     req.check('password', 'min 5 max 10 char para primeiro nome').isLength({min:5, max: 10});
