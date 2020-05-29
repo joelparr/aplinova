@@ -1,10 +1,10 @@
 #carouselBanner .carousel, #carouselBanner .carousel-inner {
-    height: 200px;
+    height: 500px;
 }
 
 @media (min-width: 640px) {
     #carouselBanner .carousel, #carouselBanner .carousel-inner {
-        height: 600px;
+        height: 80vh;
     }
 
     #carouselBanner .carousel-control-prev {
@@ -21,6 +21,9 @@
         left:100px;
         top:200px;
         text-align: left;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 
     #carouselBanner .carousel-caption .carousel-caption__text {
@@ -44,7 +47,24 @@
     }
 }
 
+#carouselBanner .carousel-item:after {
+    content:'';
+    position:absolute;
+    left:0; top:0;
+    width:100%; height:100%;
+    display:inline-block;
+    background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 83%);
+}
+
+#carouselBanner .carousel-item {
+    width: 100%;
+    height: 100%;
+}
+
 #carouselBanner .carousel-item img {
+    position:relative;
+    display: block;
+    object-fit: cover;
     width: 100%;
     height: 100%;
 }

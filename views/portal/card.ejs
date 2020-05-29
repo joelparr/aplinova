@@ -1,11 +1,11 @@
 <a href="<%- produto.href %>" class="card produto-card pt-5">
     <img src="<%- produto.imageUrl %>" class="card-img-top" alt="<%- produto.title %>">
     <div class="card-body d-flex flex-column justify-content-center align-items-center">
-        <h3><%= produto.title %></h3>
+        <h3><%- produto.title %></h3>
     </div>
     <div class="produto-card__overlay">
         <div class="produto-card__overlay-content">
-            <div class="produto-card__overlay-text"><%= produto.title %></div>
+            <div class="produto-card__overlay-text"><%- produto.title %></div>
             <button class="btn--contrast">Saiba mais</button>
         </div>
     </div>

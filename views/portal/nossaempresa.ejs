@@ -1,11 +1,11 @@
 <%- include('./header') %>
-<%- include('./banner', {title:'Uma trajetória <br>de <b>credibilidade</b> <br>e <b>inovação</b>', imageUrl: 'https://images.pexels.com/photos/1797415/pexels-photo-1797415.jpeg'})%>
+<%- include('./banner', {title:'Uma trajetória <br>de <b>credibilidade</b> <br>e <b>inovação</b>', imageUrl: './public/img/empresa_banner.jpg'})%>
 
-<div class="container-fluid pl-5 pr-5 mt-5">
-  <div class="row mb-5" style="height:434px;">
+<div class="base-container mt-5">
+  <div class="row mb-5 py-3">
     <div class="col-md-6">
       <div class="empresa__container">
-        <div class="empresa__header pt-3">
+        <div class="empresa__header">
           <i class="fas fa-square fas-sm mr-3"></i>
           Nossa <b class="ml-2">empresa</b>
         </div>
@@ -21,12 +21,12 @@
 
       </div>
     </div>
-    <div class="col-md-6 py-2 pr-4" style="background: no-repeat center/80% url('https://images.pexels.com/photos/37347/office-sitting-room-executive-sitting.jpg')">
+    <div class="col-md-6 px-0" style="background: no-repeat center/100% url('./public/img/nossa-empresa.jpg')">
     </div>
   </div>
 </div>
 <div class="empresa-estrutura d-flex flex-row-reverse mt-5 mx-0 w-100">
-  <div class="col-12 col-md-6 empresa-estrutura__content">
+  <div class="col-12 col-md-6 empresa-estrutura__content base-padding-right">
     <div class="empresa-estrutura__header">
       <i class="fas fa-square fas-sm mr-3"></i>
       <b>Estrutura</b>
@@ -39,16 +39,16 @@
       A unidade fabril conta com uma infraestrutura completa para a produção de aromas, extratos, corantes, edulcorantes entre outros produtos. O quadro de funcionários é composto por pessoas técnicas experientes que colaboram com a empresa há muitos anos.
     </div>
   </div>
-  <img src="https://images.pexels.com/photos/1797428/pexels-photo-1797428.jpeg" class="d-none d-md-block col-md-6 p-0" />
+  <img src="./public/img/estrutura.jpg" class="d-none d-md-block col-md-6 p-0" style="object-fit: cover;" />
 </div>
 
-<div class="empresa__secondary-container mt-5">
+<div class="base-container mt-5">
   <div class="empresa__secondary-text mb-5">
     <div>A <b>Aplinova</b> preza pela qualidade dos seus produtos e neste sentido trabalha para melhorar constantemente sua unidade fabril e laboratórios.</div>
   </div>
   <div class="d-flex empresa__bottom-images-container">
-    <img src="https://images.pexels.com/photos/2280547/pexels-photo-2280547.jpeg" class="d-none d-md-block empresa__bottom-first-image" />
-    <img src="https://images.pexels.com/photos/2280571/pexels-photo-2280571.jpeg" class="d-none d-md-block empresa__bottom-second-image" />
+    <img src="./public/img/estrutura_2.jpg" class="d-none d-md-block empresa__bottom-first-image" style="object-fit: cover;" />
+    <img src="./public/img/estrutura_3.jpg" class="d-none d-md-block empresa__bottom-second-image" style="object-fit: cover;" />
   </div>
 </div>
 <%- include('./footer') %>

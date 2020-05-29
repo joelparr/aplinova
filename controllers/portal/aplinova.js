@@ -47,12 +47,15 @@ const {Op} = require('sequelize');
 //Tela principal do portal
 exports.show = (req, res) => {
     const produtos = [
-      {title: 'Aromas', imageUrl: 'https://images.pexels.com/photos/134577/pexels-photo-134577.jpeg', href: 'aromas'},
-      {title: 'Corantes', imageUrl: 'https://images.pexels.com/photos/461428/pexels-photo-461428.jpeg', href: 'corantes'},
-      {title: 'Produtos Veganos e Orgânicos', imageUrl: 'https://images.pexels.com/photos/1640770/pexels-photo-1640770.jpeg', href: 'produtos-veganos'},
-      {title: 'Proteínas', imageUrl: 'https://images.pexels.com/photos/103566/pexels-photo-103566.jpeg', href: 'proteinas'},
-      {title: 'Substitutos de Açúcar e Fibras', imageUrl: 'https://images.pexels.com/photos/103566/pexels-photo-103566.jpeg', href: 'substitutos'},
-      {title: 'Produtos Naturais', imageUrl: 'https://images.pexels.com/photos/134577/pexels-photo-134577.jpeg', href: 'produtos-naturais'},
+      {title: 'Aromas', imageUrl: './public/img/aromas.jpg', href: 'aromas'},
+      {title: 'Corantes', imageUrl: './public/img/corantes.jpg', href: 'corantes'},
+      {title: 'Produtos Veganos e Orgânicos', imageUrl: './public/img/prod_veganos.jpg', href: 'produtos-veganos'},
+      {title: 'Proteínas', imageUrl: './public/img/proteinas.jpg', href: 'proteinas'},
+      {title: 'Substitutos de <br>Açúcar e Fibras', imageUrl: './public/img/subs_acucar.jpg', href: 'substitutos'},
+      {title: 'Produtos <br>Naturais', imageUrl: './public/img/produtos_naturais.jpg', href: 'produtos-naturais'},
+      {title: 'Revestimentos para Confeitaria', imageUrl: './public/img/rev_confeitaria.jpg', href: 'revconfeitaria'},
+      {title: 'Food Service', imageUrl: './public/img/food_service.jpg', href: 'foodservice'},
+      {title: 'Ingredientes Funcionais', imageUrl: './public/img/Ingredientes_Funcionais.jpg', href: 'ingredientesfuncionais'}
     ]
     res.render('./portal/index', {produtos});
 }
@@ -78,7 +81,7 @@ exports.aromas = (req, res)=>{
 exports.corantes = (req, res)=>{
   Categoria.findOne({where:{titulo: "corantes"}, include:{model:Produto, as: "produtos"}})
   .then(function(corantes){
-    res.render('./portal/produtos/corantes', {corantes: corantes.dataValues.produtos});    
+    res.render('./portal/produtos/corantes', {corantes: corantes.dataValues.produtos});
   })
   .catch(function(error){
     res.render('./portal/produtos/corantes', {corantes: undefined, error:error});
@@ -89,7 +92,7 @@ exports.corantes = (req, res)=>{
 //Tela de foodservice
 exports.foodservice = (req, res)=>{
   const url = './portal/produtos/foodservice';
-  
+
   Categoria.findOne({where:{titulo: 'foodservice'}})
   .then(function(cat){
     if(cat !== 0){
@@ -113,7 +116,7 @@ exports.foodservice = (req, res)=>{
 //Tela de ingredientes funcionais
 exports.ingredFuncionais = (req, res)=>{
   const url = './portal/produtos/ingredientesfuncionais';
-  
+
   Categoria.findOne({where:{titulo: 'ingredientes funcionais'}})
   .then(function(cat){
     if(cat !== 0){
@@ -209,7 +212,7 @@ exports.revConfeitaria = (req, res)=>{
 exports.subacucar= (req, res)=>{
 
   const url = './portal/produtos/subacucarfibras';
-  
+
   Categoria.findOne({where:{titulo: 'substituto de açúcar e fibras'}})
   .then(function(cat){
     if(cat !== 0){

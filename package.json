@@ -4,7 +4,6 @@
   "description": "Projeto para empresa aplinova",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js",
     "dev": "nodemon app.js"
   },
@@ -26,7 +25,8 @@
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "path": "^0.12.7",
-    "sequelize": "^5.21.6"
+    "sequelize": "^5.21.6",
+    "swiper": "^5.4.1"
   },
   "devDependencies": {
     "sequelize-cli": "^5.5.1"
