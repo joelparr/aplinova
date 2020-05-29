@@ -55,7 +55,7 @@ exports.show = (req, res) => {
       {title: 'Produtos <br>Naturais', imageUrl: './public/img/produtos_naturais.jpg', href: 'produtos-naturais'},
       {title: 'Revestimentos para Confeitaria', imageUrl: './public/img/rev_confeitaria.jpg', href: 'revconfeitaria'},
       {title: 'Food Service', imageUrl: './public/img/food_service.jpg', href: 'foodservice'},
-      {title: 'Ingredientes Funcionais', imageUrl: './public/img/Ingredientes_Funcionais.jpg', href: 'ingredientesfuncionais'}
+      {title: 'Ingredientes Funcionais', imageUrl: './public/img/ingredientes_funcionais.jpg', href: 'ingredientesfuncionais'}
     ]
     res.render('./portal/index', {produtos});
 }
