@@ -26,7 +26,6 @@ $(document).ready(function () {
     const menuIcon = $('.navbar__menu-icon');
 
     let isScrolling = false;
-    let hasScrolledPast = false;
     let isMenuOpen = false;
 
     menuIcon.click(function () {
@@ -46,7 +45,6 @@ $(document).ready(function () {
 
     function switchInto() {
         if (!isMenuOpen) {
-            //hasScrolledPast = true;
             navBar.removeClass('navbar--initial-state');
             navBar.addClass('navbar--scrolled-state');
         }
@@ -54,7 +52,6 @@ $(document).ready(function () {
 
     function switchStart() {
         if (!isMenuOpen) {
-            //hasScrolledPast = false;
             navBar.removeClass('navbar--scrolled-state');
             navBar.addClass('navbar--initial-state');
         }
