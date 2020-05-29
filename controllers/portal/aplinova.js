@@ -93,7 +93,7 @@ exports.corantes = (req, res)=>{
 exports.foodservice = (req, res)=>{
   const url = './portal/produtos/foodservice';
 
-  Categoria.findOne({where:{titulo: 'foodservice'}})
+  Categoria.findOne({where:{titulo: 'food service'}})
   .then(function(cat){
     if(cat !== 0){
       return Categoria.findAll({where:{[Op.and]:[{idCategoria:0},{idCategoriaPai: cat.dataValues.idCategoria}]}, include:{model:Produto, as:'produtos'}})
