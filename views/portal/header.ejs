@@ -3,20 +3,31 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <script src="https://kit.fontawesome.com/3bb5488a16.js" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="./public/stylesheets/portal/index.css">
         <link rel="stylesheet" href="./public/stylesheets/portal/produto-view.css">
+        <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
         <title>Aplinova</title>
     </head>
     <body style="max-width: 100vw;">
         <div id="main" class="row p-0 mx-0" style="width: 100%">
             <div id="mainCol" class="col px-0 mx-0" style="width: 100%">
-                <div id="menu" class="d-flex navbar px-0 mx-0">
+                <div class="d-flex base-container navbar navbar--initial-state mx-0">
                     <a href="/">
-                        <img class="navbar__logo d-none d-md-block" src="./public/img/logo-dark.svg" alt="Logo" />
+                        <img class="navbar__logo navbar__logo--light" src="./public/img/logo-light.svg" alt="Logo" />
+                        <img class="navbar__logo navbar__logo--dark" src="./public/img/logo-dark.svg" alt="Logo" />
                     </a>
-                    <div class="ml-auto navbar__items">
+                    <div class="ml-auto navbar__items-initial">
+                        <div class="navbar__initial-item">+55 (11) 96474-1323</div>
+                        <a class="navbar__initial-item" href="https://web.whatsapp.com/send?phone=5511964741323" target="_blank">
+                            <i class="fab fa-whatsapp"></i>
+                            +55 (11) 96474-1323
+                        </a>
+                        <i class="pl-5 navbar__item navbar__icon navbar__menu-icon fas fa-bars fa-2x"></i>
+                    </div>
+                    <div class="ml-auto navbar__items-active">
                         <div class="navbar__item navbar__item--products">
                           <div class="navbar__products-dropdown-container">
                             <div class="navbar__products-dropdown">
@@ -34,10 +45,8 @@
                           <a class="navbar__link">produtos</a>
                         </div>
                         <a class="navbar__item navbar__link" href="/nossaempresa">empresa</a>
-                        <a class="navbar__item navbar__link">parceiros</a>
+                        <a class="navbar__item navbar__link" href="/#parceiros">parceiros</a>
                         <a class="navbar__item navbar__link" href="/contato">contato</a>
-                    </div>
-                    <div class="col-md-1">
-                      <div class="row align-items-center navbar__close-icon fas fa-times fa-2x" style="height: 80px;"></div>
+                        <div class="navbar__item navbar__icon navbar__close-icon fas fa-times fa-2x"></div>
                     </div>
                 </div>

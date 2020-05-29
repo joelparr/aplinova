@@ -1,9 +1,8 @@
 .subcategoria-item {
-    width: 100% !important;
+    width: 45% !important;
     display: flex;
     flex-direction: column;
-    padding-left: 0.75rem;
-    margin-top: 0.75rem;
+    padding: 0 0 0 0.75rem;
     align-items: start;
 }
 
@@ -31,14 +30,16 @@
 
 .subcategoria-item .subcategoria-item__list p {
     margin-bottom: 0.75rem;
+    font-size: 1.125rem;
 }
 
 @media (min-width: 640px) {
     .subcategoria-item {
         width: 33.333333%;
+        height: 100%;
     }
 
     .subcategoria-item .subcategoria-item__text {
-        width: 60%;
+        width: 90%;
     }
 }

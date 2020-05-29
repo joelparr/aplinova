@@ -1,5 +1,6 @@
 .btn--expand {
     min-width: 12rem;
+    max-width: 175px;
     height: auto;
     position: relative;
     display: inline-block;

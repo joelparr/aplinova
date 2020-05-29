@@ -5,6 +5,7 @@
 @import '../components/subcategoria-item.css';
 @import '../components/home-introduction.css';
 @import '../components/home-company.css';
+@import '../components/home-partners.css';
 @import '../components/produto-card.css';
 @import '../components/carrousel.css';
 @import '../components/banner.css';
@@ -23,4 +24,52 @@ html, body{
 
 ul li{
     list-style: none;
+}
+
+.base-container {
+    padding-left: 6rem;
+    padding-right: calc(6rem + 16px);
+}
+
+.base-padding-left {
+    padding-left: 6rem;
+}
+
+.base-padding-right {
+    padding-right: 6rem;
+}
+
+@media (max-width: 640px) {
+    .base-container {
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
+    .base-padding-left {
+        padding-left: 3rem;
+    }
+
+    .base-padding-right {
+        padding-right: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .base-container {
+        padding-left: 4rem;
+        padding-right: 4rem;
+    }
+
+    .base-padding-left {
+        padding-left: 4rem;
+    }
+
+    .base-padding-right {
+        padding-right: 4rem;
+    }
+}
+
+.truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
 }

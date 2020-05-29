@@ -1,16 +1,11 @@
 <%- include('./header') %>
 <%- include('./carrousel') %>
 <%- include('./home-introduction') %>
-<div class="container-fluid row px-5">
+<div class="row base-container">
     <% produtos.forEach((produto) => { %>
         <div class="col-sm-12 col-md-4"><%- include('./card', {produto}) %></div>
     <% }); %>
 </div>
 <%- include('./home-company') %>
-<div id="contentPartner" class="row p-5">
-    <div class="col">
-        <div class="row justify-content-center">Descrição para os parceiros</div>
-        <div class="row justify-content-center">Parceiros aqui!!</div>
-    </div>
-</div>
+<%- include('./home-partners') %>
 <%- include('./footer') %>

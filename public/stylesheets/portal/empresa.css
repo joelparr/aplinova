@@ -1,12 +1,12 @@
 .empresa__container {
     display: flex;
     flex-direction: column;
-    padding: 1rem 1rem 0 2rem;
+    padding-right: 1rem;
 }
 
 @media (min-width: 640px) {
     .empresa__container {
-        padding: 1rem 1rem 0 1rem;
+        padding-right: 1rem;
     }
 }
 
@@ -62,21 +62,14 @@
 
 .empresa-estrutura .empresa-estrutura__content {
     background-color: #292828;
-    padding: 2rem 4rem 0 4rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    padding-left: 4rem;
 }
 
 .empresa-estrutura .empresa-estrutura__text {
     color: #F0F6ED;
     font-size: 1.125rem;
-}
-
-.empresa-estrutura img {
-    height: 100%;
-}
-
-.empresa__secondary-container {
-    padding-right: 4.25rem;
-    padding-left: 3.75rem;
 }
 
 .empresa__secondary-text {

@@ -19,3 +19,57 @@ productsLink.addEventListener('click', () => {
     }
     dropdownActive = !dropdownActive
 })
+
+$(document).ready(function () {
+    const navBar = $('.navbar');
+    const closeIcon = $('.navbar__close-icon');
+    const menuIcon = $('.navbar__menu-icon');
+
+    let isScrolling = false;
+    let isMenuOpen = false;
+
+    menuIcon.click(function () {
+        isMenuOpen = true;
+        navBar.addClass('navbar--menu-state');
+        navBar.removeClass('navbar--initial-state');
+        navBar.removeClass('navbar--scrolled-state');
+    })
+
+    closeIcon.click(function () {
+        isMenuOpen = false;
+        navBar.removeClass('navbar--menu-state');
+        checkState();
+    })
+
+    $(window).scroll(() => isScrolling = true);
+
+    function switchInto() {
+        if (!isMenuOpen) {
+            navBar.removeClass('navbar--initial-state');
+            navBar.addClass('navbar--scrolled-state');
+        }
+    };
+
+    function switchStart() {
+        if (!isMenuOpen) {
+            navBar.removeClass('navbar--scrolled-state');
+            navBar.addClass('navbar--initial-state');
+        }
+    }
+
+    function checkState() {
+        if ($(window).scrollTop() > 100) {
+                switchInto();
+        } else {
+                switchStart();
+        }
+    }
+
+    setInterval(() => {
+        if (isScrolling) {
+            isScrolling = false;
+            checkState();
+        }
+    }, 100);
+})
+
