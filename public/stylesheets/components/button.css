@@ -92,3 +92,7 @@
     background-color: #88B73A;
 }
 
+.btn--contrast:focus, .btn--expand:focus {
+    outline: none;
+}
+
