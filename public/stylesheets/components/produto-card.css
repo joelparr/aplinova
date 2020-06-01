@@ -6,6 +6,11 @@
     max-height: 560px;
     overflow: hidden;
     position: relative;
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+    will-change: transform;
 }
 
 a.produto-card {
@@ -32,11 +37,12 @@ a.produto-card {
 
 .produto-card .produto-card__overlay {
     position: absolute;
-    height: 0%;
+    height: 100%;
     width: 100%;
     padding-top: 3rem;
     bottom: 0;
     opacity: 0;
+    transform: translateY(100%);
 }
 
 .produto-card .produto-card__overlay-content {
@@ -52,9 +58,9 @@ a.produto-card {
 }
 
 .produto-card:hover .produto-card__overlay {
-    transition: opacity 0.75s, height 0.5s linear;
+    transition: 0.7s ease all;
     opacity: 1;
-    height: 100%;
+    transform: translateY(0%);
 }
 
 .produto-card .produto-card__overlay-text {

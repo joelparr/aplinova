@@ -37,6 +37,10 @@
     text-decoration: none;
 }
 
+.footer .footer__link i {
+    color: #88B73A;
+}
+
 .footer .footer__link div {
     text-decoration: underline;
 }

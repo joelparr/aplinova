@@ -9,7 +9,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    padding: 0 1rem 1rem 1rem;
+    padding: 1rem 1rem;
 }
 
 .swiper-container-horizontal>.swiper-pagination-bullets {
@@ -22,6 +22,7 @@
 
 .home-partners__slide img {
     width: 15%;
+    max-height: 100%;
     cursor: pointer;
     filter: grayscale(100%);
 }
