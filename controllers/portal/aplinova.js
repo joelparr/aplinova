@@ -3,41 +3,6 @@
  * Author: Findi
  */
 
-const subcategorias = [
-{
-    titulo: 'Para Panificação',
-    produtos: [
-        'Fermento Biológico Seco (Instant Dry Yeast)',
-        'Melhoradores de Farinhas',
-        'Gordura Vegetal em Pó Encapsulada',
-        'Aromas',
-        'Corantes',
-        'Substitutos de Cacau',
-        'Redutores de Sódio',
-        'Conservantes Naturais',
-        'Mel em Pó, Iogurte em Pó, Doce de Leite em Pó',
-        'Queijos em Pó',
-        'Extrato de Malte',
-        'Emulsificantes'
-    ]
-},
-  {
-    titulo: 'Para Produtos Lácteos',
-    produtos: [
-        'Gordura Vegetal em Pó Encapsulada',
-        'Aromas',
-        'Corantes Naturais',
-        'Conservantes Naturais',
-        'Crispies de Malte'
-    ]
-  },
-  {
-    titulo: 'Para Frutas e Hortaliças',
-    produtos: [
-        'Antioxidante Natural para Extensão de Shelf-Life'
-    ]
-  }
-]
 //Declaracoes de variaveis
 const models = require('../../models');
 const Categoria = models.Categoria;
@@ -49,10 +14,10 @@ exports.show = (req, res) => {
     const produtos = [
       {title: 'Aromas', imageUrl: './public/img/aromas.jpg', href: 'aromas'},
       {title: 'Corantes', imageUrl: './public/img/corantes.jpg', href: 'corantes'},
-      {title: 'Produtos Veganos e Orgânicos', imageUrl: './public/img/prod_veganos.jpg', href: 'produtos-veganos'},
+      {title: 'Produtos Veganos e Orgânicos', imageUrl: './public/img/prod_veganos.jpg', href: 'prodveganos'},
       {title: 'Proteínas', imageUrl: './public/img/proteinas.jpg', href: 'proteinas'},
-      {title: 'Substitutos de <br>Açúcar e Fibras', imageUrl: './public/img/subs_acucar.jpg', href: 'substitutos'},
-      {title: 'Produtos <br>Naturais', imageUrl: './public/img/produtos_naturais.jpg', href: 'produtos-naturais'},
+      {title: 'Substitutos de <br>Açúcar e Fibras', imageUrl: './public/img/subs_acucar.jpg', href: 'subacucar'},
+      {title: 'Produtos <br>Naturais', imageUrl: './public/img/produtos_naturais.jpg', href: 'prodnaturais'},
       {title: 'Revestimentos para Confeitaria', imageUrl: './public/img/rev_confeitaria.jpg', href: 'revconfeitaria'},
       {title: 'Food Service', imageUrl: './public/img/food_service.jpg', href: 'foodservice'},
       {title: 'Ingredientes Funcionais', imageUrl: './public/img/ingredientes_funcionais.jpg', href: 'ingredientesfuncionais'}
