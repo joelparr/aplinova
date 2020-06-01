@@ -21,7 +21,7 @@
 }
 
 .home-partners__slide img {
-    width: 15%;
+    max-width: 15%;
     max-height: 100%;
     cursor: pointer;
     filter: grayscale(100%);
