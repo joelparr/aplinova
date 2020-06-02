@@ -21,8 +21,8 @@
 
 .produto-view__banner {
     height: 80vh;
-    opacity:1;
-    filter:brightness(90%);
+    opacity: 1;
+    filter: brightness(90%);
 }
 
 .produto-view__banner:after {
@@ -61,7 +61,7 @@
 }
 
 .produto-view__title {
-    background: rgba(225, 232, 215, 0.9);
+    background: rgba(225, 232, 215, 1);
     height: 80px;
     font-size: 2.5rem;
     text-transform: uppercase;
