@@ -38,9 +38,10 @@
                                         <a href="#" class="details" data-type="prod" data-id=<%=prod.id%>>
                                             <%=prod.titulo%>
                                         </a>
-                                        <a href="/admin/produto/<%=prod.id%>?method=delete" data-method="delete">
+                                        <a href="/admin/produto/<%=prod.id%>?method=delete" class="deleteItem" data-method="delete">
                                             <i class="fas fa-trash-alt" style="color: red;"></i>
                                         </a>
+                                        
                                     </li> 
                             <%})%>
                             </ul>
@@ -51,9 +52,10 @@
                             <ul class="notativo">
                                 <li class="subcat">
                                     <a href="#" class="details" data-type="sub" data-id=<%=hit.id%>><%=hit.titulo%></a>
-                                    <a href="/admin/subcategoria/<%=hit.id%>?method=delete">
+                                    <a href="/admin/subcategoria/<%=hit.id%>?method=delete" class="deleteItem">
                                         <i class="fas fa-trash-alt" style="color: red;"></i>
                                     </a>
+                                    
                                 </li>
                                 <%if(hit.produtos.length){%>
                                     <ul class="notativo">
@@ -61,9 +63,10 @@
                                         <li id="prod">
                                             <i class="fas fa-asterisk" style="color: orange;"></i>
                                             <a href="#" class="details" data-type="prod" data-id=<%=prod.id%>><%=prod.titulo%></a>
-                                            <a href="/admin/produto/<%=prod.id%>?method=delete" data-method="delete">
+                                            <a href="/admin/produto/<%=prod.id%>?method=delete" class="deleteItem" data-method="delete">
                                                 <i class="fas fa-trash-alt" style="color: red;"></i>
                                             </a>
+                                            
                                         </li>
                                     <%})%>
                                     </ul>
@@ -136,3 +139,32 @@
     </div>
 </div>
 </div>
+
+<div class="modal fade" id="bd-confirmation-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">Confirma?</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="row justify-content-start">
+                            <button type="button" class="btn btn-success" id="confirma"  data-dismiss="modal">Sim</button>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row justify-content-end">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Nao</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
