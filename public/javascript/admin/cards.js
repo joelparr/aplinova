@@ -2,6 +2,9 @@
  * Description: Modulo que monta os cards
  * Author: Daniel
  */
+
+// const e = require("express");
+
 //Declaracoes
 const anchor = document.getElementsByClassName('details');
 const cat = document.getElementsByClassName('cat');
@@ -16,6 +19,9 @@ const atualizar = document.getElementById('atualizar');
 const success = document.getElementById('success');
 const danger = document.getElementById('danger');
 const getError = document.getElementById('getError');
+
+const deleteItem = document.getElementsByClassName('deleteItem');
+const confirma = document.getElementById('confirma');
 
 var elementId;
 var elementType;
@@ -152,4 +158,19 @@ Array.from(cat).forEach(el=>{
         formDescricao.setAttribute('readonly', true);
         atualizar.disabled = true;
     })
-})
+});
+
+//Chamada da janela de confirmacao de delecao
+var urlDelete = "";
+Array.from(deleteItem).forEach(el=>{
+    el.addEventListener('click', function(event){
+        event.preventDefault();
+        urlDelete = el.getAttribute('href');
+        //Abrindo a janela de confirmacao
+        $("#bd-confirmation-sm").modal();
+    });
+});
+//Botao de confirmacao da janela
+confirma.onclick = function(){
+    location.href = urlDelete;
+}
