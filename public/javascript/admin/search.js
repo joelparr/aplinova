@@ -1,7 +1,7 @@
 /**
  * Description: Modulo de search do admin
  * Author: Findi
- */
+*/
 
  //Declaracao de variaveis
 const search = document.getElementById('search');

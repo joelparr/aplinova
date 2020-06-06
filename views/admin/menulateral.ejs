@@ -6,21 +6,23 @@
       <nav class="c-menu js-menu">
         <ul class="u-list">
             <!--is-active : classe para tornar um item ativo-->
-          <li class="c-menu__item" data-toggle="tooltip" title="Proposals">
+          <li class="c-menu__item" data-toggle="tooltip" title="Adicionar produtos">
             <a href="/admin/new/produto" style="text-decoration: none; color:white;">
             <div class="c-menu__item__inner"><i class="fa fa-file-text-o"></i>
               <div class="c-menu-item__title"><span>Adicionar Produtos</span></div>
             </div>
             </a>
           </li>
-          <li class="c-menu__item has-submenu" data-toggle="tooltip" title="History">
+          <%if(usuario.admin){%>
+          <li class="c-menu__item has-submenu" data-toggle="tooltip" title="Adicionar Categoria">
             <a href="/admin/new/categoria" style="text-decoration: none; color:white">
             <div class="c-menu__item__inner"><i class="fa fa-history"></i>
               <div class="c-menu-item__title"><span>Adicionar categorias</span></div>
             </div>
             </a>
           </li>
-          <li class="c-menu__item has-submenu" data-toggle="tooltip" title="Settings">
+          <%}%>
+          <li class="c-menu__item has-submenu" data-toggle="tooltip" title="Configuracoes">
             <a href="/admin/userconfig"style="text-decoration: none; color:white">
               <div class="c-menu__item__inner"><i class="fa fa-cogs"></i>
                 <div class="c-menu-item__title"><span>Settings</span></div>
