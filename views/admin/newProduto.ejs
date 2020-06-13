@@ -1,36 +1,41 @@
 <%- include('./header')%>
 <!-- cadastro de header -->
-<form action="/admin/produto" method="post">
-    <h4>Produto</h4>
-    <div class="form-group">
-        <label for="prodTitulo">Titulo</label>
-        <input class="form-control" type="text" name="prodTitulo" required>
-    </div>
-    <div class="form-group">
-        <label for="prodDescricao">Descricao</label>
-        <textarea class="form-control" name="prodDescricao" id="" cols="30" rows="10"></textarea>
-    </div>
-    <div id="divCategoriaPai" class="form-group">
-        <label for="categoriaPai">Pertence a categoria</label>
-        <select class="form-control" name="categoriaPai" id="categoriaPai"></select>
-    </div>
-    <div id="divSubCategoria" class="form-group">
-        <label for="subCategoria">Pertence a subcategoria</label>
-        <div class="input-group mb-2">
-          <div class="input-group-prepend" id="modalCategoria" data-toggle="modal" data-target="#exampleModalCenter">
-            <div class="input-group-text"><i class="fas fa-plus"></i></div>
-          </div>
-          <select class="form-control" name="subCategoria" id="subCategoria"></select>
+<div style="display: flex; flex-direction: row; justify-content: center; margin-bottom: 50px; background-color: #88B73A; height: 55px; align-items: center; color: black; font-weight: bold; font-size: 20px;">NOVO PRODUTO</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <form action="/admin/produto" method="post">
+        <div class="form-group mb-5">
+            <input class="new-prod-input" type="text" placeholder="TITULO" required>
         </div>
-        
+        <div class="form-group mb-5">
+            <textarea class="new-prod-input" name="prodDescricao" placeholder="DESCRICAO" id="" cols="30" rows="5"></textarea>
+        </div>
+        <div id="divCategoriaPai" class="form-group mb-5">
+            <!-- <label for="categoriaPai">Pertence a categoria</label> -->
+            <select class="form-control" name="categoriaPai" id="categoriaPai" style="background-color: transparent;  border: 2px solid #353535;"></select>
+        </div>
+        <div id="divSubCategoria" class="form-group mb-5">
+            <!-- <label for="subCategoria">Pertence a subcategoria</label> -->
+            <div class="input-group mb-5">
+              <div class="input-group-prepend" id="modalCategoria" data-toggle="modal" data-target="#exampleModalCenter">
+                <div class="input-group-text"><i class="fas fa-plus"style="color: #353535;"></i></div>
+              </div>
+              <select class="form-control" name="subCategoria" id="subCategoria" style="background-color: transparent; border:transparent ;border-bottom: 2px solid #353535;"></select>
+            </div>
+            
+        </div>
+        <div class="form-check mb-3">
+            <input type="checkbox" class="form-check-input" id="subCategoriaChecked" name="subCategoriaChecked">Nao tenho subcategoria</input>
+        </div>
+        <div class="pt-2" style="margin-top:40px;">
+            <button class="btn btn-admin" type="submit">Salvar</button>
+        </div>
+    </form>
     </div>
-    <div class="form-check mb-3">
-        <input type="checkbox" class="form-check-input" id="subCategoriaChecked" name="subCategoriaChecked">Nao tenho subcategoria</input>
-    </div>
-    <div class="pt-2" style="margin-top:40px;">
-        <button class="btn btn-primary" type="submit">Salvar</button>
-    </div>
-</form>
+  </div>
+
+</div>
   
   <!-- Modal -->
   <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -45,20 +50,20 @@
         <div class="modal-body">
           <form action="/admin/categoria" method="post">
             <div class="p-1" id="header">
-              <h4>Cabecalho da Subcategoria</h3>
+              <h5>Cabecalho da Subcategoria</h5>
               <div class="form-group">
                 <label for="headerTitulo">Titulo</label>
                 <input class="form-control" type="text" id="headerTitulo" name="headerTitulo" required>
               </div>
               <div class="form-group">
                 <label for="headerDescricao">Descricao</label>
-                <textarea class="form-control" id="headerDescricao" name="headerDescricao" id="" cols="30" rows="10"></textarea>
+                <textarea class="form-control" id="headerDescricao" name="headerDescricao" id="" cols="30" rows="5"></textarea>
               </div>
             </div>
           <!-- cadastro de categoria -->
           <!-- Uma categoria nao pode ter o id proprio repetido dentro da tabela -->
-            <div class="mt-3 p-1" id="categoria">
-              <h4>Subcategoria</h3>
+            <div class="mt-1 p-1" id="categoria">
+              <h5>Subcategoria</h5>
 
               <div class="form-group">
                 <label for="categoriaTitulo">Titulo</label>
@@ -66,17 +71,14 @@
               </div>
               <div class="form-group">
                 <label for="categoriaDescricao">Descricao</label>
-                <textarea class="form-control" id="categoriaDescricao" name="categoriaDescricao" rows="10" cols="30"></textarea>
+                <textarea class="form-control" id="categoriaDescricao" name="categoriaDescricao" rows="5" cols="30"></textarea>
               </div>
             </div>
             <p id="demo" style="color:red; font-family:'Times New Roman', Times, serif;"></p>
             <div class="pt-2">
-              <button class="btn btn-primary" type="submit" id="newSubcategoria">Salvar</button>
+              <button class="btn btn-admin" type="submit" id="newSubcategoria">Salvar</button>
             </div>
           </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
       </div>
     </div>

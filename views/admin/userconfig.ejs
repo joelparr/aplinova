@@ -17,7 +17,7 @@
                                 <li class="list-group-item">admin: <%=usuario.admin%></li>
                                 <li class="list-group-item">role: <%=usuario.role%></li>
                                 <li class="list-group-item">username: <%=usuario.username%></li>
-                                <li class="list-group-item"><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-id=<%=usuario.id%> id="btn-mudarsenha">Mudar senha</a></li>
+                                <li class="list-group-item"><a href="#" class="btn btn-admin" data-toggle="modal" data-target="#exampleModal" data-id=<%=usuario.id%> id="btn-mudarsenha">Mudar senha</a></li>
                               </ul>
                               <%}%>
                         </div>
@@ -80,13 +80,10 @@
                     <input type="password" class="form-control" id="inputPassword2" placeholder="Repeat password">
                 </div>
                 <p id="msg" style="color:red; font-family: sans-serif;"></p>
-                <button type="submit" class="btn btn-primary" id="btn-salvar">Salvar</button>
+                <button type="submit" class="btn btn-admin" id="btn-salvar">Salvar</button>
             </form>
         </div>
         <input class="d-none" type="text" id="method" name="method" value="patch">
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
       </div>
     </div>
   </div>
@@ -129,15 +126,12 @@
                 </div>
                   <input class="d-none" type="text" id="inativoMethod" value="patch">
                   <p id="msg" style="color:red; font-family: sans-serif;"></p>
-                  <button type="submit" class="btn btn-primary" id="btn-salvar-inativo">Salvar</button>
+                  <button type="submit" class="btn btn-admin" id="btn-salvar-inativo">Salvar</button>
               </form>
             </div>
         </div>
         </div>
         <input class="d-none" type="text" id="method" name="method" value="patch">
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
       </div>
     </div>
   </div>
