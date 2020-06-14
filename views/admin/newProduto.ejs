@@ -1,6 +1,6 @@
 <%- include('./header')%>
 <!-- cadastro de header -->
-<div style="display: flex; flex-direction: row; justify-content: center; margin-bottom: 50px; background-color: #88B73A; height: 55px; align-items: center; color: black; font-weight: bold; font-size: 20px;">NOVO PRODUTO</div>
+<div style="display: flex; flex-direction: row; justify-content: center; margin-bottom: 50px; background-color: #88B73A; height: 60px; align-items: center; color: white; font-weight: bold; font-size: 20px;">NOVO PRODUTO</div>
 <div class="container">
   <div class="row">
     <div class="col-md-12">
@@ -13,15 +13,15 @@
         </div>
         <div id="divCategoriaPai" class="form-group mb-5">
             <!-- <label for="categoriaPai">Pertence a categoria</label> -->
-            <select class="form-control" name="categoriaPai" id="categoriaPai" style="background-color: transparent;  border: 2px solid #353535;"></select>
+            <select data-toggle="tooltip" data-placement="top" title="Pertence a categoria" class="form-control new-prod-select" name="categoriaPai" id="categoriaPai" ></select>
         </div>
         <div id="divSubCategoria" class="form-group mb-5">
             <!-- <label for="subCategoria">Pertence a subcategoria</label> -->
             <div class="input-group mb-5">
               <div class="input-group-prepend" id="modalCategoria" data-toggle="modal" data-target="#exampleModalCenter">
-                <div class="input-group-text"><i class="fas fa-plus"style="color: #353535;"></i></div>
+                <div class="input-text-prepend"><i class="fas fa-plus"style="color: white;"></i></div>
               </div>
-              <select class="form-control" name="subCategoria" id="subCategoria" style="background-color: transparent; border:transparent ;border-bottom: 2px solid #353535;"></select>
+              <select data-toggle="tooltip" data-placement="top" title="Pertence a subcategoria" class="form-control new-prod-select" name="subCategoria" id="subCategoria"></select>
             </div>
             
         </div>

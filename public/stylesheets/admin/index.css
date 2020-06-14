@@ -603,3 +603,48 @@ a.list-group-item.active small {
   font-weight: 600;
   background-color: transparent;
 }
+
+.new-prod-select{
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid #353535;
+  border-left: 2px solid #353535;
+  border-right: 2px solid #353535;
+  border-radius: 2px 2px 10px 10px;
+  padding-bottom: 0.5rem;
+  padding-left: 0.5rem;
+  font-weight: 600;
+  outline: none;
+  /* text-shadow:0 1px 0 #88B73A; */
+}
+.input-text-prepend{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  border-top: 2px solid #353535;
+  border-bottom: 2px solid #353535;
+  border-left: 2px solid #353535;
+  background-color: #88B73A;
+  border-radius: 5px 2px 2px 5px;
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -moz-box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.input-text-prepend:hover{
+  background-color: #353535;
+}
+
+
+input[type=text]:focus, textarea:focus {
+  border-right: 2px solid #88B73A;
+  border-bottom: 2px solid #88B73A;
+  border-left: 2px solid #88B73A;
+}
+
+select:focus{
+  border-right: 2px solid #88B73A !important;
+  border-bottom: 2px solid #88B73A !important;
+  border-left: 2px solid #88B73A !important;
+}
