@@ -60,7 +60,9 @@ categoriaPai.addEventListener('change', function(event){
             sub.data.forEach((element, index, array)=>{
                 subCategoria[index] = new Option(element.titulo, element.id, false, false);
             });
-            divSubCategoria.style.display = 'block';
+            if(!naoSou.checked){
+                divSubCategoria.style.display = 'block';
+            } 
         }
     })
     .catch(function(erro){

@@ -263,11 +263,12 @@ h3 {
   justify-content: center;
   line-height: 1;
   cursor: pointer;
-  border-right: 1px solid #cccccc;
+  border-right: 1px solid #cccccc; 
 }
-.c-header-icon i {
+.c-header-icon a i {
   font-size: 18px;
   line-height: 40px;
+  color: #cccccc;
 }
 .c-header-icon--in-circle {
   border: 1px solid #d0d0d0;
@@ -637,13 +638,13 @@ a.list-group-item.active small {
 }
 
 
-input[type=text]:focus, textarea:focus {
+#novo-produto input[type=text]:focus, textarea:focus {
   border-right: 2px solid #88B73A;
   border-bottom: 2px solid #88B73A;
   border-left: 2px solid #88B73A;
 }
 
-select:focus{
+#novo-produto select:focus{
   border-right: 2px solid #88B73A !important;
   border-bottom: 2px solid #88B73A !important;
   border-left: 2px solid #88B73A !important;
