@@ -1,5 +1,6 @@
 @import './treeview.css';
 @import './userconfig.css';
+@import './cards.css';
 body {
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
@@ -355,7 +356,7 @@ h3 {
 
 .l-sidebar {
   width: 70px;
-  position: absolute;
+  position: fixed;
   z-index: 10;
   left: 0;
   top: 0;
@@ -591,7 +592,7 @@ a.list-group-item.active small {
   color:white;
 }
 
-.new-prod-input{
+.new-input{
   width: 100%;
   border: none;
   border-bottom: 2px solid #353535;
@@ -605,7 +606,7 @@ a.list-group-item.active small {
   background-color: transparent;
 }
 
-.new-prod-select{
+.new-select{
   background-color: transparent;
   border: none;
   border-bottom: 2px solid #353535;
