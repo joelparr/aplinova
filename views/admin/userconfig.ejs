@@ -1,6 +1,7 @@
 <%- include('./header') %>
-<div class="container-fluid">
-    <div class="row">
+<div style="display: flex; flex-direction: row; justify-content: center; margin-bottom: 50px; background-color: #88B73A; height: 60px; align-items: center; color: white; font-weight: bold; font-size: 20px;">CONFIG USUARIO</div>
+<div class="container">
+    <div class="row justify-content-center">
         <div class="col-md-4">
             <div class="card text-center" style="background-color: transparent;">
                 <h5 class="card-header">Usuario Logado</h5>
@@ -17,7 +18,7 @@
                                 <li class="list-group-item">admin: <%=usuario.admin%></li>
                                 <li class="list-group-item">role: <%=usuario.role%></li>
                                 <li class="list-group-item">username: <%=usuario.username%></li>
-                                <li class="list-group-item"><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-id=<%=usuario.id%> id="btn-mudarsenha">Mudar senha</a></li>
+                                <li class="list-group-item"><a href="#" class="btn btn-admin" data-toggle="modal" data-target="#exampleModal" data-id=<%=usuario.id%> id="btn-mudarsenha">Mudar senha</a></li>
                               </ul>
                               <%}%>
                         </div>
@@ -25,10 +26,10 @@
                 </div>
               </div>
         </div>
-        <div class="col-md-8"></div>
+        <!-- <div class="col-md-8"></div> -->
     </div>
     <%if(usuario.admin){%>
-    <div class="row mt-4">
+    <div class="row mt-4 justify-content-center">
         <div class="col-md-4">
             <div class="card text-center" style="background-color: transparent;">
                 <div class="card-header">Lista de requisicao de usuario</div>
@@ -54,7 +55,7 @@
                 <%}%>
               </div>
         </div>
-        <div class="col-md-8"></div>
+        <!-- <div class="col-md-8"></div> -->
     </div>
     <%}%>
 </div>
@@ -62,11 +63,11 @@
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Mude sua senha</h5>
+      <div class="modal-content" style="background-color: #f0f3f5;">
+        <div class="modal-header" style="background-color:#88B73A;">
+          <h5 class="modal-title" id="exampleModalLabel" style="color: white;">MUDE SUA SENHA</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
+            <span aria-hidden="true"><i class="fas fa-times-circle" style="color: white;"></i></span>
           </button>
         </div>
         <div class="modal-body">
@@ -80,13 +81,10 @@
                     <input type="password" class="form-control" id="inputPassword2" placeholder="Repeat password">
                 </div>
                 <p id="msg" style="color:red; font-family: sans-serif;"></p>
-                <button type="submit" class="btn btn-primary" id="btn-salvar">Salvar</button>
+                <button type="submit" class="btn btn-admin" id="btn-salvar">Salvar</button>
             </form>
         </div>
         <input class="d-none" type="text" id="method" name="method" value="patch">
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
       </div>
     </div>
   </div>
@@ -95,11 +93,11 @@
   <!-- Modal Inativos -->
   <div class="modal fade" id="inativos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Configuracoes de usuario</h5>
+      <div class="modal-content" style="background-color: #f0f3f5;">
+        <div class="modal-header" style="background-color:#88B73A;">
+          <h5 class="modal-title" id="exampleModalLabel" style="color: white;">CONFIGURACOES DO USUARIO</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
+            <span aria-hidden="true"><i class="fas fa-times-circle" style="color: white;"></i></span>
           </button>
         </div>
         <div class="modal-body">
@@ -129,15 +127,12 @@
                 </div>
                   <input class="d-none" type="text" id="inativoMethod" value="patch">
                   <p id="msg" style="color:red; font-family: sans-serif;"></p>
-                  <button type="submit" class="btn btn-primary" id="btn-salvar-inativo">Salvar</button>
+                  <button type="submit" class="btn btn-admin" id="btn-salvar-inativo">Salvar</button>
               </form>
             </div>
         </div>
         </div>
         <input class="d-none" type="text" id="method" name="method" value="patch">
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
       </div>
     </div>
   </div>

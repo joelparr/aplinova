@@ -12,23 +12,31 @@
  	};
 
  	var menuChangeActive = function menuChangeActive(el) {
- 		var hasSubmenu = $(el).hasClass("has-submenu");
+		 var hasSubmenu = $(el).hasClass("has-submenu");
+
  		$(global.menuClass + " .is-active").removeClass("is-active");
  		$(el).addClass("is-active");
-
+		 
  		// if (hasSubmenu) {
  		// 	$(el).find("ul").slideDown();
  		// }
  	};
 
  	var sidebarChangeWidth = function sidebarChangeWidth() {
- 		var $menuItemsTitle = $("li .menu-item__title");
+		 var $menuItemsTitle = $("li .menu-item__title");
+		 var imgLogo = document.getElementById('logo-admin');
+		 imgLogo.style.transition="all 0s";
+		 imgLogo.setAttribute('src', "../../public/img/logo-br-img.png")
+		 imgLogo.style.width = "30px";
 
  		$("body").toggleClass("sidebar-is-reduced sidebar-is-expanded");
  		$(".hamburger-toggle").toggleClass("is-opened");
 
  		if ($("body").hasClass("sidebar-is-expanded")) {
- 			$('[data-toggle="tooltip"]').tooltip("destroy");
+			imgLogo.style.transition="all 1s";
+			imgLogo.setAttribute('src', "../../public/img/logo-light.svg");
+			imgLogo.style.width = "150px";
+			$('[data-toggle="tooltip"]').tooltip("destroy");
  		} else {
  			$('[data-toggle="tooltip"]').tooltip(global.tooltipOptions);
  		}

@@ -20,26 +20,29 @@
         <span aria-hidden="true">&times;</span>
     </button>
 </div>
-<div class="container-fluid" style="border: 1px solid black;">
+<div style="display: flex; flex-direction: row; justify-content: center; margin-bottom: 30px; background-color: #88B73A; height: 60px; align-items: center; color: white; font-weight: bold; font-size: 20px;">DETALHES</div>
+<div class="container-fluid">
     <div class="row">
         <div id="treeviewDiv" class="col-md-6">
             <% categorias.forEach(element=>{%>
                 <%if(element.idCategoria !== 0){%>
                     <ul class="treeview"> 
-                        <li class="cat"><a href="#"><i class="far fa-list-alt fa-lg" style="margin-right:10px;"></i>
-                            <%=element.titulo%>
-                        </a>
+                        <li class="cat">
+                            <i class="far fa-list-alt fa-lg" style="margin-right:10px; color: #353535;"></i>
+                            <a href="#" style="color: #353535">
+                                <%=element.titulo%>
+                            </a>
                         </li>
                         <%if(element.produtos.length){%>
                             <ul class="notativo">
                             <%element.produtos.forEach(prod=>{%>
                                     <li class="subcat">
-                                        <i class="fas fa-asterisk" style="color: orange;"></i>
-                                        <a href="#" class="details" data-type="prod" data-id=<%=prod.id%>>
+                                        <i class="fab fa-product-hunt fa-lg" style="color: #353535; margin-right:10px;"></i>
+                                        <a href="#" class="details" style="flex-grow: 1; color:#353535" data-type="prod" data-id=<%=prod.id%>>
                                             <%=prod.titulo%>
                                         </a>
                                         <a href="/admin/produto/<%=prod.id%>?method=delete" class="deleteItem" data-method="delete">
-                                            <i class="fas fa-trash-alt" style="color: red;"></i>
+                                            <i class="far fa-times-circle fa-lg" style="color: #88B73A;"></i>
                                         </a>
                                         
                                     </li> 
@@ -51,9 +54,10 @@
                         <%if(hit.idCategoria === 0 && hit.idCategoriaPai === element.idCategoria){%>
                             <ul class="notativo">
                                 <li class="subcat">
-                                    <a href="#" class="details" data-type="sub" data-id=<%=hit.id%>><%=hit.titulo%></a>
+                                    <i class="far fa-list-alt fa-lg" style="margin-right:10px; color: #353535;"></i>
+                                    <a href="#" class="details" style="color:#353535; flex-grow: 1;" data-type="sub" data-id=<%=hit.id%>><%=hit.titulo%></a>
                                     <a href="/admin/subcategoria/<%=hit.id%>?method=delete" class="deleteItem">
-                                        <i class="fas fa-trash-alt" style="color: red;"></i>
+                                        <i class="far fa-times-circle fa-lg" style="color: #88B73A;"></i>
                                     </a>
                                     
                                 </li>
@@ -61,10 +65,10 @@
                                     <ul class="notativo">
                                     <%hit.produtos.forEach(prod=>{%>
                                         <li id="prod">
-                                            <i class="fas fa-asterisk" style="color: orange;"></i>
-                                            <a href="#" class="details" data-type="prod" data-id=<%=prod.id%>><%=prod.titulo%></a>
+                                            <i class="fab fa-product-hunt fa-lg" style="color: #353535; margin-right:10px;"></i>
+                                            <a href="#" class="details" style="flex-grow: 1; color:#353535" data-type="prod" data-id=<%=prod.id%>><%=prod.titulo%></a>
                                             <a href="/admin/produto/<%=prod.id%>?method=delete" class="deleteItem" data-method="delete">
-                                                <i class="fas fa-trash-alt" style="color: red;"></i>
+                                                <i class="far fa-times-circle fa-lg" style="color: #88B73A;"></i>
                                             </a>
                                             
                                         </li>
@@ -112,7 +116,6 @@
         </div>
         <div class="col-md-6">
             <form action="/admin/produto" method="post">
-                <h4>Detalhes</h4>
                 <div class="form-group">
                     <label for="prodTitulo">Titulo</label>
                     <input class="form-control" type="text" name="prodTitulo" id="indextitulo" required>
@@ -132,7 +135,7 @@
                 </div>
                 <p id="demo" style="color:red; font-family:'Times New Roman', Times, serif;"></p>
                 <div class="pt-2" style="margin-top:40px;">
-                    <button class="btn btn-primary" id="atualizar" type="submit">Atualizar</button>
+                    <button class="btn btn-admin" id="atualizar" type="submit">Atualizar</button>
                 </div>
             </form>
         </div>
