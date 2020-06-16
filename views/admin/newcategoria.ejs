@@ -7,13 +7,11 @@
           <form action="/admin/categoria" method="post">
             <div id="header">
               <h5>Cabecalho da categoria</h5>
-              <div class="form-group">
-                <label for="headerTitulo">Titulo</label>
-                <input class="form-control" type="text" placeholder="TITULO" name="headerTitulo" required>
+              <div class="form-group" style="margin-bottom: 4rem; margin-top: 2rem;">
+                <input class="new-input" type="text" placeholder="TITULO" name="headerTitulo" required>
               </div>
-              <div class="form-group">
-                <label for="headerDescricao">Descricao</label>
-                <textarea class="form-control" name="headerDescricao" placeholder="DESCRICAO" id="" cols="30" rows="5"></textarea>
+              <div class="form-group" style="margin-bottom: 4rem;">
+                <textarea class="new-input" name="headerDescricao" placeholder="DESCRICAO" id="" cols="30" rows="5"></textarea>
               </div>
             </div>
           <!-- cadastro de categoria -->
@@ -22,13 +20,11 @@
               <h5>Categoria</h5>
                 <!--Sempre sera incluida uma categoria-->
                 <input class="d-none" id="categoriaChecked" name="categoriaChecked" type="text" value="on">
-              <div class="form-group">
-                <label for="categoriaTitulo">Titulo</label>
-                <input class="form-control" type="text" name="categoriaTitulo" required>
+              <div class="form-group" style="margin-bottom: 4rem; margin-top: 2rem;">
+                <input class="new-input" type="text" placeholder="TITULO" name="categoriaTitulo" required>
               </div>
-              <div class="form-group">
-                <label for="categoriaDescricao">Descricao</label>
-                <textarea class="form-control" name="categoriaDescricao" rows="5" cols="30"></textarea>
+              <div class="form-group" style="margin-bottom: 4rem;">
+                <textarea class="new-input" name="categoriaDescricao" placeholder="DESCRICAO" rows="5" cols="30"></textarea>
               </div>
             </div>
             <div>

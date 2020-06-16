@@ -1,6 +1,7 @@
 <%- include('./header') %>
-<div class="container-fluid">
-    <div class="row">
+<div style="display: flex; flex-direction: row; justify-content: center; margin-bottom: 50px; background-color: #88B73A; height: 60px; align-items: center; color: white; font-weight: bold; font-size: 20px;">CONFIG USUARIO</div>
+<div class="container">
+    <div class="row justify-content-center">
         <div class="col-md-4">
             <div class="card text-center" style="background-color: transparent;">
                 <h5 class="card-header">Usuario Logado</h5>
@@ -25,10 +26,10 @@
                 </div>
               </div>
         </div>
-        <div class="col-md-8"></div>
+        <!-- <div class="col-md-8"></div> -->
     </div>
     <%if(usuario.admin){%>
-    <div class="row mt-4">
+    <div class="row mt-4 justify-content-center">
         <div class="col-md-4">
             <div class="card text-center" style="background-color: transparent;">
                 <div class="card-header">Lista de requisicao de usuario</div>
@@ -54,7 +55,7 @@
                 <%}%>
               </div>
         </div>
-        <div class="col-md-8"></div>
+        <!-- <div class="col-md-8"></div> -->
     </div>
     <%}%>
 </div>
