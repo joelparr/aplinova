@@ -41,19 +41,19 @@ ul li{
 
 @media (max-width: 640px) {
     .base-container {
-        padding-left: 3rem;
-        padding-right: 3rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
     }
     .base-padding-left {
-        padding-left: 3rem;
+        padding-left: 1rem;
     }
 
     .base-padding-right {
-        padding-right: 3rem;
+        padding-right: 1rem;
     }
 }
 
-@media (max-width: 768px) {
+@media (min-width: 641px) {
     .base-container {
         padding-left: 4rem;
         padding-right: 4rem;
@@ -65,6 +65,21 @@ ul li{
 
     .base-padding-right {
         padding-right: 4rem;
+    }
+}
+
+@media (min-width: 769px) {
+    .base-container {
+        padding-left: 6rem;
+        padding-right: calc(6rem + 16px);
+    }
+
+    .base-padding-left {
+        padding-left: 6rem;
+    }
+
+    .base-padding-right {
+        padding-right: 6rem;
     }
 }
 

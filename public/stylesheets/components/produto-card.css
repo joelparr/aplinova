@@ -17,6 +17,16 @@ a.produto-card {
     text-decoration: none;
 }
 
+.produto-card .produto-card__title {
+    font-size: 1.75rem;
+}
+
+@media (max-width: 1270px) {
+    .produto-card .produto-card__title {
+        font-size: 1.35rem;
+    }
+}
+
 .produto-card .card-img-top {
     border-radius: 0;
     height: 70%;

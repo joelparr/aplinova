@@ -96,3 +96,21 @@
     outline: none;
 }
 
+@media(max-width: 640px) {
+    .btn--expand .btn--expand__circle {
+        width: 100%;
+        background: #7B9C48;
+    }
+    .btn--expand .icon.arrow::before {
+        color: white !important;
+    }
+    .btn--expand .btn--expand__text {
+        color: #fff;
+    }
+    .btn--contrast {
+        transition-duration: 0.25s;
+        color: #fff;
+        border: 2px solid #88B73A;
+        background-color: #88B73A;
+    }
+}
