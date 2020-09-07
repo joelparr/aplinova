@@ -1,24 +1,42 @@
 const productsLink = document.getElementsByClassName('navbar__item--products')[0];
 const productsDropdown = document.getElementsByClassName('navbar__products-dropdown')[0];
 let dropdownActive = false
+const productsLinkMobile = document.getElementsByClassName('navbar__item--products-mobile')[0];
+const productsDropdownMobile = document.getElementsByClassName('navbar__products-dropdown-mobile')[0];
+let dropdownActiveMobile = false
 
-productsLink.addEventListener('mouseenter', () => {
-    productsDropdown.classList.add('navbar__products-dropdown--active')
-})
-productsLink.addEventListener('mouseleave', () => {
-    if (!dropdownActive) {
-        productsDropdown.classList.remove('navbar__products-dropdown--active')
-    }
-})
-
-productsLink.addEventListener('click', () => {
-    if (!dropdownActive) {
+if (productsLink) {
+    productsLink.addEventListener('mouseenter', () => {
         productsDropdown.classList.add('navbar__products-dropdown--active')
-    } else {
-        productsDropdown.classList.remove('navbar__products-dropdown--active')
-    }
-    dropdownActive = !dropdownActive
-})
+    })
+    productsLink.addEventListener('mouseleave', () => {
+        if (!dropdownActive) {
+            productsDropdown.classList.remove('navbar__products-dropdown--active')
+        }
+    })
+
+    productsLink.addEventListener('click', () => {
+        if (!dropdownActive) {
+            productsDropdown.classList.add('navbar__products-dropdown--active')
+        } else {
+            productsDropdown.classList.remove('navbar__products-dropdown--active')
+        }
+        dropdownActive = !dropdownActive
+    })
+}
+
+if (productsLinkMobile) {
+    productsLinkMobile.addEventListener('click', () => {
+        if (!dropdownActiveMobile) {
+            productsDropdownMobile.classList.add('navbar__products-dropdown-mobile--active')
+            productsLinkMobile.classList.add('navbar__item--products-mobile--active')
+        } else {
+            productsDropdownMobile.classList.remove('navbar__products-dropdown-mobile--active')
+            productsLinkMobile.classList.remove('navbar__item--products-mobile--active')
+        }
+        dropdownActiveMobile = !dropdownActiveMobile
+    })
+}
 
 $(document).ready(function () {
     const navBar = $('.navbar');

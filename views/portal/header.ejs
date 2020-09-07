@@ -3,18 +3,18 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <script src="https://kit.fontawesome.com/3bb5488a16.js" crossorigin="anonymous"></script>
-        <script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
+        <script src="https://unpkg.com/swiper@5.4.1/js/swiper.min.js"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="./public/stylesheets/portal/index.css">
         <link rel="stylesheet" href="./public/stylesheets/portal/produto-view.css">
-        <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
+        <link rel="stylesheet" href="https://unpkg.com/swiper@5.4.1/css/swiper.min.css">
         <title>Aplinova</title>
     </head>
     <body style="max-width: 100vw;">
         <div id="main" class="row p-0 mx-0" style="width: 100%">
             <div id="mainCol" class="col px-0 mx-0" style="width: 100%">
-                <div class="d-flex base-container navbar navbar--initial-state mx-0">
+                <div class="base-container navbar navbar--initial-state mx-0">
                     <a href="/">
                         <img class="navbar__logo navbar__logo--light" src="./public/img/logo-light.svg" alt="Logo" />
                         <img class="navbar__logo navbar__logo--dark" src="./public/img/logo-dark.svg" alt="Logo" />
@@ -48,5 +48,34 @@
                         <a class="navbar__item navbar__link" href="/#parceiros">parceiros</a>
                         <a class="navbar__item navbar__link" href="/contato">contato</a>
                         <div class="navbar__item navbar__icon navbar__close-icon fas fa-times fa-2x"></div>
+                    </div>
+                    <i class="ml-auto d-md-none navbar__item navbar__icon navbar__menu-icon fas fa-bars fa-2x"></i>
+                    <div class="ml-auto d-md-none navbar__item navbar__icon navbar__close-icon fas fa-times fa-2x"></div>
+                    <div class="col p-0 pt-5 d-md-none navbar__items-mobile">
+                        <div class="navbar__item navbar__item--products-mobile">
+                            <a class="navbar__link">produtos</a>
+                            <img class="navbar__products-icon" src="./public/img/icon-produtos.svg" alt="Item" />
+                        </div>
+                        <div class="navbar__products-dropdown-mobile-container">
+                            <div class="navbar__products-dropdown-mobile">
+                                <a class="navbar__products-dropdown-item" href="/aromas">aromas</a>
+                                <a class="navbar__products-dropdown-item" href="/corantes">corantes</a>
+                                <a class="navbar__products-dropdown-item" href="/proteinas">proteínas</a>
+                                <a class="navbar__products-dropdown-item" href="/subacucar">substitutos de açúcar e fibras</a>
+                                <a class="navbar__products-dropdown-item" href="/prodnaturais">produtos naturais</a>
+                                <a class="navbar__products-dropdown-item" href="/prodveganos">produtos veganos e orgânicos</a>
+                                <a class="navbar__products-dropdown-item" href="/ingredientesfuncionais">ingredientes funcionais</a>
+                                <a class="navbar__products-dropdown-item" href="/revconfeitaria">revestimentos para confeitaria</a>
+                                <a class="navbar__products-dropdown-item" href="/foodservice">food service</a>
+                            </div>
+                        </div>
+                        <a class="navbar__item navbar__link" href="/nossaempresa">empresa</a>
+                        <a class="navbar__item navbar__link" href="/#parceiros">parceiros</a>
+                        <a class="navbar__item navbar__link" href="/contato">contato</a>
+                        <div class="row mx-1 mt-5 mb-4 justify-content-between">
+                            <div class="navbar__mobile-lang-btn navbar__mobile-lang-btn--active">POR</div>
+                            <div class="navbar__mobile-lang-btn">ESP</div>
+                            <div class="navbar__mobile-lang-btn">ENG</div>
+                        </div>
                     </div>
                 </div>

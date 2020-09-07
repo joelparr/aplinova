@@ -1,9 +1,16 @@
 <%- include('./header') %>
 <%- include('./carrousel') %>
+<div class="introduction__header py-2">
+    <hr>
+    <div class="introduction__header-content px-2">
+        Apliquimica agora é Aplinova
+    </div>
+    <hr>
+</div>
 <%- include('./home-introduction') %>
 <div class="row base-container">
     <% produtos.forEach((produto) => { %>
-        <div class="col-sm-12 col-md-4"><%- include('./card', {produto}) %></div>
+        <div class="col-sm-12 col-md-6 col-lg-4"><%- include('./card', {produto}) %></div>
     <% }); %>
 </div>
 <%- include('./home-company') %>
