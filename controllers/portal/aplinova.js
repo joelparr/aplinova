@@ -8,6 +8,7 @@ const models = require('../../models');
 const Categoria = models.Categoria;
 const Produto = models.Produto;
 const {Op} = require('sequelize');
+const mailerTransport = require('../../config/mail');
 
 //Tela principal do portal
 exports.show = (req, res) => {
@@ -201,4 +202,40 @@ exports.subacucar= (req, res)=>{
 //Tela do nossa empresa
 exports.nossaempresa = (req, res)=>{
   res.render('./portal/nossaempresa')
+}
+
+//Email de contato com o adm e o cliente
+exports.contatoEmail = (req, res)=>{
+  let assunto = `Contato cliente: ${req.body.nome}`;
+  let contentAdm = `<html><body>Houve um contato do ${req.body.nome}. Email: ${req.body.email}</body></html>`;
+  let contentCost = `<html><body>Seu contato com a aplinova foi realizado com sucesso. Porfavor aguarde retorno.</body></html>`
+  sendContatoEmail("danieldts2013@gmail.com", assunto, contentAdm) //administrador
+  .then(sentAdm=>{
+    return sendContatoEmail(req.body.email, assunto, contentCost) //cliente
+  })
+  .then(sentCli=>{
+    res.json({sentCli});
+  })
+  .catch(err=>{
+    res.json({err});
+  })
+}
+
+//Funcao de envio de email
+function sendContatoEmail(email, assunto, content){
+  return new Promise((resolve, reject)=>{
+    mailerTransport.sendMail({
+      from: `FINDI <findisemanawagon@gmail.com>`,
+      to: email,
+      subject: assunto,
+      html: content
+    }, (err, info)=>{
+      if(err){
+        reject("Ocorreu um problema ao enviar o email")  
+      }else{
+        resolve(info);
+      }
+    })
+  })
+  
 }

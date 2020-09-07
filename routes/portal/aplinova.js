@@ -15,7 +15,8 @@ const {
   proteinas,
   revConfeitaria,
   subacucar,
-  nossaempresa} = require('../../controllers/portal/aplinova.js');
+  nossaempresa,
+  contatoEmail} = require('../../controllers/portal/aplinova.js');
 //Não preciso estar logado para acessar a plataforma
 //const {isValid} = require('../middlewares/isValidUser.js');
 
@@ -23,6 +24,7 @@ const router = express.Router();
 
 router.get('/', show);
 router.get('/contato', contato);
+router.post('/sendContato', contatoEmail);
 router.get('/aromas', aromas);
 router.get('/corantes', corantes);
 router.get('/foodservice', foodservice);

@@ -71,13 +71,21 @@ exports.createCategoria = async (req, res)=>{
   if(req.body.categoriaChecked !== 'on'){
     //4 - Caso seja subcategoria: colocar 0 no idCategoria e idCategoriaPai recebera o id do select categoria
     categoria.titulo = req.body.categoriaTitulo;
+    categoria.tituloEng = req.body.categoriaTituloEng;
+    categoria.tituloEsp = req.body.categoriaTituloEsp;
     categoria.descricao = req.body.categoriaDescricao;
+    categoria.descricaoEng = req.body.categoriaDescricaoEng;
+    categoria.descricaoEsp = req.body.categoriaDescricaoEsp;
     categoria.idCategoria = 0;
     categoria.idCategoriaPai = parseInt(req.body.categoriaPai);
 
   }else{
     categoria.titulo = req.body.categoriaTitulo;
+    categoria.tituloEng = req.body.categoriaTituloEng;
+    categoria.tituloEsp = req.body.categoriaTituloEsp;
     categoria.descricao = req.body.categoriaDescricao;
+    categoria.descricaoEng = req.body.categoriaDescricaoEng;
+    categoria.descricaoEsp = req.body.categoriaDescricaoEsp;
     //3 - Caso seja categoria: Verificar qual o ultimo registro da categoria e recuperar o idCategoria e somar + 1
     await Categoria.max('idCategoria')
     .then(async function(categoriaIdMax){
@@ -98,7 +106,15 @@ exports.createCategoria = async (req, res)=>{
 
   Categoria.create(categoria)
   .then(function(newCategoria){
-    newCategoria.createHeader({titulo: req.body.headerTitulo, descricao: req.body.headerDescricao})
+    let data = {
+      titulo: req.body.headerTitulo,
+      tituloEng: req.body.headerTituloEng,
+      tituloEsp: req.body.headerTituloEsp,
+      descricao: req.body.headerDescricao,
+      descricaoEng: req.body.headerDescricaoEng,
+      descricaoEsp: req.body.headerDescricaoEsp
+    }
+    newCategoria.createHeader(data)
     return newCategoria;
   })
   .then(function(done){
@@ -121,7 +137,11 @@ exports.createProduto = (req, res)=>{
   //1 - criar o produto com titulo e descricao
   const dataBody = {
     titulo: req.body.prodTitulo,
-    descricao: req.body.prodDescricao
+    tituloEng: req.body.prodTituloEng,
+    tituloEsp: req.body.prodTituloEsp,
+    descricao: req.body.prodDescricao,
+    descricaoEng: req.body.prodDescricaoEng,
+    descricaoEsp: req.body.prodDescricaoEsp
   }
 
   var novoProduto;
@@ -228,7 +248,11 @@ exports.updateSubCategoria = (req, res)=>{
 exports.updateProduto = (req, res)=>{
   const data = {
     titulo: req.body.titulo,
-    descricao: req.body.descricao
+    tituloEng: req.body.tituloEng,
+    tituloEsp: req.body.tituloEsp,
+    descricao: req.body.descricao,
+    descricaoEng: req.body.descricaoEng,
+    descricaoEsp: req.body.descricaoEsp
   }
   Produto.update(data, {where: {id: req.params.id}})
   .then(function(produto){

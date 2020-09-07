@@ -1,6 +1,8 @@
 /**
  * Description: modulo javascript
  */
+//Botoes das Flags
+
  "use strict";
 
  var Dashboard = function () {
@@ -57,3 +59,22 @@
 
  Dashboard.init();
  //# sourceURL=pen.js
+
+ //Removendo a flag class dos botes e bandeiras
+ function removeFlagClass(flag){
+    const eleEua = document.getElementsByClassName('eua');
+    const elePt = document.getElementsByClassName('pt');
+    const eleEsp = document.getElementsByClassName('esp');
+
+    Array.from(eleEua).forEach(hit=>{
+        flag === 'eua' ? hit.classList.remove('d-none') : hit.classList.add('d-none');
+    });
+    
+    Array.from(elePt).forEach(hit=>{
+        flag === 'pt' ? hit.classList.remove('d-none') : hit.classList.add('d-none');
+    });
+    
+    Array.from(eleEsp).forEach(hit=>{
+        flag === 'esp' ? hit.classList.remove('d-none') : hit.classList.add('d-none');
+    });
+}
