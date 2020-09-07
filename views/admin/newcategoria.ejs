@@ -5,13 +5,28 @@
       <div class="row">
         <div class="col-md-12">
           <form action="/admin/categoria" method="post">
-            <div id="header">
+            <img src="../../public/img/eng.png" alt="" style="width: 30px;" id="eua-flag">
+            <img src="../../public/img/esp.png" alt="" style="width: 30px;" id="esp-flag">
+            <img src="../../public/img/pt.png" alt="" style="width: 30px;" id="pt-flag" class="active">
+            <div style="margin-top: 3rem;" id="header">
               <h5>Cabecalho da categoria</h5>
-              <div class="form-group" style="margin-bottom: 4rem; margin-top: 2rem;">
+              <div class="form-group pt" style="margin-bottom: 4rem; margin-top: 2rem;">
                 <input class="new-input" type="text" placeholder="TITULO" name="headerTitulo" required>
               </div>
-              <div class="form-group" style="margin-bottom: 4rem;">
-                <textarea class="new-input" name="headerDescricao" placeholder="DESCRICAO" id="" cols="30" rows="5"></textarea>
+              <div class="form-group d-none eua" style="margin-bottom: 4rem; margin-top: 2rem;">
+                <input class="new-input" type="text" placeholder="TITULO" name="headerTituloEng" required>
+              </div>
+              <div class="form-group d-none esp" style="margin-bottom: 4rem; margin-top: 2rem;">
+                <input class="new-input" type="text" placeholder="TITULO" name="headerTituloEsp" required>
+              </div>
+              <div class="form-group pt" style="margin-bottom: 4rem;">
+                <textarea class="new-input" name="headerDescricao" placeholder="DESCRICAO" cols="30" rows="5"></textarea>
+              </div>
+              <div class="form-group d-none eua" style="margin-bottom: 4rem;">
+                <textarea class="new-input" name="headerDescricaoEng" placeholder="DESCRICAO" cols="30" rows="5"></textarea>
+              </div>
+              <div class="form-group d-none esp" style="margin-bottom: 4rem;">
+                <textarea class="new-input" name="headerDescricaoEsp" placeholder="DESCRICAO" cols="30" rows="5"></textarea>
               </div>
             </div>
           <!-- cadastro de categoria -->
@@ -20,11 +35,23 @@
               <h5>Categoria</h5>
                 <!--Sempre sera incluida uma categoria-->
                 <input class="d-none" id="categoriaChecked" name="categoriaChecked" type="text" value="on">
-              <div class="form-group" style="margin-bottom: 4rem; margin-top: 2rem;">
+              <div class="form-group pt" style="margin-bottom: 4rem; margin-top: 2rem;">
                 <input class="new-input" type="text" placeholder="TITULO" name="categoriaTitulo" required>
               </div>
-              <div class="form-group" style="margin-bottom: 4rem;">
+              <div class="form-group d-none eua" style="margin-bottom: 4rem; margin-top: 2rem;">
+                <input class="new-input" type="text" placeholder="TITULO" name="categoriaTituloEng" required>
+              </div>
+              <div class="form-group d-none esp" style="margin-bottom: 4rem; margin-top: 2rem;">
+                <input class="new-input" type="text" placeholder="TITULO" name="categoriaTituloEsp" required>
+              </div>
+              <div class="form- pt" style="margin-bottom: 4rem;">
                 <textarea class="new-input" name="categoriaDescricao" placeholder="DESCRICAO" rows="5" cols="30"></textarea>
+              </div>
+              <div class="form-group d-none eua" style="margin-bottom: 4rem;">
+                <textarea class="new-input" name="categoriaDescricaoEng" placeholder="DESCRICAO" rows="5" cols="30"></textarea>
+              </div>
+              <div class="form-group d-none esp" style="margin-bottom: 4rem;">
+                <textarea class="new-input" name="categoriaDescricaoEsp" placeholder="DESCRICAO" rows="5" cols="30"></textarea>
               </div>
             </div>
             <div>

@@ -2,23 +2,26 @@
 <!--*****************************Foi retirado do principal*********************-->
 <!--****************************************************************************************************-->
 <div class="list-group">
-<div class="alert alert-success alert-dismissible fade show d-none" id="success"  role="alert">
+<div class="alert alert-success alert-dismissible fade show d-none mb-0" id="success"  role="alert">
     <strong>O item foi alterado com sucesso!
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
-    </button>
+    </button> -->
+    <i class="far fa-times-circle close"></i>
 </div>
-<div class="alert alert-danger alert-dismissible fade show d-none" id="danger"  role="alert">
-    <strong>Houve um problema na atualizacao do item!
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+<div class="alert alert-danger alert-dismissible fade show d-none mb-0" id="danger"  role="alert">
+    <strong>Houve um problema na atualizacao do item! Verfique todos os campos.
+    <!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
-    </button>
+    </button> -->
+    <i class="far fa-times-circle close"></i>
 </div>
-<div class="alert alert-danger alert-dismissible fade show d-none" id="getError"  role="alert">
+<div class="alert alert-danger alert-dismissible fade show d-none mb-0" id="getError"  role="alert">
     <strong>Houve um problema para buscar o item!!
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
-    </button>
+    </button> -->
+    <i class="far fa-times-circle close"></i>
 </div>
 <div style="display: flex; flex-direction: row; justify-content: center; margin-bottom: 30px; background-color: #88B73A; height: 60px; align-items: center; color: white; font-weight: bold; font-size: 20px;">DETALHES</div>
 <div class="container-fluid">
@@ -115,14 +118,33 @@
               </table>
         </div>
         <div class="col-md-6">
+            <img src="./public/img/eng.png" alt="" style="width: 30px;" id="eua-flag">
+            <img src="./public/img/esp.png" alt="" style="width: 30px;" id="esp-flag">
+            <img src="./public/img/pt.png" alt="" style="width: 30px;" id="pt-flag" class="active">
             <form action="/admin/produto" method="post">
-                <div class="form-group">
+                <div class="form-group pt">
                     <label for="prodTitulo">Titulo</label>
                     <input class="form-control" type="text" name="prodTitulo" id="indextitulo" required>
                 </div>
-                <div class="form-group">
+                <div class="form-group d-none eua">
+                    <label for="prodTituloEng">Titulo</label>
+                    <input class="form-control" type="text" name="prodTituloEng" id="tituloEng" required>
+                </div>
+                <div class="form-group d-none esp">
+                    <label for="prodTituloEsp">Titulo</label>
+                    <input class="form-control" type="text" name="prodTituloEsp" id="tituloEsp" required>
+                </div>
+                <div class="form-group pt">
                     <label for="prodDescricao">Descricao</label>
                     <textarea class="form-control" name="prodDescricao" id="indexdescricao" cols="30" rows="10" required></textarea>
+                </div>
+                <div class="form-group d-none eua">
+                    <label for="prodDescricaoEng">Descricao</label>
+                    <textarea class="form-control" name="prodDescricaoEng" id="descricaoEng" cols="30" rows="10" required></textarea>
+                </div>
+                <div class="form-group d-none esp">
+                    <label for="prodDescricaoEsp">Descricao</label>
+                    <textarea class="form-control" name="prodDescricaoEsp" id="descricaoEsp" cols="30" rows="10" required></textarea>
                 </div>
                 <div id="divCategoriaPai" class="form-group">
                     <label for="categoria">Pertence a categoria</label>

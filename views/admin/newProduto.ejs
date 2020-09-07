@@ -4,12 +4,31 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <form action="/admin/produto" id="novo-produto" method="post">
-        <div class="form-group" style="margin-bottom: 5rem;">
+      <img src="../../public/img/eng.png" alt="" style="width: 30px;" id="eua-flag">
+      <img src="../../public/img/esp.png" alt="" style="width: 30px;" id="esp-flag">
+      <img src="../../public/img/pt.png" alt="" style="width: 30px;" id="pt-flag" class="active">
+      <form action="/admin/produto" id="novo-produto" method="post" style="margin-top: 3rem;">
+        <div class="form-group pt" style="margin-bottom: 5rem;">
             <input class="new-input" type="text" name="prodTitulo" placeholder="TITULO" required>
         </div>
-        <div class="form-group" style="margin-bottom: 5rem;">
-            <textarea class="new-input" name="prodDescricao" placeholder="DESCRICAO" id="" cols="30" rows="5"></textarea>
+        <!-- Titulo em ingles -->
+        <div class="form-group d-none eua" style="margin-bottom: 5rem;"> 
+          <input class="new-input" type="text" name="prodTituloEng" placeholder="TITULO" required>
+        </div>
+        <!-- Titulo em Espanhol -->
+        <div class="form-group d-none esp" style="margin-bottom: 5rem;">
+          <input class="new-input" type="text" name="prodTituloEsp" placeholder="TITULO" required>
+        </div>
+        <div class="form-group pt" style="margin-bottom: 5rem;">
+            <textarea class="new-input" name="prodDescricao" placeholder="DESCRICAO" cols="30" rows="5"></textarea>
+        </div>
+        <!-- Descricao em Ingles -->
+        <div class="form-group d-none eua" style="margin-bottom: 5rem;">
+          <textarea class="new-input" name="prodDescricaoEng" placeholder="DESCRICAO" cols="30" rows="5"></textarea>
+        </div>
+        <!-- Descricao em espanhol -->
+        <div class="form-group d-none esp" style="margin-bottom: 5rem;">
+          <textarea class="new-input" name="prodDescricaoEsp" placeholder="DESCRICAO" cols="30" rows="5"></textarea>
         </div>
         <div id="divCategoriaPai" class="form-group" style="margin-bottom: 5rem;">
             <!-- <label for="categoriaPai">Pertence a categoria</label> -->
@@ -54,15 +73,39 @@
         <div class="modal-body">
           <form action="/admin/categoria" method="post">
             <div class="p-1" id="header">
-              <h6>Cabecalho</h6>
+              <div style="display: flex; flex-direction: row; justify-content: space-between;">
+                <span><h6>Cabecalho</h6></span>
+                <!-- Os ids das flags sao diferentes do restante da aplicacao -->
+                <div style="display: flex; justify-content: space-around; width: 25%;">
+                  <img src="../../public/img/eng.png" alt="" style="width: 30px;" id="eua-cat-flag">
+                  <img src="../../public/img/esp.png" alt="" style="width: 30px;" id="esp-cat-flag">
+                  <img src="../../public/img/pt.png" alt="" style="width: 30px;" id="pt-cat-flag" class="active">
+                </div>
+              </div>
               <hr>
-              <div class="form-group">
+              <div class="form-group cat-pt">
                 <label for="headerTitulo">Titulo</label>
                 <input class="form-control" type="text" id="headerTitulo" name="headerTitulo" required>
               </div>
-              <div class="form-group">
+              <div class="form-group d-none cat-eua">
+                <label for="headerTituloEng">Titulo</label>
+                <input class="form-control" type="text" id="headerTituloEng" name="headerTituloEng" required>
+              </div>
+              <div class="form-group d-none cat-esp">
+                <label for="headerTituloEsp">Titulo</label>
+                <input class="form-control" type="text" id="headerTituloEsp" name="headerTituloEsp" required>
+              </div>
+              <div class="form-group cat-pt">
                 <label for="headerDescricao">Descricao</label>
-                <textarea class="form-control" id="headerDescricao" name="headerDescricao" id="" cols="30" rows="3"></textarea>
+                <textarea class="form-control" id="headerDescricao" name="headerDescricao" cols="30" rows="3"></textarea>
+              </div>
+              <div class="form-group d-none cat-eua">
+                <label for="headerDescricaoEng">Descricao</label>
+                <textarea class="form-control" id="headerDescricaoEng" name="headerDescricaoEng" cols="30" rows="3"></textarea>
+              </div>
+              <div class="form-group d-none cat-esp">
+                <label for="headerDescricaoEsp">Descricao</label>
+                <textarea class="form-control" id="headerDescricaoEsp" name="headerDescricaoEsp" cols="30" rows="3"></textarea>
               </div>
             </div>
           <!-- cadastro de categoria -->
@@ -70,13 +113,29 @@
             <div class="mt-1 p-1" id="categoria">
               <h6>Dados</h6>
               <hr>
-              <div class="form-group">
+              <div class="form-group cat-pt">
                 <label for="categoriaTitulo">Titulo</label>
                 <input class="form-control" id="categoriaTitulo" type="text" name="categoriaTitulo" required>
               </div>
-              <div class="form-group">
+              <div class="form-group d-none cat-eua">
+                <label for="categoriaTituloEng">Titulo</label>
+                <input class="form-control" id="categoriaTituloEng" type="text" name="categoriaTituloEng" required>
+              </div>
+              <div class="form-group d-none cat-esp">
+                <label for="categoriaTituloEsp">Titulo</label>
+                <input class="form-control" id="categoriaTituloEsp" type="text" name="categoriaTituloEsp" required>
+              </div>
+              <div class="form-group cat-pt">
                 <label for="categoriaDescricao">Descricao</label>
                 <textarea class="form-control" id="categoriaDescricao" name="categoriaDescricao" rows="3" cols="30"></textarea>
+              </div>
+              <div class="form-group d-none cat-eua">
+                <label for="categoriaDescricaoEng">Descricao</label>
+                <textarea class="form-control" id="categoriaDescricaoEng" name="categoriaDescricaoEng" rows="3" cols="30"></textarea>
+              </div>
+              <div class="form-group d-none cat-esp">
+                <label for="categoriaDescricaoEsp">Descricao</label>
+                <textarea class="form-control" id="categoriaDescricaoEsp" name="categoriaDescricaoEsp" rows="3" cols="30"></textarea>
               </div>
             </div>
             <p id="demo" style="color:red; font-family:'Times New Roman', Times, serif;"></p>

@@ -2,7 +2,11 @@
 module.exports = (sequelize, DataTypes) => {
   const Categoria = sequelize.define('Categoria', {
     titulo: DataTypes.STRING,
+    tituloEng: DataTypes.STRING,
+    tituloEsp: DataTypes.STRING,
     descricao: DataTypes.STRING,
+    descricaoEng: DataTypes.STRING,
+    descricaoEsp: DataTypes.STRING,
     idCategoria: DataTypes.INTEGER,
     idCategoriaPai: DataTypes.INTEGER,
   }, {timestamps: false});
