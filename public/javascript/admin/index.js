@@ -35,7 +35,7 @@
  		$(".hamburger-toggle").toggleClass("is-opened");
 
  		if ($("body").hasClass("sidebar-is-expanded")) {
-			imgLogo.style.transition="all 1s";
+			imgLogo.style.transition="all 2s";
 			imgLogo.setAttribute('src', "../../public/img/logo-light.svg");
 			imgLogo.style.width = "150px";
 			$('[data-toggle="tooltip"]').tooltip("destroy");

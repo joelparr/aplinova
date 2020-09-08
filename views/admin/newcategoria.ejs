@@ -5,11 +5,16 @@
       <div class="row">
         <div class="col-md-12">
           <form action="/admin/categoria" method="post">
-            <img src="../../public/img/eng.png" alt="" style="width: 30px;" id="eua-flag">
-            <img src="../../public/img/esp.png" alt="" style="width: 30px;" id="esp-flag">
-            <img src="../../public/img/pt.png" alt="" style="width: 30px;" id="pt-flag" class="active">
-            <div style="margin-top: 3rem;" id="header">
-              <h5>Cabecalho da categoria</h5>
+            <div id="header">
+              <div style="display: flex; flex-direction: row; justify-content: space-between;">
+                <h5 style="color: black;">Cabeçalho da categoria</h5>
+                <div>
+                  <img src="../../public/img/eng.png" alt="" style="width: 30px;" id="eua-flag">
+                  <img src="../../public/img/esp.png" alt="" style="width: 30px;" id="esp-flag">
+                  <img src="../../public/img/pt.png" alt="" style="width: 30px;" id="pt-flag" class="active">
+                </div>
+              </div>
+              
               <div class="form-group pt" style="margin-bottom: 4rem; margin-top: 2rem;">
                 <input class="new-input" type="text" placeholder="TITULO" name="headerTitulo" required>
               </div>
@@ -32,7 +37,7 @@
           <!-- cadastro de categoria -->
           <!-- Uma categoria nao pode ter o id proprio repetido dentro da tabela -->
             <div id="categoria">
-              <h5>Categoria</h5>
+              <h5 style="color: black;">Categoria</h5>
                 <!--Sempre sera incluida uma categoria-->
                 <input class="d-none" id="categoriaChecked" name="categoriaChecked" type="text" value="on">
               <div class="form-group pt" style="margin-bottom: 4rem; margin-top: 2rem;">

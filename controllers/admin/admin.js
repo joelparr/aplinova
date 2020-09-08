@@ -232,7 +232,11 @@ exports.showCategoria = (req, res)=>{
 exports.updateSubCategoria = (req, res)=>{
   const data = {
     titulo: req.body.titulo,
-    descricao: req.body.descricao
+    tituloEng: req.body.tituloEng,
+    tituloEsp: req.body.tituloEsp,
+    descricao: req.body.descricao,
+    descricaoEng: req.body.descricaoEng,
+    descricaoEsp: req.body.descricaoEsp
   }
 
   Categoria.update(data, {where: {id: req.params.id}})
@@ -254,6 +258,7 @@ exports.updateProduto = (req, res)=>{
     descricaoEng: req.body.descricaoEng,
     descricaoEsp: req.body.descricaoEsp
   }
+  
   Produto.update(data, {where: {id: req.params.id}})
   .then(function(produto){
     res.json({update:"ok"});

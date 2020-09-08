@@ -148,7 +148,7 @@ function getCategoria(url){
 atualizar.addEventListener('click', function(event){
     event.preventDefault();
     //Validacao do formulario
-    if(formTitulo.value === "" || formTituloEng.value === "" || formTituloEsp.value === "" || formDescricao.value === "" || formDescricaoEng.value === "" || formDescricaoEsp.value === ""){
+    if(formTitulo.value === "" || formTituloEng.value === "" || formTituloEsp.value === ""){
         // document.getElementById("demo").innerHTML = "Todas os campos precisam ser preenchidos";
         danger.classList.remove("d-none");
         return 0;
@@ -180,6 +180,9 @@ atualizar.addEventListener('click', function(event){
     $.post(url, dataBody, function(data){
         if(data){
             success.classList.remove("d-none");
+            // if(treeviewDiv.classList.include("d-none")){
+            //     window.location.reload();
+            // }
         }else{
             danger.classList.remove("d-none");
         }

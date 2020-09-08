@@ -197,7 +197,7 @@ h3 {
 }
 .hamburger-toggle [class*='bar-'] {
   display: block;
-  background: #607D8B;
+  background: black;
   -webkit-transform: rotate(0deg);
   transform: rotate(0deg);
   -webkit-transition: .2s ease all;
@@ -218,7 +218,7 @@ h3 {
   left: 3px;
 }
 .hamburger-toggle.is-opened [class*='bar-'] {
-  background: #607D8B;
+  background: black;
 }
 .hamburger-toggle.is-opened .bar-top {
   -webkit-transform: rotate(45deg);
