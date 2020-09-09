@@ -1,5 +1,5 @@
 <%- include('./header') %>
-<%- include('./banner', {title:'Um bom <br>atendimento <br>faz toda a <br><b>diferença</b>', imageUrl: 'https://images.pexels.com/photos/1229861/pexels-photo-1229861.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'})%>
+<%- include('./banner', {title: t.contato.aplinovaIsAlways, imageUrl: 'https://images.pexels.com/photos/1229861/pexels-photo-1229861.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'})%>
 
 <div class="base-container mt-5">
   <div class="row">
@@ -7,13 +7,13 @@
       <div class="contato__container">
         <div class="contato__header">
           <i class="fas fa-square fas-sm mr-3"></i>
-          Fale <b class="ml-2">conosco</b>
+          <%- t.contato.letsChat %>
         </div>
         <div class="contato__content">
           <div class="contato__main-text pt-3">
-            Preencha o formulário e nossa equipe técnica entrará em contato o mais breve possível.
+            <%- t.contato.fillOutThe %>
             <br><br>
-            Ou se preferir, envie sua solicitação para
+            <%- t.home.orIfYou %>
             <a href="mailto:contato@aplinova.com"><b>contato@aplinova.com</b></a>
           </div>
         </div>
@@ -24,23 +24,23 @@
       <form>
         <div class="col-md-12">
           <div class="mb-5">
-            <input class="input-form" type="text" name="nome" id="nome" placeholder="NOME" autofocus>
+            <input class="input-form" type="text" name="nome" id="nome" placeholder="<%- t.contato.name %>" autofocus>
           </div>
           <div class="mb-5">
-            <input class="input-form" type="text" name="email" id="email" placeholder="E-MAIL" autofocus>
+            <input class="input-form" type="text" name="email" id="email" placeholder="<%- t.contato.email %>" autofocus>
           </div>
           <div class="mb-5">
-            <input class="input-form" type="text" name="telefone" id="telefone" placeholder="TELEFONE" autofocus>
+            <input class="input-form" type="text" name="telefone" id="telefone" placeholder="<%- t.contato.phone %>" autofocus>
           </div>
           <div class="mb-5">
-            <input class="input-form" type="text" name="empresa" id="empresa" placeholder="EMPRESA" autofocus>
+            <input class="input-form" type="text" name="empresa" id="empresa" placeholder="<%- t.contato.company %>" autofocus>
           </div>
           <div class="mb-5">
-            <input class="input-form" type="text" name="mensagem" id="mensagem" placeholder="MENSAGEM" autofocus>
+            <input class="input-form" type="text" name="mensagem" id="mensagem" placeholder="<%- t.contato.message %>" autofocus>
           </div>
           <p id="demo" style="color:red; font-family:'Times New Roman', Times, serif;"></p>
           <div class="mb-5">
-            <button class="button-form" id="sendEmail">ENVIAR</button>
+            <button class="button-form" id="sendEmail"><%- t.contato.submit %></button>
           </div>
         </div>
       </form>

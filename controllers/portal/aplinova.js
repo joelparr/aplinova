@@ -13,32 +13,32 @@ const mailerTransport = require('../../config/mail');
 //Tela principal do portal
 exports.show = (req, res) => {
     const produtos = [
-      {title: 'Aromas', imageUrl: './public/img/aromas.jpg', href: 'aromas'},
-      {title: 'Corantes', imageUrl: './public/img/corantes.jpg', href: 'corantes'},
-      {title: 'Produtos Veganos e Orgânicos', imageUrl: './public/img/prod_veganos.jpg', href: 'prodveganos'},
-      {title: 'Proteínas', imageUrl: './public/img/proteinas.jpg', href: 'proteinas'},
-      {title: 'Substitutos de <br>Açúcar e Fibras', imageUrl: './public/img/subs_acucar.jpg', href: 'subacucar'},
-      {title: 'Produtos <br>Naturais', imageUrl: './public/img/produtos_naturais.jpg', href: 'prodnaturais'},
-      {title: 'Revestimentos para Confeitaria', imageUrl: './public/img/rev_confeitaria.jpg', href: 'revconfeitaria'},
-      {title: 'Food Service', imageUrl: './public/img/food_service.jpg', href: 'foodservice'},
-      {title: 'Ingredientes Funcionais', imageUrl: './public/img/ingredientes_funcionais.jpg', href: 'ingredientesfuncionais'}
+      {title: req.params.t.home.flavors, imageUrl: './public/img/aromas.jpg', href: 'aromas'},
+      {title: req.params.t.home.colors, imageUrl: './public/img/corantes.jpg', href: 'corantes'},
+      {title: req.params.t.home.veganAndOrganic, imageUrl: './public/img/prod_veganos.jpg', href: 'prodveganos'},
+      {title: req.params.t.home.proteins, imageUrl: './public/img/proteinas.jpg', href: 'proteinas'},
+      {title: req.params.t.produtos.titles.sugarSubstitutesAnd, imageUrl: './public/img/subs_acucar.jpg', href: 'subacucar'},
+      {title: req.params.t.produtos.titles.naturalIngredients, imageUrl: './public/img/produtos_naturais.jpg', href: 'prodnaturais'},
+      {title: req.params.t.home.confectioneryCoatings, imageUrl: './public/img/rev_confeitaria.jpg', href: 'revconfeitaria'},
+      {title: req.params.t.home.foodService, imageUrl: './public/img/food_service.jpg', href: 'foodservice'},
+      {title: req.params.t.home.functionalIngredients, imageUrl: './public/img/ingredientes_funcionais.jpg', href: 'ingredientesfuncionais'}
     ]
-    res.render('./portal/index', {produtos});
+    res.render('./portal/index', {produtos, t: req.params.t});
 }
 
 //Tela de contato
 exports.contato = (req, res)=>{
-    res.render('./portal/contato');
+    res.render('./portal/contato', {t: req.params.t});
 }
 
 //Tela de aromas
 exports.aromas = (req, res)=>{
   Categoria.findOne({where:{titulo: "aromas"}, include:{model:Produto, as:"produtos"}})
   .then(function(aromas){
-    res.render('./portal/produtos/aromas', {aromas: aromas.dataValues.produtos});
+    res.render('./portal/produtos/aromas', {aromas: aromas.dataValues.produtos, t: req.params.t});
   })
   .catch(function(error){
-    res.render('./portal/produtos/aromas', {aromas:undefined, error:error});
+    res.render('./portal/produtos/aromas', {aromas:undefined, error:error, t: req.params.t});
   })
 
 }
@@ -47,10 +47,10 @@ exports.aromas = (req, res)=>{
 exports.corantes = (req, res)=>{
   Categoria.findOne({where:{titulo: "corantes"}, include:{model:Produto, as: "produtos"}})
   .then(function(corantes){
-    res.render('./portal/produtos/corantes', {corantes: corantes.dataValues.produtos});
+    res.render('./portal/produtos/corantes', {corantes: corantes.dataValues.produtos, t: req.params.t});
   })
   .catch(function(error){
-    res.render('./portal/produtos/corantes', {corantes: undefined, error:error});
+    res.render('./portal/produtos/corantes', {corantes: undefined, error:error, t: req.params.t});
   })
 
 }
@@ -64,18 +64,18 @@ exports.foodservice = (req, res)=>{
     if(cat !== 0){
       return Categoria.findAll({where:{[Op.and]:[{idCategoria:0},{idCategoriaPai: cat.dataValues.idCategoria}]}, include:{model:Produto, as:'produtos'}})
     }else{
-      res.render(url, {error: "Nao foi encontrada a categoria", foodservice: undefined});
+      res.render(url, {error: "Nao foi encontrada a categoria", foodservice: undefined, t: req.params.t});
     }
   })
   .then(function(subCat){
     if(subCat !== 0){
-      res.render(url, {foodservice: subCat, error:undefined});
+      res.render(url, {foodservice: subCat, error:undefined, t: req.params.t});
     }else{
-      res.render(url, {error: "Nao foi encontrada a subcategoria", foodservice: undefined});
+      res.render(url, {error: "Nao foi encontrada a subcategoria", foodservice: undefined, t: req.params.t});
     }
   })
   .catch(function(error){
-    res.render(url, {error: error, foodservice: undefined});
+    res.render(url, {error: error, foodservice: undefined, t: req.params.t});
   })
 }
 
@@ -88,18 +88,18 @@ exports.ingredFuncionais = (req, res)=>{
     if(cat !== 0){
       return Categoria.findAll({where:{[Op.and]:[{idCategoria:0},{idCategoriaPai: cat.dataValues.idCategoria}]}, include:{model:Produto, as:'produtos'}})
     }else{
-      res.render(url, {error: "Nao foi encontrada a categoria", ingredientes: undefined});
+      res.render(url, {error: "Nao foi encontrada a categoria", ingredientes: undefined, t: req.params.t});
     }
   })
   .then(function(subCat){
     if(subCat !== 0){
-      res.render(url, {ingredientes: subCat, error:undefined});
+      res.render(url, {ingredientes: subCat, error:undefined, t: req.params.t});
     }else{
-      res.render(url, {error: "Nao foi encontrada a subcategoria", ingredientes: undefined});
+      res.render(url, {error: "Nao foi encontrada a subcategoria", ingredientes: undefined, t: req.params.t});
     }
   })
   .catch(function(error){
-    res.render(url, {error: error, ingredientes: undefined});
+    res.render(url, {error: error, ingredientes: undefined, t: req.params.t});
   })
 }
 
@@ -110,7 +110,7 @@ exports.prodNaturais = (req, res)=>{
     res.render('./portal/produtos/produtosnaturais', {produtos: prodNatu.dataValues.produtos});
   })
   .catch(function(error){
-    res.render('./portal/produtos/produtosnaturais', {produtos: undefined, error:error});
+    res.render('./portal/produtos/produtosnaturais', {produtos: undefined, error:error, t: req.params.t});
   })
 
 }
@@ -123,18 +123,18 @@ exports.prodVeganos = (req, res)=>{
     if(cat !== 0){
       return Categoria.findAll({where:{[Op.and]:[{idCategoria:0},{idCategoriaPai: cat.dataValues.idCategoria}]}, include:{model:Produto, as:'produtos'}})
     }else{
-      res.render(url, {error: "Nao foi encontrada a categoria", veganos: undefined});
+      res.render(url, {error: "Nao foi encontrada a categoria", veganos: undefined, t: req.params.t});
     }
   })
   .then(function(subCat){
     if(subCat !== 0){
-      res.render(url, {veganos: subCat, error:undefined});
+      res.render(url, {veganos: subCat, error:undefined, t: req.params.t});
     }else{
-      res.render(url, {error: "Nao foi encontrada a subcategoria", veganos: undefined});
+      res.render(url, {error: "Nao foi encontrada a subcategoria", veganos: undefined, t: req.params.t});
     }
   })
   .catch(function(error){
-    res.render(url, {error: error, veganos: undefined});
+    res.render(url, {error: error, veganos: undefined, t: req.params.t});
   })
 }
 
@@ -147,18 +147,18 @@ exports.proteinas = (req, res)=>{
     if(cat !== 0){
       return Categoria.findAll({where:{[Op.and]:[{idCategoria:0},{idCategoriaPai: cat.dataValues.idCategoria}]}, include:{model:Produto, as:'produtos'}})
     }else{
-      res.render(url, {error: "Nao foi encontrada a categoria", proteinas: undefined});
+      res.render(url, {error: "Nao foi encontrada a categoria", proteinas: undefined, t: req.params.t});
     }
   })
   .then(function(subCat){
     if(subCat !== 0){
-      res.render(url, {proteinas: subCat, error:undefined});
+      res.render(url, {proteinas: subCat, error:undefined, t: req.params.t});
     }else{
-      res.render(url, {error: "Nao foi encontrada a subcategoria", proteinas: undefined});
+      res.render(url, {error: "Nao foi encontrada a subcategoria", proteinas: undefined, t: req.params.t});
     }
   })
   .catch(function(error){
-    res.render(url, {error: error, proteinas: undefined});
+    res.render(url, {error: error, proteinas: undefined, t: req.params.t});
   })
 }
 
@@ -166,10 +166,10 @@ exports.proteinas = (req, res)=>{
 exports.revConfeitaria = (req, res)=>{
   Categoria.findOne({where:{titulo: "revestimentos para confeitaria"}, include:{model:Produto, as:"produtos"}})
   .then(function(revestimento){
-    res.render('./portal/produtos/revconfeitaria', {revestimento: revestimento.dataValues.produtos});
+    res.render('./portal/produtos/revconfeitaria', {revestimento: revestimento.dataValues.produtos, t: req.params.t});
   })
   .catch(function(error){
-    res.render('./portal/produtos/revconfeitaria', {revestimento:undefined, error: error});
+    res.render('./portal/produtos/revconfeitaria', {revestimento:undefined, error: error, t: req.params.t});
   })
 
 }
@@ -184,24 +184,25 @@ exports.subacucar= (req, res)=>{
     if(cat !== 0){
       return Categoria.findAll({where:{[Op.and]:[{idCategoria:0},{idCategoriaPai: cat.dataValues.idCategoria}]}, include:{model:Produto, as:'produtos'}})
     }else{
-      res.render(url, {error: "Nao foi encontrada a categoria", subsAc: undefined});
+      res.render(url, {error: "Nao foi encontrada a categoria", subsAc: undefined, t: req.params.t});
     }
   })
   .then(function(subCat){
     if(subCat !== 0){
-      res.render(url, {subsAc: subCat, error:undefined});
+      res.render(url, {subsAc: subCat, error:undefined, t: req.params.t});
     }else{
-      res.render(url, {error: "Nao foi encontrada a subcategoria", subsAc: undefined});
+      res.render(url, {error: "Nao foi encontrada a subcategoria", subsAc: undefined, t: req.params.t});
     }
   })
   .catch(function(error){
-    res.render(url, {error: error, subsAc: undefined});
+    res.render(url, {error: error, subsAc: undefined, t: req.params.t});
   })
 }
 
 //Tela do nossa empresa
 exports.nossaempresa = (req, res)=>{
-  res.render('./portal/nossaempresa')
+  console.log(req.params.t);
+  res.render('./portal/nossaempresa', {t: req.params.t})
 }
 
 //Email de contato com o adm e o cliente
@@ -231,11 +232,16 @@ function sendContatoEmail(email, assunto, content){
       html: content
     }, (err, info)=>{
       if(err){
-        reject("Ocorreu um problema ao enviar o email")  
+        reject("Ocorreu um problema ao enviar o email")
       }else{
         resolve(info);
       }
     })
   })
-  
+}
+
+// Controle de Idioma
+exports.lang = (req, res) => {
+  req.session.t = req.params.ln;
+  res.json({return: req.session.t});
 }

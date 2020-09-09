@@ -1,0 +1,121 @@
+module.exports = {
+  code: 'Esp',
+  home: {
+    products: 'productos',
+    flavors: 'sabores',
+    colors: 'colores',
+    proteins: 'Proteínas',
+    sugarSubstitutesAnd: 'edulcorantes y fibras solubres',
+    naturalIngredients: 'productos naturales',
+    veganAndOrganic: 'productos veganos y orgánicos',
+    functionalIngredients: 'ingredientes funcionales',
+    confectioneryCoatings: 'capas para confitería',
+    foodService: 'Food Service',
+    company: 'Compañía',
+    partners: 'Socios',
+    contact: 'Contacto',
+    theBestSolutionsInProteins: 'Las mejores soluciones <p><strong>en proteínas</p></strong>',
+    theBestSolutionsInColors: 'Las mejores soluciones <p><strong>en corantes</p></strong>',
+    theBestSolutionsInFood: 'Las mejores soluciones <p><strong>en food service</p></strong>',
+    learnMore: 'APRENDA MÁS',
+    apliquimicaIsNow: 'Apliquimica ahora es Aplinova',
+    providingQualityProducts: 'Productos de calidad para ayudar a nuestros clientes lograr sus objetivos',
+    weOfferA: 'Ofrecemos una línea diversificada de sabores, edulcorantes, proteínas, extractos vegetales y otros ingredientes para las industrias de alimentos, bebidas, suplementos, nutrición de animal, cosméticos y otras.',
+    weAreConstantly: 'Estamos en constante búsqueda de nuevos productos, siempre priorizando un estándar de alta calidad.',
+    ourCompany: 'Nuestra <b class="ml-2">compañía</b>',
+    foundedIn1987: 'Fundada en 1987, inicialmente bajo el nombre de Apliquimica, Aplinova es una compañía brasileña con sede administrativa, laboratorio de aplicaciones, almacén y planta ubicados en la ciudad de São Paulo.',
+    aLongEstablished: 'Como proveedora tradicional de ingredientes para el mercado brasileño, la compañía está siempre buscando innovaciones que puedan ayudar a los clientes a lanzar productos diferenciados, naturales, funcionales, veganos y además competitivos en precio.',
+    ourTeamIs: 'Contamos con profesionales con amplia experiencia en este mercado que acatan a la cultura de la compañía a priorizar al cliente, valorar el profesionalismo y la competencia, y respetar nuestros estándares éticos.',
+    ourPartners: 'Nuestros socios',
+    aplinovaPartnersWith: 'Aplinova cuenta con socios internacionales de alto nivel, que se destacan por su competencia comercial, tecnológica e innovadora en sus respectivos campos de actividad.',
+    locations: 'LOCACIONES',
+    headquarters: 'Sede',
+    manufacturingPlant: 'Planta',
+    map: 'Mapa',
+    allRightsReserved: 'Todos los derechos reservados.',
+  },
+  produtos: {
+    segments: 'Segmentos',
+    flavors: 'Alimentos, Bebidas, Suplementos, Farma, Oral Care, Cosméticos, Nutrición de Animal y Pet Food.',
+    colors: 'Alimentos, Bebidas, Suplementos, Farma, Oral Care, Cosméticos, Nutrición de Animal y Pet Food.',
+    proteins: 'Alimentos, Bebidas, Suplementos, Nutrición de Animal y Pet Food.',
+    sugarSubstitutes: 'Alimentos, Bebidas, Suplementos, Farma, Oral Care, Cosméticos, Nutrición de Animal y Pet Food.',
+    naturalProducts: 'Alimentos, Bebidas, Suplementos, Nutrición de Animal y Pet Food.',
+    veganProducts: 'Alimentos, Bebidas, Suplementos, Nutrición de Animal y Pet Food.',
+    functionalIngredients: 'Alimentos, Bebidas, Suplementos, Farma, Oral Care, Cosméticos, Nutrición de Animal y Pet Food.',
+    confectioneryCoatings: 'Chocolates y Confitería.',
+    foodService: 'Panadería, Confitería, Heladería, Lácteos, Frutas y Verduras.',
+    titles: {
+      sugarSubstitutesAnd: 'Edulcorantes y<br> Fibras Solubres',
+      naturalIngredients: 'Productos <br>Naturales',
+    }
+  },
+  nossaempresa: {
+    aTrajectoryBuilt: 'Una trayectoria de credibilidad e innovación',
+    ourCompany: 'Nuestra compañía',
+    youCanHave: '“Usted puede tener todo el dinero del mundo, pero si usted no es una persona ética y moral, no tiene nada.”',
+    henryRKravis: 'Henry R. Kravis, cofundador de Kohlberg Kravis Roberts & Co.',
+    facilities: 'Estructura',
+    aplinovasFacilitiesInclude: 'Aplinova cuenta con una sede administrativa/comercial, laboratorio de aplicación y calidad, almacén y planta propios ubicados en la ciudad de São Paulo. Los laboratorios permiten que nuevos productos y aplicaciones sean desarrollados.',
+    inAdditionTo: 'Además del desarrollo constante de nuevos productos, la estructura instalada de la compañía garantiza el control de un alto estándar de calidad de productos, así como de las materias primas recibidas.',
+    ourManufactoringUnit: 'La planta cuenta con una infraestructura completa para la producción de sabores, extractos, colorantes, edulcorantes y otros productos. El equipo está compuesto por un personal técnico con experiencia que ha colaborado con la compañía desde hace muchos años.',
+    aplinovaStrivesFor: 'Aplinova valora la calidad de sus productos, trabajando para mejorar constantemente su planta y laboratorios.',
+  },
+  ourHistory: {
+    title: 'NUESTRA HISTORIA',
+    timeline: {
+      1987: {
+        title: '1987 – Fundación',
+        body: 'Apliquimica establece su sede en la ciudad de São Paulo y comienza la distribución de productos químicos.',
+      },
+      1990: {
+        title: '1990 – Expansión de infraestructura',
+        body: 'La compañía adquiere un terreno en la ciudad de São Paulo y construye su planta.'
+      },
+      1995: {
+        title: '1995 – Asociaciones con proveedores estadounidenses',
+        body: 'Apliquimica se asocia con fabricantes estadounidenses tales como Sethness Caramel Color y Universal Flavors y comienza la distribución de ingredientes para la industria de alimentos.',
+      },
+      2000: {
+        title: '2000 – Producción propia',
+        body: 'Apliquimica desarrolla la tecnología y la estructura para su propia producción de sabores, extractos vegetales y mezclas de colores y edulcorantes.',
+      },
+      2009: {
+        title: '2009 – Nueva gestión',
+        body: 'Nueva generación de profesionales asume la gestión de la compañía.',
+      },
+      2017: {
+        title: '2017 - Nueva sede administrativa',
+        body: 'La compañía traslada la sede administrativa a un entorno más espacioso.',
+      },
+      2018: {
+        title: '2018 – Nuevo liderazgo',
+        body: 'Su nueva estructura societaria y de gestión pasa a contar con profesionales experimentados del mercado de ingredientes, así como con asesores de negocios y financieros.',
+      },
+      20191: {
+        title: '2019 – Nueva sede administrativa y laboratorio de aplicación',
+        body: 'La compañía inaugura su nuevo laboratorio de aplicación, así como una nueva sede administrativa, más espaciosa y moderna. ',
+      },
+      20192: {
+        title: '2019 – Expansión del portafolio',
+        body: 'La compañía amplía la gama de productos ofreciendo nuevos ingredientes naturales, orgánicos y funcionales.',
+      },
+      2020: {
+        title: '2020 - Una nueva cara para una nueva fase',
+        body: 'Apliquimica se reinventa como Aplinova.',
+      }
+    },
+  },
+  contato: {
+    aplinovaIsAlways: 'Nuestra atención al cliente marca nuestra diferencia',
+    letsChat: 'Contáctenos',
+    fillOutThe: 'Rellene el formulario y nuestro equipo técnico se pondrá en contacto lo antes posible.',
+    orIfYou: 'O si prefiere, envíenos su solicitud a: ',
+    name: 'NOMBRE',
+    email: 'E-mail',
+    phone: 'TELÉFONO',
+    company: 'COMPAÑÍA',
+    message: 'MENSAJE',
+    submit: 'Enviar'
+  },
+}
