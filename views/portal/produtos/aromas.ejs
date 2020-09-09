@@ -29,7 +29,7 @@
   <div class="d-flex flex-wrap mt-5 produto-view__categories">
     <%if(aromas){%>
       <% aromas.forEach(item=>{ %>
-        <%- include('../categoria-item', {itemName: item.dataValues.titulo}) %>
+        <%- include('../categoria-item', {itemName: item.dataValues[`titulo${t.code}`]}) %>
       <%})%>
     <%}%>
   </div>
