@@ -91,3 +91,42 @@ $(document).ready(function () {
     }, 100);
 })
 
+const langPt = document.getElementById('langPt');
+const langEn = document.getElementById('langEn');
+const langEs = document.getElementById('langEs');
+
+langPt.addEventListener('click', (e) => {
+    let url = '/lang/pt';
+    const options = {
+        method: 'GET',
+        headers: {"Content-type":"application/json"}
+    };
+
+    fetch(url, options)
+        .then(data => data.json())
+        .then(_ => window.location.reload());
+})
+
+langEs.addEventListener('click', (e) => {
+    let url = '/lang/es';
+    const options = {
+        method: 'GET',
+        headers: {"Content-type":"application/json"}
+    };
+
+    fetch(url, options)
+        .then(data => data.json())
+        .then(_ => window.location.reload());
+})
+
+langEn.addEventListener('click', (e) => {
+    let url = '/lang/en';
+    const options = {
+        method: 'GET',
+        headers: {"Content-type":"application/json"}
+    };
+
+    fetch(url, options)
+        .then(data => data.json())
+        .then(_ => window.location.reload());
+})

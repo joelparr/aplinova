@@ -20,6 +20,9 @@
                         <img class="navbar__logo navbar__logo--dark" src="./public/img/logo-dark.svg" alt="Logo" />
                     </a>
                     <div class="ml-auto navbar__items-initial">
+                        <button id="langPt">PORTUGUES</button>
+                        <button id="langEn">INGLES</button>
+                        <button id="langEs">ESPANHOL</button>
                         <div class="navbar__initial-item">+55 (11) 96474-1323</div>
                         <a class="navbar__initial-item" href="https://web.whatsapp.com/send?phone=5511964741323" target="_blank">
                             <i class="fab fa-whatsapp"></i>
@@ -31,47 +34,47 @@
                         <div class="navbar__item navbar__item--products">
                           <div class="navbar__products-dropdown-container">
                             <div class="navbar__products-dropdown">
-                              <a class="navbar__products-dropdown-item" href="/aromas">aromas</a>
-                              <a class="navbar__products-dropdown-item" href="/corantes">corantes</a>
-                              <a class="navbar__products-dropdown-item" href="/proteinas">proteínas</a>
-                              <a class="navbar__products-dropdown-item" href="/subacucar">substitutos de açúcar e fibras</a>
-                              <a class="navbar__products-dropdown-item" href="/prodnaturais">produtos naturais</a>
-                              <a class="navbar__products-dropdown-item" href="/prodveganos">produtos veganos e orgânicos</a>
-                              <a class="navbar__products-dropdown-item" href="/ingredientesfuncionais">ingredientes funcionais</a>
-                              <a class="navbar__products-dropdown-item" href="/revconfeitaria">revestimentos para confeitaria</a>
-                              <a class="navbar__products-dropdown-item" href="/foodservice">food service</a>
+                              <a class="navbar__products-dropdown-item" href="/aromas"><%- t.home.flavors %></a>
+                              <a class="navbar__products-dropdown-item" href="/corantes"><%- t.home.colors %></a>
+                              <a class="navbar__products-dropdown-item" href="/proteinas"><%- t.home.proteins %></a>
+                              <a class="navbar__products-dropdown-item" href="/subacucar"><%- t.home.sugarSubstitutesAnd %></a>
+                              <a class="navbar__products-dropdown-item" href="/prodnaturais"><%- t.home.naturalIngredients %></a>
+                              <a class="navbar__products-dropdown-item" href="/prodveganos"><%- t.home.veganAndOrganic %></a>
+                              <a class="navbar__products-dropdown-item" href="/ingredientesfuncionais"><%- t.home.functionalIngredients %></a>
+                              <a class="navbar__products-dropdown-item" href="/revconfeitaria"><%- t.home.confectioneryCoatings %></a>
+                              <a class="navbar__products-dropdown-item text-lowercase" href="/foodservice"><%- t.home.foodService %></a>
                             </div>
                           </div>
-                          <a class="navbar__link">produtos</a>
+                          <a class="navbar__link"><%- t.home.products %></a>
                         </div>
-                        <a class="navbar__item navbar__link" href="/nossaempresa">empresa</a>
-                        <a class="navbar__item navbar__link" href="/#parceiros">parceiros</a>
-                        <a class="navbar__item navbar__link" href="/contato">contato</a>
+                        <a class="navbar__item navbar__link text-lowercase" href="/nossaempresa"><%- t.home.company %></a>
+                        <a class="navbar__item navbar__link text-lowercase" href="/#parceiros"><%- t.home.partners %></a>
+                        <a class="navbar__item navbar__link text-lowercase" href="/contato"><%- t.home.contact %></a>
                         <div class="navbar__item navbar__icon navbar__close-icon fas fa-times fa-2x"></div>
                     </div>
                     <i class="ml-auto d-md-none navbar__item navbar__icon navbar__menu-icon fas fa-bars fa-2x"></i>
                     <div class="ml-auto d-md-none navbar__item navbar__icon navbar__close-icon fas fa-times fa-2x"></div>
                     <div class="col p-0 pt-5 d-md-none navbar__items-mobile">
                         <div class="navbar__item navbar__item--products-mobile">
-                            <a class="navbar__link">produtos</a>
+                            <a class="navbar__link text-lowercase"><%- t.home.products %></a>
                             <img class="navbar__products-icon" src="./public/img/icon-produtos.svg" alt="Item" />
                         </div>
                         <div class="navbar__products-dropdown-mobile-container">
                             <div class="navbar__products-dropdown-mobile">
-                                <a class="navbar__products-dropdown-item" href="/aromas">aromas</a>
-                                <a class="navbar__products-dropdown-item" href="/corantes">corantes</a>
-                                <a class="navbar__products-dropdown-item" href="/proteinas">proteínas</a>
-                                <a class="navbar__products-dropdown-item" href="/subacucar">substitutos de açúcar e fibras</a>
-                                <a class="navbar__products-dropdown-item" href="/prodnaturais">produtos naturais</a>
-                                <a class="navbar__products-dropdown-item" href="/prodveganos">produtos veganos e orgânicos</a>
-                                <a class="navbar__products-dropdown-item" href="/ingredientesfuncionais">ingredientes funcionais</a>
-                                <a class="navbar__products-dropdown-item" href="/revconfeitaria">revestimentos para confeitaria</a>
-                                <a class="navbar__products-dropdown-item" href="/foodservice">food service</a>
+                                <a class="navbar__products-dropdown-item" href="/aromas"><%- t.home.flavors %></a>
+                                <a class="navbar__products-dropdown-item" href="/corantes"><%- t.home.colors %></a>
+                                <a class="navbar__products-dropdown-item" href="/proteinas"><%- t.home.proteins %></a>
+                                <a class="navbar__products-dropdown-item" href="/subacucar"><%- t.home.sugarSubstitutesAnd %></a>
+                                <a class="navbar__products-dropdown-item" href="/prodnaturais"><%- t.home.naturalIngredients %></a>
+                                <a class="navbar__products-dropdown-item" href="/prodveganos"><%- t.home.veganAndOrganic %></a>
+                                <a class="navbar__products-dropdown-item" href="/ingredientesfuncionais"><%- t.home.functionalIngredients %></a>
+                                <a class="navbar__products-dropdown-item" href="/revconfeitaria"><%- t.home.confectioneryCoatings %></a>
+                                <a class="navbar__products-dropdown-item text-lowercase" href="/foodservice"><%- t.home.foodService %></a>
                             </div>
                         </div>
-                        <a class="navbar__item navbar__link" href="/nossaempresa">empresa</a>
-                        <a class="navbar__item navbar__link" href="/#parceiros">parceiros</a>
-                        <a class="navbar__item navbar__link" href="/contato">contato</a>
+                        <a class="navbar__item navbar__link" href="/nossaempresa"><%- t.home.company %></a>
+                        <a class="navbar__item navbar__link" href="/#parceiros"><%- t.home.partners %></a>
+                        <a class="navbar__item navbar__link" href="/contato"><%- t.home.contact %></a>
                         <div class="row mx-1 mt-5 mb-4 justify-content-between">
                             <div class="navbar__mobile-lang-btn navbar__mobile-lang-btn--active">POR</div>
                             <div class="navbar__mobile-lang-btn">ESP</div>

@@ -1,5 +1,5 @@
 <%- include('./header') %>
-<%- include('./banner', {title:'Uma trajetória <br>de <b>credibilidade</b> <br>e <b>inovação</b>', imageUrl: './public/img/empresa_banner.jpg'})%>
+<%- include('./banner', {title: t.nossaempresa.aTrajectoryBuilt, imageUrl: './public/img/empresa_banner.jpg'})%>
 
 <div class="base-container mt-5">
   <div class="row mb-5 py-3">
@@ -7,18 +7,17 @@
       <div class="empresa__container">
         <div class="empresa__header">
           <i class="fas fa-square fas-sm mr-3"></i>
-          Nossa <b class="ml-2">empresa</b>
+          <%- t.home.ourCompany %>
         </div>
         <div class="empresa__content">
           <div class="empresa__main-text pt-4">
-            Fundada em 1987, inicialmente com o nome de Apliquimica, a Aplinova é uma empresa brasileira com sede administrativa, laboratório de aplicação, depósito e unidade fabril na cidade de São Paulo.
+            <%- t.home.foundedIn1987 %>
             <br><br>
-            Tradicional fornecedora de ingredientes para a indústria de alimentos e bebidas, a empresa está sempre em busca de novidades e inovações que podem ajudar os clientes a se diferenciar no mercado onde atuam com produtos inovadores, naturais, funcionais e competitivos em custo.
+            <%- t.home.aLongEstablished %>
             <br><br>
-            Contamos com profissionais com larga experiência neste mercado que aderem e respeitam a cultura da empresa de priorizar o cliente, valorizar o profissionalismo, competência e respeitar os padrões éticos da empresa.
+            <%- t.home.ourTeamIs %>
           </div>
         </div>
-
       </div>
     </div>
     <div class="col-md-6 px-0" style="background: no-repeat center/100% url('./public/img/nossa-empresa.jpg')">
@@ -29,14 +28,14 @@
   <div class="col-12 col-md-6 empresa-estrutura__content base-padding-right">
     <div class="empresa-estrutura__header">
       <i class="fas fa-square fas-sm mr-3"></i>
-      <b>Estrutura</b>
+      <b><%- t.nossaempresa.facilities %></b>
     </div>
     <div class="empresa-estrutura__text mt-4">
-      A Aplinova conta com o escritório administrativo/comercial, laboratório de aplicação e de qualidade, depósito e a unidade fabril (ambos próprios) localizados na cidade de São Paulo. O laboratório de aplicação permite o desenvolvimento de novos produtos para nossos clientes.
+      <%- t.nossaempresa.aplinovasFacilitiesInclude %>
       <br><br>
-      Além do desenvolvimento constante de novos produtos. a estrutura instalada da empresa garante o controle de um alto padrão de qualidade dos produtos assim como das matérias-primas recebidas.
+      <%- t.nossaempresa.inAdditionTo %>
       <br><br>
-      A unidade fabril conta com uma infraestrutura completa para a produção de aromas, extratos, corantes, edulcorantes entre outros produtos. O quadro de funcionários é composto por pessoas técnicas experientes que colaboram com a empresa há muitos anos.
+      <%- t.nossaempresa.ourManufactoringUnit %>
     </div>
   </div>
   <img src="./public/img/estrutura.jpg" class="d-none d-md-block col-md-6 p-0" style="object-fit: cover;" />
@@ -44,7 +43,7 @@
 
 <div class="base-container mt-5">
   <div class="empresa__secondary-text mb-5">
-    <div>A <b>Aplinova</b> preza pela qualidade dos seus produtos e neste sentido trabalha para melhorar constantemente sua unidade fabril e laboratórios.</div>
+    <div><%- t.nossaempresa.aplinovaStrivesFor %></div>
   </div>
   <div class="d-flex empresa__bottom-images-container">
     <img src="./public/img/estrutura_2.jpg" class="d-none d-md-block empresa__bottom-first-image" style="object-fit: cover;" />
