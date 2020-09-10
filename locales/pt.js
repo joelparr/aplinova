@@ -15,6 +15,9 @@ module.exports = {
     partners: 'Parceiros',
     contact: 'Contato',
     theBestSolutionsInProteins: 'As melhores soluções <p><strong>em proteínas</p></strong>',
+    theBestSolutionsInFlavors: 'As melhores soluções <p><strong>em aromas</p></strong>',
+    theBestSolutionsInVegan: 'As melhores soluções <p><strong>em produtos veganos</p></strong>',
+    theBestSolutionsInSugar: 'As melhores soluções <p><strong>em substitutos de açúcar</p></strong>',
     theBestSolutionsInColors: 'As melhores soluções <p><strong>em corantes</p></strong>',
     theBestSolutionsInFood: 'As melhores soluções <p><strong>em food service</p></strong>',
     learnMore: 'SAIBA MAIS',
@@ -108,7 +111,7 @@ module.exports = {
   },
   contato: {
     aplinovaIsAlways: 'Um bom <br>atendimento <br>faz toda a <br><b>diferença</b>',
-    letsChat: 'Fale <b class="ml-2">conosco</b>',
+    letsChat: "Fale <b class=\"ml-2\">conosco</b>",
     fillOutThe: 'Preencha o formulário e nossa equipe técnica entrará em contato o mais breve possível.',
     orIfYou: 'Ou se preferir, envie sua solicitação para: ',
     name: 'Nome',

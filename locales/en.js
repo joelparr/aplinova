@@ -13,6 +13,9 @@ module.exports = {
     foodService: 'food service',
     theBestSolutionsInProteins: 'The best solutions <p><strong>in proteins</p></strong>',
     theBestSolutionsInColors: 'The best solutions <p><strong>in colors</p></strong>',
+    theBestSolutionsInFlavors: 'The best solutions <p><strong>in flavors</p></strong>',
+    theBestSolutionsInVegan: 'The best solutions <p><strong>in vegan and organic products</p></strong>',
+    theBestSolutionsInSugar: 'The best solutions <p><strong>in sugar substitutes and soluble fibers</p></strong>',
     theBestSolutionsInFood: 'The best solutions <p><strong>in food service</p></strong>',
     learnMore: 'LEARN MORE',
     apliquimicaIsNow: 'Apliquimica is now Aplinova',
@@ -107,7 +110,7 @@ module.exports = {
   },
   contato: {
     aplinovaIsAlways: 'Aplinova is always here to help you',
-    LetsChat: 'Let’s <b class="ml-2">Chat</b>',
+    letsChat: "Let's <b class=\"ml-2\">Chat</b>",
     fillOutThe: 'Fill out the form and our solutions team will get in touch as soon as possible.',
     orIfYou: 'Or if you prefer, send your info to us at: ',
     name: 'name',
