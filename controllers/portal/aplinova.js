@@ -107,7 +107,7 @@ exports.ingredFuncionais = (req, res)=>{
 exports.prodNaturais = (req, res)=>{
   Categoria.findOne({where:{titulo: "produtos naturais"}, include:{model:Produto, as:"produtos"}})
   .then(function(prodNatu){
-    res.render('./portal/produtos/produtosnaturais', {produtos: prodNatu.dataValues.produtos});
+    res.render('./portal/produtos/produtosnaturais', {produtos: prodNatu.dataValues.produtos, t: req.params.t});
   })
   .catch(function(error){
     res.render('./portal/produtos/produtosnaturais', {produtos: undefined, error:error, t: req.params.t});
