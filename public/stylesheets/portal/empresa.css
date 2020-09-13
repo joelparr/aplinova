@@ -206,6 +206,10 @@
         width: 225px;
     }
 
+    .timeline .timeline__container .timeline__item {
+        margin-bottom: 2.5rem !important;
+    }
+
     .timeline .timeline__container .timeline__item .timeline__item-body {
         max-width: 250px;
     }
