@@ -68,14 +68,14 @@ window.onload = event=>{
     }
 
     //Setando as flags
-    espFlag.style.border = "none";
-    euaFlag.style.border = 'none';
-    ptFlag.style.border = "1px solid lightgray";
+    espFlag.style.opacity = 0.4;
+    euaFlag.style.opacity = 0.4;
+    ptFlag.style.opacity = 1;
 
     //Setando as flags das categorias
-    espCatFlag.style.border = "none";
-    euaCatFlag.style.border = 'none';
-    ptCatFlag.style.border = "1px solid lightgray";
+    espCatFlag.style.opacity = 0.4;
+    euaCatFlag.style.opacity = 0.4;
+    ptCatFlag.style.opacity = 1;
 }
 
 //Variacao do nao ser uma subcategoria
@@ -191,54 +191,54 @@ function postAdminSubCategoria(){
 //Acao para o botao de bandeira EUA
 euaFlag.addEventListener('click', (ev)=>{
     //Colocando uma borda em volta para demonstrar selecao
-    espFlag.style.border = 'none';
-    ptFlag.style.border = "none";
-    euaFlag.style.border = "1px solid lightgray";
+    espFlag.style.opacity = 0.4;
+    ptFlag.style.opacity = 0.4;
+    euaFlag.style.opacity = 1;
     removeFlagClass('eua');
 });
 
 //Acao para o botao de bandeira Esp
 espFlag.addEventListener('click', (ev)=>{
     //Colocando uma borda em volta para demonstrar selecao
-    espFlag.style.border = "1px solid lightgray";
-    euaFlag.style.border = 'none';
-    ptFlag.style.border = "none";
+    espFlag.style.opacity = 1;
+    euaFlag.style.opacity = 0.4;
+    ptFlag.style.opacity = 0.4;
     removeFlagClass('esp');
 });
 
 //Acao para o botao de bandeira EUA
 ptFlag.addEventListener('click', (ev)=>{
     //Colocando uma borda em volta para demonstrar selecao
-    ptFlag.style.border = "1px solid lightgray";
-    euaFlag.style.border = 'none';
-    espFlag.style.border = "none";
+    ptFlag.style.opacity = 1;
+    euaFlag.style.opacity = 0.4;
+    espFlag.style.opacity = 0.4;
     removeFlagClass('pt');
 });
 
 //Acao para o botao de bandeira EUA
 euaCatFlag.addEventListener('click', (ev)=>{
     //Colocando uma borda em volta para demonstrar selecao
-    espCatFlag.style.border = 'none';
-    ptCatFlag.style.border = "none";
-    euaCatFlag.style.border = "1px solid lightgray";
+    espCatFlag.style.opacity = 0.4;
+    ptCatFlag.style.opacity = 0.4;
+    euaCatFlag.style.opacity = 1;
     removeCatFlagClass('eua');
 });
 
 //Acao para o botao de bandeira Esp
 espCatFlag.addEventListener('click', (ev)=>{
     //Colocando uma borda em volta para demonstrar selecao
-    espCatFlag.style.border = "1px solid lightgray";
-    euaCatFlag.style.border = 'none';
-    ptCatFlag.style.border = "none";
+    espCatFlag.style.opacity = 1;
+    euaCatFlag.style.opacity = 0.4;
+    ptCatFlag.style.opacity = 0.4;
     removeCatFlagClass('esp');
 });
 
 //Acao para o botao de bandeira EUA
 ptCatFlag.addEventListener('click', (ev)=>{
     //Colocando uma borda em volta para demonstrar selecao
-    ptCatFlag.style.border = "1px solid lightgray";
-    euaCatFlag.style.border = 'none';
-    espCatFlag.style.border = "none";
+    ptCatFlag.style.opacity = 1;
+    euaCatFlag.style.opacity = 0.4;
+    espCatFlag.style.opacity = 0.4;
     removeCatFlagClass('pt');
 });
 
