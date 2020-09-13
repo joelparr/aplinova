@@ -49,9 +49,9 @@ window.onload = (event)=>{
     formDescricao.setAttribute('readonly', true);
     formDescricaoEng.setAttribute('readonly', true);
     formDescricaoEsp.setAttribute('readonly', true);
-    espFlag.style.border = "none";
-    euaFlag.style.border = 'none';
-    ptFlag.style.border = "1px solid lightgray";
+    espFlag.style.opacity = 0.4;
+    euaFlag.style.opacity = 0.4;
+    ptFlag.style.opacity = 1;
     atualizar.disabled = true;
 }
 
@@ -228,27 +228,27 @@ confirma.onclick = function(){
 //Acao para o botao de bandeira EUA
 euaFlag.addEventListener('click', (ev)=>{
     //Colocando uma borda em volta para demonstrar selecao
-    espFlag.style.border = 'none';
-    ptFlag.style.border = "none";
-    euaFlag.style.border = "1px solid lightgray";
+    espFlag.style.opacity = 0.4;
+    ptFlag.style.opacity = 0.4;
+    euaFlag.style.opacity = 1;
     removeFlagClass('eua');
 });
 
 //Acao para o botao de bandeira Esp
 espFlag.addEventListener('click', (ev)=>{
     //Colocando uma borda em volta para demonstrar selecao
-    espFlag.style.border = "1px solid lightgray";
-    euaFlag.style.border = 'none';
-    ptFlag.style.border = "none";
+    espFlag.style.opacity = 1;
+    euaFlag.style.opacity = 0.4;
+    ptFlag.style.opacity = 0.4;
     removeFlagClass('esp');
 });
 
 //Acao para o botao de bandeira EUA
 ptFlag.addEventListener('click', (ev)=>{
     //Colocando uma borda em volta para demonstrar selecao
-    ptFlag.style.border = "1px solid lightgray";
-    euaFlag.style.border = 'none';
-    espFlag.style.border = "none";
+    ptFlag.style.opacity = 1;
+    euaFlag.style.opacity = 0.4;
+    espFlag.style.opacity = 0.4;
     removeFlagClass('pt');
 });
 

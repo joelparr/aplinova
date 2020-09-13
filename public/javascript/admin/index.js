@@ -27,16 +27,16 @@
  	var sidebarChangeWidth = function sidebarChangeWidth() {
 		 var $menuItemsTitle = $("li .menu-item__title");
 		 var imgLogo = document.getElementById('logo-admin');
+		 imgLogo.setAttribute('src', "../../public/img/logo-br-img.png");
 		 imgLogo.style.transition="all 0s";
-		 imgLogo.setAttribute('src', "../../public/img/logo-br-img.png")
 		 imgLogo.style.width = "30px";
 
  		$("body").toggleClass("sidebar-is-reduced sidebar-is-expanded");
  		$(".hamburger-toggle").toggleClass("is-opened");
 
  		if ($("body").hasClass("sidebar-is-expanded")) {
-			imgLogo.style.transition="all 2s";
 			imgLogo.setAttribute('src', "../../public/img/logo-light.svg");
+			imgLogo.style.transition="all 2s";
 			imgLogo.style.width = "150px";
 			$('[data-toggle="tooltip"]').tooltip("destroy");
  		} else {
