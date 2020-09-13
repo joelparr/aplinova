@@ -15,7 +15,7 @@
     flex-direction: row;
     align-items: center;
     color: #292828;
-    font-weight: 400;
+    font-weight: lighter;
     line-height: 1.25;
     font-size: 2.5rem;
 }
@@ -167,8 +167,9 @@
     display: flex;
     flex-direction: row;
     width: 100%;
-    background-color: #ececec;
     justify-content: center;
+    margin: 6rem 0;
+    padding-top: 2rem;
 }
 
 .timeline .timeline__divider {
@@ -195,6 +196,35 @@
     padding-bottom: 0.5rem;
     padding-top: 1.5rem;
 }
+
+@media (max-width: 640px) {
+    .timeline .timeline__container.timeline__container--left .timeline__item {
+        display: none;
+    }
+
+    .timeline .timeline__container .timeline__item .timeline__item-body img {
+        width: 225px;
+    }
+
+    .timeline .timeline__container .timeline__item .timeline__item-body {
+        max-width: 250px;
+    }
+
+    .timeline__marker hr {
+        width: 20px !important;
+    }
+}
+
+@media (max-width: 834px) {
+    .timeline .timeline__container .timeline__item .timeline__item-body img {
+        width: 300px;
+    }
+
+    .timeline .timeline__container .timeline__item .timeline__item-body {
+        max-width: 300px;
+    }
+}
+
 
 .timeline .timeline__container .timeline__item:last-child {
     margin-bottom: 0;

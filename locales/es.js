@@ -65,46 +65,46 @@ module.exports = {
     aplinovaStrivesFor: 'Aplinova valora la calidad de sus productos, trabajando para mejorar constantemente su planta y laboratorios.',
   },
   ourHistory: {
-    title: 'NUESTRA HISTORIA',
+    title: 'Nuestra <b class="font-weight-bold ml-2">Historia</b>',
     timeline: {
-      1987: {
-        title: '1987 – Fundación',
+      year1987: {
+        title: 'Fundación',
         body: 'Apliquimica establece su sede en la ciudad de São Paulo y comienza la distribución de productos químicos.',
       },
-      1990: {
-        title: '1990 – Expansión de infraestructura',
+      year1990: {
+        title: 'Expansión de infraestructura',
         body: 'La compañía adquiere un terreno en la ciudad de São Paulo y construye su planta.'
       },
-      1995: {
-        title: '1995 – Asociaciones con proveedores estadounidenses',
+      year1995: {
+        title: 'Asociaciones con proveedores estadounidenses',
         body: 'Apliquimica se asocia con fabricantes estadounidenses tales como Sethness Caramel Color y Universal Flavors y comienza la distribución de ingredientes para la industria de alimentos.',
       },
-      2000: {
-        title: '2000 – Producción propia',
+      year2000: {
+        title: 'Producción propia',
         body: 'Apliquimica desarrolla la tecnología y la estructura para su propia producción de sabores, extractos vegetales y mezclas de colores y edulcorantes.',
       },
-      2009: {
-        title: '2009 – Nueva gestión',
+      year2009: {
+        title: 'Nueva gestión',
         body: 'Nueva generación de profesionales asume la gestión de la compañía.',
       },
-      2017: {
+      year2017: {
         title: '2017 - Nueva sede administrativa',
         body: 'La compañía traslada la sede administrativa a un entorno más espacioso.',
       },
-      2018: {
-        title: '2018 – Nuevo liderazgo',
+      year2018: {
+        title: 'Nuevo liderazgo',
         body: 'Su nueva estructura societaria y de gestión pasa a contar con profesionales experimentados del mercado de ingredientes, así como con asesores de negocios y financieros.',
       },
-      20191: {
-        title: '2019 – Nueva sede administrativa y laboratorio de aplicación',
+      year2019a: {
+        title: 'Nueva sede administrativa y laboratorio de aplicación',
         body: 'La compañía inaugura su nuevo laboratorio de aplicación, así como una nueva sede administrativa, más espaciosa y moderna. ',
       },
-      20192: {
-        title: '2019 – Expansión del portafolio',
+      year2019b: {
+        title: 'Expansión del portafolio',
         body: 'La compañía amplía la gama de productos ofreciendo nuevos ingredientes naturales, orgánicos y funcionales.',
       },
-      2020: {
-        title: '2020 - Una nueva cara para una nueva fase',
+      year2020: {
+        title: 'Una nueva cara para una nueva fase',
         body: 'Apliquimica se reinventa como Aplinova.',
       }
     },

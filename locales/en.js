@@ -1,6 +1,6 @@
 module.exports = {
   code: 'Eng',
-  home:{
+  home: {
     flavors: 'flavors',
     products: 'products',
     colors: 'colors',
@@ -64,47 +64,47 @@ module.exports = {
         aplinovaStrivesFor: 'Aplinova strives for providing product excellence, continuously investing in the improvement of its manufacturing and laboratory units.',
   },
   ourHistory: {
-    title: 'Our History',
-        timeline:{
-      1987:{
-        title: '1987 – Foundation',
-            body: 'Apliquimica establishes headquarters in the city of São Paulo and starts the distribution of chemical products. '
+    title: 'Our <b class="font-weight-bold ml-2">History</b>',
+    timeline: {
+      year1987: {
+          title: 'Foundation',
+          body: 'Apliquimica establishes headquarters in the city of São Paulo and starts the distribution of chemical products. '
       },
-      1990:{
-        title: '1990 – Infrastructure Expansion',
-            body: 'The company acquires land in the city of São Paulo and builds its own plant.'
+      year1990: {
+          title: 'Infrastructure Expansion',
+          body: 'The company acquires land in the city of São Paulo and builds its own plant.'
       },
-      1995:{
-        title: '1995 – Partnering with US suppliers',
-            body: 'Apliquimica partners with US manufacturers such as Sethness Caramel Color and Universal Flavors and starts distribution of ingredients to the food industry.'
+      year1995: {
+          title: 'Partnering with US suppliers',
+          body: 'Apliquimica partners with US manufacturers such as Sethness Caramel Color and Universal Flavors and starts distribution of ingredients to the food industry.'
       },
-      2000:{
-        title: '2000 – Independent Production',
-            body: 'Apliquimica develops the technology and the structure for its own production of flavors, plant-based extracts and color and sweetener blends. '
+      year2000: {
+          title: 'Independent Production',
+          body: 'Apliquimica develops the technology and the structure for its own production of flavors, plant-based extracts and color and sweetener blends. '
       },
-      2009:{
-        title: '2009 – New management',
-            body: 'A new generation of professionals assumes operations of the company.'
+      year2009: {
+          title: 'New management',
+          body: 'A new generation of professionals assumes operations of the company.'
       },
-      2017:{
-        title: '2017 – New Headquarters',
-            body: 'The company moves the headquarters to a more spacious environment.'
+      year2017: {
+          title: 'New Headquarters',
+          body: 'The company moves the headquarters to a more spacious environment.'
       },
-      2018:{
-        title: '2018 – New Leadership',
-            body: 'With new corporate and operations structure, the company boasts with a new team of experienced professionals of the ingredients industry as well as business consultants and financiers.'
+      year2018: {
+          title: 'New Leadership',
+          body: 'With new corporate and operations structure, the company boasts with a new team of experienced professionals of the ingredients industry as well as business consultants and financiers.'
       },
-      20191:{
-        title: '2019 – New Headquarters and Application Laboratory',
-            body: 'The company unveils a new application laboratory as well as new, more spacious and modern headquarters.'
+      year2019a: {
+          title: 'New Headquarters and Application Laboratory',
+          body: 'The company unveils a new application laboratory as well as new, more spacious and modern headquarters.'
       },
-      20192:{
-        title: '2019 – Expansion of the Portfolio',
-            body: 'The company expands the range of products by offering new natural, organic and functional ingredients.'
+      year2019b: {
+          title: 'Expansion of the Portfolio',
+          body: 'The company expands the range of products by offering new natural, organic and functional ingredients.'
       },
-      2020:{
-        title: '2020 – A New Face for a New Phase',
-            body: 'Apliquimica rebrands as Aplinova.'
+      year2020: {
+          title: 'A New Face for a New Phase',
+          body: 'Apliquimica rebrands as Aplinova.'
       }
     },
   },
