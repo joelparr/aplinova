@@ -7,6 +7,7 @@
 const express = require('express');
 const router = express.Router();
 const {isValid} = require('../../middlewares/isValidUser.js');
+const {categoryDestroyVal} = require('../../middlewares/categoriaDestroyValidation');
 const {
     index,
     createCategoria,
@@ -21,13 +22,15 @@ const {
     showProduto,
     showSubCategoria,
     showCategoria,
+    destroyCategoria,
     destroySubCategoria,
     updateSubCategoria,
     updateProduto,
     search,
     userconfig,
     comparePassword,
-    updateUser} = require('../../controllers/admin/admin.js');
+    updateUser,
+    deleteUser} = require('../../controllers/admin/admin.js');
 
 //rotas
 //Raiz da chamada acontece no APP.JS
@@ -44,8 +47,10 @@ router.get('/userconfig',isValid, userconfig);
 router.post('/produto', isValid, createProduto);
 router.post('/categoria', isValid, createCategoria); //Serve para subcategoria tambem
 //Destroy
+router.delete('/categoria/:id', isValid, categoryDestroyVal, destroyCategoria);
 router.delete('/produto/:id', isValid, destroyProduto);
 router.delete('/subcategoria/:id', isValid, destroySubCategoria);
+router.delete('/user/:id', isValid, deleteUser);
 //Ajax
 router.get('/categorias', isValid, getCategorias);
 router.get('/subcategorias/:id', isValid, getSubCategoria);

@@ -13,7 +13,7 @@ const {Op} = require('sequelize');
 const bcrypt = require('bcrypt-nodejs');
 
 //Funcao de envio de mensagens e status para todas as telas
-function sendingData(req, res, urlView, argumentos){
+async function sendingData(req, res, urlView, argumentos){
     //Recuperando o usuario da session criada
     const userId = req._passport.session.user;
     //Verificando se existe argumentos
@@ -21,45 +21,38 @@ function sendingData(req, res, urlView, argumentos){
     //Verifica se existe erro e mensagens setadas
     if(argumentos){
       if(!argumentos.message) argumentos.message=undefined;
-      if(!argumentos.eror) argumentos.error=undefined;
+      if(!argumentos.error) argumentos.error=undefined;
     }
 
-    User.findByPk(userId)
-    .then(function(user){
+    let user = await User.findByPk(userId);
+    let qtd;
+    if(user){
       argumentos.usuario = user.dataValues;
-      return User.count({where:{active:0}})
-    })
-    .then(function(qtd){
+      qtd = await User.count({where:{active:0}});
       argumentos.inativos = qtd
       res.render(urlView, argumentos);
-    })
-    .catch(function(error){
+    }else{
       argumentos.usuario = undefined;
       argumentos.inativos = undefined;
       res.render(urlView, argumentos);
-    })
+    }
 }
 
-exports.newCategoria = (req, res)=>{
+exports.newCategoria = async (req, res)=>{
   //Formulario de criacao de categoria
-  sendingData(req, res, './admin/newcategoria');
+  await sendingData(req, res, './admin/newcategoria');
 }
 
 //Funcao de mostrar tela principal do admin
-exports.index = (req, res)=>{
+exports.index = async (req, res)=>{
   //Lista de categorias, subcategorias e produtos
-  //Post.find({ where: { ...}, include: [User]})
-  Categoria.findAll({include:{model:Produto, as: 'produtos'}})
-  .then(function(categorias){
-    if(categorias){
-      sendingData(req, res, './admin/index', {categorias: categorias});
-    }else{
-      sendingData(req, res, './admin/index', {message: "Nao foram encontradas nenhuma categoria"});
-    }
-  })
-  .catch(function(error){
-    sendingData(req, res, './admin/index', {categorias: undefined, error: error});
-  })
+  let categorias = await Categoria.findAll({include:{model:Produto, as: 'produtos'}});
+  if(categorias){
+    //Envia erros da validacao de delecao de categoria
+    await sendingData(req, res, './admin/index', {categorias: categorias, error: req.flash('error')});
+  }else{
+    await sendingData(req, res, './admin/index', {message: "Nao foram encontradas nenhuma categoria"});
+  }
 }
 
 //Funcao de criar uma nova categoria
@@ -167,6 +160,19 @@ exports.createProduto = (req, res)=>{
     // TODO:  Verificar a necessidade de enviar um connect flash
     console.log(error);
   })
+}
+
+//Somente deleta a categoria caso ela nao tenha produtos
+exports.destroyCategoria = async (req, res)=>{
+  //1 - Achar a categoria que foi escolhida
+  //2 - Recuperar todas as subcategorias
+  //3 - Deletar tanto categorias quanto subcategorias e produtos
+  
+  let categoria = await Categoria.findByPk(req.params.id); //1
+  let categorias = await Categoria.findAll({where: {idCategoriaPai: categoria.dataValues.idCategoria}}); //2
+  let arrayIdCats = categorias.map(hit=>hit.dataValues.id);
+  await Categoria.destroy({where: {id: arrayIdCats}}); //3
+  res.redirect('/admin');
 }
 
 //Funcao que realiza o destroy do produto
@@ -315,15 +321,14 @@ exports.getSubCategoria = (req, res)=>{
   })
 }
 
-exports.userconfig = (req, res)=>{
-  User.findAll({where:{active:0}})
-  .then(function(users){
-    sendingData(req, res, './admin/userconfig', {ativos: users});
-  })
-  .catch(function(error){
-    sendingData(req, res, './admin/userconfig', {error: 'Houve um problema ao buscar os usuarios nao ativos', ativos: undefined});
-  })
-  
+//Recuperando as configuracoes de usuario
+exports.userconfig = async (req, res)=>{
+  let users = await User.findAll();
+  if(users){
+    await sendingData(req, res, './admin/userconfig', {ativos: users.map(hit=>hit.dataValues)});
+  }else{
+    await sendingData(req, res, './admin/userconfig', {error: 'Houve um problema ao buscar os usuarios nao ativos', ativos: undefined});
+  }
 }
 
 //Logout da aplicacao
@@ -359,7 +364,13 @@ exports.updateUser = (req, res)=>{
 
   var data = {}
 
-  if(req.body.admin && req.body.active){
+  if(req.body.role){
+    data = {
+      admin: req.body.admin,
+      active: req.body.active,
+      role: req.body.role
+    }
+  }else if(req.body.admin && req.body.active){
     data = {
       admin: req.body.admin,
       active: req.body.active
@@ -378,6 +389,17 @@ exports.updateUser = (req, res)=>{
   .catch(function(error){
     res.json({error});
   })
+}
+
+exports.deleteUser = (req, res)=>{
+  User.destroy({where:{id: req.params.id}})
+  .then(function(result){
+    res.redirect('/admin/userconfig');
+  })
+  .catch(function(error){
+    //Tratar com connect flash
+    console.log(error);
+  });
 }
 
 exports.getUser = (req, res)=>{
