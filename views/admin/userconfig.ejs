@@ -1,7 +1,7 @@
 <%- include('./header') %>
 <div style="display: flex; flex-direction: row; justify-content: center; margin-bottom: 50px; background-color: #88B73A; height: 60px; align-items: center; color: white; font-weight: bold; font-size: 20px;">CONFIG USUARIO</div>
-<div class="container">
-    <div class="row justify-content-center">
+<div class="container-fluid">
+    <div class="row justify-content-start">
         <div class="col-md-4">
             <div class="card text-center" style="background-color: transparent;">
                 <h5 class="card-header">Usuario Logado</h5>
@@ -26,33 +26,76 @@
                 </div>
               </div>
         </div>
-        <!-- <div class="col-md-8"></div> -->
+        <div class="col-md-8">
+          <div class="card text-center" style="background-color: transparent;">
+            <h5 class="card-header">Lista de Usuários do Sistema</h5>
+            <%if(usuario.admin){%>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Nome</th>
+                  <th scope="col">Sobrenome</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Estado</th>
+                  <th scope="col">Admin</th>
+                  <th scope="col">Desenvolvedor</th>
+                  <th scope="col">Ações</th>
+                </tr>
+              </thead>
+              <tbody>
+                <%if(ativos && ativos.filter(hit=>(hit.active===true)).length){%>
+                  <%ativos.filter(hit=>(hit.active===true && hit.id !== usuario.id)).forEach(hit=>{%>
+                    <tr>
+                      <th scope="row"><%=hit.id%></th>
+                      <td><%=hit.firstName%></td>
+                      <td><%=hit.lastName%></td>
+                      <td><%=hit.email%></td>
+                      <td><%=hit.active%></td>
+                      <td><%=hit.admin%></td>
+                      <td><%=hit.role%></td>
+                      <td>
+                        <a href="/admin/user/<%=hit.id%>?method=delete" class="deleteItem" data-method="delete">
+                          <i class="far fa-times-circle fa-lg" style="color: #88B73A;"></i>
+                        </a>
+                      </td>
+                    </tr>
+                  <%})%>
+                <%}%>
+              </tbody>
+            </table>
+            <%}else{%>
+              <p>Lista de usuarios somente para administradores</p>
+            <%}%>
+          </div>
+        </div>
     </div>
     <%if(usuario.admin){%>
-    <div class="row mt-4 justify-content-center">
+    <div class="row mt-4 justify-content-start">
         <div class="col-md-4">
             <div class="card text-center" style="background-color: transparent;">
                 <div class="card-header">Lista de requisicao de usuario</div>
                 <div class="card-body">
                     <div class="row shadow-sm border rounded list-group">
-                        <%if(ativos && ativos.length){%>
-                          <%ativos.forEach(hit=>{%>
-                          <button class="list-group-item list-group-item-action inativo" data-toggle="modal" data-target="#inativos" data-id=<%=hit.id%>><%=hit.firstName%></button>
+                        <%if(ativos && ativos.filter(hit=>(hit.active === false && hit.role === 'visitante')).length){%>
+                          <%ativos.filter(hit=>(hit.active === false && hit.role === 'visitante')).forEach(hit=>{%>
+                            <button class="list-group-item list-group-item-action inativo" data-toggle="modal" data-target="#inativos" data-id=<%=hit.id%>><%=hit.firstName%></button>
                           <%})%>
                         <%}else{%>
-                        <p>Nao ha usuarios inativos</p>
+                          <p>Nao ha usuarios inativos</p>
                         <%}%>
                     </div>
                 </div>
-                <%if(ativos  && ativos.length){%>
+                <!-- <%#if(ativos  && ativos.length){%>
                 <div class="card-footer text-muted">
+
                   Menos de 2 dias atras
                 </div>
-                <%}else{%>
+                <%#}else{%>
                 <div class="card-footer text-muted">
                     Nenhuma data
                 </div>
-                <%}%>
+                <%#}%> -->
               </div>
         </div>
         <!-- <div class="col-md-8"></div> -->
@@ -116,7 +159,7 @@
               </div>
             </div>
             <div class="row justify-content-start">
-              <form>
+              <form class="w-100">
                   <div class="custom-control custom-switch mt-2">
                       <input type="checkbox" class="custom-control-input" name="admin" id="admin">
                       <label class="custom-control-label" for="admin">Admin</label>
@@ -124,10 +167,13 @@
                   <div class="custom-control custom-switch mt-2">
                     <input type="checkbox" class="custom-control-input" name="active" id="active">
                     <label class="custom-control-label" for="active">Active</label>
-                </div>
+                  </div>
                   <input class="d-none" type="text" id="inativoMethod" value="patch">
                   <p id="msg" style="color:red; font-family: sans-serif;"></p>
-                  <button type="submit" class="btn btn-admin" id="btn-salvar-inativo">Salvar</button>
+                  <div class="w-100 d-flex justify-content-between">
+                    <button type="submit" class="btn btn-admin" id="btn-salvar-inativo">Salvar</button>
+                    <button type="submit" class="btn btn-danger-admin" id="btn-bloquear-inativo">Bloquear</button>
+                  </div>
               </form>
             </div>
         </div>

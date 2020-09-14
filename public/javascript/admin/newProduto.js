@@ -103,7 +103,7 @@ categoriaPai.addEventListener('change', function(event){
     })
     .catch(function(erro){
         subCategoria.options.length = 0;
-        alert("Esta categoria nao possui subcategoria");
+        // alert("Esta categoria nao possui subcategoria");
     })
 })
 
@@ -153,6 +153,7 @@ newSubcategoria.addEventListener('click', function(event){
         }
     })
     .catch(function(error){
+        //TODO inserir bloco de aviso de nao insercao de subcategoria
         alert("Nao foi possivel inserir a nova subcategoria");
     });    
 

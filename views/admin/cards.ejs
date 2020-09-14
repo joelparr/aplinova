@@ -27,14 +27,22 @@
 <div class="container-fluid">
     <div class="row">
         <div id="treeviewDiv" class="col-md-6">
+            <%if(error){%>
+                <span style="color: red;"><%=error%></span>
+            <%}%>
             <% categorias.forEach(element=>{%>
                 <%if(element.idCategoria !== 0){%>
                     <ul class="treeview"> 
                         <li class="cat">
                             <i class="far fa-list-alt fa-lg" style="margin-right:10px; color: #353535;"></i>
-                            <a href="#" style="color: #353535">
+                            <a href="#" style="color: #353535; flex-grow: 1;">
                                 <%=element.titulo%>
                             </a>
+                            <%if(usuario.admin){%>
+                                <a href="/admin/categoria/<%=element.id%>?method=delete" class="deleteItem" data-method="delete">
+                                    <i class="far fa-times-circle fa-lg" style="color: #88B73A;"></i>
+                                </a>
+                            <%}%>
                         </li>
                         <%if(element.produtos.length){%>
                             <ul class="notativo">

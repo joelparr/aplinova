@@ -10,70 +10,48 @@ const Forgotcode = models.Forgotcode;
 const {Op} = require('sequelize');
 
 //Funcao que verifica se o usuario que esta logando possui um codigo ativo no banco
-exports.forgotLoginValidation = (req, res, next)=>{
-    User.findOne({where:{email: req.body.email}})
-    .then(function(user){
-        if(user){
-            return Forgotcode.findOne({where:{[Op.and]:[{active:0}, {userId: user.dataValues.id}]}})
-        }else{
-            req.flash('error', 'Este email nao foi achado em nossa base.');
-            return res.redirect('/login/show');
-        }
-    })
-    .then(function(fgc){
+exports.forgotLoginValidation = async (req, res, next)=>{
+    let user = await User.findOne({where:{email: req.body.email}});
+    let fgc;
+    if(!user){
+        req.flash('error', 'Este email nao foi achado em nossa base.');
+        return res.redirect('/login/show');
+    }else{
+        fgc = await Forgotcode.findOne({where:{[Op.and]:[{active:0}, {userId: user.dataValues.id}]}});
         if(fgc){
             return res.redirect('/login/forgot/reset');
         }else{
-            return next();
+            return next(); 
         }
-    })
-    .catch(function(error){
-        req.flash('error', error);
-        return res.redirect('/login');
-    })
+    }
 }
 
 //Verifica no formulario de forgot se o email digitado realmente existe
-exports.forgotValidation = (req, res, next)=>{
-    User.findOne({where:{email: req.body.email}})
-    .then(function(user){
-        if(user){
-            return next()
-        }else{
-            req.flash('error', 'Este email nao foi achado em nossa base.');
-            return res.redirect('/login/forgot');
-        }
-    })
-    .catch(function(error){
-        req.flash('error', error);
+exports.forgotValidation = async (req, res, next)=>{
+    let user = await User.findOne({where:{email: req.body.email}});
+    if(!user){
+        req.flash('error', 'Este email nao foi achado em nossa base.');
         return res.redirect('/login/forgot');
-    })
+    }else{
+        return next();
+    }
 }
 
-exports.forgotResetValidation = (req, res, next)=>{
-    //Se o usuario existe
-    User.findOne({where:{email: req.body.email}})
-    .then(function(user){
-        if(user){
-            //Se o usuario existente possui codigo
-            return Forgotcode.findOne({where:{[Op.and]:[{userId: user.dataValues.id}, {active:0}]}})
-        }else{
-            req.flash('error', 'Este email nao foi achado em nossa base.');
-            return res.redirect('/login/forgot/reset');
-        }
-    })
-    .then(function(fgc){
+exports.forgotResetValidation = async (req, res, next)=>{
+    let user = await User.findOne({where:{email: req.body.email}});
+    let fgc;
+    if(!user){
+        req.flash('error', 'Este email nao foi achado em nossa base.');
+        return res.redirect('/login/forgot/reset');
+    }else{
+        fgc = await Forgotcode.findOne({where:{[Op.and]:[{userId: user.dataValues.id}, {active:0}]}})
         if(fgc){
             return next();
         }else{
             req.flash('error', 'Este codigo nao esta valido para esse email');
             return res.redirect('/login/forgot/reset');
         }
-    })
-    .catch(function(error){
-        req.flash('error', error);
-        return res.redirect('/login/forgot/reset');
-    })
+    }
 }
 
 exports.singupFormValidation = (req, res, next)=>{

@@ -6,6 +6,7 @@ const msg = document.getElementById('msg');
 const btnMudarSenha = document.getElementById('btn-mudarsenha');
 const btnInativo = document.getElementsByClassName('inativo');
 const btnSalvarInativo = document.getElementById('btn-salvar-inativo');
+const btnBloquearInativo = document.getElementById('btn-bloquear-inativo');
 
 //Modal
 const title = document.getElementById('title');
@@ -55,7 +56,7 @@ function verificarSenha(newPassword){
             if(!data.igual){
                 resolve(data.igual);
             }else{
-                reject('Insira senhas diferentes das que possui!');
+                reject('Insira senha diferente da atual.');
             }
         })
     });
@@ -99,14 +100,31 @@ Array.from(btnInativo).forEach(element=>{
 
 btnSalvarInativo.addEventListener('click', function(event){
     event.preventDefault();
-    let url = `config/user/${id}`;
     data = {
         active: active.checked,
         admin: admin.checked,
         method: inativoMethod.value //patch
     }
+    changeUser(data);
+});
+
+btnBloquearInativo.addEventListener('click', function(event){
+    event.preventDefault();
+    data={
+        active: false,
+        admin: false,
+        method: inativoMethod.value,
+        role: 'bloqueado'
+    }
+
+    changeUser(data);
+});
+
+//Funcao que ira enviar os dados de mudanca do usuario
+function changeUser(data){
+    let url = `config/user/${id}`;
 
     $.post(url, data, function(data){
         location.reload();
     })
-})
+}
