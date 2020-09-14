@@ -1,7 +1,7 @@
 <%- include('./header') %>
 <%- include('./banner', {title: t.nossaempresa.aTrajectoryBuilt, imageUrl: './public/img/empresa_banner.jpg'})%>
 
-<div class="base-container mt-5">
+<div class="base-container mt-3 mt-md-5">
   <div class="row mb-5 py-3">
     <div class="col-md-6">
       <div class="empresa__container">
@@ -24,6 +24,7 @@
     </div>
   </div>
 </div>
+<div class="empresa__subheader"><%- t.nossaempresa.aplinovaStrivesFor %></div>
 <div class="empresa-estrutura d-flex flex-row-reverse mt-5 mx-0 w-100">
   <div class="col-12 col-md-6 empresa-estrutura__content base-padding-right">
     <div class="empresa-estrutura__header">
@@ -41,11 +42,11 @@
   <img src="./public/img/estrutura.jpg" class="d-none d-md-block col-md-6 p-0" style="object-fit: cover;" />
 </div>
 
-<div class="justify-content-center my-5 text-capitalize empresa__header">
+<div class="justify-content-center mt-4 my-md-5 text-capitalize empresa__header" style="margin-bottom: -0.75rem !important;">
   <i class="fas fa-square fas-sm mr-3"></i>
   <%- t.ourHistory.title %>
 </div>
-<div class="base-container mt-5 timeline">
+<div class="base-container my-3 my-md-5 timeline">
   <div class="timeline__container timeline__container--left">
     <div class="timeline__item timeline__item--first">
       <div class="timeline__marker">

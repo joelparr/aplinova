@@ -1,11 +1,11 @@
 <%- include('./header') %>
 <%- include('./carrousel') %>
-<div class="introduction__header py-2">
+<div class="introduction__header">
     <hr>
-    <div class="introduction__header-content px-2">
-        <%= t.home.apliquimicaIsNow %>
+    <div class="introduction__header-content mx-auto">
+        <%- t.home.apliquimicaIsNow %>
+        <span class="d-none d-md-inline-block"><%- t.home.aNewConcept %></span>
     </div>
-    <hr>
 </div>
 <%- include('./home-introduction') %>
 <div class="row base-container">

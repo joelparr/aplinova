@@ -91,9 +91,14 @@ $(document).ready(function () {
     }, 100);
 })
 
+const langSelector = document.getElementById('langSelector');
 const langPt = document.getElementById('langPt');
 const langEn = document.getElementById('langEn');
 const langEs = document.getElementById('langEs');
+
+langSelector.addEventListener('click', (e) => {
+    langSelector.classList.toggle('navbar__lang-selector--active')
+});
 
 langPt.addEventListener('click', (e) => {
     let url = '/lang/pt';
@@ -120,6 +125,47 @@ langEs.addEventListener('click', (e) => {
 })
 
 langEn.addEventListener('click', (e) => {
+    let url = '/lang/en';
+    const options = {
+        method: 'GET',
+        headers: {"Content-type":"application/json"}
+    };
+
+    fetch(url, options)
+        .then(data => data.json())
+        .then(_ => window.location.reload());
+})
+
+
+const langPtMobile = document.getElementById('langPtMobile');
+const langEnMobile = document.getElementById('langEnMobile');
+const langEsMobile = document.getElementById('langEsMobile');
+
+langPtMobile.addEventListener('click', (e) => {
+    let url = '/lang/pt';
+    const options = {
+        method: 'GET',
+        headers: {"Content-type":"application/json"}
+    };
+
+    fetch(url, options)
+        .then(data => data.json())
+        .then(_ => window.location.reload());
+})
+
+langEsMobile.addEventListener('click', (e) => {
+    let url = '/lang/es';
+    const options = {
+        method: 'GET',
+        headers: {"Content-type":"application/json"}
+    };
+
+    fetch(url, options)
+        .then(data => data.json())
+        .then(_ => window.location.reload());
+})
+
+langEnMobile.addEventListener('click', (e) => {
     let url = '/lang/en';
     const options = {
         method: 'GET',

@@ -54,6 +54,8 @@
     border-radius: 100%;
     background-color: #88B73A;
     cursor: pointer;
+    text-decoration: none !important;
+    color: white;
 }
 
 .footer .footer__logo {

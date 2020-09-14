@@ -33,7 +33,7 @@
     width: 100%;
     height: 100%;
     display: inline-block;
-    background: linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0) 83%);
+    background: linear-gradient(180deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0) 83%);
 }
 
 .produto-view__categories.produto-view__categories--subcategories {
@@ -47,6 +47,7 @@
 
 .produto-view__segments {
     background-color: #F0F6ED;
+    font-size: 1.25rem;
 }
 
 .produto-view__segments i {
@@ -58,14 +59,13 @@
     color: #292828;
     margin-left: 0.5rem;
     font-weight: normal;
+    text-transform: capitalize;
 }
 
 .produto-view__title {
-    background: rgba(225, 232, 215, 1);
     height: 80px;
     font-size: 2.5rem;
     text-transform: uppercase;
-    border-bottom: #292828 solid 4px;
 }
 
 .produto-view__title.produto-view__title--sm {

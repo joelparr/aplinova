@@ -20,14 +20,25 @@
                         <img class="navbar__logo navbar__logo--dark" src="./public/img/logo-dark.svg" alt="Logo" />
                     </a>
                     <div class="ml-auto navbar__items-initial">
-                        <button id="langPt">PORTUGUES</button>
-                        <button id="langEn">INGLES</button>
-                        <button id="langEs">ESPANHOL</button>
                         <div class="navbar__initial-item">+55 (11) 96474-1323</div>
                         <a class="navbar__initial-item" href="https://web.whatsapp.com/send?phone=5511964741323" target="_blank">
                             <i class="fab fa-whatsapp"></i>
                             +55 (11) 96474-1323
                         </a>
+                        <div class="navbar__lang-container">
+                            <div id="langSelector" class="navbar__lang-selector">
+                                <div class="navbar__lang-option navbar__lang-option--active"><%- t.navbarCode %></div>
+                                <div id="langPt" class="navbar__lang-option <%- t.code === '' ? 'navbar__lang-option--selected' : '' %>">
+                                    PT
+                                </div>
+                                <div id="langEn" class="navbar__lang-option <%- t.code === 'Eng' ? 'navbar__lang-option--selected' : '' %>">
+                                    EN
+                                </div>
+                                <div id="langEs" class="navbar__lang-option <%- t.code === 'Esp' ? 'navbar__lang-option--selected' : '' %>">
+                                    ES
+                                </div>
+                            </div>
+                        </div>
                         <i class="pl-5 navbar__item navbar__icon navbar__menu-icon fas fa-bars fa-2x"></i>
                     </div>
                     <div class="ml-auto navbar__items-active">
@@ -76,9 +87,11 @@
                         <a class="navbar__item navbar__link" href="/#parceiros"><%- t.home.partners %></a>
                         <a class="navbar__item navbar__link" href="/contato"><%- t.home.contact %></a>
                         <div class="row mx-1 mt-5 mb-4 justify-content-between">
-                            <div class="navbar__mobile-lang-btn navbar__mobile-lang-btn--active">POR</div>
-                            <div class="navbar__mobile-lang-btn">ESP</div>
-                            <div class="navbar__mobile-lang-btn">ENG</div>
+                            <div id="langPtMobile" class="navbar__mobile-lang-btn <%= t.code === '' ? 'navbar__mobile-lang-btn--active' : '' %>">
+                                POR
+                            </div>
+                            <div id="langEsMobile" class="navbar__mobile-lang-btn <%= t.code === 'Esp' ? 'navbar__mobile-lang-btn--active' : '' %>">ESP</div>
+                            <div id="langEnMobile" class="navbar__mobile-lang-btn <%= t.code === 'Eng' ? 'navbar__mobile-lang-btn--active' : '' %>">ENG</div>
                         </div>
                     </div>
                 </div>

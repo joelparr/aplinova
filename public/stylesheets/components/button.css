@@ -17,7 +17,7 @@
     margin: 0;
     width: 3rem;
     height: 3rem;
-    background: transparent;
+    background: #7B9C48;
     border: 2px solid #7B9C48;
     border-radius: 1.625rem;
 }
@@ -39,7 +39,7 @@
 .btn--expand .btn--expand__circle .icon.arrow::before {
     position: absolute;
     content: '✚';
-    color: #7B9C48;
+    color: white;
     font-size: 1.75rem;
     top: -1.35rem;
     right: 0.5rem;
@@ -100,13 +100,26 @@
     .btn--expand .btn--expand__circle {
         width: 100%;
         background: #7B9C48;
+        height: 2.5rem;
+    }
+
+    .btn--expand {
+        min-width: 11rem;
     }
     .btn--expand .icon.arrow::before {
         color: white !important;
     }
     .btn--expand .btn--expand__text {
         color: #fff;
+        font-size: 1rem;
+        padding: 0.45rem 0;
     }
+
+    .btn--expand .btn--expand__circle .icon.arrow::before {
+        font-size: 1.5rem;
+        top: -1.2rem;
+    }
+
     .btn--contrast {
         transition-duration: 0.25s;
         color: #fff;
