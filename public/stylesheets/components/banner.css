@@ -19,3 +19,24 @@
     letter-spacing: 0.025em;
     font-weight: 400;
 }
+
+.banner__text {
+    width: 600px;
+    position: absolute;
+    bottom: 20%;
+    left: 0%;
+}
+
+@media (max-width: 640px) {
+    .banner__header {
+        font-size: 2rem;
+    }
+
+    .banner__text {
+        width: 100%;
+    }
+
+    .banner {
+        background-position-x: 60% !important;
+    }
+}

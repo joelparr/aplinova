@@ -81,7 +81,14 @@
     line-height: 1.25;
     font-size: 1.125rem;
     text-align: center;
-    width: 75%;
+    width: 60%;
     font-weight: 400;
     margin: 1rem auto;
+}
+
+@media (max-width: 640px) {
+    .home-partners__subheader {
+        width: 90%;
+        text-align: left;
+    }
 }

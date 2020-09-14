@@ -21,7 +21,7 @@
 }
 
 .navbar--menu-state {
-    min-height: 160px !important;
+    height: 160px;
     background: #fff !important;
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
 }
@@ -110,6 +110,7 @@ a.navbar__initial-item:hover {
     display: flex;
     justify-content: center;
     align-items: center;
+    text-transform: lowercase;
 }
 
 .navbar .navbar__products-dropdown-container {
@@ -141,6 +142,10 @@ a.navbar__initial-item:hover {
     opacity: 1;
     display: flex;
     flex-direction: column;
+}
+
+.navbar .navbar__item.navbar__item--products {
+    cursor: pointer;
 }
 
 .navbar .navbar__products-dropdown > a {
@@ -240,6 +245,70 @@ a.navbar__initial-item:hover {
     color: white;
 }
 
+.navbar__lang-container {
+    margin-top: 9%;
+    align-self: flex-start;
+}
+
+.navbar__lang-selector {
+    border: 1px solid white;
+    border-radius: 6px;
+    padding: 0.25rem 0;
+    position: relative;
+    transition: 0.5s ease all;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    height: 35px;
+    align-self: flex-start;
+}
+
+.navbar__lang-selector.navbar__lang-selector--active {
+    height: 90px;
+}
+
+.navbar__lang-selector.navbar__lang-selector--active:before {
+    transform: rotate(180deg);
+}
+
+.navbar__lang-selector:hover {
+    border-color: #88B73A;
+}
+
+.navbar__lang-option {
+    transition: 0.5s ease color, 0.5s ease font-weight, 0.5s ease background-color;
+    padding: 0.125rem 1.25rem 0.125rem 0.5rem;
+}
+
+.navbar__lang-option:not(.navbar__lang-option--active):hover {
+    color: #88B73A;
+    font-weight: bold;
+    background-color: rgba(136, 183, 58, 0.1);
+}
+
+.navbar__lang-selector:hover:before {
+    border-color: transparent transparent #88B73A transparent;
+}
+
+.navbar__lang-selector:before {
+    content:"\A";
+    border-style: solid;
+    border-width: 0 5px 7.5px 5px;
+    border-color: transparent transparent #fff transparent;
+    position: absolute;
+    right: 4px;
+    top: 12px;
+    transition: 0.5s ease all;
+}
+
+.navbar__lang-option.navbar__lang-option--selected {
+    display: none;
+}
+
+.navbar__lang-selector:not(.navbar__lang-selector--active) .navbar__lang-option:not(.navbar__lang-option--active) {
+    visibility: hidden;
+}
+
 @media (max-width: 640px) {
     .navbar {
         padding-left: 1.5rem !important;
@@ -283,5 +352,8 @@ a.navbar__initial-item:hover {
         padding-top: 1.5rem;
         padding-bottom: 1.5rem;
         position: absolute;
+        height: unset;
+        min-height: 160px !important;
     }
 }
+

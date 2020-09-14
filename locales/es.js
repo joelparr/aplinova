@@ -1,5 +1,6 @@
 module.exports = {
   code: 'Esp',
+  navbarCode: 'ES',
   home: {
     products: 'productos',
     flavors: 'sabores',
@@ -21,15 +22,16 @@ module.exports = {
     theBestSolutionsInColors: 'Las mejores soluciones <p><strong>en corantes</p></strong>',
     theBestSolutionsInFood: 'Las mejores soluciones <p><strong>en food service</p></strong>',
     learnMore: 'APRENDA MÁS',
-    apliquimicaIsNow: 'Apliquimica ahora es Aplinova',
-    providingQualityProducts: 'Productos de calidad para ayudar a nuestros clientes lograr sus objetivos',
+    apliquimicaIsNow: 'Apliquimica ahora es <b>Aplinova</b>.',
+    aNewConcept: 'Un nuevo concepto con el mismo compromiso',
+    providingQualityProducts: '<span class="introduction__main-text--lighter">Productos de</span> calidad <span class="introduction__main-text--lighter">para ayudar a nuestros</span> clientes <span class="introduction__main-text--lighter">lograr sus</span> objetivos',
     weOfferA: 'Ofrecemos una línea diversificada de sabores, edulcorantes, proteínas, extractos vegetales y otros ingredientes para las industrias de alimentos, bebidas, suplementos, nutrición de animal, cosméticos y otras.',
     weAreConstantly: 'Estamos en constante búsqueda de nuevos productos, siempre priorizando un estándar de alta calidad.',
-    ourCompany: 'Nuestra <b class="ml-2">compañía</b>',
+    ourCompany: '<span class="font-weight-light">Nuestra</span> <b class="ml-2">compañía</b>',
     foundedIn1987: 'Fundada en 1987, inicialmente bajo el nombre de Apliquimica, Aplinova es una compañía brasileña con sede administrativa, laboratorio de aplicaciones, almacén y planta ubicados en la ciudad de São Paulo.',
     aLongEstablished: 'Como proveedora tradicional de ingredientes para el mercado brasileño, la compañía está siempre buscando innovaciones que puedan ayudar a los clientes a lanzar productos diferenciados, naturales, funcionales, veganos y además competitivos en precio.',
     ourTeamIs: 'Contamos con profesionales con amplia experiencia en este mercado que acatan a la cultura de la compañía a priorizar al cliente, valorar el profesionalismo y la competencia, y respetar nuestros estándares éticos.',
-    ourPartners: 'Nuestros socios',
+    ourPartners: 'Nuestros <b class="ml-2">socios</b>',
     aplinovaPartnersWith: 'Aplinova cuenta con socios internacionales de alto nivel, que se destacan por su competencia comercial, tecnológica e innovadora en sus respectivos campos de actividad.',
     locations: 'LOCACIONES',
     headquarters: 'Sede',
@@ -54,7 +56,7 @@ module.exports = {
     }
   },
   nossaempresa: {
-    aTrajectoryBuilt: 'Una trayectoria de credibilidad e innovación',
+    aTrajectoryBuilt: 'Una trayectoria de <b>credibilidad</b> e <b>innovación</b>',
     ourCompany: 'Nuestra compañía',
     youCanHave: '“Usted puede tener todo el dinero del mundo, pero si usted no es una persona ética y moral, no tiene nada.”',
     henryRKravis: 'Henry R. Kravis, cofundador de Kohlberg Kravis Roberts & Co.',
