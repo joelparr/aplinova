@@ -189,6 +189,7 @@ a.navbar__initial-item:hover {
     font-size: 1rem;
     padding: 0.25rem 0;
     opacity: 75%;
+    text-transform: lowercase;
 }
 
 .navbar .navbar__products-icon {
