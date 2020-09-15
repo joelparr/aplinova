@@ -72,6 +72,12 @@
     }
 }
 
+@media (min-width: 768px) {
+    .produto-view__categories--revconfeitaria .categoria-item, .produto-view__categories--foodservice .subcategoria-item  {
+        width: 50%;
+    }
+}
+
 @media (max-width: 768px) {
     .produto-view__categories {
         margin-left: 1rem;
