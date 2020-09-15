@@ -33,6 +33,8 @@
     margin-bottom: 0.75rem;
     font-size: 1.125rem;
     padding-right: 0.5rem;
+    min-width: 275px;
+    max-width: 310px;
 }
 
 @media (max-width: 640px) {
@@ -51,12 +53,11 @@
         height: 100%;
     }
 
-    .subcategoria-item__list-container {
-        margin-left: 1rem;
-        align-self: flex-start;
-    }
-
     .subcategoria-item .subcategoria-item__text {
         width: 60% !important;
+    }
+
+    .produto-view__categories--subacucar .subcategoria-item__text {
+        width: 90% !important;
     }
 }
