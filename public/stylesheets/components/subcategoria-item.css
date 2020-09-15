@@ -35,6 +35,16 @@
     padding-right: 0.5rem;
 }
 
+@media (max-width: 640px) {
+    .subcategoria-item__list-container {
+        width: 100%;
+    }
+
+    .subcategoria-item__title {
+        width: 100%;
+    }
+}
+
 @media (min-width: 640px) {
     .subcategoria-item {
         width: 33.333333%;
