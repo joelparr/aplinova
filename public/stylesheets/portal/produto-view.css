@@ -45,11 +45,9 @@
     color: #292828;
     margin-left: 0.5rem;
     font-weight: normal;
-    /* text-transform: capitalize; */
 }
 
 .produto-view__title {
-    /* height: 80px; */
     font-size: 2.5rem;
     text-transform: uppercase;
     text-align: center;
@@ -64,7 +62,6 @@
     max-width: 100%;
     line-height: 1.2;
 }
-
 
 @media (max-width: 640px) {
     .produto-view__categories {
@@ -87,5 +84,6 @@
 
     .produto-view__title {
         padding: 0 3rem;
+        font-size: 2rem;
     }
 }
