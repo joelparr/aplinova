@@ -1,11 +1,11 @@
 <div class="card-body subcategoria-item">
-  <div class="row w-100">
+  <div class="row">
       <img class="subcategoria-item__icon" src="./public/img/icon-produtos.svg" alt="Item" />
       <div class="subcategoria-item__text">
           <%= hit.dataValues[`titulo${t.code}`]%>
       </div>
   </div>
-  <div class="row">
+  <div class="row subcategoria-item__list-container">
       <% if (hit.dataValues.produtos && hit.dataValues.produtos.length) {%>
           <ul class="subcategoria-item__list">
               <% hit.dataValues.produtos.forEach(produto => {%>
