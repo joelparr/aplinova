@@ -1,26 +1,22 @@
 <%- include('../header') %>
 <div id="banner" class="produto-view__banner">
   <div class="row justify-content-center h-100" style="background: no-repeat center/cover url('./public/img/subs_acucar.jpg')">
-    <div class="col-md-8 col-lg-6">
-      <div class="row align-items-end" style="height:100%;">
-        <div class="col d-flex justify-content-center align-items-center produto-view__title">
-          <span>Substitutos de Açúcar e Fibras</span>
-        </div>
-      </div>
-    </div>
+    <!-- sugarSubstitutesAnd -->
   </div>
 </div>
 <div class="produto-view__content">
-  <div class="row mt-5">
+  <div class="row mt-3">
     <div class="col">
       <div class="row justify-content-center px-2">
-        <div class=" col-md-8 col-lg-6 px-4 p-md-0">
-          Oferecemos a linha completa de substitutos de açúcar para qualquer tipo de aplicação.
+        <div class="row align-items-center" style="height:100%;">
+          <div class="col d-flex justify-content-center align-items-center produto-view__title">
+            <span><%- t.home.sugarSubstitutesAnd %></span>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="d-flex flex-wrap mt-5 produto-view__categories">
+  <div class="d-flex flex-wrap mt-3 produto-view__categories">
     <% if(subsAc){ %>
       <% subsAc.forEach(hit => { %>
         <%- include('../subcategoria-item', {hit}) %>
@@ -29,8 +25,8 @@
   </div>
   <div class="row base-container my-5 mx-0">
     <div class="col produto-view__segments">
-      <div class="row flex-nowrap align-items-center p-3">
-        <i class="fas fa-square"></i><span><b>Segmentos:</b> Alimentos, Bebidas, Suplementos, Fármacos, Nutrição Animal e Oral Care.</span>
+      <div class="row flex-nowrap align-items-start p-3">
+        <i class="fas fa-square" style="margin-top: 0.6rem;"></i><span><b><%- t.produtos.segments%>:</b> <%- t.produtos.sugarSubstitutes %></span>
       </div>
     </div>
   </div>

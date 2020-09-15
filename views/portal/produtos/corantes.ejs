@@ -1,26 +1,22 @@
 <%- include('../header') %>
 <div id="banner" class="produto-view__banner">
   <div class="row justify-content-center h-100" style="background: no-repeat center/cover url('./public/img/corantes.jpg')">
-    <div class="col-md-8 col-lg-6">
-      <div class="row align-items-end" style="height:100%;">
-        <div class="col d-flex justify-content-center align-items-center produto-view__title">
-          <span>Corantes</span>
-        </div>
-      </div>
-    </div>
+    
   </div>
 </div>
 <div class="produto-view__content">
-  <div class="row mt-5">
+  <div class="row mt-3">
     <div class="col">
       <div class="row justify-content-center px-2">
-        <div class=" col-md-8 col-lg-6 px-4 p-md-0">
-          Oferecemos uma ampla variedade de corantes alimentícios líquidos ou pós, artificiais ou naturais, hidrossolúveis ou lipossoltivels, além dos blends customizados conforme a necessidade do cliente.
+        <div class="row align-items-center" style="height:100%;">
+          <div class="col d-flex justify-content-center align-items-center produto-view__title">
+            <span><%- t.home.colors %></span>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="d-flex flex-wrap mt-5 produto-view__categories">
+  <div class="d-flex flex-wrap mt-3 produto-view__categories">
     <%if(corantes){%>
       <% corantes.forEach((item) => { %>
         <%- include('../categoria-item', {itemName: item.dataValues[`titulo${t.code}`]}) %>
@@ -29,8 +25,8 @@
   </div>
   <div class="row base-container my-5 mx-0">
     <div class="col produto-view__segments">
-      <div class="row flex-nowrap align-items-center p-3">
-        <i class="fas fa-square"></i><span><b>Segmentos:</b> Alimentos, Bebidas, Suplementos, Carneos, Lacteos, Pet Food e Aromas.</span>
+      <div class="row flex-nowrap align-items-start p-3">
+        <i class="fas fa-square" style="margin-top: 0.6rem;"></i><span><b><%- t.produtos.segments%>:</b> <%- t.produtos.colors %></span>
       </div>
     </div>
   </div>

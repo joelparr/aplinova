@@ -4,6 +4,7 @@
     padding-left: 0.75rem;
     margin-top: 0.75rem;
     align-items: start;
+    justify-content: center;
 }
 
 .categoria-item .categoria-item__icon {
@@ -18,6 +19,7 @@
     color: #292828;
     font-size: 1.25rem;
     line-height: 1.375;
+    width: 90%;
 }
 
 @media (min-width: 640px) {
@@ -26,6 +28,6 @@
     }
 
     .categoria-item .categoria-item__text {
-        width: 90%;
+        width: 50%;
     }
 }
