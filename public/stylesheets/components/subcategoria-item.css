@@ -18,6 +18,7 @@
     color: #292828;
     font-size: 1.25rem;
     line-height: 1.375;
+    width: 90%;
 }
 
 .subcategoria-item ul li {
@@ -31,15 +32,12 @@
 .subcategoria-item .subcategoria-item__list p {
     margin-bottom: 0.75rem;
     font-size: 1.125rem;
+    padding-right: 0.5rem;
 }
 
 @media (min-width: 640px) {
     .subcategoria-item {
         width: 33.333333%;
         height: 100%;
-    }
-
-    .subcategoria-item .subcategoria-item__text {
-        width: 90%;
     }
 }

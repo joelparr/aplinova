@@ -51,6 +51,7 @@ $(document).ready(function () {
         navBar.addClass('navbar--menu-state');
         navBar.removeClass('navbar--initial-state');
         navBar.removeClass('navbar--scrolled-state');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     })
 
     closeIcon.click(function () {

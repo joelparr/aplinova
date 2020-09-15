@@ -53,6 +53,18 @@
     line-height: 1.25;
     font-size: 1.75rem;
     width: 100%;
+    font-weight: bolder;
+}
+
+.introduction__main-text .introduction__main-text--lighter {
+    font-weight: lighter;
+}
+
+.introduction__main-text i {
+    font-size: 1rem;
+    color: #f91605;
+    position: relative;
+    top: -5px;
 }
 
 .introduction__secondary-text {
