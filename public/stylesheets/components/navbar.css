@@ -279,6 +279,7 @@ a.navbar__initial-item:hover {
 .navbar__lang-option {
     transition: 0.5s ease color, 0.5s ease font-weight, 0.5s ease background-color;
     padding: 0.125rem 1.25rem 0.125rem 0.5rem;
+    color: white;
 }
 
 .navbar__lang-option:not(.navbar__lang-option--active):hover {
