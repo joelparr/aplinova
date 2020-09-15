@@ -74,6 +74,18 @@
     .produto-view__categories--revconfeitaria .categoria-item, .produto-view__categories--foodservice .subcategoria-item  {
         width: 50%;
     }
+
+    .produto-view__categories--subacucar .subcategoria-item .subcategoria-item__title,
+    .produto-view__categories--foodservice .subcategoria-item .subcategoria-item__title {
+        width: 100%;
+    }
+
+    .produto-view__categories--proteinas .subcategoria-item .subcategoria-item__title {
+        width: 85%;
+    }
+    .produto-view__categories--proteinas .subcategoria-item .subcategoria-item__text {
+        width: 70% !important;
+    }
 }
 
 @media (max-width: 768px) {
