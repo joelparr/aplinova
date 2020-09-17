@@ -58,6 +58,7 @@ window.onload = (event)=>{
 //Para cada linha da treeview adiciono um event listener
 Array.from(anchor).forEach(el=>{
     el.addEventListener('click', function(event){
+        event.preventDefault();
         elementId = event.target.dataset.id;
         formTitulo.removeAttribute('readonly');
         formTituloEng.removeAttribute('readonly');
@@ -192,6 +193,7 @@ atualizar.addEventListener('click', function(event){
 //Caso o usuario clique em alguma CATEGORIA
 Array.from(cat).forEach(el=>{
     el.addEventListener('click', function(event){
+        event.preventDefault();
         formTitulo.value = "";
         formTituloEng.value = "";
         formTituloEsp.value = "";
