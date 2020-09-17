@@ -66,6 +66,7 @@ search.addEventListener('click', ev=>{
         //Adicionando um event listener a linha da categoria
         Array.from(categoriaRow).forEach(cat=>{
             cat.addEventListener('click', event=>{
+                event.preventDefault();
                 let filterCat = dataSearchCat.filter(hit=>hit.id === parseInt(event.path[1].children[0].innerText));
                 elementType = "sub";
                 formTitulo.value = filterCat[0].titulo;
@@ -94,6 +95,7 @@ search.addEventListener('click', ev=>{
         //Adicionando um event listener para cada row
         Array.from(produtoRow).forEach(prod=>{
             prod.addEventListener('click', event=>{
+                event.preventDefault();
                 let filterProd = dataSearchProd.filter(hit=>hit.id === parseInt(event.path[1].children[0].innerText));
                 console.log(filterProd);
                 elementType = "prod";

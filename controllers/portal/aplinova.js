@@ -206,18 +206,21 @@ exports.nossaempresa = (req, res)=>{
 
 //Email de contato com o adm e o cliente
 exports.contatoEmail = (req, res)=>{
+  console.log(req.body);
   let assunto = `Contato cliente: ${req.body.nome}`;
-  let contentAdm = `<html><body>Houve um contato do ${req.body.nome}. Email: ${req.body.email}</body></html>`;
+  let contentAdm = `<html><body>Houve um contato do ${req.body.nome}. Email: ${req.body.email}. Telefone: ${req.body.telefone}. Empresa: ${req.body.empresa}. Mensagem: ${req.body.mensagem}</body></html>`;
   let contentCost = `<html><body>Seu contato com a aplinova foi realizado com sucesso. Porfavor aguarde retorno.</body></html>`
-  sendContatoEmail("danieldts2013@gmail.com", assunto, contentAdm) //administrador
+  sendContatoEmail("contato@aplinova.com.br", assunto, contentAdm) //administrador
   .then(sentAdm=>{
     return sendContatoEmail(req.body.email, assunto, contentCost) //cliente
   })
   .then(sentCli=>{
-    res.json({sentCli});
+    console.log(sentCli);
+    res.json({done:true});
   })
   .catch(err=>{
-    res.json({err});
+    console.log(err);
+    res.json({done:false});
   })
 }
 
@@ -225,12 +228,13 @@ exports.contatoEmail = (req, res)=>{
 function sendContatoEmail(email, assunto, content){
   return new Promise((resolve, reject)=>{
     mailerTransport.sendMail({
-      from: `FINDI <findisemanawagon@gmail.com>`,
+      from: `Aplinova <contato@aplinova.com.br>`,
       to: email,
       subject: assunto,
       html: content
     }, (err, info)=>{
       if(err){
+        console.log(err);
         reject("Ocorreu um problema ao enviar o email")
       }else{
         resolve(info);
