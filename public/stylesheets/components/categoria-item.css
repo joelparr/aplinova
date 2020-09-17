@@ -29,5 +29,6 @@
 
     .categoria-item .categoria-item__text {
         width: 50%;
+        min-width: 275px;
     }
 }

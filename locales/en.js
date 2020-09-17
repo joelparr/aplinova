@@ -28,7 +28,7 @@ module.exports = {
     foundedIn1987: 'Founded in 1987, initially as Apliquimica, Aplinova is a Brazilian company with administrative headquarters, an application laboratory, pilot plant and manufacturing unit located in the city of São Paulo. ',
     aLongEstablished: 'A long-established supplier of ingredients for the Brazilian market, the company is constantly on the look-out for innovations intended to help clients launch products that are differentiated, natural, functional, vegan, as well as price competitive.',
     ourTeamIs: 'Our team is made up of experienced industry experts who comply with the company’s culture, which prioritizes the client, values professionalism and respects our ethic parameters.',
-    ourPartners: 'Our <b class="ml-2">partners</b>',
+    ourPartners: '<span class="font-weight-light">Our</span> <b class="ml-2">partners</b>',
     aplinovaPartnersWith: 'Aplinova partners with highly recognized international suppliers that strive for providing commercial, technological and innovative excellence in their respective fields.',
     locations: 'LOCATIONS',
     headquarters: 'Headquarters',
@@ -56,7 +56,7 @@ module.exports = {
     }
   },
   nossaempresa: {
-    aTrajectoryBuilt: 'A trajectory built on <b>credibility</b> and <b>innovation</b>',
+    aTrajectoryBuilt: '<span class="font-weight-light">A trajectory built on</span> <b>credibility</b> <span class="font-weight-light">and</span> <b>innovation</b>',
         ourCompany: 'Our Company',
         youCanHave: '“You can have all the money in the world, but if you are not a moral and ethical person, you really have nothing.”',
         henryRKravis: 'Henry R. Kravis, co-founder of Kohlberg Kravis Roberts & Co.',
@@ -66,7 +66,7 @@ module.exports = {
         aplinovaStrivesFor: 'Aplinova strives for providing product excellence, continuously investing in the improvement of its manufacturing and laboratory units.',
   },
   ourHistory: {
-    title: 'Our <b class="font-weight-bold ml-2">History</b>',
+    title: '<span class="font-weight-light">Our</span> <b class="font-weight-bold ml-2">History</b>',
     timeline: {
       year1987: {
           title: 'Foundation',

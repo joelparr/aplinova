@@ -201,7 +201,6 @@ exports.subacucar= (req, res)=>{
 
 //Tela do nossa empresa
 exports.nossaempresa = (req, res)=>{
-  console.log(req.params.t);
   res.render('./portal/nossaempresa', {t: req.params.t})
 }
 

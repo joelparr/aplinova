@@ -72,17 +72,29 @@
 
 @media (min-width: 768px) {
     .produto-view__categories--revconfeitaria .categoria-item,
-    .produto-view__categories--foodservice .subcategoria-item,
     .produto-view__categories--prodveganos .subcategoria-item {
         width: 50%;
+    }
+
+    .produto-view__categories--foodservice .subcategoria-item {
+        width: 33%;
     }
 
     .produto-view__categories--foodservice .subcategoria-item .subcategoria-item__title {
         width: 100%;
     }
 
+    .produto-view__categories--foodservice .subcategoria-item .subcategoria-item__text {
+        width: 90% !important;
+    }
+
+    .produto-view__categories--foodservice .subcategoria-item__list-container {
+        align-self: flex-start;
+    }
+
     .produto-view__categories--subacucar .subcategoria-item .subcategoria-item__title {
         min-width: 350px;
+        width: 85%;
     }
 
     .produto-view__categories--proteinas .subcategoria-item .subcategoria-item__title,
@@ -93,11 +105,21 @@
     .produto-view__categories--proteinas .subcategoria-item .subcategoria-item__text,
     .produto-view__categories--prodveganos .subcategoria-item .subcategoria-item__text,
     .produto-view__categories--ingfuncionais .subcategoria-item .subcategoria-item__text {
-        width: 70% !important;
+        width: 85% !important;
     }
 
     .produto-view__categories--prodveganos .subcategoria-item__list-container {
         margin-left: 1rem;
+    }
+
+    .produto-view__categories--subacucar .subcategoria-item__list-container {
+        margin-left: -5rem;
+    }
+}
+
+@media (min-width: 640px) and (max-width: 961px) {
+    .produto-view__categories--proteinas .subcategoria-item {
+        align-items: flex-start;
     }
 }
 
