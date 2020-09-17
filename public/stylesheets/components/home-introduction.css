@@ -57,7 +57,7 @@
 }
 
 .introduction__main-text .introduction__main-text--lighter {
-    font-weight: lighter;
+    font-weight: 300;
 }
 
 .introduction__main-text i {
@@ -98,7 +98,7 @@
     }
 
     .introduction__main-text .introduction__main-text--lighter {
-        font-weight: lighter;
+        font-weight: 300;
     }
 
     .introduction__secondary-text {
@@ -113,5 +113,12 @@
         min-width: 30%;
         font-size: 1.5rem;
         padding: 0 1.5rem;
+    }
+}
+
+@media (min-width: 1640px) {
+    .introduction__header-content {
+        width: 60%;
+        padding: 0 0.5rem;
     }
 }

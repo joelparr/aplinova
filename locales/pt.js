@@ -31,7 +31,7 @@ module.exports = {
     foundedIn1987: 'Fundada em 1987, inicialmente como Apliquimica, a <b>Aplinova</b> é uma empresa brasileira com sede administrativa, laboratório de aplicação, depósito e unidade fabril na cidade de São Paulo.',
     aLongEstablished: 'Tradicional fornecedora de ingredientes no mercado brasileiro, a empresa está em constante busca de inovações para ajudar os clientes a lançarem produtos diferenciados, naturais, funcionais, veganos e também competitivos em custo.',
     ourTeamIs: 'Contamos com profissionais com larga experiência neste mercado que aderem à cultura da empresa de priorizar o cliente, valorizar o profissionalismo e respeitar os nossos padrões éticos.',
-    ourPartners: 'Nossos <b class="ml-2">parceiros</b>',
+    ourPartners: '<span class="font-weight-light">Nossos</span> <b class="ml-2">parceiros</b>',
     aplinovaPartnersWith: 'A <b>Aplinova</b> conta com parcerias internacionais de alto nível que primam pela competência comercial, tecnológica e inovativa em seus respectivos campos de atuação.',
     locations: 'Localização',
     headquarters: 'Escritório',
@@ -56,7 +56,7 @@ module.exports = {
     }
   },
   nossaempresa: {
-    aTrajectoryBuilt: 'Uma trajetória de <b>credibilidade</b> e <b>inovação</b>',
+    aTrajectoryBuilt: '<span class="font-weight-light">Uma trajetória de</span> <b>credibilidade</b> <span class="font-weight-light">e</span> <b>inovação</b>',
     ourCompany: 'Nossa empresa',
     youCanHave: '“Você pode ter todo o dinheiro do mundo mas se você não é uma pessoa com ética e moral, você não é ninguém.”',
     henryRKravis: 'Henry R. Kravis, cofundador do Kohlberg Kravis Roberts & Co',
@@ -67,7 +67,7 @@ module.exports = {
     aplinovaStrivesFor: 'A <b>Aplinova</b> preza pela qualidade dos seus produtos, trabalhando constantemente para melhorar sua unidade fabril e laboratórios.',
   },
   ourHistory: {
-    title: 'Nossa <b class="font-weight-bold ml-2">História</b>',
+    title: '<span class="font-weight-light">Nossa</span> <b class="font-weight-bold ml-2">História</b>',
     timeline: {
       year1987: {
         title: 'Fundação',
@@ -112,7 +112,7 @@ module.exports = {
     },
   },
   contato: {
-    aplinovaIsAlways: 'Um bom <br>atendimento <br>faz toda a <br><b>diferença</b>',
+    aplinovaIsAlways: '<span class="font-weight-light">Um bom <br>atendimento <br>faz toda a</span> <br><b>diferença</b>',
     letsChat: "Fale <b class=\"ml-2\">conosco</b>",
     fillOutThe: 'Preencha o formulário e nossa equipe técnica entrará em contato o mais breve possível.',
     orIfYou: 'Ou se preferir, envie sua solicitação para: ',

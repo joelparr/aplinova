@@ -10,13 +10,13 @@
     width: 1.125rem;
     height: 1.125rem;
     margin-right: 0.5rem;
-    margin-top: 0.25rem;
+    margin-top: 0.5rem;
 }
 
 .subcategoria-item .subcategoria-item__text {
     font-weight: 700;
     color: #292828;
-    font-size: 1.25rem;
+    font-size: 1.6rem;
     line-height: 1.375;
     width: 90%;
 }
@@ -31,7 +31,7 @@
 
 .subcategoria-item .subcategoria-item__list p {
     margin-bottom: 0.75rem;
-    font-size: 1.125rem;
+    font-size: 1.4rem;
     padding-right: 0.5rem;
     min-width: 275px;
     max-width: 310px;
@@ -47,7 +47,20 @@
     }
 }
 
-@media (min-width: 640px) {
+@media (min-width: 641px) and (max-width: 960px) {
+    .subcategoria-item {
+        width: 40%;
+        height: 100%;
+    }
+}
+
+@media (min-width: 641px) and (max-width: 1025px){
+    .produto-view__categories--foodservice .subcategoria-item {
+        width: 40% !important;
+    }
+}
+
+@media (min-width: 961px) {
     .subcategoria-item {
         width: 33.333333%;
         height: 100%;
@@ -58,6 +71,6 @@
     }
 
     .produto-view__categories--subacucar .subcategoria-item__text {
-        width: 90% !important;
+        width: 69% !important;
     }
 }

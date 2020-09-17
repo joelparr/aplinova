@@ -81,7 +81,7 @@
     font-weight: 500;
     font-size: 1.125rem;
     letter-spacing: 0.05em;
-    padding: 0 2.5rem;
+    padding: 0 4rem 0 0;
     text-decoration: none !important;
     color: #fff;
 }
@@ -247,8 +247,14 @@ a.navbar__initial-item:hover {
 }
 
 .navbar__lang-container {
-    margin-top: 9%;
+    margin-top: 9.5%;
     align-self: flex-start;
+}
+
+@media (max-width: 1024px) {
+    .navbar__lang-container {
+        margin-top: 14%;
+    }
 }
 
 .navbar__lang-selector {
@@ -332,7 +338,7 @@ a.navbar__initial-item:hover {
     .navbar.navbar--menu-state .navbar__menu-icon {
         display: none !important;
     }
-    .navbar.navbar--menu-state .navbar__close-icon {
+.navbar.navbar--menu-state .navbar__close-icon {
         display: flex !important;
     }
 
@@ -359,3 +365,26 @@ a.navbar__initial-item:hover {
     }
 }
 
+@media (min-width: 640px) and (max-width: 968px) {
+    .navbar__initial-item {
+        font-size: 1rem;
+        letter-spacing: 0em;
+        padding: 0 2.5rem 0 0;
+    }
+
+    .navbar .navbar__link {
+        font-size: 1rem;
+    }
+
+    .navbar .navbar__item {
+        padding: 0 0 0 1.75rem;
+    }
+
+    .navbar__logo {
+        width: 14rem;
+    }
+
+    .navbar__lang-container {
+        margin-top: 17.5%;
+    }
+}
