@@ -6,8 +6,8 @@ const config={
     port: process.env.MAILPORT,
     secure: false,
     auth:{
-        user: "contatoaplinova@gmail.com",
-        pass: "aplinova7859"
+        user: process.env.MAILUSER,
+        pass: process.env.MAILPASS
     }
 }
 

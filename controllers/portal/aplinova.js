@@ -206,7 +206,6 @@ exports.nossaempresa = (req, res)=>{
 
 //Email de contato com o adm e o cliente
 exports.contatoEmail = (req, res)=>{
-  console.log(req.body);
   let assunto = `Contato cliente: ${req.body.nome}`;
   let contentAdm = `<html><body>Houve um contato do ${req.body.nome}. Email: ${req.body.email}. Telefone: ${req.body.telefone}. Empresa: ${req.body.empresa}. Mensagem: ${req.body.mensagem}</body></html>`;
   let contentCost = `<html><body>Seu contato com a aplinova foi realizado com sucesso. Porfavor aguarde retorno.</body></html>`
