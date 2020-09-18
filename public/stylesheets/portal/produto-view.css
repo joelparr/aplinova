@@ -98,10 +98,19 @@
     }
 
     .produto-view__categories--proteinas .subcategoria-item .subcategoria-item__title,
-    .produto-view__categories--prodveganos .subcategoria-item .subcategoria-item__title,
-    .produto-view__categories--ingfuncionais .subcategoria-item .subcategoria-item__title {
+    .produto-view__categories--prodveganos .subcategoria-item .subcategoria-item__title {
         min-width: 300px;
     }
+
+    .produto-view__categories--ingfuncionais .subcategoria-item .subcategoria-item__title {
+        min-width: 325px;
+        max-width: 350px;
+    }
+
+    .produto-view__categories--ingfuncionais .subcategoria-item .subcategoria-item__list p {
+        width: 300px !important;
+    }
+
     .produto-view__categories--proteinas .subcategoria-item .subcategoria-item__text,
     .produto-view__categories--prodveganos .subcategoria-item .subcategoria-item__text,
     .produto-view__categories--ingfuncionais .subcategoria-item .subcategoria-item__text {
