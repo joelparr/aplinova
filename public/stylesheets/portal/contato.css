@@ -18,6 +18,11 @@
   letter-spacing: 0.1em;
 }
 
+.button-form:disabled{
+  background-color: lightgray;
+  border: 1px solid gray;
+}
+
 .contato__container {
   display: flex;
   flex-direction: column;
@@ -58,4 +63,19 @@
   width: 100%;
   font-weight: 400;
   text-decoration: none;
+}
+
+.blinking{
+  animation:blinkingText 1.2s infinite;
+}
+@keyframes blinkingText{
+  0%{     color: lightgray;    }
+  49%{    color:lightgray }
+  60%{    color: transparent; }
+  99%{    color:transparent;  }
+  100%{   color: lightgray;    }
+}
+
+input:read-only{
+  color: lightgray;
 }
