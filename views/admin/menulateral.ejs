@@ -5,7 +5,7 @@
     <div class="l-sidebar__content">
       <nav class="c-menu js-menu">
         <ul class="u-list">
-          <%if(usuario.admin){%>
+          <%if(usuario.admin && usuario.role === "desenvolvedor"){%>
             <li class="c-menu__item" data-toggle="tooltip" title="Adicionar Categoria">
               <a href="/admin/new/categoria" style="text-decoration: none; color:white">
               <div class="c-menu__item__inner"><i class="fa fa-history" style=" color:white;"></i>

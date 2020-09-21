@@ -392,7 +392,7 @@ exports.updateUser = (req, res)=>{
 }
 
 exports.deleteUser = (req, res)=>{
-  User.destroy({where:{id: req.params.id}})
+  User.update({active: false, role: 'bloqueado'},{where:{id: req.params.id}})
   .then(function(result){
     res.redirect('/admin/userconfig');
   })
