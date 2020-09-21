@@ -37,15 +37,15 @@
                   <th scope="col">Nome</th>
                   <th scope="col">Sobrenome</th>
                   <th scope="col">Email</th>
-                  <th scope="col">Estado</th>
+                  <th scope="col">Ativo</th>
                   <th scope="col">Admin</th>
-                  <th scope="col">Desenvolvedor</th>
+                  <th scope="col">Papel</th>
                   <th scope="col">Ações</th>
                 </tr>
               </thead>
               <tbody>
-                <%if(ativos && ativos.filter(hit=>(hit.active===true)).length){%>
-                  <%ativos.filter(hit=>(hit.active===true && hit.id !== usuario.id)).forEach(hit=>{%>
+                <%if(ativos && ativos.filter(hit=>(hit.active===true && hit.role === 'visitante')).length){%>
+                  <%ativos.filter(hit=>(usuario.admin && usuario.role === "desenvolvedor" ? hit.active === true && hit.id !== usuario.id : hit.active===true && hit.id !== usuario.id && hit.role === 'visitante')).forEach(hit=>{%>
                     <tr>
                       <th scope="row"><%=hit.id%></th>
                       <td><%=hit.firstName%></td>
@@ -160,20 +160,22 @@
             </div>
             <div class="row justify-content-start">
               <form class="w-100">
+                <%if(usuario.admin && usuario.role === "desenvolvedor"){%>
                   <div class="custom-control custom-switch mt-2">
                       <input type="checkbox" class="custom-control-input" name="admin" id="admin">
                       <label class="custom-control-label" for="admin">Admin</label>
                   </div>
-                  <div class="custom-control custom-switch mt-2">
-                    <input type="checkbox" class="custom-control-input" name="active" id="active">
-                    <label class="custom-control-label" for="active">Active</label>
-                  </div>
-                  <input class="d-none" type="text" id="inativoMethod" value="patch">
-                  <p id="msg" style="color:red; font-family: sans-serif;"></p>
-                  <div class="w-100 d-flex justify-content-between">
-                    <button type="submit" class="btn btn-admin" id="btn-salvar-inativo">Salvar</button>
-                    <button type="submit" class="btn btn-danger-admin" id="btn-bloquear-inativo">Bloquear</button>
-                  </div>
+                <%}%>
+                <div class="custom-control custom-switch mt-2">
+                  <input type="checkbox" class="custom-control-input" name="active" id="active">
+                  <label class="custom-control-label" for="active">Active</label>
+                </div>
+                <input class="d-none" type="text" id="inativoMethod" value="patch">
+                <p id="msg" style="color:red; font-family: sans-serif;"></p>
+                <div class="w-100 d-flex justify-content-between">
+                  <button type="submit" class="btn btn-admin" id="btn-salvar-inativo">Salvar</button>
+                  <button type="submit" class="btn btn-danger-admin" id="btn-bloquear-inativo">Bloquear</button>
+                </div>
               </form>
             </div>
         </div>

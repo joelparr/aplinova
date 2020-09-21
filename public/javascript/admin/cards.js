@@ -25,9 +25,8 @@ const formDescricaoEsp = document.getElementById('descricaoEsp');
 //Botao do formulario
 const atualizar = document.getElementById('atualizar');
 //User return
-const success = document.getElementById('success');
-const danger = document.getElementById('danger');
-const getError = document.getElementById('getError');
+const alert = document.getElementById('alert');
+let mensagemAlert = document.createElement('h6'); //Criando um elemento para enviar ao div
 const closeAlert = document.getElementsByClassName('close');
 
 const deleteItem = document.getElementsByClassName('deleteItem');
@@ -79,7 +78,10 @@ Array.from(anchor).forEach(el=>{
                 elementType = "sub"
                 break;
             default:
-                alert('Nao foi possivel identificar o item selecionado')
+                mensagemAlert.innerHTML = "Nao foi possivel identificar o item selecionado";
+                alert.appendChild(mensagemAlert);
+                alert.classList.add('alert-danger');
+                alert.classList.remove("d-none");
         }
         //Recuperando a subcategoria
         getSubCategoria(url)
@@ -112,7 +114,10 @@ Array.from(anchor).forEach(el=>{
             event.target.dataset.type === 'sub' ? formCategoria.value = data.categoria.titulo : formCategoria.value = data.categoria.titulo;
         })
         .catch(function(error){
-            getError.classList.remove("d-none");
+            mensagemAlert.innerHTML = "Houve um problema para buscar o item!!";
+            alert.appendChild(mensagemAlert);
+            alert.classList.add('alert-danger');
+            alert.classList.remove("d-none");
         })
     })
 });
@@ -150,8 +155,10 @@ atualizar.addEventListener('click', function(event){
     event.preventDefault();
     //Validacao do formulario
     if(formTitulo.value === "" || formTituloEng.value === "" || formTituloEsp.value === ""){
-        // document.getElementById("demo").innerHTML = "Todas os campos precisam ser preenchidos";
-        danger.classList.remove("d-none");
+        mensagemAlert.innerHTML = "Todas os campos precisam ser preenchidos";
+        alert.appendChild(mensagemAlert);
+        alert.classList.add('alert-danger');
+        alert.classList.remove("d-none");
         return 0;
     }
 
@@ -180,12 +187,15 @@ atualizar.addEventListener('click', function(event){
     }
     $.post(url, dataBody, function(data){
         if(data){
-            success.classList.remove("d-none");
-            // if(treeviewDiv.classList.include("d-none")){
-            //     window.location.reload();
-            // }
+            mensagemAlert.innerHTML = "O item foi alterado com sucesso!";
+            alert.appendChild(mensagemAlert);
+            alert.classList.add('alert-success');
+            alert.classList.remove("d-none");
         }else{
-            danger.classList.remove("d-none");
+            mensagemAlert.innerHTML = "Houve um problema na atualizacao do item! Verfique todos os campos.";
+            alert.appendChild(mensagemAlert);
+            alert.classList.add('alert-danger');
+            alert.classList.remove("d-none");
         }
     }, "json");
 })
@@ -274,7 +284,8 @@ function removeFlagClass(flag){
 
 Array.from(closeAlert).forEach(el=>{
     el.addEventListener('click', ev=>{
-        let element = ev.path.filter(hit=>hit.id==="success" || hit.id==="danger" || hit.id==="getError");
+        let element = ev.path.filter(hit=>hit.id==="alert");
         element[0].classList.add('d-none');
+        element[0].classList.includes('alert-success') ? element[0].classList.remove('alert-success') : element[0].classList.remove('alert-danger')
     })
 })

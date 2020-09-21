@@ -2,17 +2,13 @@
 <!--*****************************Foi retirado do principal*********************-->
 <!--****************************************************************************************************-->
 <div class="list-group">
-<div class="alert alert-success alert-dismissible fade show d-none mb-0" id="success"  role="alert">
-    <strong>O item foi alterado com sucesso!
-    <i class="far fa-times-circle close"></i>
+<div class="alert alert-dismissible fade show d-none mb-0" id="alert"  role="alert">
+  <strong>
+  <i class="far fa-times-circle close"></i>
 </div>
-<div class="alert alert-danger alert-dismissible fade show d-none mb-0" id="danger"  role="alert">
-    <strong>Houve um problema na atualizacao do item! Verfique todos os campos.
-    <i class="far fa-times-circle close"></i>
-</div>
-<div class="alert alert-danger alert-dismissible fade show d-none mb-0" id="getError"  role="alert">
-    <strong>Houve um problema para buscar o item!!
-    <i class="far fa-times-circle close"></i>
+<div class="alert alert-danger alert-dismissible fade show d-none mb-0" id="alert"  role="alert">
+  <strong><%=error%>
+  <i class="far fa-times-circle close"></i>
 </div>
 <div style="display: flex; flex-direction: row; justify-content: center; margin-bottom: 30px; background-color: #88B73A; height: 60px; align-items: center; color: white; font-weight: bold; font-size: 20px;">DETALHES</div>
 <div class="container-fluid">
@@ -29,7 +25,7 @@
                             <a href="#" style="color: #353535; flex-grow: 1;">
                                 <%=element.titulo%>
                             </a>
-                            <%if(usuario.admin){%>
+                            <%if(usuario.admin && usuario.role === "desenvolvedor"){%>
                                 <a href="#" class="update-cat" data-toggle="modal" data-target="#categoria-sm">
                                     <i class="fas fa-edit fa-lg"></i>
                                 </a>
