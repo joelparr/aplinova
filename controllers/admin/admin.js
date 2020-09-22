@@ -28,7 +28,9 @@ async function sendingData(req, res, urlView, argumentos){
     let qtd;
     if(user){
       argumentos.usuario = user.dataValues;
-      qtd = await User.count({where:{active:0}});
+      qtd = await User.count({where:{[Op.and]:[{active:0},{role:{[Op.notLike]:'bloqueado'}}]}});
+      //[Op.like]:`%${req.query.prod}%`
+      //{[Op.and]:[{idCategoriaPai: req.params.id},{idCategoria:0}]}
       argumentos.inativos = qtd
       res.render(urlView, argumentos);
     }else{

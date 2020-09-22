@@ -47,7 +47,10 @@ var Dashboard = function () {
 
 	return {
 		init: function init() {
-			sidebarChangeWidth();
+			if(screen.width > 800){
+				sidebarChangeWidth();
+			}
+			
 			$(".js-hamburger").on("click", sidebarChangeWidth);
 
 			// $(".js-menu li").on("click", function (e) {
