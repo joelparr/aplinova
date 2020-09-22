@@ -92,6 +92,7 @@ Array.from(btnInativo).forEach(element=>{
             email.innerHTML = data.user.email
             role.innerHTML = data.user.role
             username.innerHTML = data.user.username
+            console.log(admin);
             data.user.admin ? admin.setAttribute('checked', true) : admin.removeAttribute('checked');
             data.user.active ? active.setAttribute('checked', true) : active.removeAttribute('checked');
         })

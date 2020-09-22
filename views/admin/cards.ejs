@@ -6,14 +6,10 @@
   <strong>
   <i class="far fa-times-circle close"></i>
 </div>
-<div class="alert alert-danger alert-dismissible fade show d-none mb-0" id="alert"  role="alert">
-  <strong><%=error%>
-  <i class="far fa-times-circle close"></i>
-</div>
 <div style="display: flex; flex-direction: row; justify-content: center; margin-bottom: 30px; background-color: #88B73A; height: 60px; align-items: center; color: white; font-weight: bold; font-size: 20px;">DETALHES</div>
 <div class="container-fluid">
     <div class="row">
-        <div id="treeviewDiv" class="col-md-6">
+        <div id="treeviewDiv" class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
             <%if(error){%>
                 <span style="color: red;"><%=error%></span>
             <%}%>
@@ -83,8 +79,10 @@
             <%})%>
             
         </div>
-        <div class="d-none col-md-6" id="searchResult">
-            <h3>Subcategorias</h3>
+        <div class="d-none col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6" id="searchResult">
+          <div class="d-none" id="divSubcategoria">  
+          <h3>Subcategorias</h3>
+            <div class="table-responsive">
             <table class="table table-sm table-hover">
                 <thead>
                   <tr>
@@ -99,7 +97,11 @@
                   
                 </tbody>
               </table>
+            </div>
+          </div>
+          <div class="d-none" id="divProdutos">
               <h3>Produtos</h3>
+              <div class="table-responsive">
             <table  class="table table-sm table-hover">
                 <thead>
                   <tr>
@@ -114,6 +116,8 @@
                   
                 </tbody>
               </table>
+            </div>
+            </div>
         </div>
         <div class="col-md-6">
             <img src="./public/img/eng-flag.png" alt="" style="width: 30px;" id="eua-flag">

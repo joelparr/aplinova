@@ -266,6 +266,7 @@ h3 {
   cursor: pointer;
   border-right: 1px solid #cccccc; 
 }
+
 .c-header-icon a i {
   font-size: 18px;
   line-height: 40px;
@@ -524,7 +525,7 @@ h3 {
 }
 
 main.l-main {
-  width: 100%;
+  width: 100vw;
   height: 100%;
   padding: 70px 0 0 70px;
   -webkit-transition: padding 0.5s ease-in-out;
@@ -533,6 +534,7 @@ main.l-main {
   -o-transition: padding 0.5s ease-in-out;
   transition: padding 0.5s ease-in-out;
 }
+
 main.l-main .content-wrapper {
   padding: 25px;
   height: 100%;
@@ -649,4 +651,14 @@ a.list-group-item.active small {
   border-right: 2px solid #88B73A !important;
   border-bottom: 2px solid #88B73A !important;
   border-left: 2px solid #88B73A !important;
+}
+
+@media (max-width: 576px) {
+  .c-header-icon.js-hamburger {
+    display: none;
+  }
+
+  .c-header-icon.has-dropdown {
+    display: none;
+  }
 }

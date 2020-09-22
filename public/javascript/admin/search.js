@@ -12,6 +12,8 @@ const treeviewDiv = document.getElementById('treeviewDiv');
 const searchResult = document.getElementById('searchResult');
 const tableCategoria = document.getElementById('tableCategoria');
 const tableProduto = document.getElementById('tableProduto');
+const divSub = document.getElementById('divSubcategoria');
+const divProd = document.getElementById('divProdutos')
 
 let dataSearchCat;
 let dataSearchProd;
@@ -23,14 +25,13 @@ search.addEventListener('click', ev=>{
     tableProduto.innerHTML = "";
     //Realiza AJAX para procura 
     $.get(url, data=>{
-        console.log(data);
         dataSearchCat = data.result.resultCat; //Atribuindo os valores do search para um array
         dataSearchProd = data.result.resultProd; //Atribuindo os valores do search para um array
 
         treeviewDiv.classList.add("d-none");
         searchResult.classList.remove("d-none");
         if(data.result.resultCat){
-            //Carregando os dados na tabela produto 
+            //Carregando os dados na tabela prod
             data.result.resultCat.forEach(element=>{
                 let row = tableCategoria.insertRow(0);
                 row.classList.add("categoria");
@@ -46,27 +47,31 @@ search.addEventListener('click', ev=>{
                         row.insertCell(4).innerHTML = `<a href="/admin/subcategoria/${element.id}?method=delete" data-method="delete"><i class="fas fa-trash-alt" style="color: red;"></i></a>`
                     })
                 }
-            })
+            });
+            if(dataSearchCat.length) divSub.classList.remove('d-none');
+
         }
 
         if(data.result.resultProd){
             //Carregando os dados na tabela produto
             data.result.resultProd.forEach(element=>{
+                console.log(element);
                 let row = tableProduto.insertRow(0);
                 row.classList.add("produto");
                 row.insertCell(0).innerHTML = element.id;
                 row.insertCell(1).innerHTML = element.titulo;
                 row.insertCell(2).innerHTML = element.descricao;
-                row.insertCell(3).innerHTML = element.categorias[0].titulo;
-                row.insertCell(4).innerHTML = `<a href="/admin/produto/${element.id}?method=delete" data-method="delete"><i class="fas fa-trash-alt" style="color: red;"></i></a>`
-            })
+                row.insertCell(3).innerHTML = element.categorias.length ? element.categorias[0].titulo : "";
+                row.insertCell(4).innerHTML = `<a class="btn" href="/admin/produto/${element.id}?method=delete" data-method="delete"><i class="fas fa-trash-alt" style="color: red;"></i></a>`
+            });
+
+            if(dataSearchProd.length)divProd.classList.remove('d-none');
         }
         //Recuperando a row categoria
         const categoriaRow = document.getElementsByClassName('categoria');
         //Adicionando um event listener a linha da categoria
         Array.from(categoriaRow).forEach(cat=>{
             cat.addEventListener('click', event=>{
-                event.preventDefault();
                 let filterCat = dataSearchCat.filter(hit=>hit.id === parseInt(event.path[1].children[0].innerText));
                 elementType = "sub";
                 formTitulo.value = filterCat[0].titulo;
@@ -95,9 +100,7 @@ search.addEventListener('click', ev=>{
         //Adicionando um event listener para cada row
         Array.from(produtoRow).forEach(prod=>{
             prod.addEventListener('click', event=>{
-                event.preventDefault();
                 let filterProd = dataSearchProd.filter(hit=>hit.id === parseInt(event.path[1].children[0].innerText));
-                console.log(filterProd);
                 elementType = "prod";
                 elementId = parseInt(event.path[1].children[0].innerText);
                 //Recuperando os valores array

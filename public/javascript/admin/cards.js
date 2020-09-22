@@ -285,7 +285,7 @@ function removeFlagClass(flag){
 Array.from(closeAlert).forEach(el=>{
     el.addEventListener('click', ev=>{
         let element = ev.path.filter(hit=>hit.id==="alert");
+        element[0].classList.contains('alert-success') ? element[0].classList.remove('alert-success') : element[0].classList.remove('alert-danger');
         element[0].classList.add('d-none');
-        element[0].classList.includes('alert-success') ? element[0].classList.remove('alert-success') : element[0].classList.remove('alert-danger')
     })
 })

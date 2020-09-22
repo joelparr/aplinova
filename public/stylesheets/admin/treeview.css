@@ -22,3 +22,7 @@ body{
 .notativo{
 	display: none;
 }
+
+@media (max-width: 576px) {
+	
+  }
