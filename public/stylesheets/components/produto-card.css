@@ -86,3 +86,9 @@ a.produto-card {
 .produto-card:hover .produto-card__overlay-text {
     color: #88B73A;
 }
+
+@media (max-width: 968px) {
+    .produto-card .produto-card__overlay {
+        display: none;
+    }
+}
