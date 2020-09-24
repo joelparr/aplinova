@@ -82,3 +82,10 @@
     background-color: #fff;
     opacity: 100%;
 }
+
+@media (max-width: 640px) {
+
+    #carouselBanner .carousel-item .carousel-item__prodveganos {
+        object-position: right;
+    }
+}
