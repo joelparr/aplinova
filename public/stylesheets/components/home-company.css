@@ -34,6 +34,17 @@
     }
 }
 
+@media (min-width: 641px) and (max-width: 968px) {
+    .home-company .home-company__header {
+        font-size: 2rem;
+    }
+
+    .home-company .home-company__content {
+        background-color: #292828;
+        padding: 2rem 2rem 2rem 4rem;
+    }
+}
+
 .home-company .home-company__text {
     color: #F0F6ED;
     font-size: 1.125rem;

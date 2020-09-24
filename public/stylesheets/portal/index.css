@@ -68,7 +68,7 @@ ul li{
     }
 }
 
-@media (min-width: 769px) {
+@media (min-width: 968px) {
     .base-container {
         padding-left: 6rem;
         padding-right: calc(6rem + 16px);
