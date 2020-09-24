@@ -225,9 +225,19 @@ exports.showSubCategoria = (req, res)=>{
     });
 }
 
-//Ajax qure retorna a categoria
+//Ajax que retorna a categoria
 exports.showCategoria = (req, res)=>{
   Categoria.findOne({where: {idCategoria: req.params.id}})
+  .then(function(categoria){
+    res.json({categoria});
+  })
+  .catch(function(error){
+    res.json({error});
+  })
+}
+
+exports.showCategoriaPrincipal=(req, res)=>{
+  Categoria.findOne({where: {id: req.params.id}})
   .then(function(categoria){
     res.json({categoria});
   })
@@ -269,6 +279,24 @@ exports.updateProduto = (req, res)=>{
   
   Produto.update(data, {where: {id: req.params.id}})
   .then(function(produto){
+    res.json({update:"ok"});
+  })
+  .catch(function(error){
+    res.json({error});
+  })
+}
+
+exports.updateCategoria = (req, res)=>{
+  const data = {
+    titulo: req.body.titulo,
+    tituloEng: req.body.tituloEng,
+    tituloEsp: req.body.tituloEsp,
+    descricao: req.body.descricao,
+    descricaoEng: req.body.descricaoEng,
+    descricaoEsp: req.body.descricaoEsp
+  }
+  Categoria.update(data, {where:{id: req.params.id}})
+  .then(function(categoria){
     res.json({update:"ok"});
   })
   .catch(function(error){
@@ -394,7 +422,8 @@ exports.updateUser = (req, res)=>{
 }
 
 exports.deleteUser = (req, res)=>{
-  User.update({active: false, role: 'bloqueado'},{where:{id: req.params.id}})
+  // User.update({active: false, role: 'bloqueado'},{where:{id: req.params.id}})
+  User.destroy({where:{id: req.params.id}})
   .then(function(result){
     res.redirect('/admin/userconfig');
   })

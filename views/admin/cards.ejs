@@ -11,7 +11,7 @@
     <div class="row">
         <div id="treeviewDiv" class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
             <%if(error){%>
-                <span style="color: red;"><%=error%></span>
+              <span style="color: red; margin-left: 20px; padding-left: 20px;"><%=error%></span>
             <%}%>
             <% categorias.forEach(element=>{%>
                 <%if(element.idCategoria !== 0){%>
@@ -22,8 +22,8 @@
                                 <%=element.titulo%>
                             </a>
                             <%if(usuario.admin && usuario.role === "desenvolvedor"){%>
-                                <a href="#" class="update-cat" data-toggle="modal" data-target="#categoria-sm">
-                                    <i class="fas fa-edit fa-lg"></i>
+                                <a href="#" class="update-cat" data-toggle="modal" data-target="#categoria-sm" data-id=<%=element.id%>>
+                                    <i class="fas fa-edit fa-lg" data-id=<%=element.id%>></i>
                                 </a>
                                 <a href="/admin/categoria/<%=element.id%>?method=delete" class="deleteItem" data-method="delete">
                                     <i class="far fa-times-circle fa-lg" style="color: #88B73A;"></i>
@@ -203,45 +203,23 @@
       <div class="modal-content" style="background-color: #f0f3f5;">
         <div class="modal-header" style="background-color:#88B73A;">
           <h5 class="modal-title" id="exampleModalLongTitle" style="color: white;"><strong>DETALHES CATEGORIA</strong><h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true"><i class="fas fa-times-circle" style="color: white;"></i></span>
+          <button type="button" class="btn" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true"><i class="fas fa-times-circle" style="color: white; font-size: 1.5rem;"></i></span>
           </button>
         </div>
         <div class="modal-body">
           <form action="/admin/categoria" method="post">
-            <div class="p-1" id="header">
-              <div class="mb-5" style="display: flex; flex-direction: row; justify-content: space-between;">
-                <span style="color: black;"><h5>Cabeçalho</h5></span>
-                <!-- Os ids das flags sao diferentes do restante da aplicacao -->
+          <!-- cadastro de categoria -->
+          <!-- Uma categoria nao pode ter o id proprio repetido dentro da tabela -->
+            <div class="mt-1 p-1" id="categoria">
+              <div>
+                <span style="color: black;"><h5 class="mb-5">Categoria</h5></span>
                 <div style="display: flex; justify-content: space-around; width: 25%;">
                   <img src="../../public/img/eng-flag.png" alt="" style="width: 30px;" id="eua-cat-flag">
                   <img src="../../public/img/spain-flag.png" alt="" style="width: 30px;" id="esp-cat-flag">
                   <img src="../../public/img/brazil-flag.png" alt="" style="width: 30px;" id="pt-cat-flag" class="active">
                 </div>
               </div>
-              <div class="form-group mb-5 cat-pt">
-                <input class="new-input" type="text" id="headerTitulo" placeholder="TITULO" name="headerTitulo" required>
-              </div>
-              <div class="form-group d-none mb-5 cat-eua">
-                <input class="new-input" type="text" id="headerTituloEng" placeholder="TITULO" name="headerTituloEng" required>
-              </div>
-              <div class="form-group d-none mb-5 cat-esp">
-                <input class="new-input" type="text" id="headerTituloEsp" placeholder="TITULO" name="headerTituloEsp" required>
-              </div>
-              <div class="form-group mb-5 cat-pt">
-                <textarea class="new-input" id="headerDescricao" placeholder="DESCRICAO" name="headerDescricao" cols="30" rows="3"></textarea>
-              </div>
-              <div class="form-group d-none mb-5 cat-eua">
-                <textarea class="new-input" id="headerDescricaoEng" placeholder="DESCRICAO" name="headerDescricaoEng" cols="30" rows="3"></textarea>
-              </div>
-              <div class="form-group d-none mb-5 cat-esp">
-                <textarea class="new-input" id="headerDescricaoEsp" placeholder="DESCRICAO" name="headerDescricaoEsp" cols="30" rows="3"></textarea>
-              </div>
-            </div>
-          <!-- cadastro de categoria -->
-          <!-- Uma categoria nao pode ter o id proprio repetido dentro da tabela -->
-            <div class="mt-1 p-1" id="categoria">
-              <span style="color: black;"><h5 class="mb-5">Categoria</h5></span>
               <div class="form-group cat-pt mb-5">
                 <input class="new-input" id="categoriaTitulo" placeholder="TITULO"  type="text" name="categoriaTitulo" required>
               </div>

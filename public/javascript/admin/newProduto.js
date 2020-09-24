@@ -9,6 +9,7 @@ const divSubCategoria = document.getElementById("divSubCategoria");
 const subCategoria = document.getElementById("subCategoria");
 const naoSou = document.getElementById('subCategoriaChecked');
 const newSubcategoria = document.getElementById('newSubcategoria');
+const msgsubinfo = document.getElementById('msgsubinfo');
 
 //Elementos para o form dentro da modal
 const headerTitulo = document.getElementById('headerTitulo');
@@ -134,9 +135,11 @@ function getSubCategoria(categoriaPaiId){
 //Ajax da nova subCategoria
 newSubcategoria.addEventListener('click', function(event){
     event.preventDefault();
+    newSubcategoria.disabled = true;
 
     if(headerTitulo.value === "" || headerTituloEng.value === "" || headerTituloEsp.value === "" || categoriaTitulo.value === "" || categoriaTituloEng.value === "" || categoriaTituloEsp.value === ""){
-        document.getElementById("demo").innerHTML = "Todas os campos precisam ser preenchidos";
+        msgsubinfo.innerHTML = "Todas os campos precisam ser preenchidos";
+        msgsubinfo.style.color = "red";
         return 0;
     }
 
@@ -150,11 +153,15 @@ newSubcategoria.addEventListener('click', function(event){
                 subCategoria[index] = new Option(element.titulo, element.id, false, false);
             });
             //$('#exampleModalCenter').modal('toggle');
+            msgsubinfo.innerHTML = "Sua subcategoria foi inserida";
+            msgsubinfo.style.color = "blue";
+            newSubcategoria.disabled = false;
         }
     })
     .catch(function(error){
-        //TODO inserir bloco de aviso de nao insercao de subcategoria
-        alert("Nao foi possivel inserir a nova subcategoria");
+        msgsubinfo.innerHTML = "Nao foi possivel inserir a nova subcategoria";
+        msgsubinfo.style.color = "red";
+        newSubcategoria.disabled = false;
     });    
 
 });

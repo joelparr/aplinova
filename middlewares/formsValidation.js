@@ -55,8 +55,8 @@ exports.forgotResetValidation = async (req, res, next)=>{
 }
 
 exports.singupFormValidation = (req, res, next)=>{
-    req.check('firstname', 'min 5 max 15 char para primeiro nome').isLength({min:5, max: 15});
-    req.check('lastname', 'min 5 max 15 char para primeiro nome').isLength({min:5, max: 15});
+    req.check('firstname', 'min 2 max 15 char para primeiro nome').isLength({min:2, max: 15});
+    req.check('lastname', 'min 2 max 15 char para primeiro nome').isLength({min:2, max: 15});
     req.check('password', 'min 5 max 10 char para primeiro nome').isLength({min:5, max: 10});
 
     const errors = req.validationErrors();
