@@ -40,7 +40,7 @@ module.exports = {
     allRightsReserved: 'All rights reserved'
   },
   produtos: {
-    segments: 'segments',
+    segments: 'Segments',
     flavors: 'Food, Beverage, Supplements, Pharma, Oral Care, Cosmetics, Animal Nutrition and Pet Food.',
     colors: ' Food, Beverage, Supplements, Pharma, Oral Care, Cosmetics, Animal Nutrition and Pet Food.',
     proteins: 'Food, Beverage, Supplements, Animal Nutrition and Pet Food.',
