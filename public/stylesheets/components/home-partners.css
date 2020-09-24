@@ -29,11 +29,20 @@
 
 @media (min-width: 641px) {
     .home-partners__slide img {
-        max-width: 15%;
+        max-width: 13%;
         min-height: 60%;
         cursor: pointer;
         opacity: 0.75;
     }
+
+    .home-partners__slide .home-partners__caruma {
+        max-width: 11%;
+    }
+
+    .home-partners__slide .home-partners__sethness {
+        max-width: 20%;
+    }
+
     .swiper-slide {
         justify-content: space-around;
     }
