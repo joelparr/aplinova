@@ -202,7 +202,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content" style="background-color: #f0f3f5;">
         <div class="modal-header" style="background-color:#88B73A;">
-          <h5 class="modal-title" id="exampleModalLongTitle" style="color: white;"><strong>DETALHES CATEGORIA</strong><h5>
+          <h5 class="modal-title" id="exampleModalLongTitle" ><strong style="color: white;">DETALHES CATEGORIA</strong><h5>
           <button type="button" class="btn" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true"><i class="fas fa-times-circle" style="color: white; font-size: 1.5rem;"></i></span>
           </button>
@@ -212,8 +212,8 @@
           <!-- cadastro de categoria -->
           <!-- Uma categoria nao pode ter o id proprio repetido dentro da tabela -->
             <div class="mt-1 p-1" id="categoria">
-              <div>
-                <span style="color: black;"><h5 class="mb-5">Categoria</h5></span>
+              <div class="mb-5" style="display: flex; flex-direction: row; justify-content: space-between;">
+                <span style="color: black;"><h5>Categoria</h5></span>
                 <div style="display: flex; justify-content: space-around; width: 25%;">
                   <img src="../../public/img/eng-flag.png" alt="" style="width: 30px;" id="eua-cat-flag">
                   <img src="../../public/img/spain-flag.png" alt="" style="width: 30px;" id="esp-cat-flag">
@@ -221,13 +221,13 @@
                 </div>
               </div>
               <div class="form-group cat-pt mb-5">
-                <input class="new-input" id="categoriaTitulo" placeholder="TITULO"  type="text" name="categoriaTitulo" required>
+                <input class="new-input" id="categoriaTitulo" placeholder="TITULO*"  type="text" name="categoriaTitulo" required>
               </div>
               <div class="form-group d-none mb-5 cat-eua">
-                <input class="new-input" id="categoriaTituloEng" placeholder="TITULO"  type="text" name="categoriaTituloEng" required>
+                <input class="new-input" id="categoriaTituloEng" placeholder="TITULO*"  type="text" name="categoriaTituloEng" required>
               </div>
               <div class="form-group d-none mb-5 cat-esp">
-                <input class="new-input" id="categoriaTituloEsp" placeholder="TITULO"  type="text" name="categoriaTituloEsp" required>
+                <input class="new-input" id="categoriaTituloEsp" placeholder="TITULO*"  type="text" name="categoriaTituloEsp" required>
               </div>
               <div class="form-group cat-pt">
                 <textarea class="new-input" id="categoriaDescricao" placeholder="DESCRICAO"  name="categoriaDescricao" rows="3" cols="30"></textarea>
@@ -239,7 +239,7 @@
                 <textarea class="new-input" id="categoriaDescricaoEsp" placeholder="DESCRICAO"  name="categoriaDescricaoEsp" rows="3" cols="30"></textarea>
               </div>
             </div>
-            <p id="demo" style="color:red; font-family:'Times New Roman', Times, serif;"></p>
+            <p id="cat-alert" style="color:red; font-family:'Times New Roman', Times, serif;"></p>
             <div class="pt-2">
               <button class="btn btn-admin" type="submit" id="updateCategoria">Alterar</button>
             </div>
