@@ -6,10 +6,10 @@
   <strong>
   <i class="far fa-times-circle close"></i>
 </div>
-<div style="display: flex; flex-direction: row; justify-content: center; margin-bottom: 30px; background-color: #88B73A; height: 60px; align-items: center; color: white; font-weight: bold; font-size: 20px;">DETALHES</div>
-<div class="container-fluid">
-    <div class="row">
-        <div id="treeviewDiv" class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+<div class="header-title">DETALHES</div>
+<div class="container-fluid p-0 m-0">
+    <div class="row mr-0 ml-0">
+        <div id="treeviewDiv" class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 pl-0 treeview">
             <%if(error){%>
               <span style="color: red; margin-left: 20px; padding-left: 20px;"><%=error%></span>
             <%}%>
@@ -120,45 +120,45 @@
             </div>
         </div>
         <div class="col-md-6">
-            <img src="./public/img/eng-flag.png" alt="" style="width: 30px;" id="eua-flag">
-            <img src="./public/img/spain-flag.png" alt="" style="width: 30px;" id="esp-flag">
-            <img src="./public/img/brazil-flag.png" alt="" style="width: 30px;" id="pt-flag" class="active">
-            <form action="/admin/produto" method="post">
+            <img class="translater-icon" src="./public/img/eng-flag.png" alt="" id="eua-flag">
+            <img class="translater-icon" src="./public/img/spain-flag.png" alt="" id="esp-flag">
+            <img class="translater-icon" src="./public/img/brazil-flag.png" alt="" id="pt-flag" class="active">
+            <form class="form-mobile" action="/admin/produto" method="post">
                 <div class="form-group pt">
                     <label for="prodTitulo">Titulo</label>
-                    <input class="form-control" type="text" name="prodTitulo" id="indextitulo" required>
+                    <input class="new-input form-control" type="text" name="prodTitulo" id="indextitulo" required>
                 </div>
                 <div class="form-group d-none eua">
                     <label for="prodTituloEng">Titulo</label>
-                    <input class="form-control" type="text" name="prodTituloEng" id="tituloEng" required>
+                    <input class="new-input form-control" type="text" name="prodTituloEng" id="tituloEng" required>
                 </div>
                 <div class="form-group d-none esp">
                     <label for="prodTituloEsp">Titulo</label>
-                    <input class="form-control" type="text" name="prodTituloEsp" id="tituloEsp" required>
+                    <input class="new-input form-control" type="text" name="prodTituloEsp" id="tituloEsp" required>
                 </div>
                 <div class="form-group pt">
                     <label for="prodDescricao">Descricao</label>
-                    <textarea class="form-control" name="prodDescricao" id="indexdescricao" cols="30" rows="10" required></textarea>
+                    <textarea class="new-input form-control" name="prodDescricao" id="indexdescricao" cols="30" rows="10" required></textarea>
                 </div>
                 <div class="form-group d-none eua">
                     <label for="prodDescricaoEng">Descricao</label>
-                    <textarea class="form-control" name="prodDescricaoEng" id="descricaoEng" cols="30" rows="10" required></textarea>
+                    <textarea class="new-input form-control" name="prodDescricaoEng" id="descricaoEng" cols="30" rows="10" required></textarea>
                 </div>
                 <div class="form-group d-none esp">
                     <label for="prodDescricaoEsp">Descricao</label>
-                    <textarea class="form-control" name="prodDescricaoEsp" id="descricaoEsp" cols="30" rows="10" required></textarea>
+                    <textarea class="new-input form-control" name="prodDescricaoEsp" id="descricaoEsp" cols="30" rows="10" required></textarea>
                 </div>
                 <div id="divCategoriaPai" class="form-group">
                     <label for="categoria">Pertence a categoria</label>
-                    <input class="form-control" type="text" name="categoria" id="indexcategoria" readonly>
+                    <input class="new-input form-control" type="text" name="categoria" id="indexcategoria" readonly>
                 </div>
                 <div id="divSubCategoria" class="form-group">
                     <label for="subCategoria">Pertence a subcategoria</label>
                     <div class="input-group mb-2">
-                    <input class="form-control" type="text" name="subCategoria" id="indexsubCategoria" readonly>
+                    <input class="new-input form-control" type="text" name="subCategoria" id="indexsubCategoria" readonly>
                 </div>
                 <p id="demo" style="color:red; font-family:'Times New Roman', Times, serif;"></p>
-                <div class="pt-2" style="margin-top:40px;">
+                <div class="pt-2 btn-finalizacao-acao" style="margin-top:40px;">
                     <button class="btn btn-admin" id="atualizar" type="submit">Atualizar</button>
                 </div>
             </form>
@@ -213,11 +213,11 @@
           <!-- Uma categoria nao pode ter o id proprio repetido dentro da tabela -->
             <div class="mt-1 p-1" id="categoria">
               <div class="mb-5" style="display: flex; flex-direction: row; justify-content: space-between;">
-                <span style="color: black;"><h5>Categoria</h5></span>
+                <span class="cabecalho-input-form" style="font-weight: normal;">Categoria</span>
                 <div style="display: flex; justify-content: space-around; width: 25%;">
-                  <img src="../../public/img/eng-flag.png" alt="" style="width: 30px;" id="eua-cat-flag">
-                  <img src="../../public/img/spain-flag.png" alt="" style="width: 30px;" id="esp-cat-flag">
-                  <img src="../../public/img/brazil-flag.png" alt="" style="width: 30px;" id="pt-cat-flag" class="active">
+                  <img class="translater-icon" src="../../public/img/eng-flag.png" alt="" id="eua-cat-flag">
+                  <img class="translater-icon" src="../../public/img/spain-flag.png" alt="" id="esp-cat-flag">
+                  <img class="translater-icon" src="../../public/img/brazil-flag.png" alt="" id="pt-cat-flag" class="active">
                 </div>
               </div>
               <div class="form-group cat-pt mb-5">
@@ -240,7 +240,7 @@
               </div>
             </div>
             <p id="cat-alert" style="color:red; font-family:'Times New Roman', Times, serif;"></p>
-            <div class="pt-2">
+            <div class="pt-2 btn-finalizacao-acao">
               <button class="btn btn-admin" type="submit" id="updateCategoria">Alterar</button>
             </div>
           </form>

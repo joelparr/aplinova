@@ -1,12 +1,12 @@
 <%- include('./header')%>
 <!-- cadastro de header -->
-<div style="display: flex; flex-direction: row; justify-content: center; margin-bottom: 50px; background-color: #88B73A; height: 60px; align-items: center; color: white; font-weight: bold; font-size: 20px;">NOVO PRODUTO</div>
+<div class="header-title">NOVO PRODUTO</div>
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <img src="../../public/img/eng-flag.png" alt="" style="width: 30px;" id="eua-flag">
-      <img src="../../public/img/spain-flag.png" alt="" style="width: 30px;" id="esp-flag">
-      <img src="../../public/img/brazil-flag.png" alt="" style="width: 30px;" id="pt-flag" class="active">
+      <img class="translater-icon" src="../../public/img/eng-flag.png" alt="" id="eua-flag">
+      <img class="translater-icon" src="../../public/img/spain-flag.png" alt="" id="esp-flag">
+      <img class="translater-icon" src="../../public/img/brazil-flag.png" alt="" id="pt-flag" class="active">
       <form action="/admin/produto" id="novo-produto" method="post" style="margin-top: 3rem;">
         <div class="form-group pt" style="margin-bottom: 5rem;">
             <input class="new-input" type="text" name="prodTitulo" placeholder="TITULO*" required>
@@ -51,7 +51,7 @@
           <input type="checkbox" class="custom-control-input" name="subCategoriaChecked" id="subCategoriaChecked">
           <label class="custom-control-label" for="subCategoriaChecked" style="color: black;">Nao tenho subcategoria</label>
       </div>
-        <div class="pt-2" style="margin-top:40px;">
+        <div class="pt-2 btn-finalizacao-acao" style="margin-top:40px;">
             <button class="btn btn-admin" type="submit">Salvar</button>
         </div>
     </form>
@@ -74,12 +74,12 @@
           <form action="/admin/categoria" method="post">
             <div class="p-1" id="header">
               <div class="mb-5" style="display: flex; flex-direction: row; justify-content: space-between;">
-                <span style="color: black;"><h5>Segmento</h5></span>
+                <span class="cabecalho-input-form" >Segmento</span>
                 <!-- Os ids das flags sao diferentes do restante da aplicacao -->
                 <div style="display: flex; justify-content: space-around; width: 25%;">
-                  <img src="../../public/img/eng-flag.png" alt="" style="width: 30px;" id="eua-cat-flag">
-                  <img src="../../public/img/spain-flag.png" alt="" style="width: 30px;" id="esp-cat-flag">
-                  <img src="../../public/img/brazil-flag.png" alt="" style="width: 30px;" id="pt-cat-flag" class="active">
+                  <img class="translater-icon" src="../../public/img/eng-flag.png" alt="" id="eua-cat-flag">
+                  <img class="translater-icon" src="../../public/img/spain-flag.png" alt="" id="esp-cat-flag">
+                  <img class="translater-icon" src="../../public/img/brazil-flag.png" alt="" id="pt-cat-flag" class="active">
                 </div>
               </div>
               <div class="form-group mb-5 cat-pt">
@@ -104,8 +104,8 @@
           <!-- cadastro de categoria -->
           <!-- Uma categoria nao pode ter o id proprio repetido dentro da tabela -->
             <div class="mt-1 p-1" id="categoria">
-              <span style="color: black;"><h5 class="mb-5">Subcategoria</h5></span>
-              <div class="form-group cat-pt mb-5">
+              <span class="cabecalho-input-form">Subcategoria</span>
+              <div class="form-group cat-pt mb-5 mt-5">
                 <input class="new-input" id="categoriaTitulo" placeholder="TITULO*"  type="text" name="categoriaTitulo" required>
               </div>
               <div class="form-group d-none mb-5 cat-eua">
@@ -125,7 +125,7 @@
               </div>
             </div>
             <p id="msgsubinfo" style="font-family:'Times New Roman', Times, serif;"></p>
-            <div class="pt-2">
+            <div class="pt-2 btn-finalizacao-acao">
               <button class="btn btn-admin" type="submit" id="newSubcategoria">Salvar</button>
             </div>
           </form>

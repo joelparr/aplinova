@@ -653,12 +653,84 @@ a.list-group-item.active small {
   border-left: 2px solid #88B73A !important;
 }
 
+.header-title{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 30px;
+  background-color: #88B73A;
+  height: 60px;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.translater-icon{
+  width: 30px;
+}
+
+.modal-header{
+  align-items: center !important;
+}
+
+.cabecalho-input-form{
+  font-size: 1.2rem;
+  color: black;
+}
+
 @media (max-width: 576px) {
+  body{
+    font-size: 10px;
+  }
+
+  .c-header-icon{
+    width: 55px;
+  }
+
+  .c-header-icon a i{
+    font-size: 18px;
+  }
+
+  .c-header-icon i{
+    font-size: 18px;
+  }
+
   .c-header-icon.js-hamburger {
     display: none;
   }
 
   .c-header-icon.has-dropdown {
     display: none;
+  }
+  .c-search__input{
+    padding: 0;
+  }
+
+  .translater-icon{
+    width: 20px;
+    height: 20px;
+  }
+
+  .header-title{
+    height: 40px;
+    font-size: 15px;
+    margin-bottom: 10px;
+  }
+
+  .treeview{
+    margin-bottom: 20px;
+  }
+
+  .btn-finalizacao-acao{
+    text-align: center;
+  }
+
+  .form-mobile{
+    margin-top: 20px;
+  }
+
+  .cabecalho-input-form{
+    font-size: 1rem;
   }
 }
