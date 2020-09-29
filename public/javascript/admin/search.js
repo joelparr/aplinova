@@ -55,7 +55,6 @@ search.addEventListener('click', ev=>{
         if(data.result.resultProd){
             //Carregando os dados na tabela produto
             data.result.resultProd.forEach(element=>{
-                console.log(element);
                 let row = tableProduto.insertRow(0);
                 row.classList.add("produto");
                 row.insertCell(0).innerHTML = element.id;

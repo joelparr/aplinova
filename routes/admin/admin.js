@@ -30,7 +30,9 @@ const {
     userconfig,
     comparePassword,
     updateUser,
-    deleteUser} = require('../../controllers/admin/admin.js');
+    deleteUser,
+    showCategoriaPrincipal,
+    updateCategoria} = require('../../controllers/admin/admin.js');
 
 //rotas
 //Raiz da chamada acontece no APP.JS
@@ -41,6 +43,7 @@ router.get('/new/categoria',isValid, newCategoria); //Formulario da categoria - 
 router.get('/produto/:id', isValid, showProduto);
 router.get('/subcategoria/:id', isValid, showSubCategoria);
 router.get('/categoria/:id', isValid, showCategoria);
+router.get('/main/categoria/:id', isValid, showCategoriaPrincipal);
 router.get('/search', search);
 router.get('/userconfig',isValid, userconfig);
 //Create
@@ -61,6 +64,7 @@ router.post('/compare/passwords', isValid, comparePassword);
 router.patch('/subcategoria/:id', isValid, updateSubCategoria);
 router.patch('/produto/:id', isValid, updateProduto);
 router.patch('/config/user/:id', isValid, updateUser);
+router.patch('/categoria/:id', isValid, updateCategoria)
 
 //Exportando router
 module.exports = router;

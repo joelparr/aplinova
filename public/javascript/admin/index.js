@@ -58,12 +58,31 @@ var Dashboard = function () {
 			// });
 
 			$('[data-toggle="tooltip"]').tooltip(global.tooltipOptions);
+		},
+		getSideBar: ()=>{
+			sidebarChangeWidth();
 		}
 	};
 }();
 
 Dashboard.init();
 //# sourceURL=pen.js
+
+//Verificando media query
+var x = window.matchMedia("(max-width: 600px)");
+	x.addEventListener("change", (x)=>{
+		if(x.matches){
+			Dashboard.getSideBar();
+		}
+	});
+
+//Na mudanca de media query verifico o tamanho exato para reload
+window.addEventListener('resize', ()=>{
+	x = window.matchMedia("(max-width: 600px)");
+	if(x.matches){
+		window.location.reload();
+	}	
+})
 
 //Removendo a flag class dos botes e bandeiras
 function removeFlagClass(flag){

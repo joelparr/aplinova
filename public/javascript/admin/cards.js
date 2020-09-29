@@ -40,6 +40,26 @@ var ptFlag = document.getElementById('pt-flag');
 var elementId;
 var elementType;
 
+//modal cat
+const updateCat = document.getElementsByClassName('update-cat');
+//Campos de dados da categoria
+let catTitulo = document.getElementById('categoriaTitulo');
+let catTituloEng = document.getElementById('categoriaTituloEng');
+let catTituloEsp = document.getElementById('categoriaTituloEsp');
+let catDescr = document.getElementById('categoriaDescricao');
+let catDescrEng = document.getElementById('categoriaDescricaoEng');
+let catDescrEsp = document.getElementById('categoriaDescricaoEsp');
+//Botoes das flags de categoria
+const euaCatFlag = document.getElementById('eua-cat-flag');
+const espCatFlag = document.getElementById('esp-cat-flag');
+const ptCatFlag = document.getElementById('pt-cat-flag');
+//Botao para atualizar a categoria
+const catAtualizar = document.getElementById('updateCategoria');
+//Alerta de update de categoria
+let catAlert = document.getElementById('cat-alert');
+//Id geral da categoria
+var id;
+
 //Carregamento da tela
 window.onload = (event)=>{
     formTitulo.setAttribute('readonly', true);
@@ -52,6 +72,11 @@ window.onload = (event)=>{
     euaFlag.style.opacity = 0.4;
     ptFlag.style.opacity = 1;
     atualizar.disabled = true;
+
+    //Setando da janela de detalhes da categoria
+    espCatFlag.style.opacity = 0.4;
+    euaCatFlag.style.opacity = 0.4;
+    ptCatFlag.style.opacity = 1;
 }
 
 //Para cada linha da treeview adiciono um event listener
@@ -264,21 +289,61 @@ ptFlag.addEventListener('click', (ev)=>{
     removeFlagClass('pt');
 });
 
-function removeFlagClass(flag){
-    const eleEua = document.getElementsByClassName('eua');
-    const elePt = document.getElementsByClassName('pt');
-    const eleEsp = document.getElementsByClassName('esp');
+//Acao para o botao de bandeira EUA
+euaCatFlag.addEventListener('click', (ev)=>{
+    //Colocando uma borda em volta para demonstrar selecao
+    espCatFlag.style.opacity = 0.4;
+    ptCatFlag.style.opacity = 0.4;
+    euaCatFlag.style.opacity = 1;
+    removeCatFlagClass('eua');
+});
 
-    Array.from(eleEua).forEach(hit=>{
-        flag === 'eua' ? hit.classList.remove('d-none') : hit.classList.add('d-none');
+//Acao para o botao de bandeira Esp
+espCatFlag.addEventListener('click', (ev)=>{
+    //Colocando uma borda em volta para demonstrar selecao
+    espCatFlag.style.opacity = 1;
+    euaCatFlag.style.opacity = 0.4;
+    ptCatFlag.style.opacity = 0.4;
+    removeCatFlagClass('esp');
+});
+
+//Acao para o botao de bandeira EUA
+ptCatFlag.addEventListener('click', (ev)=>{
+    //Colocando uma borda em volta para demonstrar selecao
+    ptCatFlag.style.opacity = 1;
+    euaCatFlag.style.opacity = 0.4;
+    espCatFlag.style.opacity = 0.4;
+    removeCatFlagClass('pt');
+});
+
+function removeFlagClass(flag){
+    let eleEua = document.getElementsByClassName('eua');
+    let elePt = document.getElementsByClassName('pt');
+    let eleEsp = document.getElementsByClassName('esp');
+
+    removeClass({eua: eleEua, pt: elePt, esp: eleEsp}, flag);
+}
+
+ //Removendo a flag class dos botes e bandeiras da janela de detalhes da categoria
+ function removeCatFlagClass(flag){
+    let eleEua = document.getElementsByClassName('cat-eua');
+    let elePt = document.getElementsByClassName('cat-pt');
+    let eleEsp = document.getElementsByClassName('cat-esp');
+
+    removeClass({eua: eleEua, pt: elePt, esp: eleEsp}, flag);
+}
+
+function removeClass(...args){
+    Array.from(args[0].eua).forEach(hit=>{
+        args[1] === 'eua' ? hit.classList.remove('d-none') : hit.classList.add('d-none');
     });
     
-    Array.from(elePt).forEach(hit=>{
-        flag === 'pt' ? hit.classList.remove('d-none') : hit.classList.add('d-none');
+    Array.from(args[0].pt).forEach(hit=>{
+        args[1] === 'pt' ? hit.classList.remove('d-none') : hit.classList.add('d-none');
     });
     
-    Array.from(eleEsp).forEach(hit=>{
-        flag === 'esp' ? hit.classList.remove('d-none') : hit.classList.add('d-none');
+    Array.from(args[0].esp).forEach(hit=>{
+        args[1] === 'esp' ? hit.classList.remove('d-none') : hit.classList.add('d-none');
     });
 }
 
@@ -288,4 +353,51 @@ Array.from(closeAlert).forEach(el=>{
         element[0].classList.contains('alert-success') ? element[0].classList.remove('alert-success') : element[0].classList.remove('alert-danger');
         element[0].classList.add('d-none');
     })
+});
+
+//Recuperando o click do botao de detalhes da categoria
+Array.from(updateCat).forEach(el=>{
+  el.addEventListener('click', ev=>{
+      ev.preventDefault();
+      id = ev.target.dataset.id;
+      url = `/admin/main/categoria/${id}`;
+      $.get(url, function(data){
+          if(data){ 
+              console.log(data);
+              catTitulo.value = data.categoria.titulo
+              catTituloEng.value = data.categoria.tituloEng 
+              catTituloEsp.value = data.categoria.tituloEsp
+              catDescr.value = data.categoria.descricao
+              catDescrEng.value = data.categoria.descricaoEng
+              catDescrEsp.value = data.categoria.descricaoEsp
+          }
+        });
+  })  
+});
+
+updateCategoria.addEventListener('click', ev=>{
+    ev.preventDefault();
+    if(catTitulo.value === "" || catTituloEng.value === "" || catTituloEsp.value === ""){
+        catAlert.innerHTML = "Faltam dados no seu formulario";
+        catAlert.style.color = "red"; 
+    }
+    let url = `/admin/categoria/${id}`;
+    const dataBody = {
+        titulo: catTitulo.value,
+        tituloEng: catTituloEng.value,
+        tituloEsp: catTituloEsp.value,
+        descricao: catDescr.value,
+        descricaoEng: catDescrEng.value,
+        descricaoEsp: catDescrEsp.value,
+        method: "patch"
+    }
+    $.post(url, dataBody, function(data){
+        if(data){
+            catAlert.innerHTML = "O item foi alterado com sucesso!";
+            catAlert.style.color = "blue";
+        }else{
+            catAlert.innerHTML = "Houve um problema no update da categoria!";
+            catAlert.style.color = "red";           
+        }
+    }, "json");
 })

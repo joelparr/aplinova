@@ -1,17 +1,17 @@
 <%- include('./header')%>
     <!-- cadastro de header -->
-    <div style="display: flex; flex-direction: row; justify-content: center; margin-bottom: 50px; background-color: #88B73A; height: 60px; align-items: center; color: white; font-weight: bold; font-size: 20px;">NOVA CATEGORIA</div>
+    <div class="header-title">NOVA CATEGORIA</div>
     <div class="container">
       <div class="row">
         <div class="col-md-12">
           <form action="/admin/categoria" method="post">
             <div id="header">
               <div style="display: flex; flex-direction: row; justify-content: space-between; flex-wrap: wrap;">
-                <h5 style="color: black;">Cabeçalho da categoria</h5>
+                <span class="cabecalho-input-form" >Cabeçalho da categoria</span>
                 <div>
-                  <img src="../../public/img/eng-flag.png" alt="" style="width: 30px;" id="eua-flag">
-                  <img src="../../public/img/spain-flag.png" alt="" style="width: 30px;" id="esp-flag">
-                  <img src="../../public/img/brazil-flag.png" alt="" style="width: 30px;" id="pt-flag" class="active">
+                  <img class="translater-icon" src="../../public/img/eng-flag.png" alt="" id="eua-flag">
+                  <img class="translater-icon" src="../../public/img/spain-flag.png" alt="" id="esp-flag">
+                  <img class="translater-icon" src="../../public/img/brazil-flag.png" alt="" id="pt-flag" class="active">
                 </div>
               </div>
               
@@ -37,7 +37,7 @@
           <!-- cadastro de categoria -->
           <!-- Uma categoria nao pode ter o id proprio repetido dentro da tabela -->
             <div id="categoria">
-              <h5 style="color: black;">Categoria</h5>
+              <span class="cabecalho-input-form" >Categoria</span>
                 <!--Sempre sera incluida uma categoria-->
                 <input class="d-none" id="categoriaChecked" name="categoriaChecked" type="text" value="on">
               <div class="form-group pt" style="margin-bottom: 4rem; margin-top: 2rem;">
@@ -59,7 +59,7 @@
                 <textarea class="new-input" name="categoriaDescricaoEsp" placeholder="DESCRICAO" rows="5" cols="30"></textarea>
               </div>
             </div>
-            <div>
+            <div class="btn-finalizacao-acao">
               <button class="btn btn-admin" type="submit">Salvar</button>
             </div>
           </form>
