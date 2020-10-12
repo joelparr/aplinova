@@ -3,12 +3,12 @@
  * Author: Findi
  */
 
-const fetch = require('node-fetch');
 const models = require('../models');
 const User = models.User;
 const Forgotcode = models.Forgotcode;
 const {Op} = require('sequelize');
 const bcrypt = require('bcrypt-nodejs');
+const mailerTransport = require('../config/mail');
 
  //Tela de login
 exports.login = (req, res)=>{
@@ -23,34 +23,16 @@ exports.newUser = (req, res)=>{
 //Envia email para o administrador com o novo usuario a ser ativado
 exports.sendemail = (req, res)=>{
     const assunto = "Solicitacao para aprovacao de login";
-    const url = "https://api.emailjs.com/api/v1.0/email/send";
 
     if(req._passport.session){
         User.findByPk(req._passport.session.user)
         .then(function(user){
-            const template = {
-                user_id: "user_RtuuE0LQRe9QltUKAuJmS",
-                service_id: "danielGmail",
-                template_id:"template_1ofNnKLb",
-                template_params: {
-                    'assunto': assunto,
-                    'destino': 'danieldts2013@gmail.com',
-                    'corpo': `Usuario requisitanto solicitacao: ${user.firstName}. Email: ${user.email}`
-                }
-            }
-            const options = {
-                method: 'POST',
-                headers: {"Content-type":"application/json"},
-                body: JSON.stringify(template)
-            }
-            return fetch(url, options)
+            return sendContatoEmail('leonardo.takada.lt@apliquimica.com.br', assunto, `Usuario requisitanto solicitacao: ${user.firstName}. Email: ${user.email}`);
         })
         .then(function(result){
-            if(result.ok){
-                req.logout();
-                req.flash('envio', 'Email foi enviado ao adm');
-                res.redirect('/login/show');
-            }
+            req.logout();
+            req.flash('envio', 'Email foi enviado ao adm');
+            res.redirect('/login/show');
         })
         .catch(function(error){
             req.flash('error', 'Houve um erro no envio do email');
@@ -65,7 +47,6 @@ exports.sendemail = (req, res)=>{
 exports.createForgot = async (req, res)=>{
 
     const assunto = "Codigo para reset de senha";
-    const url = "https://api.emailjs.com/api/v1.0/email/send";
     const forgotCode = Math.floor(Math.random() * (9000)) + 1000;
 
     let user = await User.findOne({where:{email:req.body.email}});
@@ -77,27 +58,12 @@ exports.createForgot = async (req, res)=>{
         fgc = await Forgotcode.update({active:1}, {where:{userid:user.dataValues.id}});
         await user.createForgotcode({codigo: String(forgotCode)}); //Criando o forgotcode
 
-        //sending email
-        const template = {
-            user_id: "user_RtuuE0LQRe9QltUKAuJmS",
-            service_id: "danielGmail",
-            template_id:"template_1ofNnKLb",
-            template_params: {
-                'assunto': assunto,
-                'destino': user.dataValues.email,
-                'corpo': `Usuario requisitanto solicitacao: ${user.dataValues.firstName}. Codigo: ${String(forgotCode)}. Link: http://localhost:3000/login/forgot/reset`
-            }
-        }
-        const options = {
-            method: 'POST',
-            headers: {"Content-type":"application/json"},
-            body: JSON.stringify(template)
-        }
-
-        await fetch(url, options);
+        let content = `Usuario requisitanto solicitacao: ${user.dataValues.firstName}. Codigo: ${String(forgotCode)}. Link: https://www.aplinova.com.br/login/forgot/reset`;
+        await sendContatoEmail(user.dataValues.email, assunto, content);
         req.logout();
         req.flash('envio', 'Email foi enviado com codigo.');
         res.redirect('/login/show');
+
     }
 }
 
@@ -139,5 +105,24 @@ exports.reset = async (req, res)=>{
         }
     }
 }
+
+//Funcao de envio de email
+function sendContatoEmail(email, assunto, content){
+    return new Promise((resolve, reject)=>{
+      mailerTransport.sendMail({
+        from: `Aplinova <contato@aplinova.com.br>`,
+        to: email,
+        subject: assunto,
+        html: content
+      }, (err, info)=>{
+        if(err){
+          console.log(err);
+          reject("Ocorreu um problema ao enviar o email")
+        }else{
+          resolve(info);
+        }
+      })
+    })
+  }
 
 
