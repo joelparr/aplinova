@@ -81,7 +81,7 @@
     }
 
     .produto-view__categories--foodservice .subcategoria-item .subcategoria-item__title {
-        width: 58%;
+        width: 80%;
     }
 
     .produto-view__categories--foodservice .subcategoria-item .subcategoria-item__text {
@@ -119,6 +119,12 @@
 
     .produto-view__categories--subacucar .subcategoria-item__list-container {
         margin-left: -5rem;
+    }
+}
+
+@media (min-width: 1440px) {
+    .produto-view__categories--foodservice .subcategoria-item .subcategoria-item__title {
+        width: 58%;
     }
 }
 
