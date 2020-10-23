@@ -4,7 +4,8 @@
  */
 
  //Declaracoes
- const express = require('express');
+const express = require('express');
+const favicon = require('serve-favicon')
 const app = express();
 const dotEnv = require('dotenv');
 dotEnv.config();
@@ -33,6 +34,7 @@ require('./config/passport/passport.js')(passport, models.User);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use('/public', express.static('public'));
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
 
 app.use(httpToHttps);
 app.use(bodyParser.urlencoded({extended:true}));
