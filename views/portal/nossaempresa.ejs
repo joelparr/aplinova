@@ -3,14 +3,14 @@
 
 <div class="base-container mt-3 mt-md-5">
   <div class="row mb-5 py-3">
-    <div class="col-md-6">
+    <div class="col-lg-6">
       <div class="empresa__container">
         <div class="empresa__header">
           <i class="fas fa-square fas-sm mr-3"></i>
           <%- t.home.ourCompany %>
         </div>
         <div class="empresa__content">
-          <div class="empresa__main-text pt-4">
+          <div class="empresa__main-text pr-xl-3 pt-4">
             <%- t.home.foundedIn1987 %>
             <br><br>
             <%- t.home.aLongEstablished %>
@@ -20,13 +20,14 @@
         </div>
       </div>
     </div>
-    <div class="col-md-6 px-0" style="background: no-repeat center/100% url('./public/img/nossa-empresa.jpg')">
+    <div class="col-lg-6 px-0" style="background: no-repeat center/100% url('./public/img/nossa-empresa.jpg')">
     </div>
+    <img class="mx-auto mt-5 d-none d-md-block d-lg-none" src="./public/img/nossa-empresa.jpg" alt="" style="object-fit: contain; max-width: 500px" />
   </div>
 </div>
 <div class="empresa__subheader"><%- t.nossaempresa.aplinovaStrivesFor %></div>
-<div class="empresa-estrutura d-flex flex-row-reverse mt-5 mx-0 w-100">
-  <div class="col-12 col-md-6 empresa-estrutura__content base-padding-right">
+<div class="empresa-estrutura d-flex flex-wrap flex-row-reverse mt-5 mx-0 w-100">
+  <div class="col-12 col-lg-6 empresa-estrutura__content base-padding-right">
     <div class="empresa-estrutura__header">
       <i class="fas fa-square fas-sm mr-3"></i>
       <b><%- t.nossaempresa.facilities %></b>
@@ -39,7 +40,7 @@
       <%- t.nossaempresa.ourManufactoringUnit %>
     </div>
   </div>
-  <img src="./public/img/estrutura.jpg" class="d-none d-md-block col-md-6 p-0" style="object-fit: cover;" />
+  <img src="./public/img/estrutura.jpg" class="d-none d-md-block col-md-12 col-lg-6 p-0" style="object-fit: cover;" />
 </div>
 
 <div class="justify-content-center mt-4 my-md-5 text-capitalize empresa__header" style="margin-bottom: -0.75rem !important;">

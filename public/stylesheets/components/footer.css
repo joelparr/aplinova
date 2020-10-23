@@ -61,3 +61,13 @@
 .footer .footer__logo {
     width: 16rem;
 }
+
+@media (max-width: 1024px) {
+    .footer .footer__logo {
+        width: 12rem;
+    }
+
+    .footer .footer__subheader {
+        font-size: .925rem;
+    }
+}

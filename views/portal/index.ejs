@@ -4,7 +4,17 @@
     <hr>
     <div class="introduction__header-content mx-auto">
         <%- t.home.apliquimicaIsNow %>
-        <span class="d-none d-md-inline-block"><%- t.home.aNewConcept %></span>
+        <span class="d-none d-md-inline-block">
+            <%- t.home.aNewConcept %>
+            <a class="introduction__header-video-link  d-inline-block pb-1 text-white" href="<%- t.home.videoLink %>" target="_blank">
+                <img class="mx-1" src="./public/img/icon-player.svg" alt="" style="width: .825rem; height: .825rem; object-fit: contain" />
+                <u><%- t.home.watchTheVideo %></u>
+            </a>
+        </span>
+        <a class="introduction__header-video-link d-md-none d-inline-block pb-1 text-white" href="<%- t.home.videoLink %>" target="_blank">
+            <img class="mx-1" src="./public/img/icon-player.svg" alt="" style="width: .825rem; height: .825rem; object-fit: contain" />
+            <u><%- t.home.watchTheVideo %></u>
+        </a>
     </div>
 </div>
 <%- include('./home-introduction') %>
