@@ -81,20 +81,16 @@
     }
 
     .produto-view__categories--foodservice .subcategoria-item .subcategoria-item__title {
-        width: 100%;
+        width: 58%;
     }
 
     .produto-view__categories--foodservice .subcategoria-item .subcategoria-item__text {
         width: 90% !important;
     }
 
-    .produto-view__categories--foodservice .subcategoria-item__list-container {
-        align-self: flex-start;
-    }
-
     .produto-view__categories--subacucar .subcategoria-item .subcategoria-item__title {
         min-width: 350px;
-        width: 85%;
+        width: 67%;
     }
 
     .produto-view__categories--proteinas .subcategoria-item .subcategoria-item__title,

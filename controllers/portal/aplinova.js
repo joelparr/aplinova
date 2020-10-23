@@ -15,13 +15,13 @@ exports.show = (req, res) => {
     const produtos = [
       {title: req.params.t.home.flavors, imageUrl: './public/img/aromas.jpg', href: 'aromas'},
       {title: req.params.t.home.colors, imageUrl: './public/img/corantes.jpg', href: 'corantes'},
-      {title: req.params.t.home.veganAndOrganic, imageUrl: './public/img/prod_veganos.jpg', href: 'prodveganos'},
       {title: req.params.t.home.proteins, imageUrl: './public/img/proteinas.jpg', href: 'proteinas'},
       {title: req.params.t.produtos.titles.sugarSubstitutesAnd, imageUrl: './public/img/subs_acucar.jpg', href: 'subacucar'},
       {title: req.params.t.produtos.titles.naturalIngredients, imageUrl: './public/img/produtos_naturais.jpg', href: 'prodnaturais'},
+      {title: req.params.t.home.veganAndOrganic, imageUrl: './public/img/prod_veganos.jpg', href: 'prodveganos'},
+      {title: req.params.t.home.functionalIngredients, imageUrl: './public/img/ingredientes_funcionais.jpg', href: 'ingredientesfuncionais'},
       {title: req.params.t.home.confectioneryCoatings, imageUrl: './public/img/rev_confeitaria.jpg', href: 'revconfeitaria'},
-      {title: req.params.t.home.foodService, imageUrl: './public/img/food_service.jpg', href: 'foodservice'},
-      {title: req.params.t.home.functionalIngredients, imageUrl: './public/img/ingredientes_funcionais.jpg', href: 'ingredientesfuncionais'}
+      {title: req.params.t.home.foodService, imageUrl: './public/img/food_service.jpg', href: 'foodservice'}
     ]
     res.render('./portal/index', {produtos, t: req.params.t});
 }
