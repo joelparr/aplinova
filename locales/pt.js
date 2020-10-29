@@ -36,7 +36,7 @@ module.exports = {
     ourPartners: '<span class="font-weight-light">Nossos</span> <b class="ml-2">parceiros</b>',
     aplinovaPartnersWith: 'A <b>Aplinova</b> conta com parcerias internacionais de alto nível que primam pela competência comercial, tecnológica e inovativa em seus respectivos campos de atuação.',
     locations: 'Localização',
-    headquarters: 'Escritório',
+    headquarters: 'Endereço',
     manufacturingPlant: 'Fábrica',
     map: 'Ver no mapa',
     allRightsReserved: 'Todos os direitos reservados.',

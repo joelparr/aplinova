@@ -36,7 +36,7 @@ module.exports = {
     ourPartners: '<span class="font-weight-light">Nuestros</span> <b class="ml-2">socios</b>',
     aplinovaPartnersWith: 'Aplinova cuenta con socios internacionales de alto nivel, que se destacan por su competencia comercial, tecnológica e innovadora en sus respectivos campos de actividad.',
     locations: 'LOCACIONES',
-    headquarters: 'Sede',
+    headquarters: 'Dirección',
     manufacturingPlant: 'Planta',
     map: 'Mapa',
     allRightsReserved: 'Todos los derechos reservados.',

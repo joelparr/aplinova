@@ -33,7 +33,7 @@ module.exports = {
     ourPartners: '<span class="font-weight-light">Our</span> <b class="ml-2">partners</b>',
     aplinovaPartnersWith: 'Aplinova partners with highly recognized international suppliers that strive for providing commercial, technological and innovative excellence in their respective fields.',
     locations: 'LOCATIONS',
-    headquarters: 'Headquarters',
+    headquarters: 'Address',
     manufacturingPlant: 'Manufacturing Plant',
     map: 'Map',
     contact: 'CONTACT',
