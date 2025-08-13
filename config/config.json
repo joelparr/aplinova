@@ -20,7 +20,6 @@
   "production": {
     "use_env_variable": "DATABASE_URL",
     "dialect": "mysql",
-    "timezone": "-03:00",
-    "logging": true
+    "timezone": "-03:00"
   }
 }
