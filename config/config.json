@@ -18,12 +18,8 @@
     "timezone": "-03:00"
   },
   "production": {
-    "username": "b67ef1e7b50491",
-    "password": "805a1183",
-    "database": "heroku_9f24e65592f2d8e",
-    "host": "us-cdbr-east-06.cleardb.net",
+    "use_env_variable": "DATABASE_URL",
     "dialect": "mysql",
-    "operatorsAliases": 0,
     "timezone": "-03:00"
   }
 }
