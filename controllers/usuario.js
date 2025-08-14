@@ -27,7 +27,8 @@ exports.sendemail = (req, res)=>{
     if(req._passport.session){
         User.findByPk(req._passport.session.user)
         .then(function(user){
-            return sendContatoEmail('leonardo.takada.lt@apliquimica.com.br', assunto, `Usuario requisitanto solicitacao: ${user.firstName}. Email: ${user.email}`);
+            //return sendContatoEmail('leonardo.takada.lt@apliquimica.com.br', assunto, `Usuario requisitanto solicitacao: ${user.firstName}. Email: ${user.email}`);
+            return sendContatoEmail(process.env.MAILTO_CONTATO, assunto, `Usuario requisitanto solicitacao: ${user.firstName}. Email: ${user.email}`);
         })
         .then(function(result){
             req.logout();
@@ -110,7 +111,7 @@ exports.reset = async (req, res)=>{
 function sendContatoEmail(email, assunto, content){
     return new Promise((resolve, reject)=>{
       mailerTransport.sendMail({
-        from: `Aplinova <contato@aplinova.com.br>`,
+        from: process.env.MAILFROM, //`Aplinova <contato@aplinova.com.br>`,
         to: email,
         subject: assunto,
         html: content
