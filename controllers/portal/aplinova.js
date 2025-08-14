@@ -209,7 +209,8 @@ exports.contatoEmail = (req, res)=>{
   let assunto = `Contato cliente: ${req.body.nome}`;
   let contentAdm = `<html><body>Houve um contato do ${req.body.nome}. Email: ${req.body.email}. Telefone: ${req.body.telefone}. Empresa: ${req.body.empresa}. Mensagem: ${req.body.mensagem}</body></html>`;
   let contentCost = `<html><body>Seu contato com a aplinova foi realizado com sucesso. Porfavor aguarde retorno.</body></html>`
-  sendContatoEmail("contato@aplinova.com.br", assunto, contentAdm) //administrador
+  //sendContatoEmail("contato@aplinova.com.br", assunto, contentAdm) //administrador
+  sendContatoEmail(process.env.MAILTO_CONTATO, assunto, contentAdm) //administrador
   .then(sentAdm=>{
     return sendContatoEmail(req.body.email, assunto, contentCost) //cliente
   })
@@ -227,7 +228,7 @@ exports.contatoEmail = (req, res)=>{
 function sendContatoEmail(email, assunto, content){
   return new Promise((resolve, reject)=>{
     mailerTransport.sendMail({
-      from: `Aplinova <contato@aplinova.com.br>`,
+      from: process.env.MAILFROM, // `Aplinova <contato@aplinova.com.br>`,
       to: email,
       subject: assunto,
       html: content
